@@ -205,6 +205,126 @@
             
               
                 
+                <a class="post-title-link" href="/2015/08/15/jetBrains-IDE-实现本地代码与服务端代码同步/" itemprop="url">
+                  jetBrains IDE 实现本地代码与服务端代码同步
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-08-15T15:14:30+08:00" content="2015-08-15">
+              2015-08-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h3 id="u7B80_u4ECB"><a href="#u7B80_u4ECB" class="headerlink" title="简介"></a>简介</h3><p>在做项目的过程中发现一个有意思的东西，jetBrains 旗下的 IDE，如：IntelliJ IDEA、WebStorm等工具，有一个自动与服务端同步代码的功能，其本质上是通过ftp连接服务器，在本地代码保存的时候，自动通过ftp上传文件到服务器指定目录下，从而实现本地代码与服务端代码同步。这个功能适用于某些需要服务器在线调试的情况，比如微信公众号和微信企业号的开发，十分方便。</p>
+<h3 id="u670D_u52A1_u5668_u914D_u7F6E"><a href="#u670D_u52A1_u5668_u914D_u7F6E" class="headerlink" title="服务器配置"></a>服务器配置</h3><ul>
+<li><p>安装 ftp 服务器</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~$ sudo apt-<span class="keyword">get</span> install vsftpd</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置 vsftpd</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~$ sudo vim /etc/vsftpd.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启用以下命令</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="setting">listen=<span class="value"><span class="keyword">YES</span>       # 服务器监听</span></span></span><br><span class="line"><span class="setting">local_enable=<span class="value"><span class="keyword">YES</span>        #本地主机访问允许</span></span></span><br><span class="line"><span class="setting">write_enable=<span class="value"><span class="keyword">YES</span>        #写允许</span></span></span><br><span class="line"><span class="setting">dirmessage_enable=<span class="value"><span class="keyword">YES</span>        # 进入文件夹允许</span></span></span><br><span class="line"><span class="setting">connect_from_port_20=<span class="value"><span class="keyword">YES</span>        # 允许使用<span class="number">20</span>号端口作为数据传送的端口</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动 vsftpd</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~$ sudo service vsftpd start</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="IDE__u914D_u7F6E"><a href="#IDE__u914D_u7F6E" class="headerlink" title="IDE 配置"></a>IDE 配置</h3><ul>
+<li>进入 Tools –&gt; Deployment –&gt; Configuration..</li>
+<li>点击添加按钮，输入 Name，Type 选 FTP</li>
+<li>填写 FTP 地址和账号密码，点击 “Test FTP connection” 按钮，测试成功后点击 Autodetect 按钮，将自动检测用户的 root 目录</li>
+<li>切换标签至 Mappings，选择本地文件夹地址和想要同步的服务器上文件夹地址</li>
+<li>若有文件（或文件夹）需要忽略同步，则可切换至标签 Excluded Paths，添加本地或在线文件（或文件夹）</li>
+<li>进入 Tools –&gt; Deployment –&gt; Options，这里也可以设置同步时忽略某些后缀的文件。在这里，建议将自动同步触发点从 “Always” 修改为 “On explicit save action”，即用户手动保存时同步，避免太频繁访问 FTP 服务器</li>
+<li>点击 Tools –&gt; Deployment –&gt; Automatic Upload，开启自动同步。编辑文件，手动保存后会自动同步</li>
+</ul>
+<h3 id="u7ED3_u675F_u8BED"><a href="#u7ED3_u675F_u8BED" class="headerlink" title="结束语"></a>结束语</h3><p>使用此方法能有效提高服务器代码调试效率，是一个很不错的小技巧。别忘了，切换至本地开发模式时，记得将 Automatic Upload 关闭哦。</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/08/11/nodejs-微服务框架-seneca/" itemprop="url">
                   nodejs 微服务框架 seneca
                 </a>
@@ -346,7 +466,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
