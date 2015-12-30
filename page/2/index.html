@@ -205,6 +205,245 @@
             
               
                 
+                <a class="post-title-link" href="/2015/08/15/一些有用的-JavaScript-知识和代码规范/" itemprop="url">
+                  一些有用的 JavaScript 知识和代码规范
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-08-15T15:32:08+08:00" content="2015-08-15">
+              2015-08-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h3 id="u7C7B_u578B_Types"><a href="#u7C7B_u578B_Types" class="headerlink" title="类型 Types"></a>类型 Types</h3><ul>
+<li><p>基础类型：When you access a primitive type you work directly on its value</p>
+<ul>
+<li>string</li>
+<li>number</li>
+<li>boolean</li>
+<li>null</li>
+<li>undefined<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> bar = foo;</span><br><span class="line">bar = <span class="number">9</span>;</span><br><span class="line"><span class="built_in">console</span>.log(foo, bar); <span class="comment">// =&gt; 1, 9</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>复合类型：When you access a complex type you work on a reference to its value</p>
+<ul>
+<li>object</li>
+<li>array</li>
+<li>function<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = [<span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line"><span class="keyword">var</span> bar = foo;</span><br><span class="line">bar[<span class="number">0</span>] = <span class="number">9</span>;</span><br><span class="line"><span class="built_in">console</span>.log(foo[<span class="number">0</span>], bar[<span class="number">0</span>]); <span class="comment">// =&gt; 9, 9</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="u5BF9_u8C61_Objects"><a href="#u5BF9_u8C61_Objects" class="headerlink" title="对象 Objects"></a>对象 Objects</h3><ul>
+<li><p>创建对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> item = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> item = &#123;&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不要使用保留字作为 key</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> superman = &#123;</span><br><span class="line">  <span class="keyword">default</span>: &#123; clark: <span class="string">'kent'</span> &#125;,</span><br><span class="line">  private: <span class="literal">true</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> superman = &#123;</span><br><span class="line">  defaults: &#123; clark: <span class="string">'kent'</span> &#125;,</span><br><span class="line">  hidden: <span class="literal">true</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用可读近义词代替保留字</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line">var superman = &#123;</span><br><span class="line">  class: 'alien'</span><br><span class="line">&#125;;</span><br><span class="line">// bad</span><br><span class="line">var superman = &#123;</span><br><span class="line">  klass: 'alien'</span><br><span class="line">&#125;;</span><br><span class="line">// good</span><br><span class="line">var superman = &#123;</span><br><span class="line">  type: 'alien'</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h3 id="u6570_u7EC4_Arrays"><a href="#u6570_u7EC4_Arrays" class="headerlink" title="数组 Arrays"></a>数组 Arrays</h3><ul>
+<li><p>创建数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> items = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> items = [];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不知道数组长度时，使用 push 函数添加元素</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> someStack = [];</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line">someStack[someStack.length] = <span class="string">'abracadabra'</span>;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line">someStack.push(<span class="string">'abracadabra'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>复制数组时使用 slice 函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> len = items.length;</span><br><span class="line"><span class="keyword">var</span> itemsCopy = [];</span><br><span class="line"><span class="keyword">var</span> i;</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">  itemsCopy[i] = items[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line">itemsCopy = items.slice();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将一个数组类对象转化为数组，使用 slice 函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">list</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> list1 = list(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);  <span class="comment">// =&gt; [1, 2, 3]</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h3 id="u5B57_u7B26_u4E32_Strings"><a href="#u5B57_u7B26_u4E32_Strings" class="headerlink" title="字符串 Strings"></a>字符串 Strings</h3><ul>
+<li><p>使用单引号</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">"Bob Parr"</span>;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">'Bob Parr'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符串长度超过 80，应写成多行并使用 “ + ” 连接</p>
+</li>
+<li><p>动态构建一个字符串时，使用 join 函数而不是 “ + ”</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> items;</span><br><span class="line"><span class="keyword">var</span> messages;</span><br><span class="line"><span class="keyword">var</span> length;</span><br><span class="line"><span class="keyword">var</span> i;</span><br><span class="line">messages = [&#123;</span><br><span class="line">  state: <span class="string">'success'</span>,</span><br><span class="line">  message: <span class="string">'This one worked.'</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">  state: <span class="string">'success'</span>,</span><br><span class="line">  message: <span class="string">'This one worked as well.'</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">  state: <span class="string">'error'</span>,</span><br><span class="line">  message: <span class="string">'This one did not work.'</span></span><br><span class="line">&#125;];</span><br><span class="line">length = messages.length;</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inbox</span>(<span class="params">messages</span>) </span>&#123;</span><br><span class="line">  items = <span class="string">'&lt;ul&gt;'</span>;</span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">    items += <span class="string">'&lt;li&gt;'</span> + messages[i].message + <span class="string">'&lt;/li&gt;'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> items + <span class="string">'&lt;/ul&gt;'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inbox</span>(<span class="params">messages</span>) </span>&#123;</span><br><span class="line">  items = [];</span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">    items[i] = messages[i].message;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'&lt;ul&gt;&lt;li&gt;'</span> + items.join(<span class="string">'&lt;/li&gt;&lt;li&gt;'</span>) + <span class="string">'&lt;/li&gt;&lt;/ul&gt;'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h3 id="u51FD_u6570_Functions"><a href="#u51FD_u6570_Functions" class="headerlink" title="函数 Functions"></a>函数 Functions</h3><ul>
+<li><p>函数表达式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// anonymous function expression</span></span><br><span class="line"><span class="keyword">var</span> anonymous = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// named function expression</span></span><br><span class="line"><span class="keyword">var</span> named = <span class="function"><span class="keyword">function</span> <span class="title">named</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// immediately-invoked function expression (IIFE)</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Welcome to the Internet. Please follow me.'</span>);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Never declare a function in a non-function block (if, while, etc). Assign the function to a variable instead.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">if</span> (currentUser) &#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Nope.'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> test;</span><br><span class="line"><span class="keyword">if</span> (currentUser) &#123;</span><br><span class="line">  test = <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Yup.'</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不要把任何参数命名为 arguments，这会替代每个函数原有的 arguments 对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">nope</span>(<span class="params">name, options, arguments</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...stuff...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">yup</span>(<span class="params">name, options, args</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...stuff...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h3 id="u5C5E_u6027_Properties"><a href="#u5C5E_u6027_Properties" class="headerlink" title="属性 Properties"></a>属性 Properties</h3><ul>
+<li><p>使用 “ . ” 符号来获取属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> luke = &#123;</span><br><span class="line">  jedi: <span class="literal">true</span>,</span><br><span class="line">  age: <span class="number">28</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> isJedi = luke[<span class="string">'jedi'</span>];</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> isJedi = luke.jedi;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当使用变量获取属性时，使用 “ [ ] “</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> luke = &#123;</span><br><span class="line">  jedi: <span class="literal">true</span>,</span><br><span class="line">  age: <span class="number">28</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getProp</span>(<span class="params">prop</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> luke[prop];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> isJedi = getProp(<span class="string">'jedi'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h3 id="u53D8_u91CF_Variables"><a href="#u53D8_u91CF_Variables" class="headerlink" title="变量 Variables"></a>变量 Variables</h3><ul>
+<li><p>总是使用 var 来定义变量，否则会产生占用内存的全局变量</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line">superPower = <span class="keyword">new</span> SuperPower();</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> superPower = <span class="keyword">new</span> SuperPower();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>每个变量使用一个 var 来定义</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> items = getItems(),</span><br><span class="line">    goSportsTeam = <span class="literal">true</span>,</span><br><span class="line">    dragonball = <span class="string">'z'</span>;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> items = getItems();</span><br><span class="line"><span class="keyword">var</span> goSportsTeam = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">var</span> dragonball = <span class="string">'z'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>未初始化的变量放在最后</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> i;</span><br><span class="line"><span class="keyword">var</span> items = getItems();</span><br><span class="line"><span class="keyword">var</span> dragonball;</span><br><span class="line"><span class="keyword">var</span> goSportsTeam = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">var</span> len;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> items = getItems();</span><br><span class="line"><span class="keyword">var</span> goSportsTeam = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">var</span> dragonball;</span><br><span class="line"><span class="keyword">var</span> length;</span><br><span class="line"><span class="keyword">var</span> i;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在变量范围内的顶部对其赋值，注意第二个例子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  test();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'doing stuff..'</span>);</span><br><span class="line">  <span class="comment">//..other stuff..</span></span><br><span class="line">  <span class="keyword">var</span> name = getName();</span><br><span class="line">  <span class="keyword">if</span> (name === <span class="string">'test'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name = getName();</span><br><span class="line">  test();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'doing stuff..'</span>);</span><br><span class="line">  <span class="comment">//..other stuff..</span></span><br><span class="line">  <span class="keyword">if</span> (name === <span class="string">'test'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name = getName();</span><br><span class="line">  <span class="keyword">if</span> (!<span class="built_in">arguments</span>.length) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!<span class="built_in">arguments</span>.length) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> name = getName();</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h3 id="u63D0_u524D_Hoisting"><a href="#u63D0_u524D_Hoisting" class="headerlink" title="提前 Hoisting"></a>提前 Hoisting</h3><ul>
+<li><p>变量声明在作用域内被提前，而赋值却留在原地</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(notDefined); <span class="comment">// =&gt; throws a ReferenceError</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Outputs: undefined</span></span><br><span class="line">  <span class="built_in">console</span>.log(declaredLater);</span><br><span class="line">  declaredLater = <span class="string">"Now it's defined!"</span>; <span class="comment">//声明被提前到作用域开始处，赋值操作还在原地</span></span><br><span class="line">  <span class="comment">// Outputs: "Now it's defined!"</span></span><br><span class="line">  <span class="built_in">console</span>.log(declaredLater);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>匿名函数变量被提前，函数定义却未被提前</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(anonymous); <span class="comment">// =&gt; undefined</span></span><br><span class="line">  anonymous(); <span class="comment">// =&gt; TypeError anonymous is not a function</span></span><br><span class="line">  <span class="keyword">var</span> anonymous = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'anonymous function expression'</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>命名函数提前了变量名，但函数名和函数主体未被提前</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(named); <span class="comment">// =&gt; undefined</span></span><br><span class="line">  named(); <span class="comment">// =&gt; TypeError named is not a function</span></span><br><span class="line">  superPower(); <span class="comment">// =&gt; ReferenceError superPower is not defined</span></span><br><span class="line">  <span class="keyword">var</span> named = <span class="function"><span class="keyword">function</span> <span class="title">superPower</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Flying'</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>函数定义会提前函数名和函数主体</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  superPower(); <span class="comment">// =&gt; Flying</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">superPower</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Flying'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h3 id="u6761_u4EF6_u8868_u8FBE_u5F0F_u548C_u76F8_u7B49_u5224_u65AD_Conditional_Expressions__26amp_3B_Equality"><a href="#u6761_u4EF6_u8868_u8FBE_u5F0F_u548C_u76F8_u7B49_u5224_u65AD_Conditional_Expressions__26amp_3B_Equality" class="headerlink" title="条件表达式和相等判断 Conditional Expressions &amp; Equality"></a>条件表达式和相等判断 Conditional Expressions &amp; Equality</h3><ul>
+<li><p>使用 “ === ” 和 “ !== ” 替代 “ == ” 和 “ != ”</p>
+</li>
+<li><p>表达式的值</p>
+<ul>
+<li>Objects：true</li>
+<li>Undefined：false</li>
+<li>Null：false</li>
+<li>Booleans：此 Boolean 的值</li>
+<li>Numbers：0，-0，NaN 为 false，其他为 true</li>
+<li>Strings：’ ‘ 为 false，其他为 true</li>
+</ul>
+</li>
+<li><p>使用简单表达式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">if</span> (name !== <span class="string">''</span>) &#123;</span><br><span class="line">  <span class="comment">// ...stuff...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">if</span> (name) &#123;</span><br><span class="line">  <span class="comment">// ...stuff...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">if</span> (collection.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">  <span class="comment">// ...stuff...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">if</span> (collection.length) &#123;</span><br><span class="line">  <span class="comment">// ...stuff...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h3 id="u7C7B_u578B_u8F6C_u6362_Type_Casting__26amp_3B_Coercion"><a href="#u7C7B_u578B_u8F6C_u6362_Type_Casting__26amp_3B_Coercion" class="headerlink" title="类型转换 Type Casting &amp; Coercion"></a>类型转换 Type Casting &amp; Coercion</h3><ul>
+<li><p>值转字符串</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  =&gt; this.reviewScore = 9;</span></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> totalScore = <span class="keyword">this</span>.reviewScore + <span class="string">''</span>;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> totalScore = <span class="string">''</span> + <span class="keyword">this</span>.reviewScore;</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> totalScore = <span class="string">''</span> + <span class="keyword">this</span>.reviewScore + <span class="string">' total score'</span>;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> totalScore = <span class="keyword">this</span>.reviewScore + <span class="string">' total score'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符串转数字，使用 parseInt 函数，并且总是带上基数代表进制</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> inputValue = <span class="string">'4'</span>;</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> val = <span class="keyword">new</span> <span class="built_in">Number</span>(inputValue);</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> val = +inputValue;</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> val = inputValue &gt;&gt; <span class="number">0</span>;</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> val = <span class="built_in">parseInt</span>(inputValue);</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> val = <span class="built_in">Number</span>(inputValue);</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> val = <span class="built_in">parseInt</span>(inputValue, <span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>布尔值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> age = <span class="number">0</span>;</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> hasAge = <span class="keyword">new</span> <span class="built_in">Boolean</span>(age);</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> hasAge = <span class="built_in">Boolean</span>(age);</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> hasAge = !!age;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h3 id="u4E8B_u4EF6_Events"><a href="#u4E8B_u4EF6_Events" class="headerlink" title="事件 Events"></a>事件 Events</h3><ul>
+<li>捕捉事件后，传递一个哈希而非单纯的数据<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line">$(<span class="keyword">this</span>).trigger(<span class="string">'listingUpdated'</span>, listing.id);</span><br><span class="line">...</span><br><span class="line">$(<span class="keyword">this</span>).on(<span class="string">'listingUpdated'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e, listingId</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something with listingId</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line">$(<span class="keyword">this</span>).trigger(<span class="string">'listingUpdated'</span>, &#123; listingId : listing.id &#125;);</span><br><span class="line">...</span><br><span class="line">$(<span class="keyword">this</span>).on(<span class="string">'listingUpdated'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e, data</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something with data.listingId</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/08/15/jetBrains-IDE-实现本地代码与服务端代码同步/" itemprop="url">
                   jetBrains IDE 实现本地代码与服务端代码同步
                 </a>
@@ -466,7 +705,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

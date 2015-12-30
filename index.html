@@ -209,6 +209,210 @@
             
               
                 
+                <a class="post-title-link" href="/2015/12/29/使用-Jenkins-构建-nodejs-应用/" itemprop="url">
+                  使用 Jenkins 构建 nodejs 应用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-12-29T21:31:53+08:00" content="2015-12-29">
+              2015-12-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Node-js/" itemprop="url" rel="index">
+                    <span itemprop="name">Node.js</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h2 id="u51C6_u5907_u5DE5_u4F5C"><a href="#u51C6_u5907_u5DE5_u4F5C" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
+<li><p>安装 Jenkins</p>
+</li>
+<li><p>安装如下插件，并重启 Jenkins</p>
+<ul>
+<li>GIT client plugin</li>
+<li>GIT plugin</li>
+<li>Git server plugin</li>
+<li>SSH Credentials Plugin</li>
+<li>SSH plugin</li>
+<li>Publish Over SSH</li>
+</ul>
+</li>
+<li><p>系统配置<br>进入 <code>系统管理</code> =&gt; <code>系统设置</code>，进行以下配置</p>
+<ul>
+<li>增加远程服务器的 remote server<br>每需要连接一个新的远程服务器，都需要在此配置服务器的连接属性。<ul>
+<li>SSH remote hosts<br>配置 <code>Hostname</code>, <code>Port</code>, <code>User Name</code>, <code>Password</code></li>
+<li>Publish over SSH<br>配置 SSH Servers，配置 <code>Name</code>, <code>Hostname</code>, <code>Username</code>, <code>Remote Directory</code><br>点击展开高级配置，勾选 <code>Use password authentication, or use a different key</code>，并配置 <code>Password</code><br>配置端口，默认为 <code>22</code>，配置 <code>Timeout</code>，此处因为 nodejs 构建时需要进行 <code>npm install</code> 操作，耗时可能受网络影响较大，故可以配置较高数值。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="u6784_u5EFA_u9879_u76EE"><a href="#u6784_u5EFA_u9879_u76EE" class="headerlink" title="构建项目"></a>构建项目</h2><ul>
+<li><p>点击新建按钮，选择<code>构建一个自由风格的软件项目</code></p>
+</li>
+<li><p>项目配置</p>
+<ul>
+<li>根据自己的需求配置项目的基本信息，如 <code>nodejs_deploy</code></li>
+<li><p>源码管理<br>选择自己的代码管理系统，这里我们用<code>Git</code>，注意：如果是 public 的项目，则只需要填写 <code>Repository URL</code> 即可；如果是 private 的项目，则需要选择正确的 <code>Credentials</code>，Credentials 的配置方法如下：</p>
+<ul>
+<li>在 Jenkins 主页点击进入 Credentials</li>
+<li>在 Domain 中选择，这里选 Global</li>
+<li>添加 Credentials<ul>
+<li>在 <code>${Jenkins主目录}/.ssh/</code> 目录下，生成公钥和私钥</li>
+<li>复制公钥文件到当前目录下 <code>cp id_rsa.pub authorized_keys</code></li>
+<li><code>Username</code> 填写你现在登录的用户名</li>
+<li><code>Private Key</code> 选择 <code>Enter directly</code>，使用 <code>cat id_rsa</code> 获取私钥，并复制到 <code>Key</code> 中</li>
+<li><code>Passphrase</code> 为你生成公钥和私钥时填写的密码</li>
+<li><code>Description</code> 填写描述，方便在项目中选择</li>
+</ul>
+</li>
+<li>在 Git 项目配置中(这里有可能是 Gitlab，总之就是你的项目主页)，将刚才生成的公钥添加到项目的 <code>Publish Keys</code> 列表中完成授权</li>
+</ul>
+<p>选择刚才创建的 Credentials，发现配置信息那里的错误消失了，说明连接源码库成功<br>最后，填写需要构建的分支，默认为 <code>*/master</code><br>到这一步，可以保存，然后点击 <code>立即构建</code>，测试项目能否成功拉取代码</p>
+</li>
+<li><p>构建步骤</p>
+<ul>
+<li>开始构建后，Jenkins 会先帮我们拉取代码</li>
+<li>在项目配置中，可以添加构建步骤，分别对应如下<ul>
+<li><code>Execute Windows batch command</code>: Windows 系统节点下地自动化批处理任务</li>
+<li><code>Execute shell</code>: 在命令行中执行脚本</li>
+<li><code>Execute shell script on remote host using ssh</code>: 使用 SSH 链接到远程服务器并执行脚本</li>
+<li><code>Invoke Ant</code>: 整合 Apache Ant</li>
+<li><code>Invoke top-level Maven targets</code>: Maven 构建指令</li>
+<li><code>Send files or execute commands over SSH</code>: 使用 SSH 传送文件到服务器并执行脚本</li>
+</ul>
+</li>
+<li><p>nodejs 项目的构建</p>
+<ul>
+<li><p>重新生成源码包，并使用当前构建号将源码包命名存储<br>新建 <code>Execute shell</code>，执行下面的命令(这里的命令有一些环境参数可用，具体可点击文本框下面的链接查看可用参数)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rm -rf <span class="variable">$&#123;WORKSPACE&#125;</span>/<span class="variable">$&#123;JOB_NAME&#125;</span>.tar.gz</span><br><span class="line">tar -zcvf /tmp/<span class="variable">$&#123;JOB_NAME&#125;</span>.tar.gz -C <span class="variable">$&#123;WORKSPACE&#125;</span>/ .</span><br><span class="line">mv /tmp/<span class="variable">$&#123;JOB_NAME&#125;</span>.tar.gz <span class="variable">$&#123;WORKSPACE&#125;</span>/</span><br><span class="line">cp <span class="variable">$&#123;WORKSPACE&#125;</span>/<span class="variable">$&#123;JOB_NAME&#125;</span>.tar.gz <span class="variable">$&#123;JENKINS_HOME&#125;</span>/<span class="built_in">jobs</span>/<span class="variable">$&#123;JOB_NAME&#125;</span>/builds/<span class="variable">$&#123;BUILD_NUMBER&#125;</span>.tar.gz</span><br></pre></td></tr></table></figure>
+<p>这样，就将原有源码包删除，生成最新源码包，并存放到当前项目目录下的 <code>builds</code> 文件夹中</p>
+</li>
+<li><p>到服务器停止原来的进程，并删除原来的源码包<br>新建 <code>Execute shell script on remote host using ssh</code>，执行下面的命令</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">forever stop nodejs/app<span class="class">.js</span></span><br><span class="line">rm -rf nodejs/nodejs_deploy<span class="class">.tar</span><span class="class">.gz</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将最新源码包发送到服务端，解压，然后执行 nodejs 基本的构建步骤<br>新建 <code>Send files or execute commands over SSH</code><br><code>Source files</code> 填写 <code>nodejs.tar.gz</code><br><code>Remote directory</code> 填写 <code>nodejs</code><br>执行下面的命令</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf ~/nodejs/nodejs_deploy.tar.gz -C ~/nodejs/</span><br><span class="line">cd nodejs</span><br><span class="line">npm install</span><br><span class="line">bower install</span><br><span class="line"><span class="keyword">node</span><span class="identifier"> </span><span class="title">--harmony</span> `which gulp`</span><br><span class="line">forever <span class="literal">start</span> -c <span class="string">"node --harmony"</span> app.js</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>至此，nodejs 项目构建完毕并启动(上述所有的构建过程都可以根据自己的项目需要进行配置)</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="u56DE_u6EDA_u9879_u76EE"><a href="#u56DE_u6EDA_u9879_u76EE" class="headerlink" title="回滚项目"></a>回滚项目</h2><blockquote>
+<p>我们使用构建一个项目的方式，来实现原有项目的回滚</p>
+</blockquote>
+<ul>
+<li><p>点击新建按钮，选择<code>构建一个自由风格的软件项目</code></p>
+</li>
+<li><p>项目配置</p>
+<ul>
+<li><p>根据自己的需求配置项目的基本信息，如 <code>nodejs_revert</code></p>
+</li>
+<li><p>配置回滚构建号<br>勾选 <code>参数化构建过程</code>，添加参数 <code>String Parameter</code>，并起个名字，这里叫 <code>VERSION</code></p>
+</li>
+<li><p>构建步骤</p>
+<ul>
+<li><p>拷贝该构建号的源码包到此项目的 <code>WORKSPACE</code> 下<br>新建 <code>Execute shell</code>，执行下面的命令(这里的命令有一些环境参数可用，具体可点击文本框下面的链接查看可用参数)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -rf <span class="variable">$&#123;JENKINS_HOME&#125;</span>/<span class="built_in">jobs</span>/nodejs_deploy/builds/<span class="variable">$&#123;VERSION&#125;</span>.tar.gz <span class="variable">$&#123;WORKSPACE&#125;</span>/.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>到服务器停止原来的进程，并删除原来的源码包<br>新建 <code>Execute shell script on remote host using ssh</code>，执行下面的命令</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">forever stop nodejs/app<span class="class">.js</span></span><br><span class="line">rm -rf nodejs/nodejs_deploy<span class="class">.tar</span><span class="class">.gz</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将最新源码包发送到服务端，解压，然后执行 nodejs 基本的构建步骤<br>新建 <code>Send files or execute commands over SSH</code><br><code>Source files</code> 填写 <code>${VERSION}.tar.gz</code><br><code>Remote directory</code> 填写 <code>nodejs</code><br>执行下面的命令</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mv -f ~/nodejs/$&#123;<span class="operator">VERSION</span>&#125;.tar.gz ~/nodejs/nodejs_deploy.tar.gz</span><br><span class="line">tar -zxvf ~/nodejs/nodejs_deploy.tar.gz -C ~/nodejs/</span><br><span class="line">cd nodejs</span><br><span class="line">npm install</span><br><span class="line">bower install</span><br><span class="line"><span class="keyword">node</span><span class="identifier"> </span><span class="title">--harmony</span> `which gulp`</span><br><span class="line">forever <span class="literal">start</span> -c <span class="string">"node --harmony"</span> app.js</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>配置完成后，项目的构建按钮变成了 <code>Build with Parameters</code>，点击后输入参数即可进行构建版本的回滚</p>
+</li>
+</ul>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/12/15/ubuntu14-04-安装-Node-js-LTS-V4-2-3/" itemprop="url">
                   ubuntu14.04 安装 Node.js LTS V4.2.3
                 </a>
@@ -1385,245 +1589,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/08/15/一些有用的-JavaScript-知识和代码规范/" itemprop="url">
-                  一些有用的 JavaScript 知识和代码规范
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-08-15T15:32:08+08:00" content="2015-08-15">
-              2015-08-15
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h3 id="u7C7B_u578B_Types"><a href="#u7C7B_u578B_Types" class="headerlink" title="类型 Types"></a>类型 Types</h3><ul>
-<li><p>基础类型：When you access a primitive type you work directly on its value</p>
-<ul>
-<li>string</li>
-<li>number</li>
-<li>boolean</li>
-<li>null</li>
-<li>undefined<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> bar = foo;</span><br><span class="line">bar = <span class="number">9</span>;</span><br><span class="line"><span class="built_in">console</span>.log(foo, bar); <span class="comment">// =&gt; 1, 9</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>复合类型：When you access a complex type you work on a reference to its value</p>
-<ul>
-<li>object</li>
-<li>array</li>
-<li>function<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = [<span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line"><span class="keyword">var</span> bar = foo;</span><br><span class="line">bar[<span class="number">0</span>] = <span class="number">9</span>;</span><br><span class="line"><span class="built_in">console</span>.log(foo[<span class="number">0</span>], bar[<span class="number">0</span>]); <span class="comment">// =&gt; 9, 9</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="u5BF9_u8C61_Objects"><a href="#u5BF9_u8C61_Objects" class="headerlink" title="对象 Objects"></a>对象 Objects</h3><ul>
-<li><p>创建对象</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> item = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> item = &#123;&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>不要使用保留字作为 key</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> superman = &#123;</span><br><span class="line">  <span class="keyword">default</span>: &#123; clark: <span class="string">'kent'</span> &#125;,</span><br><span class="line">  private: <span class="literal">true</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> superman = &#123;</span><br><span class="line">  defaults: &#123; clark: <span class="string">'kent'</span> &#125;,</span><br><span class="line">  hidden: <span class="literal">true</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用可读近义词代替保留字</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line">var superman = &#123;</span><br><span class="line">  class: 'alien'</span><br><span class="line">&#125;;</span><br><span class="line">// bad</span><br><span class="line">var superman = &#123;</span><br><span class="line">  klass: 'alien'</span><br><span class="line">&#125;;</span><br><span class="line">// good</span><br><span class="line">var superman = &#123;</span><br><span class="line">  type: 'alien'</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h3 id="u6570_u7EC4_Arrays"><a href="#u6570_u7EC4_Arrays" class="headerlink" title="数组 Arrays"></a>数组 Arrays</h3><ul>
-<li><p>创建数组</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> items = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> items = [];</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>不知道数组长度时，使用 push 函数添加元素</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> someStack = [];</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line">someStack[someStack.length] = <span class="string">'abracadabra'</span>;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line">someStack.push(<span class="string">'abracadabra'</span>);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>复制数组时使用 slice 函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> len = items.length;</span><br><span class="line"><span class="keyword">var</span> itemsCopy = [];</span><br><span class="line"><span class="keyword">var</span> i;</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">  itemsCopy[i] = items[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line">itemsCopy = items.slice();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将一个数组类对象转化为数组，使用 slice 函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">list</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> list1 = list(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);  <span class="comment">// =&gt; [1, 2, 3]</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h3 id="u5B57_u7B26_u4E32_Strings"><a href="#u5B57_u7B26_u4E32_Strings" class="headerlink" title="字符串 Strings"></a>字符串 Strings</h3><ul>
-<li><p>使用单引号</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">"Bob Parr"</span>;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">'Bob Parr'</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>字符串长度超过 80，应写成多行并使用 “ + ” 连接</p>
-</li>
-<li><p>动态构建一个字符串时，使用 join 函数而不是 “ + ”</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> items;</span><br><span class="line"><span class="keyword">var</span> messages;</span><br><span class="line"><span class="keyword">var</span> length;</span><br><span class="line"><span class="keyword">var</span> i;</span><br><span class="line">messages = [&#123;</span><br><span class="line">  state: <span class="string">'success'</span>,</span><br><span class="line">  message: <span class="string">'This one worked.'</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">  state: <span class="string">'success'</span>,</span><br><span class="line">  message: <span class="string">'This one worked as well.'</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">  state: <span class="string">'error'</span>,</span><br><span class="line">  message: <span class="string">'This one did not work.'</span></span><br><span class="line">&#125;];</span><br><span class="line">length = messages.length;</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inbox</span>(<span class="params">messages</span>) </span>&#123;</span><br><span class="line">  items = <span class="string">'&lt;ul&gt;'</span>;</span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">    items += <span class="string">'&lt;li&gt;'</span> + messages[i].message + <span class="string">'&lt;/li&gt;'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> items + <span class="string">'&lt;/ul&gt;'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inbox</span>(<span class="params">messages</span>) </span>&#123;</span><br><span class="line">  items = [];</span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">    items[i] = messages[i].message;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'&lt;ul&gt;&lt;li&gt;'</span> + items.join(<span class="string">'&lt;/li&gt;&lt;li&gt;'</span>) + <span class="string">'&lt;/li&gt;&lt;/ul&gt;'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h3 id="u51FD_u6570_Functions"><a href="#u51FD_u6570_Functions" class="headerlink" title="函数 Functions"></a>函数 Functions</h3><ul>
-<li><p>函数表达式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// anonymous function expression</span></span><br><span class="line"><span class="keyword">var</span> anonymous = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// named function expression</span></span><br><span class="line"><span class="keyword">var</span> named = <span class="function"><span class="keyword">function</span> <span class="title">named</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// immediately-invoked function expression (IIFE)</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Welcome to the Internet. Please follow me.'</span>);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Never declare a function in a non-function block (if, while, etc). Assign the function to a variable instead.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">if</span> (currentUser) &#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Nope.'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> test;</span><br><span class="line"><span class="keyword">if</span> (currentUser) &#123;</span><br><span class="line">  test = <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Yup.'</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>不要把任何参数命名为 arguments，这会替代每个函数原有的 arguments 对象</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">nope</span>(<span class="params">name, options, arguments</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...stuff...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">yup</span>(<span class="params">name, options, args</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...stuff...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h3 id="u5C5E_u6027_Properties"><a href="#u5C5E_u6027_Properties" class="headerlink" title="属性 Properties"></a>属性 Properties</h3><ul>
-<li><p>使用 “ . ” 符号来获取属性</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> luke = &#123;</span><br><span class="line">  jedi: <span class="literal">true</span>,</span><br><span class="line">  age: <span class="number">28</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> isJedi = luke[<span class="string">'jedi'</span>];</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> isJedi = luke.jedi;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>当使用变量获取属性时，使用 “ [ ] “</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> luke = &#123;</span><br><span class="line">  jedi: <span class="literal">true</span>,</span><br><span class="line">  age: <span class="number">28</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getProp</span>(<span class="params">prop</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> luke[prop];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> isJedi = getProp(<span class="string">'jedi'</span>);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h3 id="u53D8_u91CF_Variables"><a href="#u53D8_u91CF_Variables" class="headerlink" title="变量 Variables"></a>变量 Variables</h3><ul>
-<li><p>总是使用 var 来定义变量，否则会产生占用内存的全局变量</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line">superPower = <span class="keyword">new</span> SuperPower();</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> superPower = <span class="keyword">new</span> SuperPower();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>每个变量使用一个 var 来定义</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> items = getItems(),</span><br><span class="line">    goSportsTeam = <span class="literal">true</span>,</span><br><span class="line">    dragonball = <span class="string">'z'</span>;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> items = getItems();</span><br><span class="line"><span class="keyword">var</span> goSportsTeam = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">var</span> dragonball = <span class="string">'z'</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>未初始化的变量放在最后</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> i;</span><br><span class="line"><span class="keyword">var</span> items = getItems();</span><br><span class="line"><span class="keyword">var</span> dragonball;</span><br><span class="line"><span class="keyword">var</span> goSportsTeam = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">var</span> len;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> items = getItems();</span><br><span class="line"><span class="keyword">var</span> goSportsTeam = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">var</span> dragonball;</span><br><span class="line"><span class="keyword">var</span> length;</span><br><span class="line"><span class="keyword">var</span> i;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在变量范围内的顶部对其赋值，注意第二个例子</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  test();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'doing stuff..'</span>);</span><br><span class="line">  <span class="comment">//..other stuff..</span></span><br><span class="line">  <span class="keyword">var</span> name = getName();</span><br><span class="line">  <span class="keyword">if</span> (name === <span class="string">'test'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name = getName();</span><br><span class="line">  test();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'doing stuff..'</span>);</span><br><span class="line">  <span class="comment">//..other stuff..</span></span><br><span class="line">  <span class="keyword">if</span> (name === <span class="string">'test'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name = getName();</span><br><span class="line">  <span class="keyword">if</span> (!<span class="built_in">arguments</span>.length) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!<span class="built_in">arguments</span>.length) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> name = getName();</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h3 id="u63D0_u524D_Hoisting"><a href="#u63D0_u524D_Hoisting" class="headerlink" title="提前 Hoisting"></a>提前 Hoisting</h3><ul>
-<li><p>变量声明在作用域内被提前，而赋值却留在原地</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(notDefined); <span class="comment">// =&gt; throws a ReferenceError</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Outputs: undefined</span></span><br><span class="line">  <span class="built_in">console</span>.log(declaredLater);</span><br><span class="line">  declaredLater = <span class="string">"Now it's defined!"</span>; <span class="comment">//声明被提前到作用域开始处，赋值操作还在原地</span></span><br><span class="line">  <span class="comment">// Outputs: "Now it's defined!"</span></span><br><span class="line">  <span class="built_in">console</span>.log(declaredLater);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>匿名函数变量被提前，函数定义却未被提前</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(anonymous); <span class="comment">// =&gt; undefined</span></span><br><span class="line">  anonymous(); <span class="comment">// =&gt; TypeError anonymous is not a function</span></span><br><span class="line">  <span class="keyword">var</span> anonymous = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'anonymous function expression'</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>命名函数提前了变量名，但函数名和函数主体未被提前</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(named); <span class="comment">// =&gt; undefined</span></span><br><span class="line">  named(); <span class="comment">// =&gt; TypeError named is not a function</span></span><br><span class="line">  superPower(); <span class="comment">// =&gt; ReferenceError superPower is not defined</span></span><br><span class="line">  <span class="keyword">var</span> named = <span class="function"><span class="keyword">function</span> <span class="title">superPower</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Flying'</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>函数定义会提前函数名和函数主体</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  superPower(); <span class="comment">// =&gt; Flying</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">superPower</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Flying'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h3 id="u6761_u4EF6_u8868_u8FBE_u5F0F_u548C_u76F8_u7B49_u5224_u65AD_Conditional_Expressions__26amp_3B_Equality"><a href="#u6761_u4EF6_u8868_u8FBE_u5F0F_u548C_u76F8_u7B49_u5224_u65AD_Conditional_Expressions__26amp_3B_Equality" class="headerlink" title="条件表达式和相等判断 Conditional Expressions &amp; Equality"></a>条件表达式和相等判断 Conditional Expressions &amp; Equality</h3><ul>
-<li><p>使用 “ === ” 和 “ !== ” 替代 “ == ” 和 “ != ”</p>
-</li>
-<li><p>表达式的值</p>
-<ul>
-<li>Objects：true</li>
-<li>Undefined：false</li>
-<li>Null：false</li>
-<li>Booleans：此 Boolean 的值</li>
-<li>Numbers：0，-0，NaN 为 false，其他为 true</li>
-<li>Strings：’ ‘ 为 false，其他为 true</li>
-</ul>
-</li>
-<li><p>使用简单表达式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">if</span> (name !== <span class="string">''</span>) &#123;</span><br><span class="line">  <span class="comment">// ...stuff...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">if</span> (name) &#123;</span><br><span class="line">  <span class="comment">// ...stuff...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">if</span> (collection.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">  <span class="comment">// ...stuff...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">if</span> (collection.length) &#123;</span><br><span class="line">  <span class="comment">// ...stuff...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h3 id="u7C7B_u578B_u8F6C_u6362_Type_Casting__26amp_3B_Coercion"><a href="#u7C7B_u578B_u8F6C_u6362_Type_Casting__26amp_3B_Coercion" class="headerlink" title="类型转换 Type Casting &amp; Coercion"></a>类型转换 Type Casting &amp; Coercion</h3><ul>
-<li><p>值转字符串</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  =&gt; this.reviewScore = 9;</span></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> totalScore = <span class="keyword">this</span>.reviewScore + <span class="string">''</span>;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> totalScore = <span class="string">''</span> + <span class="keyword">this</span>.reviewScore;</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> totalScore = <span class="string">''</span> + <span class="keyword">this</span>.reviewScore + <span class="string">' total score'</span>;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> totalScore = <span class="keyword">this</span>.reviewScore + <span class="string">' total score'</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>字符串转数字，使用 parseInt 函数，并且总是带上基数代表进制</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> inputValue = <span class="string">'4'</span>;</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> val = <span class="keyword">new</span> <span class="built_in">Number</span>(inputValue);</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> val = +inputValue;</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> val = inputValue &gt;&gt; <span class="number">0</span>;</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> val = <span class="built_in">parseInt</span>(inputValue);</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> val = <span class="built_in">Number</span>(inputValue);</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> val = <span class="built_in">parseInt</span>(inputValue, <span class="number">10</span>);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>布尔值</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> age = <span class="number">0</span>;</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> hasAge = <span class="keyword">new</span> <span class="built_in">Boolean</span>(age);</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> hasAge = <span class="built_in">Boolean</span>(age);</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> hasAge = !!age;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h3 id="u4E8B_u4EF6_Events"><a href="#u4E8B_u4EF6_Events" class="headerlink" title="事件 Events"></a>事件 Events</h3><ul>
-<li>捕捉事件后，传递一个哈希而非单纯的数据<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line">$(<span class="keyword">this</span>).trigger(<span class="string">'listingUpdated'</span>, listing.id);</span><br><span class="line">...</span><br><span class="line">$(<span class="keyword">this</span>).on(<span class="string">'listingUpdated'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e, listingId</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something with listingId</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line">$(<span class="keyword">this</span>).trigger(<span class="string">'listingUpdated'</span>, &#123; listingId : listing.id &#125;);</span><br><span class="line">...</span><br><span class="line">$(<span class="keyword">this</span>).on(<span class="string">'listingUpdated'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e, data</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something with data.listingId</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1670,7 +1635,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
