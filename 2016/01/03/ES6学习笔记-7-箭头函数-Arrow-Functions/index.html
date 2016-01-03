@@ -51,19 +51,19 @@
 
 
 
-<meta name="description" content="简介在做项目的过程中发现一个有意思的东西，jetBrains 旗下的 IDE，如：IntelliJ IDEA、WebStorm等工具，有一个自动与服务端同步代码的功能，其本质上是通过ftp连接服务器，在本地代码保存的时候，自动通过ftp上传文件到服务器指定目录下，从而实现本地代码与服务端代码同步。这个功能适用于某些需要服务器在线调试的情况，比如微信公众号和微信企业号的开发，十分方便。
-服务器配置">
+<meta name="description" content="箭头函数的语法1234567// ES5var selected = numbers.filter(function(number) &amp;#123;  return number.isSelected();&amp;#125;);// ES6let selected = numbers.filter(number =&amp;gt; number.isSelected());
+箭头函数的语法就是 标示符 =&amp;gt;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jetBrains IDE 实现本地代码与服务端代码同步">
-<meta property="og:url" content="http://splendourhui.com/2015/08/15/jetBrains-IDE-实现本地代码与服务端代码同步/index.html">
+<meta property="og:title" content="ES6学习笔记(7)-箭头函数 Arrow Functions">
+<meta property="og:url" content="http://splendourhui.com/2016/01/03/ES6学习笔记-7-箭头函数-Arrow-Functions/index.html">
 <meta property="og:site_name" content="Splendour's blog">
-<meta property="og:description" content="简介在做项目的过程中发现一个有意思的东西，jetBrains 旗下的 IDE，如：IntelliJ IDEA、WebStorm等工具，有一个自动与服务端同步代码的功能，其本质上是通过ftp连接服务器，在本地代码保存的时候，自动通过ftp上传文件到服务器指定目录下，从而实现本地代码与服务端代码同步。这个功能适用于某些需要服务器在线调试的情况，比如微信公众号和微信企业号的开发，十分方便。
-服务器配置">
-<meta property="og:updated_time" content="2015-12-13T07:09:39.000Z">
+<meta property="og:description" content="箭头函数的语法1234567// ES5var selected = numbers.filter(function(number) &amp;#123;  return number.isSelected();&amp;#125;);// ES6let selected = numbers.filter(number =&amp;gt; number.isSelected());
+箭头函数的语法就是 标示符 =&amp;gt;">
+<meta property="og:updated_time" content="2016-01-03T03:19:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jetBrains IDE 实现本地代码与服务端代码同步">
-<meta name="twitter:description" content="简介在做项目的过程中发现一个有意思的东西，jetBrains 旗下的 IDE，如：IntelliJ IDEA、WebStorm等工具，有一个自动与服务端同步代码的功能，其本质上是通过ftp连接服务器，在本地代码保存的时候，自动通过ftp上传文件到服务器指定目录下，从而实现本地代码与服务端代码同步。这个功能适用于某些需要服务器在线调试的情况，比如微信公众号和微信企业号的开发，十分方便。
-服务器配置">
+<meta name="twitter:title" content="ES6学习笔记(7)-箭头函数 Arrow Functions">
+<meta name="twitter:description" content="箭头函数的语法1234567// ES5var selected = numbers.filter(function(number) &amp;#123;  return number.isSelected();&amp;#125;);// ES6let selected = numbers.filter(number =&amp;gt; number.isSelected());
+箭头函数的语法就是 标示符 =&amp;gt;">
 
 
 
@@ -75,7 +75,7 @@
   };
 </script>
 
-  <title> jetBrains IDE 实现本地代码与服务端代码同步 | Splendour's blog </title>
+  <title> ES6学习笔记(7)-箭头函数 Arrow Functions | Splendour's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -195,7 +195,7 @@
             
             
               
-                jetBrains IDE 实现本地代码与服务端代码同步
+                ES6学习笔记(7)-箭头函数 Arrow Functions
               
             
           </h1>
@@ -204,8 +204,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-08-15T15:14:30+08:00" content="2015-08-15">
-              2015-08-15
+            <time itemprop="dateCreated" datetime="2016-01-03T10:48:10+08:00" content="2016-01-03">
+              2016-01-03
             </time>
           </span>
 
@@ -214,8 +214,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
                   </a>
                 </span>
 
@@ -243,31 +243,36 @@
       
 
       
-        <span itemprop="articleBody"><h3 id="u7B80_u4ECB"><a href="#u7B80_u4ECB" class="headerlink" title="简介"></a>简介</h3><p>在做项目的过程中发现一个有意思的东西，jetBrains 旗下的 IDE，如：IntelliJ IDEA、WebStorm等工具，有一个自动与服务端同步代码的功能，其本质上是通过ftp连接服务器，在本地代码保存的时候，自动通过ftp上传文件到服务器指定目录下，从而实现本地代码与服务端代码同步。这个功能适用于某些需要服务器在线调试的情况，比如微信公众号和微信企业号的开发，十分方便。</p>
-<h3 id="u670D_u52A1_u5668_u914D_u7F6E"><a href="#u670D_u52A1_u5668_u914D_u7F6E" class="headerlink" title="服务器配置"></a>服务器配置</h3><ul>
-<li><p>安装 ftp 服务器</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~$ sudo apt-<span class="keyword">get</span> install vsftpd</span><br></pre></td></tr></table></figure>
+        <span itemprop="articleBody"><h2 id="u7BAD_u5934_u51FD_u6570_u7684_u8BED_u6CD5"><a href="#u7BAD_u5934_u51FD_u6570_u7684_u8BED_u6CD5" class="headerlink" title="箭头函数的语法"></a>箭头函数的语法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES5</span></span><br><span class="line"><span class="keyword">var</span> selected = numbers.filter(<span class="function"><span class="keyword">function</span>(<span class="params">number</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> number.isSelected();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6</span></span><br><span class="line"><span class="keyword">let</span> selected = numbers.filter(number =&gt; number.isSelected());</span><br></pre></td></tr></table></figure>
+<p>箭头函数的语法就是 <code>标示符 =&gt; 表达式</code>，无需输入 <code>function</code> <code>return</code> 等，省略了一些括号</p>
+<ul>
+<li><p>多个参数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES5</span></span><br><span class="line"><span class="keyword">var</span> sum = numbers.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6</span></span><br><span class="line"><span class="keyword">let</span> sum = number.reduce((a, b) =&gt; a + b, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>配置 vsftpd</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~$ sudo vim /etc/vsftpd.conf</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启用以下命令</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="setting">listen=<span class="value"><span class="keyword">YES</span>       # 服务器监听</span></span></span><br><span class="line"><span class="setting">local_enable=<span class="value"><span class="keyword">YES</span>        #本地主机访问允许</span></span></span><br><span class="line"><span class="setting">write_enable=<span class="value"><span class="keyword">YES</span>        #写允许</span></span></span><br><span class="line"><span class="setting">dirmessage_enable=<span class="value"><span class="keyword">YES</span>        # 进入文件夹允许</span></span></span><br><span class="line"><span class="setting">connect_from_port_20=<span class="value"><span class="keyword">YES</span>        # 允许使用<span class="number">20</span>号端口作为数据传送的端口</span></span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动 vsftpd</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~$ sudo service vsftpd start</span><br></pre></td></tr></table></figure>
+<li><p>包含一个语句块</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES5</span></span><br><span class="line">$(<span class="string">'#button'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  prepare();</span><br><span class="line">  doSomeJob();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6</span></span><br><span class="line">$(<span class="string">'#button'</span>).click(event =&gt; &#123;</span><br><span class="line">  prepare();  </span><br><span class="line">  doSomeJob();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="IDE__u914D_u7F6E"><a href="#IDE__u914D_u7F6E" class="headerlink" title="IDE 配置"></a>IDE 配置</h3><ul>
-<li>进入 Tools –&gt; Deployment –&gt; Configuration..</li>
-<li>点击添加按钮，输入 Name，Type 选 FTP</li>
-<li>填写 FTP 地址和账号密码，点击 “Test FTP connection” 按钮，测试成功后点击 Autodetect 按钮，将自动检测用户的 root 目录</li>
-<li>切换标签至 Mappings，选择本地文件夹地址和想要同步的服务器上文件夹地址</li>
-<li>若有文件（或文件夹）需要忽略同步，则可切换至标签 Excluded Paths，添加本地或在线文件（或文件夹）</li>
-<li>进入 Tools –&gt; Deployment –&gt; Options，这里也可以设置同步时忽略某些后缀的文件。在这里，建议将自动同步触发点从 “Always” 修改为 “On explicit save action”，即用户手动保存时同步，避免太频繁访问 FTP 服务器</li>
-<li>点击 Tools –&gt; Deployment –&gt; Automatic Upload，开启自动同步。编辑文件，手动保存后会自动同步</li>
+<blockquote>
+<p>包含一个语句块的箭头函数不会自动返回值，若需要则手动添加 <code>return</code> 语句</p>
+</blockquote>
+<ul>
+<li>用箭头函数创建普通对象需要小心<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// error</span></span><br><span class="line"><span class="keyword">let</span> newNumber = numbers.map(number =&gt; &#123;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// correct</span></span><br><span class="line"><span class="keyword">let</span> newNumber = numbers.map(number =&gt; (&#123;&#125;));</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<h3 id="u7ED3_u675F_u8BED"><a href="#u7ED3_u675F_u8BED" class="headerlink" title="结束语"></a>结束语</h3><p>使用此方法能有效提高服务器代码调试效率，是一个很不错的小技巧。别忘了，切换至本地开发模式时，记得将 Automatic Upload 关闭哦。</p>
+<blockquote>
+<p>小窍门：所有对象字面量用小括号包裹以避免歧义</p>
+</blockquote>
+<h2 id="this__u503C"><a href="#this__u503C" class="headerlink" title="this 值"></a>this 值</h2><blockquote>
+<p>箭头函数没有自己的 this 值，箭头函数内的 this 值继承自外作用域</p>
+</blockquote>
+<p>在 ES6 中需要遵循的规则</p>
+<ul>
+<li>通过 <code>object.method()</code> 语法调用的方法使用非箭头函数定义，这些函数需要从调用者的作用域中获取一个有意义的 this 值</li>
+<li>其他情况全部使用箭头函数<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  ...</span><br><span class="line">  addAll: <span class="function"><span class="keyword">function</span> <span class="title">addAll</span>(<span class="params">pieces</span>) </span>&#123;</span><br><span class="line">    _.each(numbers, number =&gt; <span class="keyword">this</span>.add(number));</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这里的 this 是 addAll 方法从它的调用者处获取的，内部函数是一个箭头函数，所以 this 不变<br>上面的代码还可以简化：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  ...</span><br><span class="line">  addAll(pieces) &#123;</span><br><span class="line">    _.each(numbers, number =&gt; <span class="keyword">this</span>.add(number));</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </span>
       
     </div>
@@ -279,17 +284,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/08/11/nodejs-微服务框架-seneca/" rel="next" title="nodejs 微服务框架 seneca">
-                <i class="fa fa-chevron-left"></i> nodejs 微服务框架 seneca
+              <a href="/2015/12/29/使用-Jenkins-构建-nodejs-应用/" rel="next" title="使用 Jenkins 构建 nodejs 应用">
+                <i class="fa fa-chevron-left"></i> 使用 Jenkins 构建 nodejs 应用
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/08/15/一些有用的-JavaScript-知识和代码规范/" rel="prev" title="一些有用的 JavaScript 知识和代码规范">
-                一些有用的 JavaScript 知识和代码规范 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -413,7 +414,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u7B80_u4ECB"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u670D_u52A1_u5668_u914D_u7F6E"><span class="nav-number">2.</span> <span class="nav-text">服务器配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IDE__u914D_u7F6E"><span class="nav-number">3.</span> <span class="nav-text">IDE 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u7ED3_u675F_u8BED"><span class="nav-number">4.</span> <span class="nav-text">结束语</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#u7BAD_u5934_u51FD_u6570_u7684_u8BED_u6CD5"><span class="nav-number">1.</span> <span class="nav-text">箭头函数的语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#this__u503C"><span class="nav-number">2.</span> <span class="nav-text">this 值</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

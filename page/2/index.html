@@ -205,6 +205,170 @@
             
               
                 
+                <a class="post-title-link" href="/2015/10/11/react-编码规范/" itemprop="url">
+                  react 编码规范
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-10-11T16:38:32+08:00" content="2015-10-11">
+              2015-10-11
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h2 id="u7EFC_u8FF0"><a href="#u7EFC_u8FF0" class="headerlink" title="综述"></a>综述</h2><ul>
+<li>本文翻译自 Airbnb 推荐的 react 编码规范，原文地址如下：<blockquote>
+<p><a href="https://github.com/airbnb/javascript/tree/master/react" target="_blank" rel="external">https://github.com/airbnb/javascript/tree/master/react</a></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="u57FA_u672C_u539F_u5219"><a href="#u57FA_u672C_u539F_u5219" class="headerlink" title="基本原则"></a>基本原则</h2><ul>
+<li>一个文件只能包含一个 React 组件</li>
+<li>总是使用 JSX 语法</li>
+<li>不要使用 <code>React.createElement</code>，除非是在用一个非 JSX 文件初始化 app</li>
+</ul>
+<h2 id="Class_vs_React-createClass"><a href="#Class_vs_React-createClass" class="headerlink" title="Class vs React.createClass"></a>Class vs React.createClass</h2><ul>
+<li>使用 <code>class extends React.Component</code> 的方式创建一个组件，除非你有一个好的理由使用 mixins</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">const</span> Listing = React.createClass(&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="title">div</span> /&gt;</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Listing</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="title">div</span> /&gt;</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="u547D_u540D"><a href="#u547D_u540D" class="headerlink" title="命名"></a>命名</h2><ul>
+<li>后缀：为 React 组件使用 <code>.jsx</code> 后缀</li>
+<li>文件名：使用首字母为大写的驼峰式命名文件，如 <code>ReservationCard.jsx</code></li>
+<li>引用：对 React 组件使用首字母大写的驼峰式，对它们的实例使用小写的驼峰式</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">const</span> reservationCard = <span class="built_in">require</span>(<span class="string">'./ReservationCard'</span>);</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">const</span> ReservationCard = <span class="built_in">require</span>(<span class="string">'./ReservationCard'</span>);</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">const</span> ReservationItem = <span class="xml"><span class="tag">&lt;<span class="title">ReservationCard</span> /&gt;</span>;</span></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">const</span> reservationItem = <span class="xml"><span class="tag">&lt;<span class="title">ReservationCard</span> /&gt;</span>;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>组件命名：文件名和组件名保持一致；对于一个目录下的根组件，使用 <code>index.jsx</code> 作为文件名，<br>使用这个目录名作为组件名</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">const</span> Footer = <span class="built_in">require</span>(<span class="string">'./Footer/Footer.jsx'</span>)</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">const</span> Footer = <span class="built_in">require</span>(<span class="string">'./Footer/index.jsx'</span>)</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">const</span> Footer = <span class="built_in">require</span>(<span class="string">'./Footer'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="u58F0_u660E"><a href="#u58F0_u660E" class="headerlink" title="声明"></a>声明</h2><ul>
+<li>不要使用 <code>displayName</code> 来命名组件</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> React.createClass(&#123;</span><br><span class="line">  displayName: <span class="string">'ReservationCard'</span>,</span><br><span class="line">  <span class="comment">// stuff goes here</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">ReservationCard</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="u5BF9_u9F50_u4E0E_u7F29_u8FDB"><a href="#u5BF9_u9F50_u4E0E_u7F29_u8FDB" class="headerlink" title="对齐与缩进"></a>对齐与缩进</h2><ul>
+<li>使用下面的方式</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="title">Foo</span> <span class="attribute">superLongParam</span>=<span class="value">"bar"</span></span><br><span class="line">     <span class="attribute">anotherSuperLongParam</span>=<span class="value">"baz"</span> /&gt;</span></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="title">Foo</span></span><br><span class="line">  <span class="attribute">superLongParam</span>=<span class="value">"bar"</span></span><br><span class="line">  <span class="attribute">anotherSuperLongParam</span>=<span class="value">"baz"</span></span><br><span class="line">/&gt;</span></span><br><span class="line">// if props fit in one line then keep it on the same line</span><br><span class="line"><span class="tag">&lt;<span class="title">Foo</span> <span class="attribute">bar</span>=<span class="value">"bar"</span> /&gt;</span></span><br><span class="line">// children get indented normally</span><br><span class="line"><span class="tag">&lt;<span class="title">Foo</span></span><br><span class="line">  <span class="attribute">superLongParam</span>=<span class="value">"bar"</span></span><br><span class="line">  <span class="attribute">anotherSuperLongParam</span>=<span class="value">"baz"</span></span><br><span class="line">&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">Spazz</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">Foo</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="u5F15_u53F7"><a href="#u5F15_u53F7" class="headerlink" title="引号"></a>引号</h2><ul>
+<li>对于 jsx 属性，总是使用 <code>&quot;</code>；对其他的 JS 语句，使用 <code>&#39;</code></li>
+</ul>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line">&lt;Foo bar=<span class="string">"bar"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="u7A7A_u683C"><a href="#u7A7A_u683C" class="headerlink" title="空格"></a>空格</h2><ul>
+<li>在单行自关闭的 tag 中，总是留一个空格</li>
+</ul>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line">&lt;Foo/&gt;</span><br><span class="line"><span class="comment">// very bad</span></span><br><span class="line">&lt;Foo                 /&gt;</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line">&lt;Foo</span><br><span class="line"> /&gt;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line">&lt;Foo /&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Props"><a href="#Props" class="headerlink" title="Props"></a>Props</h2><ul>
+<li>使用首字母小写的驼峰式命名 props</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="title">Foo</span></span><br><span class="line">  <span class="attribute">UserName</span>=<span class="value">"hello"</span></span><br><span class="line">  <span class="attribute">phone_number</span>=<span class="value">&#123;12345678&#125;</span></span><br><span class="line">/&gt;</span></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="title">Foo</span></span><br><span class="line">  <span class="attribute">userName</span>=<span class="value">"hello"</span></span><br><span class="line">  <span class="attribute">phoneNumber</span>=<span class="value">&#123;12345678&#125;</span></span><br><span class="line">/&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="u62EC_u53F7"><a href="#u62EC_u53F7" class="headerlink" title="括号"></a>括号</h2><ul>
+<li>如果一个 tag 占用了一行以上的空间，使用括号包起来</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line">render() &#123;</span><br><span class="line">  return <span class="tag">&lt;<span class="title">MyComponent</span> <span class="attribute">className</span>=<span class="value">"long body"</span> <span class="attribute">foo</span>=<span class="value">"bar"</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="title">MyChild</span> /&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="title">MyComponent</span>&gt;</span>;</span><br><span class="line">&#125;</span><br><span class="line">// good</span><br><span class="line">render() &#123;</span><br><span class="line">  return (</span><br><span class="line">    <span class="tag">&lt;<span class="title">MyComponent</span> <span class="attribute">className</span>=<span class="value">"long body"</span> <span class="attribute">foo</span>=<span class="value">"bar"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">MyChild</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">MyComponent</span>&gt;</span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line">// good, when single line</span><br><span class="line">render() &#123;</span><br><span class="line">  const body = <span class="tag">&lt;<span class="title">div</span>&gt;</span>hello<span class="tag">&lt;/<span class="title">div</span>&gt;</span>;</span><br><span class="line">  return <span class="tag">&lt;<span class="title">MyComponent</span>&gt;</span>&#123;body&#125;<span class="tag">&lt;/<span class="title">MyComponent</span>&gt;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Tags"><a href="#Tags" class="headerlink" title="Tags"></a>Tags</h2><ul>
+<li>当一个 tag 没有包含任何子 tag 时，总是使用自关闭标签</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="title">Foo</span> <span class="attribute">className</span>=<span class="value">"stuff"</span>&gt;</span><span class="tag">&lt;/<span class="title">Foo</span>&gt;</span></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="title">Foo</span> <span class="attribute">className</span>=<span class="value">"stuff"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果组件包含多行属性，则另起一行来关闭 tag</li>
+</ul>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line">&lt;Foo</span><br><span class="line">  bar=<span class="string">"bar"</span></span><br><span class="line">  baz=<span class="string">"baz"</span> /&gt;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line">&lt;Foo</span><br><span class="line">  bar=<span class="string">"bar"</span></span><br><span class="line">  baz=<span class="string">"baz"</span></span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="u65B9_u6CD5"><a href="#u65B9_u6CD5" class="headerlink" title="方法"></a>方法</h2><ul>
+<li>不要在 React 组件的内部方法前加上 <code>_</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">const</span> Test = React.createClass(&#123;</span><br><span class="line">  _onClickSubmit() &#123;</span><br><span class="line">    <span class="comment">// do stuff</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// other stuff</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  onClickSubmit() &#123;</span><br><span class="line">    <span class="comment">// do stuff</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// other stuff</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="u5185_u90E8_u51FD_u6570_u6392_u5E8F"><a href="#u5185_u90E8_u51FD_u6570_u6392_u5E8F" class="headerlink" title="内部函数排序"></a>内部函数排序</h2><ul>
+<li>对于继承 React.Component 的类，排序如下</li>
+</ul>
+<ol>
+<li>constructor</li>
+<li>optional static methods</li>
+<li>getChildContext</li>
+<li>componentWillMount</li>
+<li>componentDidMount</li>
+<li>componentWillReceiveProps</li>
+<li>shouldComponentUpdate</li>
+<li>componentWillUpdate</li>
+<li>componentDidUpdate</li>
+<li>componentWillUnmount</li>
+<li>事件处理，如 onClick, onChange 等</li>
+<li>为渲染而服务的 getter 函数，如 getSelectReason(), getFooterContent()</li>
+<li>可选的渲染函数，如 renderNavigation(), renderProfilePicture()</li>
+<li>render</li>
+</ol>
+<ul>
+<li>定义 propTypes, defaultProps, contextTypes 等<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component, PropTypes &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">const</span> propTypes = &#123;</span><br><span class="line">  id: PropTypes.number.isRequired,</span><br><span class="line">  url: PropTypes.string.isRequired,</span><br><span class="line">  text: PropTypes.string,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> defaultProps = &#123;</span><br><span class="line">  text: <span class="string">'Hello World'</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Link</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  static methodsAreOk() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">&#123;this.props.url&#125;</span> <span class="attribute">data-id</span>=<span class="value">&#123;this.props.id&#125;</span>&gt;</span>&#123;this.props.text&#125;<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">Link.propTypes = propTypes;</span><br><span class="line">Link.defaultProps = defaultProps;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/08/15/一些有用的-JavaScript-知识和代码规范/" itemprop="url">
                   一些有用的 JavaScript 知识和代码规范
                 </a>
@@ -705,7 +869,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -764,8 +928,8 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
-  <span itemprop="copyrightYear">2015</span>
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="icon-next-heart fa fa-heart"></i>
   </span>
