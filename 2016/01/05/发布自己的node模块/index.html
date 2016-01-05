@@ -51,31 +51,34 @@
 
 
 
-<meta name="description" content="seneca 是基于nodejs的一个微服务框架，支持插件式开发，每一个微服务都是一个小插件。
-个人想法是将项目中对不同的数据库进行的操作开发为一个个微服务，提供接口供主程序调用，减轻主程序压力。
-下面以 contact 为例，讲述如何添加 web 微服务。
+<meta name="description" content="用了那么多的 node_modules，想不想发布自己的模块呢？
 
-往 app.js 中添加 client，分配端口
-1234567var seneca = require(&apos;seneca&apos;)()  .us">
+在 GitHub（或者其他托管工具）创建一个项目这可以方便用户报 bug，并且可以有其他开发者一起贡献代码。
+初始化 package.json进入目录后，执行 npm init，根据提示完成初始化，以下是 package.json 文件的几点说明
+
+name: 项目名称，发布的时候要保证在 npmjs 上的唯一性
+version:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nodejs 微服务框架 seneca">
-<meta property="og:url" content="http://splendourhui.com/2015/08/11/nodejs-微服务框架-seneca/index.html">
+<meta property="og:title" content="发布自己的node模块">
+<meta property="og:url" content="http://splendourhui.com/2016/01/05/发布自己的node模块/index.html">
 <meta property="og:site_name" content="Splendour's blog">
-<meta property="og:description" content="seneca 是基于nodejs的一个微服务框架，支持插件式开发，每一个微服务都是一个小插件。
-个人想法是将项目中对不同的数据库进行的操作开发为一个个微服务，提供接口供主程序调用，减轻主程序压力。
-下面以 contact 为例，讲述如何添加 web 微服务。
+<meta property="og:description" content="用了那么多的 node_modules，想不想发布自己的模块呢？
 
-往 app.js 中添加 client，分配端口
-1234567var seneca = require(&apos;seneca&apos;)()  .us">
-<meta property="og:updated_time" content="2015-11-24T12:08:34.000Z">
+在 GitHub（或者其他托管工具）创建一个项目这可以方便用户报 bug，并且可以有其他开发者一起贡献代码。
+初始化 package.json进入目录后，执行 npm init，根据提示完成初始化，以下是 package.json 文件的几点说明
+
+name: 项目名称，发布的时候要保证在 npmjs 上的唯一性
+version:">
+<meta property="og:updated_time" content="2016-01-05T09:14:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nodejs 微服务框架 seneca">
-<meta name="twitter:description" content="seneca 是基于nodejs的一个微服务框架，支持插件式开发，每一个微服务都是一个小插件。
-个人想法是将项目中对不同的数据库进行的操作开发为一个个微服务，提供接口供主程序调用，减轻主程序压力。
-下面以 contact 为例，讲述如何添加 web 微服务。
+<meta name="twitter:title" content="发布自己的node模块">
+<meta name="twitter:description" content="用了那么多的 node_modules，想不想发布自己的模块呢？
 
-往 app.js 中添加 client，分配端口
-1234567var seneca = require(&apos;seneca&apos;)()  .us">
+在 GitHub（或者其他托管工具）创建一个项目这可以方便用户报 bug，并且可以有其他开发者一起贡献代码。
+初始化 package.json进入目录后，执行 npm init，根据提示完成初始化，以下是 package.json 文件的几点说明
+
+name: 项目名称，发布的时候要保证在 npmjs 上的唯一性
+version:">
 
 
 
@@ -87,7 +90,7 @@
   };
 </script>
 
-  <title> nodejs 微服务框架 seneca | Splendour's blog </title>
+  <title> 发布自己的node模块 | Splendour's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -207,7 +210,7 @@
             
             
               
-                nodejs 微服务框架 seneca
+                发布自己的node模块
               
             
           </h1>
@@ -216,8 +219,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-08-11T20:16:15+08:00" content="2015-08-11">
-              2015-08-11
+            <time itemprop="dateCreated" datetime="2016-01-05T16:57:21+08:00" content="2016-01-05">
+              2016-01-05
             </time>
           </span>
 
@@ -226,8 +229,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/nodejs/" itemprop="url" rel="index">
-                    <span itemprop="name">nodejs</span>
+                  <a href="/categories/Node-js/" itemprop="url" rel="index">
+                    <span itemprop="name">Node.js</span>
                   </a>
                 </span>
 
@@ -255,27 +258,45 @@
       
 
       
-        <span itemprop="articleBody"><p>seneca 是基于nodejs的一个微服务框架，支持插件式开发，每一个微服务都是一个小插件。</p>
-<p>个人想法是将项目中对不同的数据库进行的操作开发为一个个微服务，提供接口供主程序调用，减轻主程序压力。</p>
-<p>下面以 contact 为例，讲述如何添加 web 微服务。</p>
+        <span itemprop="articleBody"><blockquote>
+<p>用了那么多的 node_modules，想不想发布自己的模块呢？</p>
+</blockquote>
+<h2 id="u5728_GitHub_uFF08_u6216_u8005_u5176_u4ED6_u6258_u7BA1_u5DE5_u5177_uFF09_u521B_u5EFA_u4E00_u4E2A_u9879_u76EE"><a href="#u5728_GitHub_uFF08_u6216_u8005_u5176_u4ED6_u6258_u7BA1_u5DE5_u5177_uFF09_u521B_u5EFA_u4E00_u4E2A_u9879_u76EE" class="headerlink" title="在 GitHub（或者其他托管工具）创建一个项目"></a>在 GitHub（或者其他托管工具）创建一个项目</h2><p>这可以方便用户报 bug，并且可以有其他开发者一起贡献代码。</p>
+<h2 id="u521D_u59CB_u5316_package-json"><a href="#u521D_u59CB_u5316_package-json" class="headerlink" title="初始化 package.json"></a>初始化 package.json</h2><p>进入目录后，执行 <code>npm init</code>，根据提示完成初始化，以下是 package.json 文件的几点说明</p>
 <ul>
-<li><p>往 app.js 中添加 client，分配端口</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> seneca = <span class="built_in">require</span>(<span class="string">'seneca'</span>)()</span><br><span class="line">  .use(<span class="string">'api'</span>)</span><br><span class="line">  .client(&#123;port: <span class="number">9001</span>, pin: <span class="string">'role:contact'</span>&#125;);</span><br><span class="line"><span class="keyword">var</span> app = <span class="built_in">require</span>(<span class="string">'express'</span>)()</span><br><span class="line">  .use(<span class="built_in">require</span>(<span class="string">'body-parser'</span>).json())</span><br><span class="line">  .use(seneca.export(<span class="string">'web'</span>))</span><br><span class="line">  .listen(<span class="number">3003</span>);</span><br></pre></td></tr></table></figure>
+<li><code>name</code>: 项目名称，发布的时候要保证在 npmjs 上的唯一性</li>
+<li><p><code>version</code>: 版本号，有如下规则</p>
+<blockquote>
+<p>版本格式：主版号.次版号.修订号，版号递增规则如下：<br>  主版号：当你做了不相容的 API 修改，<br>  次版号：当你做了向下相容的功能性新增，<br>  修订号：当你做了向下相容的问题修正。<br>  先行版号及版本编译资讯可以加到「主版号.次版号.修订号」的后面，作为延伸。</p>
+</blockquote>
 </li>
-<li><p>在 api.js 中，添加路由，并在 init:api 方法下初始化路由。注意有参数时的处理！</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> <span class="title">api</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> valid_ops = &#123;sum: <span class="string">'sum'</span>, product: <span class="string">'product'</span>&#125;</span><br><span class="line">  <span class="keyword">this</span>.add(<span class="string">'role:api,path:contact'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">msg, respond</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> contactMsg = &#123;</span><br><span class="line">      role: <span class="string">'contact'</span>,</span><br><span class="line">      cmd: msg.action</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 不同方法带有参数，需要在此传入</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="string">'findOne'</span> === msg.action) &#123;</span><br><span class="line">      contactMsg.username = msg.username;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="string">'search'</span> === msg.action) &#123;</span><br><span class="line">      contactMsg.keyword = msg.keyword;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.act(contactMsg, respond)</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">this</span>.add(<span class="string">'init:api'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">msg, respond</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.act(<span class="string">'role:web'</span>, &#123;</span><br><span class="line">      use: &#123;</span><br><span class="line">        prefix: <span class="string">'/api'</span>,</span><br><span class="line">        pin: <span class="string">'role:api,path:*'</span>,</span><br><span class="line">        map: &#123;</span><br><span class="line">          contact: &#123;GET: <span class="literal">true</span>, suffix: <span class="string">'/:action'</span>&#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    respond();</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<li><p><code>main</code>: 入口文件，一般为 <code>index.js</code></p>
 </li>
-<li><p>新建 contact-pin-service.js 文件，运行该文件时提供服务，注意这里的 listen 要和第一步中添加到 app.js 中的一致</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">'seneca'</span>)()</span><br><span class="line">  .use(<span class="string">'contact'</span>)</span><br><span class="line">  .listen(&#123;port: <span class="number">9001</span>, pin: <span class="string">'role:contact'</span>&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>新建 contact 文件，提供服务的主逻辑</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> <span class="title">contact</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.add(<span class="string">'role:contact,cmd:left'</span>, <span class="function"><span class="keyword">function</span> <span class="title">left</span>(<span class="params">msg, respond</span>) </span>&#123;</span><br><span class="line">    respond(<span class="literal">null</span>, &#123;result: <span class="string">'test'</span>&#125;)</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<li><code>dependencies</code>: 项目依赖</li>
+</ul>
+<h2 id="u9879_u76EE_u7ED3_u6784"><a href="#u9879_u76EE_u7ED3_u6784" class="headerlink" title="项目结构"></a>项目结构</h2><ul>
+<li><code>lib</code>: 存放业务逻辑温健</li>
+<li><code>test</code>: 存放单元测试用例</li>
+<li><code>.npmignore</code>: 记录哪些文件不需要被发布到 npmjs.org</li>
+<li><code>index.js</code>: 入口文件</li>
+<li><code>README.md</code>: 描述文件</li>
+</ul>
+<h2 id="u6301_u7EED_u96C6_u6210"><a href="#u6301_u7EED_u96C6_u6210" class="headerlink" title="持续集成"></a>持续集成</h2><blockquote>
+<p>为保证模块的可用性，使用持续集成工具吧，在此不再赘述</p>
+</blockquote>
+<h2 id="u53D1_u5E03"><a href="#u53D1_u5E03" class="headerlink" title="发布"></a>发布</h2><ul>
+<li>在 <code>www.npmjs.org</code> 注册一个账号</li>
+<li>添加 npm 本地配置<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ npm adduser</span><br><span class="line"><span class="label">Username:</span> your name</span><br><span class="line"><span class="label">Password:</span> your password</span><br><span class="line"><span class="label">Email:</span> yourmail</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>现在，只需要启动 app.js 微服务主线程<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node app.js</span><br></pre></td></tr></table></figure></p>
-<p>再启动 contact-pin-service.js 服务线程<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node contact-pin-service.js</span><br></pre></td></tr></table></figure></p>
-<p>就可以使用 contact 微服务了~</p>
-<p>想要查看详细 log，可以在运行线程时添加指令<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node contact-pin-service.js --seneca.log=plugin:contact</span><br></pre></td></tr></table></figure></p>
+<p>成功之后，npm 认证信息会存放在 <code>~/.npmrc</code> 下，我们可以使用命令 <code>npm whoami</code> 查看当前用户</p>
+<ul>
+<li>发布<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">npm</span> publish</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>至此，你的模块就发布成功了。还等什么，一起为好用的模块做出贡献吧。</p>
+</blockquote>
 </span>
       
     </div>
@@ -287,13 +308,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/01/03/ES6学习笔记-7-箭头函数-Arrow-Functions/" rel="next" title="ES6学习笔记(7)-箭头函数 Arrow Functions">
+                <i class="fa fa-chevron-left"></i> ES6学习笔记(7)-箭头函数 Arrow Functions
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/08/15/jetBrains-IDE-实现本地代码与服务端代码同步/" rel="prev" title="jetBrains IDE 实现本地代码与服务端代码同步">
-                jetBrains IDE 实现本地代码与服务端代码同步 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -417,7 +438,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#u5728_GitHub_uFF08_u6216_u8005_u5176_u4ED6_u6258_u7BA1_u5DE5_u5177_uFF09_u521B_u5EFA_u4E00_u4E2A_u9879_u76EE"><span class="nav-number">1.</span> <span class="nav-text">在 GitHub（或者其他托管工具）创建一个项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u521D_u59CB_u5316_package-json"><span class="nav-number">2.</span> <span class="nav-text">初始化 package.json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u9879_u76EE_u7ED3_u6784"><span class="nav-number">3.</span> <span class="nav-text">项目结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u6301_u7EED_u96C6_u6210"><span class="nav-number">4.</span> <span class="nav-text">持续集成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u53D1_u5E03"><span class="nav-number">5.</span> <span class="nav-text">发布</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
