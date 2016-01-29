@@ -51,19 +51,28 @@
 
 
 
-<meta name="description" content="箭头函数的语法1234567// ES5var selected = numbers.filter(function(number) &amp;#123;  return number.isSelected();&amp;#125;);// ES6let selected = numbers.filter(number =&amp;gt; number.isSelected());
-箭头函数的语法就是 标示符 =&amp;gt;">
+<meta name="description" content="ES5 的 for-in 循环遍历数组的缺点123for (var index in myArray) &amp;#123; // 千万别这样做  console.log(myArray[index]);&amp;#125;
+
+给 index 赋值的不是数字而是字符串 “0” “1” 等，有可能在无意间进行了 “2” + 1 = “21” 这样的计算
+for-in 循环体会遍历自定义属性
+在某些情况下，数组顺序会">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ES6学习笔记(7)-箭头函数 Arrow Functions">
-<meta property="og:url" content="http://splendourhui.com/2016/01/03/ES6学习笔记-7-箭头函数-Arrow-Functions/index.html">
+<meta property="og:title" content="ES6 学习笔记-迭代器和 for-of 循环">
+<meta property="og:url" content="http://splendourhui.com/2015/11/17/ES6学习笔记-迭代器和-for-of-循环/index.html">
 <meta property="og:site_name" content="Splendour's blog">
-<meta property="og:description" content="箭头函数的语法1234567// ES5var selected = numbers.filter(function(number) &amp;#123;  return number.isSelected();&amp;#125;);// ES6let selected = numbers.filter(number =&amp;gt; number.isSelected());
-箭头函数的语法就是 标示符 =&amp;gt;">
-<meta property="og:updated_time" content="2016-01-03T03:19:45.000Z">
+<meta property="og:description" content="ES5 的 for-in 循环遍历数组的缺点123for (var index in myArray) &amp;#123; // 千万别这样做  console.log(myArray[index]);&amp;#125;
+
+给 index 赋值的不是数字而是字符串 “0” “1” 等，有可能在无意间进行了 “2” + 1 = “21” 这样的计算
+for-in 循环体会遍历自定义属性
+在某些情况下，数组顺序会">
+<meta property="og:updated_time" content="2016-01-24T14:56:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ES6学习笔记(7)-箭头函数 Arrow Functions">
-<meta name="twitter:description" content="箭头函数的语法1234567// ES5var selected = numbers.filter(function(number) &amp;#123;  return number.isSelected();&amp;#125;);// ES6let selected = numbers.filter(number =&amp;gt; number.isSelected());
-箭头函数的语法就是 标示符 =&amp;gt;">
+<meta name="twitter:title" content="ES6 学习笔记-迭代器和 for-of 循环">
+<meta name="twitter:description" content="ES5 的 for-in 循环遍历数组的缺点123for (var index in myArray) &amp;#123; // 千万别这样做  console.log(myArray[index]);&amp;#125;
+
+给 index 赋值的不是数字而是字符串 “0” “1” 等，有可能在无意间进行了 “2” + 1 = “21” 这样的计算
+for-in 循环体会遍历自定义属性
+在某些情况下，数组顺序会">
 
 
 
@@ -75,7 +84,7 @@
   };
 </script>
 
-  <title> ES6学习笔记(7)-箭头函数 Arrow Functions | Splendour's blog </title>
+  <title> ES6 学习笔记-迭代器和 for-of 循环 | Splendour's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -195,7 +204,7 @@
             
             
               
-                ES6学习笔记(7)-箭头函数 Arrow Functions
+                ES6 学习笔记-迭代器和 for-of 循环
               
             
           </h1>
@@ -204,8 +213,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-01-03T10:48:10+08:00" content="2016-01-03">
-              2016-01-03
+            <time itemprop="dateCreated" datetime="2015-11-17T21:08:39+08:00" content="2015-11-17">
+              2015-11-17
             </time>
           </span>
 
@@ -243,36 +252,45 @@
       
 
       
-        <span itemprop="articleBody"><h2 id="u7BAD_u5934_u51FD_u6570_u7684_u8BED_u6CD5"><a href="#u7BAD_u5934_u51FD_u6570_u7684_u8BED_u6CD5" class="headerlink" title="箭头函数的语法"></a>箭头函数的语法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES5</span></span><br><span class="line"><span class="keyword">var</span> selected = numbers.filter(<span class="function"><span class="keyword">function</span>(<span class="params">number</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> number.isSelected();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6</span></span><br><span class="line"><span class="keyword">let</span> selected = numbers.filter(number =&gt; number.isSelected());</span><br></pre></td></tr></table></figure>
-<p>箭头函数的语法就是 <code>标示符 =&gt; 表达式</code>，无需输入 <code>function</code> <code>return</code> 等，省略了一些括号</p>
+        <span itemprop="articleBody"><h2 id="ES5__u7684_for-in__u5FAA_u73AF_u904D_u5386_u6570_u7EC4_u7684_u7F3A_u70B9"><a href="#ES5__u7684_for-in__u5FAA_u73AF_u904D_u5386_u6570_u7EC4_u7684_u7F3A_u70B9" class="headerlink" title="ES5 的 for-in 循环遍历数组的缺点"></a>ES5 的 for-in 循环遍历数组的缺点</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> index <span class="keyword">in</span> myArray) &#123; <span class="comment">// 千万别这样做</span></span><br><span class="line">  <span class="built_in">console</span>.log(myArray[index]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>多个参数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES5</span></span><br><span class="line"><span class="keyword">var</span> sum = numbers.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6</span></span><br><span class="line"><span class="keyword">let</span> sum = number.reduce((a, b) =&gt; a + b, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<li>给 index 赋值的不是数字而是字符串 “0” “1” 等，有可能在无意间进行了 “2” + 1 = “21” 这样的计算</li>
+<li>for-in 循环体会遍历自定义属性</li>
+<li>在某些情况下，数组顺序会被<code>打乱</code>！</li>
+<li>for-in 是为普通对象设计的，不适用于数组的遍历</li>
+</ul>
+<h2 id="ES6__u7684_for-of__u5FAA_u73AF"><a href="#ES6__u7684_for-of__u5FAA_u73AF" class="headerlink" title="ES6 的 for-of 循环"></a>ES6 的 for-of 循环</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> value <span class="keyword">of</span> myArray) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这是最简洁的遍历数组的方法</li>
+<li>避开了 for-in 循环的所有缺陷</li>
+<li>可以正确响应 break、continue 和 return 语句</li>
+<li><p>可以遍历其他的集合</p>
+<ul>
+<li>类数组对象，例如 DOM NodeList 对象</li>
+<li>字符串遍历，将字符串视为一系列的 Unicode 字符来遍历</li>
+<li><p>支持 Map 和 Set 对象遍历</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Map 对象的遍历</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> word <span class="keyword">of</span> uniqueWords) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(word);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Set 对象的遍历</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> [key, value] <span class="keyword">of</span> phoneBookMap) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key + <span class="string">"'s phone number is: "</span> + value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>包含一个语句块</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES5</span></span><br><span class="line">$(<span class="string">'#button'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  prepare();</span><br><span class="line">  doSomeJob();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6</span></span><br><span class="line">$(<span class="string">'#button'</span>).click(event =&gt; &#123;</span><br><span class="line">  prepare();  </span><br><span class="line">  doSomeJob();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<li><p>不支持普通对象，但也可以用以下方法来遍历普通对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">of</span> <span class="built_in">Object</span>.keys(someObject)) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key + <span class="string">": "</span> + someObject[key]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<blockquote>
-<p>包含一个语句块的箭头函数不会自动返回值，若需要则手动添加 <code>return</code> 语句</p>
-</blockquote>
-<ul>
-<li>用箭头函数创建普通对象需要小心<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// error</span></span><br><span class="line"><span class="keyword">let</span> newNumber = numbers.map(number =&gt; &#123;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// correct</span></span><br><span class="line"><span class="keyword">let</span> newNumber = numbers.map(number =&gt; (&#123;&#125;));</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<blockquote>
-<p>小窍门：所有对象字面量用小括号包裹以避免歧义</p>
-</blockquote>
-<h2 id="this__u503C"><a href="#this__u503C" class="headerlink" title="this 值"></a>this 值</h2><blockquote>
-<p>箭头函数没有自己的 this 值，箭头函数内的 this 值继承自外作用域</p>
-</blockquote>
-<p>在 ES6 中需要遵循的规则</p>
-<ul>
-<li>通过 <code>object.method()</code> 语法调用的方法使用非箭头函数定义，这些函数需要从调用者的作用域中获取一个有意义的 this 值</li>
-<li>其他情况全部使用箭头函数<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  ...</span><br><span class="line">  addAll: <span class="function"><span class="keyword">function</span> <span class="title">addAll</span>(<span class="params">pieces</span>) </span>&#123;</span><br><span class="line">    _.each(numbers, number =&gt; <span class="keyword">this</span>.add(number));</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="u8FED_u4EE3_u5668_u5BF9_u8C61"><a href="#u8FED_u4EE3_u5668_u5BF9_u8C61" class="headerlink" title="迭代器对象"></a>迭代器对象</h2><ul>
+<li>for-of 循环首先调用集合的<code>[Symbol.iterator]()</code>方法，紧接着返回一个新的迭代器对象。</li>
+<li>迭代器对象可以是任意具有<code>.next()</code>方法的对象；for-of 循环将重复调用这个方法，每次循环调用一次。</li>
+<li><p>一个最简单的迭代器如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> zeroesForeverIterator = &#123;</span><br><span class="line">  [<span class="built_in">Symbol</span>.iterator]: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  next: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;done: <span class="literal">false</span>, value: <span class="number">0</span>&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>每一次调用<code>.next()</code>方法，它都返回相同的结果，返回给 for-of 循环的结果就告诉它循环是否结束，若未结束则下一个值是多少</p>
+</li>
+<li>迭代器对象也可以实现可选的<code>.return()</code>和<code>.throw(exc)</code>方法<ul>
+<li>如果 for-of 循环过早退出会调用<code>.return()</code>方法，异常、break 语句或 return 语句均可触发过早退出。</li>
+<li>如果迭代器需要执行一些清洁或释放资源的操作，可以在<code>.return()</code>方法中实现。</li>
+</ul>
 </li>
 </ul>
-<p>这里的 this 是 addAll 方法从它的调用者处获取的，内部函数是一个箭头函数，所以 this 不变<br>上面的代码还可以简化：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  ...</span><br><span class="line">  addAll(pieces) &#123;</span><br><span class="line">    _.each(numbers, number =&gt; <span class="keyword">this</span>.add(number));</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </span>
       
     </div>
@@ -284,16 +302,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/12/29/使用-Jenkins-构建-nodejs-应用/" rel="next" title="使用 Jenkins 构建 nodejs 应用">
-                <i class="fa fa-chevron-left"></i> 使用 Jenkins 构建 nodejs 应用
+              <a href="/2015/10/24/ES2015-代码规范/" rel="next" title="ES2015 代码规范">
+                <i class="fa fa-chevron-left"></i> ES2015 代码规范
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/01/05/发布自己的node模块/" rel="prev" title="发布自己的node模块">
-                发布自己的node模块 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/11/18/ES6学习笔记-生成器-Generators/" rel="prev" title="ES6学习笔记-生成器-Generators">
+                ES6学习笔记-生成器-Generators <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -362,7 +380,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -418,7 +436,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#u7BAD_u5934_u51FD_u6570_u7684_u8BED_u6CD5"><span class="nav-number">1.</span> <span class="nav-text">箭头函数的语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#this__u503C"><span class="nav-number">2.</span> <span class="nav-text">this 值</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ES5__u7684_for-in__u5FAA_u73AF_u904D_u5386_u6570_u7EC4_u7684_u7F3A_u70B9"><span class="nav-number">1.</span> <span class="nav-text">ES5 的 for-in 循环遍历数组的缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6__u7684_for-of__u5FAA_u73AF"><span class="nav-number">2.</span> <span class="nav-text">ES6 的 for-of 循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u8FED_u4EE3_u5668_u5BF9_u8C61"><span class="nav-number">3.</span> <span class="nav-text">迭代器对象</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

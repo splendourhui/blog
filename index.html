@@ -177,15 +177,140 @@
 
     
     
+
+    
       
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/01/24/ES6学习笔记-集合/" itemprop="url">
+                  ES6学习笔记-集合
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-01-24T16:06:52+08:00" content="2016-01-24">
+              2016-01-24
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
       
-        
-        
-        
       
 
       
-    
+        
+          <span itemprop="articleBody">
+            
+              <h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><blockquote>
+<p>一个 Set 是一群值的集合，它是可变的，能够增删元素。</p>
+</blockquote>
+<h3 id="Set__u548C_Array__u7684_u533A_u522B"><a href="#Set__u548C_Array__u7684_u533A_u522B" class="headerlink" title="Set 和 Array 的区别"></a>Set 和 Array 的区别</h3><ul>
+<li><p>一个 Set 不会包含相同元素，试图再次加入一个已有元素不会产生任何效果</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>(<span class="string">'1234'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(set.size);</span><br><span class="line"></span><br><span class="line">set.add(<span class="string">'1'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(set.size);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Set 的数据存储结构专门为 <code>包含性检测</code> 作了速度优化</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arrayOfWords.indexOf(<span class="string">'word'</span>) !== -<span class="number">1</span>  <span class="comment">// 慢</span></span><br><span class="line">setOfWords.has(<span class="string">'word'</span>)               <span class="comment">// 快</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Set 不能提供索引</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arrayOfWords[<span class="number">15000</span>] <span class="comment">// 'word'</span></span><br><span class="line">setOfWords[<span class="number">15000</span>]   <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Set__u7684_u64CD_u4F5C"><a href="#Set__u7684_u64CD_u4F5C" class="headerlink" title="Set 的操作"></a>Set 的操作</h3><ul>
+<li>new Set：创建一个新的、空的 Set</li>
+<li>new Set(iterable)：从任何 <code>可遍历数据</code> 中提取元素，构造一个新的集合<br>你可以用它把数组转化为集合，在一行代码内去重；也可以传递一个生成器，函数会逐个遍历它，并把生成的值收录为一个集合；也可以用来复制一个已有的集合</li>
+<li>set.size 获取集合中元素个数</li>
+<li>set.has(value)：判定集合中是否含有指定元素，返回一个布尔值</li>
+<li>set.add(value)：添加元素，如果与已有重复，则不产生效果</li>
+<li>set.delete(value)：删除元素，如果并不存在，则不产生效果。<code>.add()</code> 和 <code>.delete()</code> 都会返回集合自身，所以我们可以用链式语法</li>
+<li>set<a href="">Symbol.iterator</a>：返回一个新的遍历整个集合的迭代器。一般这个方法不会被直接调用，因为实际上就是它使集合能够被遍历，也就是说，我们可以直接写<code>for (v of set) {...}</code> 等等</li>
+<li>set.forEach(f)：它就像是 <code>for (let value of set) { f(value, value, set); }</code> 的简写，类似于数组的 <code>.forEach()</code> 方法</li>
+<li>set.clear()：清空集合</li>
+<li>set.keys()、set.values()和set.entries()：返回各种迭代器<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将迭代器转化为数组输出</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.from(set.keys()));    <span class="comment">// [ '1', '2', '3', '4' ]</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.from(set.values()));  <span class="comment">// [ '1', '2', '3', '4' ]</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.from(set.entries())); <span class="comment">// [ [ '1', '1' ], [ '2', '2' ], [ '3', '3' ], [ '4', '4' ] ]</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><blockquote>
+<p>一个 Map 对象由若干键值对组成，类似 Java 的 Map 对象</p>
+</blockquote>
+<h3 id="Map__u7684_u64CD_u4F5C"><a href="#Map__u7684_u64CD_u4F5C" class="headerlink" title="Map 的操作"></a>Map 的操作</h3><ul>
+<li>new Map：返回一个新的、空的 Map</li>
+<li>new Map(pairs)：根据所含元素形如 <code>[key, value]</code> 的数组 pairs 来创建一个新的 Map。这里提供的 pairs 可以是一个已有的 Map  对象，可以是一个由二元数组组成的数组，也可以是逐个生成二元数组的一个生成器，等等。</li>
+<li>map.size：返回 Map 中键值对的个数</li>
+<li>map.has(key)：测试一个键名是否存在，类似 <code>key in obj</code></li>
+<li>map.get(key)：返回一个键名对应的值，若键名不存在则返回 undefined，类似 <code>obj[key]</code></li>
+<li>map.set(key, value)：添加一对新的键值对，如果键名已存在就覆盖</li>
+<li>map.delete(key)：按键名删除一项，类似 <code>delete obj[key]</code></li>
+<li>map.clear()：清空 Map</li>
+<li>map<a href="">Symbol.iterator</a>：返回遍历所有项的迭代器，每项用一个键和值组成的二元数组表示</li>
+<li>map.forEach(f)：类似 <code>for (let [key, value] of map) { f(value, key, map); }</code></li>
+<li>map.keys()：返回遍历所有键的迭代器</li>
+<li>map.values()：返回遍历所有值的迭代器</li>
+<li>map.entries()：返回遍历所有项的迭代器，就像 <code>map[Symbol.iterator]()</code></li>
+</ul>
+<h3 id="WeakMap__u548C_WeakSet"><a href="#WeakMap__u548C_WeakSet" class="headerlink" title="WeakMap 和 WeakSet"></a>WeakMap 和 WeakSet</h3><p>WeakMap 和 WeakSet 被设计来完成与 Map、Set 几乎一样的行为，除了以下一些限制：</p>
+<ul>
+<li>WeakMap 只支持 new、has、get、set 和 delete</li>
+<li>WeakSet 只支持 new、has、add 和 delete</li>
+<li>WeakSet 的值和 WeakMap 的键必须是对象<blockquote>
+<p>这些小心设计的限制让垃圾回收机制能回收仍在使用中的弱集合里的无效对象。这效果类似于弱引用或弱键字典，但ES6的弱集合可以在不暴露脚本中正在垃圾回收的前提下得到垃圾回收的效益</p>
+</blockquote>
+</li>
+</ul>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -343,8 +468,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/01/03/ES6学习笔记-7-箭头函数-Arrow-Functions/" itemprop="url">
-                  ES6学习笔记(7)-箭头函数 Arrow Functions
+                <a class="post-title-link" href="/2016/01/03/ES6学习笔记-箭头函数-Arrow-Functions/" itemprop="url">
+                  ES6学习笔记-箭头函数 Arrow Functions
                 </a>
               
             
@@ -789,8 +914,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/12/13/ES6学习笔记-6-解构Destructuring/" itemprop="url">
-                  ES6学习笔记(6)-解构Destructuring
+                <a class="post-title-link" href="/2015/12/13/ES6学习笔记-解构-Destructuring/" itemprop="url">
+                  ES6学习笔记-解构-Destructuring
                 </a>
               
             
@@ -930,8 +1055,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/12/06/ES6学习笔记-5-不定参数和默认参数/" itemprop="url">
-                  ES6学习笔记(5)-不定参数和默认参数
+                <a class="post-title-link" href="/2015/12/06/ES6学习笔记-不定参数和默认参数/" itemprop="url">
+                  ES6学习笔记-不定参数和默认参数
                 </a>
               
             
@@ -1051,8 +1176,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/11/24/ES6学习笔记-4-模板字符串/" itemprop="url">
-                  ES6学习笔记(4)-模板字符串
+                <a class="post-title-link" href="/2015/11/24/ES6学习笔记-模板字符串/" itemprop="url">
+                  ES6学习笔记-模板字符串
                 </a>
               
             
@@ -1178,8 +1303,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/11/18/ES6学习笔记-3-生成器-Generators/" itemprop="url">
-                  ES6学习笔记(3)-生成器 Generators
+                <a class="post-title-link" href="/2015/11/18/ES6学习笔记-生成器-Generators/" itemprop="url">
+                  ES6学习笔记-生成器-Generators
                 </a>
               
             
@@ -1286,8 +1411,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/11/17/ES6学习笔记-2-迭代器和-for-of-循环/" itemprop="url">
-                  ES6 学习笔记(2)-迭代器和 for-of 循环
+                <a class="post-title-link" href="/2015/11/17/ES6学习笔记-迭代器和-for-of-循环/" itemprop="url">
+                  ES6 学习笔记-迭代器和 for-of 循环
                 </a>
               
             
@@ -1399,192 +1524,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/24/ES2015-代码规范/" itemprop="url">
-                  ES2015 代码规范
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-10-24T21:28:51+08:00" content="2015-10-24">
-              2015-10-24
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h2 id="u7EFC_u8FF0"><a href="#u7EFC_u8FF0" class="headerlink" title="综述"></a>综述</h2><ul>
-<li>本文翻译自 Airbnb 推荐的 Javascript 编码规范 – ES6，原文地址如下：<blockquote>
-<p><a href="https://github.com/airbnb/JavaScript#ecmascript-6-styles" target="_blank" rel="external">https://github.com/airbnb/JavaScript#ecmascript-6-styles</a></p>
-</blockquote>
-</li>
-</ul>
-<h2 id="Arrow_Functions__u7BAD_u5934_u51FD_u6570"><a href="#Arrow_Functions__u7BAD_u5934_u51FD_u6570" class="headerlink" title="Arrow Functions 箭头函数"></a>Arrow Functions 箭头函数</h2><ul>
-<li><p>使用箭头函数代替匿名函数</p>
-<blockquote>
-<p>箭头函数使得 this 的值不会发生你不想要的改变</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(<span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">const</span> y = x + <span class="number">1</span>;</span><br><span class="line">   <span class="keyword">return</span> x * y;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map((x) =&gt; &#123;</span><br><span class="line">   <span class="keyword">const</span> y = x + <span class="number">1</span>;</span><br><span class="line">   <span class="keyword">return</span> x * y;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>如果函数体只包含一个表达式，那么省略表达式的大括号并且使用隐式的 return，否则加上 <code>return</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(number =&gt; <span class="string">`A string containing the <span class="subst">$&#123;number&#125;</span>.`</span>);</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(number =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> nextNumber = number + <span class="number">1</span>;</span><br><span class="line">  <span class="string">`A string containing the <span class="subst">$&#123;nextNumber&#125;</span>.`</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(number =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> nextNumber = number + <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`A string containing the <span class="subst">$&#123;nextNumber&#125;</span>.`</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果表达式需要多行显示，则用小括号包起来</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(number =&gt; <span class="string">'As time went by, the string containing the '</span> +</span><br><span class="line">  <span class="string">`<span class="subst">$&#123;number&#125;</span> became much longer. So we needed to break it over multiple `</span> +</span><br><span class="line">  <span class="string">'lines.'</span></span><br><span class="line">);</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(number =&gt; (</span><br><span class="line">  <span class="string">`As time went by, the string containing the <span class="subst">$&#123;number&#125;</span> became much `</span> +</span><br><span class="line">  <span class="string">'longer. So we needed to break it over multiple lines.'</span></span><br><span class="line">));</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果函数只有一个变量，则省略小括号</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(x =&gt; x * x);</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].reduce((y, x) =&gt; x + y);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="Constructors__u6784_u9020_u51FD_u6570"><a href="#Constructors__u6784_u9020_u51FD_u6570" class="headerlink" title="Constructors 构造函数"></a>Constructors 构造函数</h2><ul>
-<li><p>总是使用 <code>class</code>，避免直接操作 <code>prototype</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Queue</span>(<span class="params">contents = []</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>._queue = [...contents];</span><br><span class="line">&#125;</span><br><span class="line">Queue.prototype.pop = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> value = <span class="keyword">this</span>._queue[<span class="number">0</span>];</span><br><span class="line">  <span class="keyword">this</span>._queue.splice(<span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">return</span> value;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span> </span>&#123;</span><br><span class="line">  constructor(contents = []) &#123;</span><br><span class="line">    <span class="keyword">this</span>._queue = [...contents];</span><br><span class="line">  &#125;</span><br><span class="line">  pop() &#123;</span><br><span class="line">    <span class="keyword">const</span> value = <span class="keyword">this</span>._queue[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">this</span>._queue.splice(<span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> value;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用 <code>extends</code> 来继承</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">const</span> inherits = <span class="built_in">require</span>(<span class="string">'inherits'</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">PeekableQueue</span>(<span class="params">contents</span>) </span>&#123;</span><br><span class="line">  Queue.apply(<span class="keyword">this</span>, contents);</span><br><span class="line">&#125;</span><br><span class="line">inherits(PeekableQueue, Queue);</span><br><span class="line">PeekableQueue.prototype.peek = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>._queue[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PeekableQueue</span> <span class="keyword">extends</span> <span class="title">Queue</span> </span>&#123;</span><br><span class="line">  peek() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._queue[<span class="number">0</span>];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>方法可以返回 <code>this</code>，方便链式调用</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line">Jedi.prototype.jump = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.jumping = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;;</span><br><span class="line">Jedi.prototype.setHeight = <span class="function"><span class="keyword">function</span>(<span class="params">height</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.height = height;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> luke = <span class="keyword">new</span> Jedi();</span><br><span class="line">luke.jump(); <span class="comment">// =&gt; true</span></span><br><span class="line">luke.setHeight(<span class="number">20</span>); <span class="comment">// =&gt; undefined</span></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Jedi</span> </span>&#123;</span><br><span class="line">  jump() &#123;</span><br><span class="line">    <span class="keyword">this</span>.jumping = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  setHeight(height) &#123;</span><br><span class="line">    <span class="keyword">this</span>.height = height;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> luke = <span class="keyword">new</span> Jedi();</span><br><span class="line">luke.jump()</span><br><span class="line">  .setHeight(<span class="number">20</span>);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>自定义 <code>toString()</code> 方法，可以返回自己想要的结果</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Jedi</span> </span>&#123;</span><br><span class="line">  constructor(options = &#123;&#125;) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = options.name || <span class="string">'no name'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  getName() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">  &#125;</span><br><span class="line">  toString() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`Jedi - <span class="subst">$&#123;this.getName()&#125;</span>`</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="u5BF9_u8C61_u65B9_u6CD5_u7F29_u5199"><a href="#u5BF9_u8C61_u65B9_u6CD5_u7F29_u5199" class="headerlink" title="对象方法缩写"></a>对象方法缩写</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">const</span> atom = &#123;</span><br><span class="line">  value: <span class="number">1</span>,</span><br><span class="line">  addValue: <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> atom.value + value;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">const</span> atom = &#123;</span><br><span class="line">  value: <span class="number">1</span>,</span><br><span class="line">  addValue(value) &#123;</span><br><span class="line">    <span class="keyword">return</span> atom.value + value;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="u5C5E_u6027_u548C_u503C_u4E00_u6837_u65F6_uFF0C_u53EF_u4EE5_u7F29_u5199"><a href="#u5C5E_u6027_u548C_u503C_u4E00_u6837_u65F6_uFF0C_u53EF_u4EE5_u7F29_u5199" class="headerlink" title="属性和值一样时，可以缩写"></a>属性和值一样时，可以缩写</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> lukeSkywalker = <span class="string">'Luke Skywalker'</span>;</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  lukeSkywalker: lukeSkywalker,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  lukeSkywalker,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="u652F_u6301_u52A8_u6001_u5C5E_u6027_u540D"><a href="#u652F_u6301_u52A8_u6001_u5C5E_u6027_u540D" class="headerlink" title="支持动态属性名"></a>支持动态属性名</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">getKey</span>(<span class="params">k</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`a key named <span class="subst">$&#123;k&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  id: <span class="number">5</span>,</span><br><span class="line">  name: <span class="string">'San Francisco'</span>,</span><br><span class="line">&#125;;</span><br><span class="line">obj[getKey(<span class="string">'enabled'</span>)] = <span class="literal">true</span>;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  id: <span class="number">5</span>,</span><br><span class="line">  name: <span class="string">'San Francisco'</span>,</span><br><span class="line">  [getKey(<span class="string">'enabled'</span>)]: <span class="literal">true</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="u6A21_u677F_u5B57_u7B26_u4E32"><a href="#u6A21_u677F_u5B57_u7B26_u4E32" class="headerlink" title="模板字符串"></a>模板字符串</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'How are you, '</span> + name + <span class="string">'?'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [<span class="string">'How are you, '</span>, name, <span class="string">'?'</span>].join();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`How are you, <span class="subst">$&#123;name&#125;</span>?`</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Destructuring__u89E3_u6784"><a href="#Destructuring__u89E3_u6784" class="headerlink" title="Destructuring 解构"></a>Destructuring 解构</h2><ul>
-<li><p>使用一个对象的多个属性时，使用解构来获取</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">getFullName</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">const</span> firstName = user.firstName;</span><br><span class="line">   <span class="keyword">const</span> lastName = user.lastName;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;firstName&#125;</span> <span class="subst">$&#123;lastName&#125;</span>`</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="comment">// good</span></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">getFullName</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">const</span> &#123; firstName, lastName &#125; = obj;</span><br><span class="line">   <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;firstName&#125;</span> <span class="subst">$&#123;lastName&#125;</span>`</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="comment">// best</span></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">getFullName</span>(<span class="params">&#123; firstName, lastName &#125;</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;firstName&#125;</span> <span class="subst">$&#123;lastName&#125;</span>`</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用数组解构</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">const</span> first = arr[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">const</span> second = arr[<span class="number">1</span>];</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">const</span> [first, second] = arr;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>多值返回时使用对象解构而不是数组解构</p>
-<blockquote>
-<p>这样可以随时添加新的属性以及修改属性的顺序，不需要做其他的改动</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">processInput</span>(<span class="params">input</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// then a miracle occurs</span></span><br><span class="line">  <span class="keyword">return</span> [left, right, top, bottom];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// the caller needs to think about the order of return data</span></span><br><span class="line"><span class="keyword">const</span> [left, __, top] = processInput(input);</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">processInput</span>(<span class="params">input</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// then a miracle occurs</span></span><br><span class="line">  <span class="keyword">return</span> &#123; left, right, top, bottom &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// the caller selects only the data they need</span></span><br><span class="line"><span class="keyword">const</span> &#123; left, right &#125; = processInput(input);</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-</ul>
-<h2 id="Default_Parameters__u53C2_u6570_u9ED8_u8BA4_u503C"><a href="#Default_Parameters__u53C2_u6570_u9ED8_u8BA4_u503C" class="headerlink" title="Default Parameters 参数默认值"></a>Default Parameters 参数默认值</h2><ul>
-<li><p>使用参数默认值，而不是去改变参数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// really bad</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleThings</span>(<span class="params">opts</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// No! We shouldn't mutate function arguments.</span></span><br><span class="line">  <span class="comment">// Double bad: if opts is falsy it'll be set to an object which may</span></span><br><span class="line">  <span class="comment">// be what you want but it can introduce subtle bugs.</span></span><br><span class="line">  opts = opts || &#123;&#125;;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// still bad</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleThings</span>(<span class="params">opts</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (opts === <span class="keyword">void</span> <span class="number">0</span>) &#123;</span><br><span class="line">    opts = &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleThings</span>(<span class="params">opts = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>避免默认参数带来的副作用</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> b = <span class="number">1</span>;</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">count</span>(<span class="params">a = b++</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br><span class="line">count();  <span class="comment">// 1</span></span><br><span class="line">count();  <span class="comment">// 2</span></span><br><span class="line">count(<span class="number">3</span>); <span class="comment">// 3</span></span><br><span class="line">count();  <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>总是把默认参数放在最后</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleThings</span>(<span class="params">opts = &#123;&#125;, name</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleThings</span>(<span class="params">name, opts = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="rest"><a href="#rest" class="headerlink" title="rest"></a>rest</h2><ul>
-<li><p>使用 <code>...</code> 替代 <code>arguments</code></p>
-<blockquote>
-<p>rest 参数是一个真正的数组，而 arguments 是一个类数组</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">concatenateAll</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>);</span><br><span class="line">  <span class="keyword">return</span> args.join(<span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">concatenateAll</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> args.join(<span class="string">''</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>使用 <code>...</code> 来复制数组</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">const</span> len = items.length;</span><br><span class="line"><span class="keyword">const</span> itemsCopy = [];</span><br><span class="line"><span class="keyword">let</span> i;</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">  itemsCopy[i] = items[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">const</span> itemsCopy = [...items];</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="const__u548C_let"><a href="#const__u548C_let" class="headerlink" title="<code>const</code> 和 <code>let</code>"></a><code>const</code> 和 <code>let</code></h2><ul>
-<li><p>使用 <code>const</code> 来定义所有的引用</p>
-<blockquote>
-<p>const 保证你不能改变你的引用，从而导致未知的 bug</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">const</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> b = <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>使用 <code>let</code> 定义变量</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> count = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  count += <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// good, use the let.</span></span><br><span class="line"><span class="keyword">let</span> count = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  count += <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>const</code> 和 <code>let</code> 都拥有块级作用域</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// const and let only exist in the blocks they are defined in.</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">const</span> b = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// ReferenceError</span></span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">// ReferenceError</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="Iterators_and_Generators"><a href="#Iterators_and_Generators" class="headerlink" title="Iterators and Generators"></a>Iterators and Generators</h2><ul>
-<li>不要使用迭代器，使用 <code>map()</code>, <code>reduce()</code>, <code>forEach()</code> 等替代 <code>for-of</code> 循环语句<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">let</span> sum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> num <span class="keyword">of</span> numbers) &#123;</span><br><span class="line">  sum += num;</span><br><span class="line">&#125;</span><br><span class="line">sum === <span class="number">15</span>;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">let</span> sum = <span class="number">0</span>;</span><br><span class="line">numbers.forEach((num) =&gt; sum += num);</span><br><span class="line">sum === <span class="number">15</span>;</span><br><span class="line"><span class="comment">// best (use the functional force)</span></span><br><span class="line"><span class="keyword">const</span> sum = numbers.reduce((total, num) =&gt; total + num, <span class="number">0</span>);</span><br><span class="line">sum === <span class="number">15</span>;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="Modules__u6A21_u5757"><a href="#Modules__u6A21_u5757" class="headerlink" title="Modules 模块"></a>Modules 模块</h2><ul>
-<li><p>从现在开始，使用 <code>import/export</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">const</span> AirbnbStyleGuide = <span class="built_in">require</span>(<span class="string">'./AirbnbStyleGuide'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = AirbnbStyleGuide.es6;</span><br><span class="line"><span class="comment">// ok</span></span><br><span class="line"><span class="keyword">import</span> AirbnbStyleGuide <span class="keyword">from</span> <span class="string">'./AirbnbStyleGuide'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> AirbnbStyleGuide.es6;</span><br><span class="line"><span class="comment">// best</span></span><br><span class="line"><span class="keyword">import</span> &#123; es6 &#125; <span class="keyword">from</span> <span class="string">'./AirbnbStyleGuide'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> es6;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>不要 import 通配符</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> AirbnbStyleGuide <span class="keyword">from</span> <span class="string">'./AirbnbStyleGuide'</span>;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">import</span> AirbnbStyleGuide <span class="keyword">from</span> <span class="string">'./AirbnbStyleGuide'</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>不要直接从 export 一个 import 表达式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="comment">// filename es6.js</span></span><br><span class="line"><span class="keyword">export</span> &#123; es6 <span class="keyword">as</span> <span class="keyword">default</span> &#125; from <span class="string">'./airbnbStyleGuide'</span>;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="comment">// filename es6.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; es6 &#125; <span class="keyword">from</span> <span class="string">'./AirbnbStyleGuide'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> es6;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1631,7 +1570,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -51,25 +51,22 @@
 
 
 
-<meta name="description" content="生成器函数与普通函数的区别如下：
+<meta name="description" content="不定参数可变参数构造 API 时，我们通常需要可变参数。String.prototype.concat方法可以接受任意数量的字符串参数。123var hello = &apos;Hello, &apos;;console.log(hello.concat(&apos;Kevin&apos;, &apos; have a nice day.&apos;));/* Hello, Kevin have a nice day. */
 
-使用 function* 声明
-有一种类似 return 的语法：关键字 yield。不同的是普通函数只可以 return 一次，而生成器函数可以 yield 多次；在执行过程中，yield 表达式可以暂停，后续可随时恢复执行状态，而普通函数不能子暂停。12345678function* quips(name) &amp;#123;  yield &quot;你好 &quot; + nam">
+实现一个函数 contain">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ES6学习笔记(3)-生成器 Generators">
-<meta property="og:url" content="http://splendourhui.com/2015/11/18/ES6学习笔记-3-生成器-Generators/index.html">
+<meta property="og:title" content="ES6学习笔记-不定参数和默认参数">
+<meta property="og:url" content="http://splendourhui.com/2015/12/06/ES6学习笔记-不定参数和默认参数/index.html">
 <meta property="og:site_name" content="Splendour's blog">
-<meta property="og:description" content="生成器函数与普通函数的区别如下：
+<meta property="og:description" content="不定参数可变参数构造 API 时，我们通常需要可变参数。String.prototype.concat方法可以接受任意数量的字符串参数。123var hello = &apos;Hello, &apos;;console.log(hello.concat(&apos;Kevin&apos;, &apos; have a nice day.&apos;));/* Hello, Kevin have a nice day. */
 
-使用 function* 声明
-有一种类似 return 的语法：关键字 yield。不同的是普通函数只可以 return 一次，而生成器函数可以 yield 多次；在执行过程中，yield 表达式可以暂停，后续可随时恢复执行状态，而普通函数不能子暂停。12345678function* quips(name) &amp;#123;  yield &quot;你好 &quot; + nam">
-<meta property="og:updated_time" content="2015-11-24T12:06:25.000Z">
+实现一个函数 contain">
+<meta property="og:updated_time" content="2016-01-24T14:56:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ES6学习笔记(3)-生成器 Generators">
-<meta name="twitter:description" content="生成器函数与普通函数的区别如下：
+<meta name="twitter:title" content="ES6学习笔记-不定参数和默认参数">
+<meta name="twitter:description" content="不定参数可变参数构造 API 时，我们通常需要可变参数。String.prototype.concat方法可以接受任意数量的字符串参数。123var hello = &apos;Hello, &apos;;console.log(hello.concat(&apos;Kevin&apos;, &apos; have a nice day.&apos;));/* Hello, Kevin have a nice day. */
 
-使用 function* 声明
-有一种类似 return 的语法：关键字 yield。不同的是普通函数只可以 return 一次，而生成器函数可以 yield 多次；在执行过程中，yield 表达式可以暂停，后续可随时恢复执行状态，而普通函数不能子暂停。12345678function* quips(name) &amp;#123;  yield &quot;你好 &quot; + nam">
+实现一个函数 contain">
 
 
 
@@ -81,7 +78,7 @@
   };
 </script>
 
-  <title> ES6学习笔记(3)-生成器 Generators | Splendour's blog </title>
+  <title> ES6学习笔记-不定参数和默认参数 | Splendour's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -201,7 +198,7 @@
             
             
               
-                ES6学习笔记(3)-生成器 Generators
+                ES6学习笔记-不定参数和默认参数
               
             
           </h1>
@@ -210,8 +207,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-11-18T20:02:06+08:00" content="2015-11-18">
-              2015-11-18
+            <time itemprop="dateCreated" datetime="2015-12-06T12:51:02+08:00" content="2015-12-06">
+              2015-12-06
             </time>
           </span>
 
@@ -249,18 +246,31 @@
       
 
       
-        <span itemprop="articleBody"><p>生成器函数与普通函数的区别如下：</p>
+        <span itemprop="articleBody"><h2 id="u4E0D_u5B9A_u53C2_u6570"><a href="#u4E0D_u5B9A_u53C2_u6570" class="headerlink" title="不定参数"></a>不定参数</h2><h3 id="u53EF_u53D8_u53C2_u6570"><a href="#u53EF_u53D8_u53C2_u6570" class="headerlink" title="可变参数"></a>可变参数</h3><p>构造 API 时，我们通常需要可变参数。<code>String.prototype.concat</code>方法可以接受任意数量的字符串参数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> hello = <span class="string">'Hello, '</span>;</span><br><span class="line"><span class="built_in">console</span>.log(hello.concat(<span class="string">'Kevin'</span>, <span class="string">' have a nice day.'</span>));</span><br><span class="line"><span class="comment">/* Hello, Kevin have a nice day. */</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>实现一个函数 containAll，用来检查一个字符串中是否包含若干个字串：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">containsAll(<span class="string">"banana"</span>, <span class="string">"b"</span>, <span class="string">"nan"</span>) = <span class="literal">true</span>;</span><br><span class="line">containsAll(<span class="string">"banana"</span>, <span class="string">"c"</span>, <span class="string">"nan"</span>) = <span class="literal">false</span>;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="u4F20_u7EDF_u65B9_u6CD5"><a href="#u4F20_u7EDF_u65B9_u6CD5" class="headerlink" title="传统方法"></a>传统方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">containsAll</span>(<span class="params">string</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="built_in">arguments</span>.length; i ++) &#123;</span><br><span class="line">    <span class="keyword">var</span> item = <span class="built_in">arguments</span>[i];</span><br><span class="line">    <span class="keyword">if</span> (string.indexOf(item) === -<span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>使用 function* 声明</li>
-<li>有一种类似 return 的语法：关键字 yield。不同的是普通函数只可以 return 一次，而生成器函数可以 yield 多次；在执行过程中，yield 表达式可以暂停，后续可随时恢复执行状态，而普通函数不能子暂停。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">quips</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="string">"你好 "</span> + name + <span class="string">"!"</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="string">"希望你能喜欢这篇介绍ES6的译文"</span>;</span><br><span class="line">  <span class="keyword">if</span> (name.startsWith(<span class="string">"X"</span>)) &#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="string">"你的名字 "</span> + name + <span class="string">"  首字母是X，这很酷！"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">yield</span> <span class="string">"我们下次再见！"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<li>argument 对象是一个类数组对象，其中包含了传递给函数的所有参数。</li>
+<li>这个实现的可读性较差，而且迭代必须从1开始，容易掉坑，当添加一个参数时，又得同步更新循环体中的迭代初始值。</li>
 </ul>
-<p>该函数的调用过程如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">var</span> iter = quips(<span class="string">"jorendorff"</span>);</span><br><span class="line">  [object Generator]</span><br><span class="line">&gt; iter.next()</span><br><span class="line">  &#123; value: <span class="string">"你好 jorendorff!"</span>, done: <span class="literal">false</span> &#125;</span><br><span class="line">&gt; iter.next()</span><br><span class="line">  &#123; value: <span class="string">"希望你能喜欢这篇介绍ES6的译文"</span>, done: <span class="literal">false</span> &#125;</span><br><span class="line">&gt; iter.next()</span><br><span class="line">  &#123; value: <span class="string">"我们下次再见！"</span>, done: <span class="literal">false</span> &#125;</span><br><span class="line">&gt; iter.next()</span><br><span class="line">  &#123; value: <span class="literal">undefined</span>, done: <span class="literal">true</span> &#125;</span><br></pre></td></tr></table></figure></p>
-<p>从以上过程可以看出：</p>
+<h3 id="ES6_u5B9E_u73B0"><a href="#ES6_u5B9E_u73B0" class="headerlink" title="ES6实现"></a>ES6实现</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">containsAll</span>(<span class="params">string, ...items</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> items) &#123;</span><br><span class="line">    <span class="keyword">if</span> (string.indexOf(item) === -<span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>生成器函数每次调用 <code>.next()</code> 方法时，都会返回一个已暂停的生成器对象，类似于一次函数调用，只不过暂停了。</li>
-<li>当遇到 yield 函数暂停时，会产生 value，类似于普通函数的 return，另外还有一个 done 值，用来标志生成器函数是否到达了末尾</li>
-<li>生成器函数永不并发，它拥有确定的执行顺序</li>
+<li><code>...items</code> 是不定参数的语法，传递给函数的第一个参数赋值给<code>string</code>，传递给函数的其他参数都被放到一个数组中，赋值给<code>items</code></li>
+<li>只有最后一个参数才可以被标记为不定参数，不定参数前的所有参数都正常填充，“额外的”参数才会放到数组中。</li>
+<li>若没有额外的参数，不定参数就是一个空数组</li>
+</ul>
+<h2 id="u9ED8_u8BA4_u53C2_u6570"><a href="#u9ED8_u8BA4_u53C2_u6570" class="headerlink" title="默认参数"></a>默认参数</h2><h3 id="u4F20_u7EDF_u65B9_u6CD5-1"><a href="#u4F20_u7EDF_u65B9_u6CD5-1" class="headerlink" title="传统方法"></a>传统方法</h3><p>在 Javascript 中，函数调用时，没有被传递到的参数默认为 undefined，需要人工赋予默认值。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params">person1, person2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = person1 || <span class="string">'Li Lei'</span>;</span><br><span class="line">  <span class="keyword">var</span> b = person2 || <span class="string">'Han Meimei'</span>;</span><br><span class="line">  <span class="keyword">return</span> a + <span class="string">' loves '</span> + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="ES6_u5B9E_u73B0-1"><a href="#ES6_u5B9E_u73B0-1" class="headerlink" title="ES6实现"></a>ES6实现</h3><p>在 ES6 中，提供了一种新的语法，类似于其他语言，可以指定参数的默认值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params">person1 = 'Li Lei', person2 = 'Han Meimei'</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;person1&#125;</span> loves <span class="subst">$&#123;person2&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>默认值表达式在函数调用时自左向右求值，也即可以使用参数之前已经填充好的其他参数值。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params">person1 = 'Li Lei',</span><br><span class="line">  person2 = (person1 == 'Perter'</span>) ? '<span class="title">Lily</span>' : '<span class="title">Han</span> <span class="title">Meimei</span>') </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;person1&#125;</span> loves <span class="subst">$&#123;person2&#125;</span>`</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>传递 <code>undefined</code> 等同于不传值</li>
+<li>没有默认值的参数隐式默认为 `undefined</li>
 </ul>
 </span>
       
@@ -273,16 +283,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/17/ES6学习笔记-2-迭代器和-for-of-循环/" rel="next" title="ES6 学习笔记(2)-迭代器和 for-of 循环">
-                <i class="fa fa-chevron-left"></i> ES6 学习笔记(2)-迭代器和 for-of 循环
+              <a href="/2015/11/24/ES6学习笔记-模板字符串/" rel="next" title="ES6学习笔记-模板字符串">
+                <i class="fa fa-chevron-left"></i> ES6学习笔记-模板字符串
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/11/24/ES6学习笔记-4-模板字符串/" rel="prev" title="ES6学习笔记(4)-模板字符串">
-                ES6学习笔记(4)-模板字符串 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/12/13/ES6学习笔记-解构-Destructuring/" rel="prev" title="ES6学习笔记-解构-Destructuring">
+                ES6学习笔记-解构-Destructuring <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -351,7 +361,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -407,7 +417,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#u4E0D_u5B9A_u53C2_u6570"><span class="nav-number">1.</span> <span class="nav-text">不定参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u53EF_u53D8_u53C2_u6570"><span class="nav-number">1.1.</span> <span class="nav-text">可变参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4F20_u7EDF_u65B9_u6CD5"><span class="nav-number">1.2.</span> <span class="nav-text">传统方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6_u5B9E_u73B0"><span class="nav-number">1.3.</span> <span class="nav-text">ES6实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u9ED8_u8BA4_u53C2_u6570"><span class="nav-number">2.</span> <span class="nav-text">默认参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u4F20_u7EDF_u65B9_u6CD5-1"><span class="nav-number">2.1.</span> <span class="nav-text">传统方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6_u5B9E_u73B0-1"><span class="nav-number">2.2.</span> <span class="nav-text">ES6实现</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
