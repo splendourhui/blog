@@ -205,6 +205,140 @@
             
               
                 
+                <a class="post-title-link" href="/2015/11/17/ES6学习笔记-迭代器和-for-of-循环/" itemprop="url">
+                  ES6 学习笔记-迭代器和 for-of 循环
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-17T21:08:39+08:00" content="2015-11-17">
+              2015-11-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h2 id="ES5__u7684_for-in__u5FAA_u73AF_u904D_u5386_u6570_u7EC4_u7684_u7F3A_u70B9"><a href="#ES5__u7684_for-in__u5FAA_u73AF_u904D_u5386_u6570_u7EC4_u7684_u7F3A_u70B9" class="headerlink" title="ES5 的 for-in 循环遍历数组的缺点"></a>ES5 的 for-in 循环遍历数组的缺点</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> index <span class="keyword">in</span> myArray) &#123; <span class="comment">// 千万别这样做</span></span><br><span class="line">  <span class="built_in">console</span>.log(myArray[index]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>给 index 赋值的不是数字而是字符串 “0” “1” 等，有可能在无意间进行了 “2” + 1 = “21” 这样的计算</li>
+<li>for-in 循环体会遍历自定义属性</li>
+<li>在某些情况下，数组顺序会被<code>打乱</code>！</li>
+<li>for-in 是为普通对象设计的，不适用于数组的遍历</li>
+</ul>
+<h2 id="ES6__u7684_for-of__u5FAA_u73AF"><a href="#ES6__u7684_for-of__u5FAA_u73AF" class="headerlink" title="ES6 的 for-of 循环"></a>ES6 的 for-of 循环</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> value <span class="keyword">of</span> myArray) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这是最简洁的遍历数组的方法</li>
+<li>避开了 for-in 循环的所有缺陷</li>
+<li>可以正确响应 break、continue 和 return 语句</li>
+<li><p>可以遍历其他的集合</p>
+<ul>
+<li>类数组对象，例如 DOM NodeList 对象</li>
+<li>字符串遍历，将字符串视为一系列的 Unicode 字符来遍历</li>
+<li><p>支持 Map 和 Set 对象遍历</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Map 对象的遍历</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> word <span class="keyword">of</span> uniqueWords) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(word);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Set 对象的遍历</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> [key, value] <span class="keyword">of</span> phoneBookMap) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key + <span class="string">"'s phone number is: "</span> + value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不支持普通对象，但也可以用以下方法来遍历普通对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">of</span> <span class="built_in">Object</span>.keys(someObject)) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key + <span class="string">": "</span> + someObject[key]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="u8FED_u4EE3_u5668_u5BF9_u8C61"><a href="#u8FED_u4EE3_u5668_u5BF9_u8C61" class="headerlink" title="迭代器对象"></a>迭代器对象</h2><ul>
+<li>for-of 循环首先调用集合的<code>[Symbol.iterator]()</code>方法，紧接着返回一个新的迭代器对象。</li>
+<li>迭代器对象可以是任意具有<code>.next()</code>方法的对象；for-of 循环将重复调用这个方法，每次循环调用一次。</li>
+<li><p>一个最简单的迭代器如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> zeroesForeverIterator = &#123;</span><br><span class="line">  [<span class="built_in">Symbol</span>.iterator]: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  next: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;done: <span class="literal">false</span>, value: <span class="number">0</span>&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>每一次调用<code>.next()</code>方法，它都返回相同的结果，返回给 for-of 循环的结果就告诉它循环是否结束，若未结束则下一个值是多少</p>
+</li>
+<li>迭代器对象也可以实现可选的<code>.return()</code>和<code>.throw(exc)</code>方法<ul>
+<li>如果 for-of 循环过早退出会调用<code>.return()</code>方法，异常、break 语句或 return 语句均可触发过早退出。</li>
+<li>如果迭代器需要执行一些清洁或释放资源的操作，可以在<code>.return()</code>方法中实现。</li>
+</ul>
+</li>
+</ul>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/10/24/ES2015-代码规范/" itemprop="url">
                   ES2015 代码规范
                 </a>
@@ -1154,7 +1288,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -177,6 +177,155 @@
 
     
     
+      
+      
+        
+        
+        
+      
+
+      
+    
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/20/JavaScript-函数式编程/" itemprop="url">
+                  JavaScript 函数式编程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-03-20T14:01:05+08:00" content="2016-03-20">
+              2016-03-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <blockquote>
+<p>在 ES6 的支持下（特别是箭头函数），JavaScript 函数式编程的实践性得到了很大的提升。再加上 Babel 等神器，目前已经可以自己构建函数式编程的一些小套路了。</p>
+</blockquote>
+<h2 id="u51FD_u6570_u5F0F_u7F16_u7A0B"><a href="#u51FD_u6570_u5F0F_u7F16_u7A0B" class="headerlink" title="函数式编程"></a>函数式编程</h2><p>彻底的函数式编程包括以下特点：</p>
+<ul>
+<li>禁用 var/let，所有东西都用 const 定义，无变量，强制 immutable</li>
+<li>禁用 if/else，允许使用条件表达式 <code>condition ? a : b</code></li>
+<li>禁用 for/while/do-while</li>
+<li>禁用 prototype 和 this 来解除面向对象编程范式</li>
+<li>禁用 function 和 return 关键字，仅试用 lambda 表达式来编程</li>
+<li>禁用多参数函数，只允许使用单个参数，相当于强行 curry 化</li>
+</ul>
+<p>在实践过程中，有时候还是不要强行遵照上面的特点，要灵活应变，写出又有逼格又实用的代码，才是真正追求的。</p>
+<h2 id="u7D2F_u52A0_u5668"><a href="#u7D2F_u52A0_u5668" class="headerlink" title="累加器"></a>累加器</h2><p>累加器在编程过程中是很常见的，一般情况下，我们会借助一个临时变量还有循环来进行累加<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 最基本的求和累加器</span></span><br><span class="line"><span class="keyword">let</span> sum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> array) &#123;</span><br><span class="line">  sum += value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>很明显的，上述代码是过程式编程的典型。我们可以用上更高端的 <code>reduce</code> 函数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array.reduce((previous, current) =&gt; &#123;</span><br><span class="line">  previous + current;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>逼格瞬间高了很多。如果我们需要给一个初始值，则有<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> initValue = <span class="number">10</span>;</span><br><span class="line">array.reduce((previous, current) =&gt; &#123;</span><br><span class="line">  previous + current;</span><br><span class="line">&#125;, initValue);</span><br></pre></td></tr></table></figure></p>
+<h3 id="u5012_u5E8F_u904D_u5386"><a href="#u5012_u5E8F_u904D_u5386" class="headerlink" title="倒序遍历"></a>倒序遍历</h3><p><code>reduce</code> 函数已经让我们可以使用一个函数实现累加器的功能了，那么我们能否将多参数转化为单参数呢？且看下面定义的函数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foldr = f =&gt; accumulator =&gt; ([x, ...xs]) =&gt;</span><br><span class="line">  x === <span class="literal">undefined</span> ? accumulator : f(x)(foldr(f)(accumulator)(xs));</span><br></pre></td></tr></table></figure></p>
+<p>该函数接受三个参数</p>
+<ul>
+<li>f：对数组中的每一项和累加器的操作，该参数是一个 <code>函数</code> (函数式编程的特点之一)</li>
+<li>accumulator：累加器</li>
+<li>[x, …xs]：要操作的数组</li>
+</ul>
+<p>函数采用递归的方式，算到最后是这样的形式（以数组 [1, 2] 为例）<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f(<span class="number">1</span>)(f(<span class="number">2</span>)(accumulator))</span><br></pre></td></tr></table></figure></p>
+<p>不难看出，最终是将数组倒序遍历，计算出 f(x)(accumulator) 的值, 并将结果作为新的 accumulator 传递回去，直到遍历完毕。</p>
+<blockquote>
+<p>因为是将数组倒序遍历，所以我们将函数起名叫 <code>foldr</code></p>
+</blockquote>
+<h3 id="sum__u51FD_u6570"><a href="#sum__u51FD_u6570" class="headerlink" title="sum 函数"></a>sum 函数</h3><p>不妨来尝试使用一下这个函数。还是以求和为例，则有<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> f = x =&gt; accumulator =&gt; x + accumulator; <span class="comment">// 箭头函数默认返回</span></span><br><span class="line"><span class="keyword">let</span> initValue = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> array = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">let</span> sumValue = foldr(f)(initValue)(array); <span class="comment">// 20</span></span><br></pre></td></tr></table></figure></p>
+<p>逼格满满啊有木有？！我们可以定义一个属于自己的 sum 函数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sum = initValue =&gt; foldr(x =&gt; accumulator =&gt; x + accumulator)(initValue);</span><br><span class="line"><span class="keyword">let</span> sumValue = sum(<span class="number">10</span>)([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]); <span class="comment">// 20</span></span><br></pre></td></tr></table></figure></p>
+<p>一个属于自己的 sum 函数就这样诞生了，单参数，无变量，单语句，干脆利落。自己的函数库至此多了一个高逼格函数！（差不多就行，不能太不要脸了）</p>
+<h3 id="map__u51FD_u6570"><a href="#map__u51FD_u6570" class="headerlink" title="map 函数"></a>map 函数</h3><p>我们再来看看熟悉的 <code>map</code> 函数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> squareArray = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>].map(item =&gt; item * item); <span class="comment">// [1, 4, 9, 16]</span></span><br></pre></td></tr></table></figure></p>
+<p>使用 <code>map</code> 函数已经相当优雅了，不过，既然我们已经有遍历函数了，那么我们能否用函数式编程实现 <code>map</code> 函数呢？<br><code>map</code> 函数返回的是一个处理后的数组，那么我们只需让累加器返回数组即可<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> map = f =&gt; foldr(x =&gt; accumulator =&gt; [f(x), ...accumulator])([]);</span><br></pre></td></tr></table></figure></p>
+<p>相当于 <code>f(x)(accumulator)</code> 返回了一个数组 <code>[f(x), ...accumulator]</code>, 遍历结束后刚好就是 <code>map</code> 函数返回的结果，调用方式如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> squareArray = map(item =&gt; item * item)([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]); <span class="comment">// [1, 4, 9, 16]</span></span><br></pre></td></tr></table></figure></p>
+<p>又一个函数入库了！</p>
+<h3 id="u6B63_u5E8F_u904D_u5386"><a href="#u6B63_u5E8F_u904D_u5386" class="headerlink" title="正序遍历"></a>正序遍历</h3><p>倒序遍历我们已经玩腻了，那有没有正序遍历呢？<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foldl = f =&gt; accumulator =&gt; ([x, ...xs]) =&gt;</span><br><span class="line">  x === <span class="literal">undefined</span> ? accumulator : foldl(f)(f(accumulator)(x))(xs);</span><br></pre></td></tr></table></figure></p>
+<p>函数采用递归的方式，算到最后是这样的形式（以数组 [1, 2] 为例）<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f(f(a)(<span class="number">1</span>))(<span class="number">2</span>)</span><br></pre></td></tr></table></figure></p>
+<p>不难看出，最终是将数组正序遍历，计算出 f(accumulator)(x) 的值, 并将结果作为新的 accumulator 传递下去，直到遍历完毕。</p>
+<blockquote>
+<p>因为是将数组正序遍历，所以我们将函数起名叫 <code>foldl</code>，与前面的 <code>foldr</code> 函数对应</p>
+</blockquote>
+<h3 id="loopOnArray__u51FD_u6570"><a href="#loopOnArray__u51FD_u6570" class="headerlink" title="loopOnArray 函数"></a>loopOnArray 函数</h3><p>正序遍历的一个典型用处就是循环。我们利用 <code>foldl</code> 循环打印数组的每一个值<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foldl(item =&gt; <span class="built_in">console</span>.log(item))()([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]);</span><br></pre></td></tr></table></figure></p>
+<p>不难发现，我们是不需要累加的，即不需要存储 accumulator 这个状态，每一步操作都和 accumulator 无关，但还是需要传这个参数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> loopOnArray = f =&gt; foldl(_ =&gt; x =&gt; f(x))(<span class="literal">undefined</span>);</span><br></pre></td></tr></table></figure></p>
+<p>我们这里用 <code>_</code> 来代表空参数，因为这里不需要用到 accumulator, 用一个空参数来替代，调用范式如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loopOnArray(item =&gt; <span class="built_in">console</span>.log(item))([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])h</span><br></pre></td></tr></table></figure></p>
+<p>一个函数也能实现循环了，亦可赛艇！</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -1390,140 +1539,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/11/17/ES6学习笔记-迭代器和-for-of-循环/" itemprop="url">
-                  ES6 学习笔记-迭代器和 for-of 循环
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-11-17T21:08:39+08:00" content="2015-11-17">
-              2015-11-17
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h2 id="ES5__u7684_for-in__u5FAA_u73AF_u904D_u5386_u6570_u7EC4_u7684_u7F3A_u70B9"><a href="#ES5__u7684_for-in__u5FAA_u73AF_u904D_u5386_u6570_u7EC4_u7684_u7F3A_u70B9" class="headerlink" title="ES5 的 for-in 循环遍历数组的缺点"></a>ES5 的 for-in 循环遍历数组的缺点</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> index <span class="keyword">in</span> myArray) &#123; <span class="comment">// 千万别这样做</span></span><br><span class="line">  <span class="built_in">console</span>.log(myArray[index]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>给 index 赋值的不是数字而是字符串 “0” “1” 等，有可能在无意间进行了 “2” + 1 = “21” 这样的计算</li>
-<li>for-in 循环体会遍历自定义属性</li>
-<li>在某些情况下，数组顺序会被<code>打乱</code>！</li>
-<li>for-in 是为普通对象设计的，不适用于数组的遍历</li>
-</ul>
-<h2 id="ES6__u7684_for-of__u5FAA_u73AF"><a href="#ES6__u7684_for-of__u5FAA_u73AF" class="headerlink" title="ES6 的 for-of 循环"></a>ES6 的 for-of 循环</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> value <span class="keyword">of</span> myArray) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>这是最简洁的遍历数组的方法</li>
-<li>避开了 for-in 循环的所有缺陷</li>
-<li>可以正确响应 break、continue 和 return 语句</li>
-<li><p>可以遍历其他的集合</p>
-<ul>
-<li>类数组对象，例如 DOM NodeList 对象</li>
-<li>字符串遍历，将字符串视为一系列的 Unicode 字符来遍历</li>
-<li><p>支持 Map 和 Set 对象遍历</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Map 对象的遍历</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> word <span class="keyword">of</span> uniqueWords) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(word);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Set 对象的遍历</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> [key, value] <span class="keyword">of</span> phoneBookMap) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key + <span class="string">"'s phone number is: "</span> + value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>不支持普通对象，但也可以用以下方法来遍历普通对象</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">of</span> <span class="built_in">Object</span>.keys(someObject)) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key + <span class="string">": "</span> + someObject[key]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="u8FED_u4EE3_u5668_u5BF9_u8C61"><a href="#u8FED_u4EE3_u5668_u5BF9_u8C61" class="headerlink" title="迭代器对象"></a>迭代器对象</h2><ul>
-<li>for-of 循环首先调用集合的<code>[Symbol.iterator]()</code>方法，紧接着返回一个新的迭代器对象。</li>
-<li>迭代器对象可以是任意具有<code>.next()</code>方法的对象；for-of 循环将重复调用这个方法，每次循环调用一次。</li>
-<li><p>一个最简单的迭代器如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> zeroesForeverIterator = &#123;</span><br><span class="line">  [<span class="built_in">Symbol</span>.iterator]: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  next: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;done: <span class="literal">false</span>, value: <span class="number">0</span>&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>每一次调用<code>.next()</code>方法，它都返回相同的结果，返回给 for-of 循环的结果就告诉它循环是否结束，若未结束则下一个值是多少</p>
-</li>
-<li>迭代器对象也可以实现可选的<code>.return()</code>和<code>.throw(exc)</code>方法<ul>
-<li>如果 for-of 循环过早退出会调用<code>.return()</code>方法，异常、break 语句或 return 语句均可触发过早退出。</li>
-<li>如果迭代器需要执行一些清洁或释放资源的操作，可以在<code>.return()</code>方法中实现。</li>
-</ul>
-</li>
-</ul>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1570,7 +1585,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
