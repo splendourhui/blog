@@ -209,6 +209,133 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/14/记一次-react-页面白屏的排查过程/" itemprop="url">
+                  记一次 react 页面白屏的排查过程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-07-14T07:45:01+08:00" content="2016-07-14">
+              2016-07-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/react-移动web-前端/" itemprop="url" rel="index">
+                    <span itemprop="name">react 移动web 前端</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h3 id="u80CC_u666F"><a href="#u80CC_u666F" class="headerlink" title="背景"></a>背景</h3><p>近日，在 <code>微信web开发者工具</code> 开发完成页面后，在个人手机上测试通过并移交产品经理测试，发现其手机打开页面后白屏，手机型号同样是 iPhone6，拿了其他小伙伴的安卓手机发现也打不开，无论是在微信浏览器还是在 Safari 或者 安卓原生浏览器均是这样的现象。重新编译、清除缓存都无法解决这个问题。</p>
+<h3 id="u89E3_u51B3_u8FC7_u7A0B"><a href="#u89E3_u51B3_u8FC7_u7A0B" class="headerlink" title="解决过程"></a>解决过程</h3><ul>
+<li>一般情况下，前端无法渲染是由于 JavaScript 报错产生的，所以最好是看看控制台打印。</li>
+<li>上网搜索资料，发现微信团队做了一个让我兴奋的东西：vConsole<ul>
+<li>GitHub 地址：<a href="https://github.com/WechatFE/vConsole" target="_blank" rel="external">https://github.com/WechatFE/vConsole</a></li>
+<li>该工具使用很简单，只需要引入一个 JavaScript 文件，即可在页面右下角生成一个按钮，点击可以查看控制台，以及手机系统、手机浏览器的一些信息，真是个神器！</li>
+</ul>
+</li>
+<li><p>引入了 vConsole，查看控制台，果然有一个错误抛出</p>
+<blockquote>
+<p>reference error can’t find variable symbol</p>
+</blockquote>
+<p>从字面理解，是指浏览器无法识别 symbol 这个变量。</p>
+</li>
+<li>继续谷歌，发现 GitHub 上有一些 issue 也是报了类似的问题，一篇一篇地读下来，找到了一个关键词，叫 <code>babel-polyifll</code></li>
+<li><p>搜索这个关键词，找到了阮一峰的这篇博文 <a href="http://www.ruanyifeng.com/blog/2016/01/babel.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2016/01/babel.html</a></p>
+<blockquote>
+<p>Babel默认只转换新的JavaScript句法（syntax），而不转换新的API，比如Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise等全局对象，以及一些定义在全局对象上的方法（比如<code>Object.assign</code>）都不会转码。<br>举例来说，ES6在<code>Array</code>对象上新增了<code>Array.from</code>方法。Babel就不会转码这个方法。如果想让这个方法运行，必须使用<code>babel-polyfill</code>，为当前环境提供一个垫片。</p>
+</blockquote>
+</li>
+<li><p>这下一切都清楚了，浏览器不支持一些新的对象，所以需要引入别的模块才能识别，具体做法很简单：<br>安装</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="operator"><span class="keyword">install</span> <span class="comment">--save babel-polyfill</span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在脚本中，引入该模块<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'babel-polyfill'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>编译、测试、问题解决！</p>
+<h3 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>移动 web 开发的兼容性问题很多，遇到了要多积累经验。</li>
+<li>解决问题的思路可以多样化，比如之前一直没想到要在移动端查看控制台，这次解决问题的经历让我学会了一个神器的使用。</li>
+<li>谷歌错误信息后，要多打开几个页面，读一读别人的问题以及解决方法，看看能否从中寻找出一些端倪。</li>
+<li>学会从一大堆页面和信息中寻找出关键词很重要，一旦找对了，问题很快引刃而解。</li>
+</ul>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/20/JavaScript-函数式编程/" itemprop="url">
                   JavaScript 函数式编程
                 </a>
@@ -1431,114 +1558,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/11/18/ES6学习笔记-生成器-Generators/" itemprop="url">
-                  ES6学习笔记-生成器-Generators
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-11-18T20:02:06+08:00" content="2015-11-18">
-              2015-11-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <p>生成器函数与普通函数的区别如下：</p>
-<ul>
-<li>使用 function* 声明</li>
-<li>有一种类似 return 的语法：关键字 yield。不同的是普通函数只可以 return 一次，而生成器函数可以 yield 多次；在执行过程中，yield 表达式可以暂停，后续可随时恢复执行状态，而普通函数不能子暂停。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">quips</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="string">"你好 "</span> + name + <span class="string">"!"</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="string">"希望你能喜欢这篇介绍ES6的译文"</span>;</span><br><span class="line">  <span class="keyword">if</span> (name.startsWith(<span class="string">"X"</span>)) &#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="string">"你的名字 "</span> + name + <span class="string">"  首字母是X，这很酷！"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">yield</span> <span class="string">"我们下次再见！"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>该函数的调用过程如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">var</span> iter = quips(<span class="string">"jorendorff"</span>);</span><br><span class="line">  [object Generator]</span><br><span class="line">&gt; iter.next()</span><br><span class="line">  &#123; value: <span class="string">"你好 jorendorff!"</span>, done: <span class="literal">false</span> &#125;</span><br><span class="line">&gt; iter.next()</span><br><span class="line">  &#123; value: <span class="string">"希望你能喜欢这篇介绍ES6的译文"</span>, done: <span class="literal">false</span> &#125;</span><br><span class="line">&gt; iter.next()</span><br><span class="line">  &#123; value: <span class="string">"我们下次再见！"</span>, done: <span class="literal">false</span> &#125;</span><br><span class="line">&gt; iter.next()</span><br><span class="line">  &#123; value: <span class="literal">undefined</span>, done: <span class="literal">true</span> &#125;</span><br></pre></td></tr></table></figure></p>
-<p>从以上过程可以看出：</p>
-<ul>
-<li>生成器函数每次调用 <code>.next()</code> 方法时，都会返回一个已暂停的生成器对象，类似于一次函数调用，只不过暂停了。</li>
-<li>当遇到 yield 函数暂停时，会产生 value，类似于普通函数的 return，另外还有一个 done 值，用来标志生成器函数是否到达了末尾</li>
-<li>生成器函数永不并发，它拥有确定的执行顺序</li>
-</ul>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1585,14 +1604,14 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">分类</span>
               
           </div>

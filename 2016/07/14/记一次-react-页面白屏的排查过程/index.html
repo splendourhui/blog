@@ -51,28 +51,22 @@
 
 
 
-<meta name="description" content="ES5 的 for-in 循环遍历数组的缺点123for (var index in myArray) &amp;#123; // 千万别这样做  console.log(myArray[index]);&amp;#125;
-
-给 index 赋值的不是数字而是字符串 “0” “1” 等，有可能在无意间进行了 “2” + 1 = “21” 这样的计算
-for-in 循环体会遍历自定义属性
-在某些情况下，数组顺序会">
+<meta name="description" content="背景近日，在 微信web开发者工具 开发完成页面后，在个人手机上测试通过并移交产品经理测试，发现其手机打开页面后白屏，手机型号同样是 iPhone6，拿了其他小伙伴的安卓手机发现也打不开，无论是在微信浏览器还是在 Safari 或者 安卓原生浏览器均是这样的现象。重新编译、清除缓存都无法解决这个问题。
+解决过程
+一般情况下，前端无法渲染是由于 JavaScript 报错产生的，所以最好是看看控制台">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ES6 学习笔记-迭代器和 for-of 循环">
-<meta property="og:url" content="http://splendourhui.com/2015/11/17/ES6学习笔记-迭代器和-for-of-循环/index.html">
+<meta property="og:title" content="记一次 react 页面白屏的排查过程">
+<meta property="og:url" content="http://splendourhui.com/2016/07/14/记一次-react-页面白屏的排查过程/index.html">
 <meta property="og:site_name" content="Splendour's blog">
-<meta property="og:description" content="ES5 的 for-in 循环遍历数组的缺点123for (var index in myArray) &amp;#123; // 千万别这样做  console.log(myArray[index]);&amp;#125;
-
-给 index 赋值的不是数字而是字符串 “0” “1” 等，有可能在无意间进行了 “2” + 1 = “21” 这样的计算
-for-in 循环体会遍历自定义属性
-在某些情况下，数组顺序会">
-<meta property="og:updated_time" content="2016-01-24T14:56:51.000Z">
+<meta property="og:description" content="背景近日，在 微信web开发者工具 开发完成页面后，在个人手机上测试通过并移交产品经理测试，发现其手机打开页面后白屏，手机型号同样是 iPhone6，拿了其他小伙伴的安卓手机发现也打不开，无论是在微信浏览器还是在 Safari 或者 安卓原生浏览器均是这样的现象。重新编译、清除缓存都无法解决这个问题。
+解决过程
+一般情况下，前端无法渲染是由于 JavaScript 报错产生的，所以最好是看看控制台">
+<meta property="og:updated_time" content="2016-07-14T02:28:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ES6 学习笔记-迭代器和 for-of 循环">
-<meta name="twitter:description" content="ES5 的 for-in 循环遍历数组的缺点123for (var index in myArray) &amp;#123; // 千万别这样做  console.log(myArray[index]);&amp;#125;
-
-给 index 赋值的不是数字而是字符串 “0” “1” 等，有可能在无意间进行了 “2” + 1 = “21” 这样的计算
-for-in 循环体会遍历自定义属性
-在某些情况下，数组顺序会">
+<meta name="twitter:title" content="记一次 react 页面白屏的排查过程">
+<meta name="twitter:description" content="背景近日，在 微信web开发者工具 开发完成页面后，在个人手机上测试通过并移交产品经理测试，发现其手机打开页面后白屏，手机型号同样是 iPhone6，拿了其他小伙伴的安卓手机发现也打不开，无论是在微信浏览器还是在 Safari 或者 安卓原生浏览器均是这样的现象。重新编译、清除缓存都无法解决这个问题。
+解决过程
+一般情况下，前端无法渲染是由于 JavaScript 报错产生的，所以最好是看看控制台">
 
 
 
@@ -84,7 +78,7 @@ for-in 循环体会遍历自定义属性
   };
 </script>
 
-  <title> ES6 学习笔记-迭代器和 for-of 循环 | Splendour's blog </title>
+  <title> 记一次 react 页面白屏的排查过程 | Splendour's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -204,7 +198,7 @@ for-in 循环体会遍历自定义属性
             
             
               
-                ES6 学习笔记-迭代器和 for-of 循环
+                记一次 react 页面白屏的排查过程
               
             
           </h1>
@@ -213,8 +207,8 @@ for-in 循环体会遍历自定义属性
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-11-17T21:08:39+08:00" content="2015-11-17">
-              2015-11-17
+            <time itemprop="dateCreated" datetime="2016-07-14T07:45:01+08:00" content="2016-07-14">
+              2016-07-14
             </time>
           </span>
 
@@ -223,8 +217,8 @@ for-in 循环体会遍历自定义属性
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
+                  <a href="/categories/react-移动web-前端/" itemprop="url" rel="index">
+                    <span itemprop="name">react 移动web 前端</span>
                   </a>
                 </span>
 
@@ -252,44 +246,37 @@ for-in 循环体会遍历自定义属性
       
 
       
-        <span itemprop="articleBody"><h2 id="ES5__u7684_for-in__u5FAA_u73AF_u904D_u5386_u6570_u7EC4_u7684_u7F3A_u70B9"><a href="#ES5__u7684_for-in__u5FAA_u73AF_u904D_u5386_u6570_u7EC4_u7684_u7F3A_u70B9" class="headerlink" title="ES5 的 for-in 循环遍历数组的缺点"></a>ES5 的 for-in 循环遍历数组的缺点</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> index <span class="keyword">in</span> myArray) &#123; <span class="comment">// 千万别这样做</span></span><br><span class="line">  <span class="built_in">console</span>.log(myArray[index]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>给 index 赋值的不是数字而是字符串 “0” “1” 等，有可能在无意间进行了 “2” + 1 = “21” 这样的计算</li>
-<li>for-in 循环体会遍历自定义属性</li>
-<li>在某些情况下，数组顺序会被<code>打乱</code>！</li>
-<li>for-in 是为普通对象设计的，不适用于数组的遍历</li>
-</ul>
-<h2 id="ES6__u7684_for-of__u5FAA_u73AF"><a href="#ES6__u7684_for-of__u5FAA_u73AF" class="headerlink" title="ES6 的 for-of 循环"></a>ES6 的 for-of 循环</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> value <span class="keyword">of</span> myArray) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>这是最简洁的遍历数组的方法</li>
-<li>避开了 for-in 循环的所有缺陷</li>
-<li>可以正确响应 break、continue 和 return 语句</li>
-<li><p>可以遍历其他的集合</p>
-<ul>
-<li>类数组对象，例如 DOM NodeList 对象</li>
-<li>字符串遍历，将字符串视为一系列的 Unicode 字符来遍历</li>
-<li><p>支持 Map 和 Set 对象遍历</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Map 对象的遍历</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> word <span class="keyword">of</span> uniqueWords) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(word);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Set 对象的遍历</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> [key, value] <span class="keyword">of</span> phoneBookMap) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key + <span class="string">"'s phone number is: "</span> + value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>不支持普通对象，但也可以用以下方法来遍历普通对象</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">of</span> <span class="built_in">Object</span>.keys(someObject)) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key + <span class="string">": "</span> + someObject[key]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+        <span itemprop="articleBody"><h3 id="u80CC_u666F"><a href="#u80CC_u666F" class="headerlink" title="背景"></a>背景</h3><p>近日，在 <code>微信web开发者工具</code> 开发完成页面后，在个人手机上测试通过并移交产品经理测试，发现其手机打开页面后白屏，手机型号同样是 iPhone6，拿了其他小伙伴的安卓手机发现也打不开，无论是在微信浏览器还是在 Safari 或者 安卓原生浏览器均是这样的现象。重新编译、清除缓存都无法解决这个问题。</p>
+<h3 id="u89E3_u51B3_u8FC7_u7A0B"><a href="#u89E3_u51B3_u8FC7_u7A0B" class="headerlink" title="解决过程"></a>解决过程</h3><ul>
+<li>一般情况下，前端无法渲染是由于 JavaScript 报错产生的，所以最好是看看控制台打印。</li>
+<li>上网搜索资料，发现微信团队做了一个让我兴奋的东西：vConsole<ul>
+<li>GitHub 地址：<a href="https://github.com/WechatFE/vConsole" target="_blank" rel="external">https://github.com/WechatFE/vConsole</a></li>
+<li>该工具使用很简单，只需要引入一个 JavaScript 文件，即可在页面右下角生成一个按钮，点击可以查看控制台，以及手机系统、手机浏览器的一些信息，真是个神器！</li>
 </ul>
 </li>
+<li><p>引入了 vConsole，查看控制台，果然有一个错误抛出</p>
+<blockquote>
+<p>reference error can’t find variable symbol</p>
+</blockquote>
+<p>从字面理解，是指浏览器无法识别 symbol 这个变量。</p>
+</li>
+<li>继续谷歌，发现 GitHub 上有一些 issue 也是报了类似的问题，一篇一篇地读下来，找到了一个关键词，叫 <code>babel-polyifll</code></li>
+<li><p>搜索这个关键词，找到了阮一峰的这篇博文 <a href="http://www.ruanyifeng.com/blog/2016/01/babel.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2016/01/babel.html</a></p>
+<blockquote>
+<p>Babel默认只转换新的JavaScript句法（syntax），而不转换新的API，比如Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise等全局对象，以及一些定义在全局对象上的方法（比如<code>Object.assign</code>）都不会转码。<br>举例来说，ES6在<code>Array</code>对象上新增了<code>Array.from</code>方法。Babel就不会转码这个方法。如果想让这个方法运行，必须使用<code>babel-polyfill</code>，为当前环境提供一个垫片。</p>
+</blockquote>
+</li>
+<li><p>这下一切都清楚了，浏览器不支持一些新的对象，所以需要引入别的模块才能识别，具体做法很简单：<br>安装</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="operator"><span class="keyword">install</span> <span class="comment">--save babel-polyfill</span></span></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<h2 id="u8FED_u4EE3_u5668_u5BF9_u8C61"><a href="#u8FED_u4EE3_u5668_u5BF9_u8C61" class="headerlink" title="迭代器对象"></a>迭代器对象</h2><ul>
-<li>for-of 循环首先调用集合的<code>[Symbol.iterator]()</code>方法，紧接着返回一个新的迭代器对象。</li>
-<li>迭代器对象可以是任意具有<code>.next()</code>方法的对象；for-of 循环将重复调用这个方法，每次循环调用一次。</li>
-<li><p>一个最简单的迭代器如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> zeroesForeverIterator = &#123;</span><br><span class="line">  [<span class="built_in">Symbol</span>.iterator]: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  next: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;done: <span class="literal">false</span>, value: <span class="number">0</span>&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>每一次调用<code>.next()</code>方法，它都返回相同的结果，返回给 for-of 循环的结果就告诉它循环是否结束，若未结束则下一个值是多少</p>
-</li>
-<li>迭代器对象也可以实现可选的<code>.return()</code>和<code>.throw(exc)</code>方法<ul>
-<li>如果 for-of 循环过早退出会调用<code>.return()</code>方法，异常、break 语句或 return 语句均可触发过早退出。</li>
-<li>如果迭代器需要执行一些清洁或释放资源的操作，可以在<code>.return()</code>方法中实现。</li>
-</ul>
-</li>
+<p>在脚本中，引入该模块<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'babel-polyfill'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>编译、测试、问题解决！</p>
+<h3 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>移动 web 开发的兼容性问题很多，遇到了要多积累经验。</li>
+<li>解决问题的思路可以多样化，比如之前一直没想到要在移动端查看控制台，这次解决问题的经历让我学会了一个神器的使用。</li>
+<li>谷歌错误信息后，要多打开几个页面，读一读别人的问题以及解决方法，看看能否从中寻找出一些端倪。</li>
+<li>学会从一大堆页面和信息中寻找出关键词很重要，一旦找对了，问题很快引刃而解。</li>
 </ul>
 </span>
       
@@ -302,17 +289,13 @@ for-in 循环体会遍历自定义属性
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/24/ES2015-代码规范/" rel="next" title="ES2015 代码规范">
-                <i class="fa fa-chevron-left"></i> ES2015 代码规范
+              <a href="/2016/03/20/JavaScript-函数式编程/" rel="next" title="JavaScript 函数式编程">
+                <i class="fa fa-chevron-left"></i> JavaScript 函数式编程
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/11/18/ES6学习笔记-生成器-Generators/" rel="prev" title="ES6学习笔记-生成器-Generators">
-                ES6学习笔记-生成器-Generators <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -436,7 +419,7 @@ for-in 循环体会遍历自定义属性
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ES5__u7684_for-in__u5FAA_u73AF_u904D_u5386_u6570_u7EC4_u7684_u7F3A_u70B9"><span class="nav-number">1.</span> <span class="nav-text">ES5 的 for-in 循环遍历数组的缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6__u7684_for-of__u5FAA_u73AF"><span class="nav-number">2.</span> <span class="nav-text">ES6 的 for-of 循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u8FED_u4EE3_u5668_u5BF9_u8C61"><span class="nav-number">3.</span> <span class="nav-text">迭代器对象</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u80CC_u666F"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u89E3_u51B3_u8FC7_u7A0B"><span class="nav-number">2.</span> <span class="nav-text">解决过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u603B_u7ED3"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
