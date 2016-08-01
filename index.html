@@ -209,6 +209,122 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/01/React-优化实践/" itemprop="url">
+                  React 优化实践
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-08-01T20:07:54+08:00" content="2016-08-01">
+              2016-08-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JavaScript/React/" itemprop="url" rel="index">
+                    <span itemprop="name">React</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h2 id="u80CC_u666F"><a href="#u80CC_u666F" class="headerlink" title="背景"></a>背景</h2><p>最近在用 React ＋ Redux ＋ WEUI 做一个企业号上的企业系统移动端版本，发现在性能较差的手机上还是有蛮大的卡顿，故开始查找资料想办法进行优化。</p>
+<h2 id="why-did-you-update"><a href="#why-did-you-update" class="headerlink" title="why-did-you-update"></a>why-did-you-update</h2><p>无意中看到某大神 Star 了这个项目，一开始还没有特别注意，后来在某博文上又看到该工具的推荐。该工具可以在你的组件每次 <code>reRender</code> 的时候，对比该组件的 <code>props</code>，如果没有变化，会告诉你这是不必要的 <code>reRender</code>。<a href="https://github.com/garbles/why-did-you-update" target="_blank" rel="external">点此进入项目</a><br>工具的使用也特别简单，只需要在前端主文件中加入一句话，装饰一下 React。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">const</span> &#123;whyDidYouUpdate&#125; = <span class="built_in">require</span>(<span class="string">'why-did-you-update'</span>);</span><br><span class="line">whyDidYouUpdate(React);</span><br></pre></td></tr></table></figure>
+<p>重新打开页面，发现加载了很久，这是由于 <code>why-did-you-update</code> 在浏览器上打印了很多的信息。不看不知道一看吓一跳，原来在我渲染页面的时候做了这么多无谓的 <code>reRender</code> 操作，真是浪费性能！</p>
+<h2 id="ShouldComponentUpdate__u4F18_u5316"><a href="#ShouldComponentUpdate__u4F18_u5316" class="headerlink" title="ShouldComponentUpdate 优化"></a>ShouldComponentUpdate 优化</h2><p>那么多的 <code>reRender</code>，要怎么避免呢？<br>对于无状态组件来说，只需要重新实现该组件的 <code>ShouldComponentUpdate</code> 方法即可。<br><code>ShouldComponentUpdate</code> 默认返回的是 <code>true</code>，即默认当有新的 <code>props</code> 传入时，就执行 <code>reRender</code> 操作。我们要做的就是对比前一个 <code>props</code> 和新传入的 <code>props</code>，来决定是否返回 <code>true</code> 让组件更新。这里分几种情况：</p>
+<p>－ 简单的字符串或者数字，直接使用 <code>JavaScript</code> 的 <code>＝＝＝</code> 对比即可<br>－ 对象或者数组，推荐使用 <code>lodash</code> 的 <code>isEqual</code> 函数，可以解决大多数情况下的比较<br>－ 复杂的深层的对象或数组，采用 <code>Immutable.js</code> 去进行比较<br>－ 特殊的，比如某些组件，如果组件的某个 <code>key</code> 不变（例如 id）就不进行更新，那我可以直接对比<code>props</code> 中我想要对比的这个属性即可</p>
+<p>以上几种情况的前提，是在 <code>Redux</code> 中传递 <code>state</code> 的时候，对于对象或数组，使用 <code>Object.assign</code> 或者 <code>Immutable.js</code> 来传入一个新的引用，避免因为值不同但是引用地址相同，导致的错误比对。</p>
+<h2 id="key"><a href="#key" class="headerlink" title="key"></a>key</h2><p>如果你在 <code>React</code> 中使用了循环去渲染一系列组件（例如列表），<code>React</code> 会提醒你对每一个组件设置一个唯一的 <code>key</code>。<code>React</code> 会根据这个 <code>key</code> 来判断组件的唯一性，如果两个 <code>key</code> 相同，则会只渲染一个组件。<br>其实这个 <code>key</code> 还有另外一个用途，就是判断组件是否需要 <code>reRender</code>。<code>React</code> 会根据这个 <code>key</code> 值来生成该组件的唯一标识，如果下次渲染的时候 <code>key</code> 值不变（即使位置变了），则会复用该组件，只有产生了新的 <code>key</code> 值，才会渲染新的组件。所以，我们也可以利用这个 <code>key</code> 值来避免组件的不必要删除和创建，复用组件以达到性能优化的目的。</p>
+<h2 id="u7ED3_u8BED"><a href="#u7ED3_u8BED" class="headerlink" title="结语"></a>结语</h2><p>基本上进行了以上的优化，页面打开速度有了一定的提升，关键是能清楚地知道页面没有进行不必要的 <code>reRender</code>，在性能优化的路上前进了一步。</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/14/记一次-react-页面白屏的排查过程/" itemprop="url">
                   记一次 react 页面白屏的排查过程
                 </a>
@@ -1431,133 +1547,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/11/24/ES6学习笔记-模板字符串/" itemprop="url">
-                  ES6学习笔记-模板字符串
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-11-24T20:02:06+08:00" content="2015-11-24">
-              2015-11-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h2 id="u57FA_u7840_u77E5_u8BC6"><a href="#u57FA_u7840_u77E5_u8BC6" class="headerlink" title="基础知识"></a>基础知识</h2><ul>
-<li><p>使用反撇号字符 ` 替代单引号和双引号，在最简单的情况下是一致的。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">`Hello ES6`</span>);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>最常用法：字符串插值</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">authorize</span>(<span class="params">user, action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!user.hasPrivilege(action)) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(</span><br><span class="line">      <span class="string">`用户 <span class="subst">$&#123;user.name&#125;</span> 未被授权执行 <span class="subst">$&#123;action&#125;</span> 操作。`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>其中，${user.name}和${action}被称为模板占位符</p>
-<ul>
-<li><p>模板占位符中的代码可以是任意表达式，甚至可以嵌套另一个模板字符串</p>
-</li>
-<li><p>如果模板占位符不是字符串，则会按照常规转换为字符串。例如，如果 action 是一个对象，则会调用其 <code>.toString()</code> 方法</p>
-</li>
-<li><p>如果需要输入 `，\$，{ 等字符，则需要加上反斜杠转义</p>
-</li>
-<li><p>可以多行书写，所有空格、新行和缩进，都会原样输出在生成的字符串中</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#warning'</span>).html(<span class="string">`</span><br><span class="line">  &lt;h1&gt;小心！&gt;/h1&gt;</span><br><span class="line">  &lt;p&gt;未经授权打冰球可能受罚</span><br><span class="line">  将近<span class="subst">$&#123;maxPenalty&#125;</span>分钟。&lt;/p&gt;</span><br><span class="line">`</span>);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="u8FDB_u9636_u77E5_u8BC6"><a href="#u8FDB_u9636_u77E5_u8BC6" class="headerlink" title="进阶知识"></a>进阶知识</h2><ul>
-<li>不会自动转义特殊字符，需要手动防止 XSS 攻击</li>
-<li>无法很好地与国际化库配合</li>
-<li>标签模板：在模板字符串开始的反撇号前附加一个额外的标签即可。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> message =</span><br><span class="line">  SaferHTML<span class="string">`&lt;p&gt;<span class="subst">$&#123;user.name&#125;</span> 向你示好。&lt;/p&gt;`</span>;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>这里用到的标签是一个标识符SaferHTML；也可以使用属性值作为标签，例如：<code>SaferHTML.escape</code>；还可以是一个方法调用，例如：<code>SaferHTML.escape({unicodeControlCharacters: false})</code>。精确地说，任何ES6的成员表达式（MemberExpression）或调用表达式（CallExpression）都可作为标签使用。</p>
-<blockquote>
-<p>可以看出，无标签模板字符串简化了简单字符串拼接，标签模板则完全简化了函数调用！</p>
-</blockquote>
-<p>下面是 SaferHTML 的一个方案（该方案仍有很大缺陷，在此仅仅举例说明）<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> username = <span class="string">`splendour&lt;script&gt;alert('xss');&lt;/script&gt;`</span>;</span><br><span class="line"><span class="keyword">let</span> test = SaferHTML<span class="string">`<span class="subst">$&#123;username&#125;</span> 向你示好`</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SaferHTML</span>(<span class="params">templateData</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> s = templateData[<span class="number">0</span>];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">in</span> <span class="built_in">arguments</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">    <span class="keyword">let</span> arg = <span class="built_in">String</span>(<span class="built_in">arguments</span>[i]);</span><br><span class="line">    <span class="comment">// 转义占位符中的特殊字符。</span></span><br><span class="line">    s += arg.replace(<span class="regexp">/&amp;/g</span>, <span class="string">"&amp;"</span>)</span><br><span class="line">            .replace(<span class="regexp">/&lt;/g</span>, <span class="string">"&lt;"</span>)</span><br><span class="line">            .replace(<span class="regexp">/&gt;/g</span>, <span class="string">"&gt;"</span>);</span><br><span class="line">    <span class="comment">// 不转义模板中的特殊字符。</span></span><br><span class="line">    s += templateData[i];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>实现了该函数，就可以使用标签模板来简化代码了！</p>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1604,14 +1593,14 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">分类</span>
               
           </div>
