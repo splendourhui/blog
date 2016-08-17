@@ -209,6 +209,135 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/17/编写自己项目的-Redux-action-generator/" itemprop="url">
+                  编写自己项目的 Redux action generator
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-08-17T19:47:08+08:00" content="2016-08-17">
+              2016-08-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/react-redux-前端/" itemprop="url" rel="index">
+                    <span itemprop="name">react redux 前端</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h3 id="u80CC_u666F"><a href="#u80CC_u666F" class="headerlink" title="背景"></a>背景</h3><p>使用 <code>React</code> ＋ <code>Redux</code> 也有一段时间了，从第一次尝试使用之后就开始按一种方式写代码，思路很清晰，但就是有一个问题，感觉每写一个 action 都是在 <code>copy</code> ＋ <code>paste</code>，然后修改其中的部分内容，最近想优化代码所以尝试着编写一个 <code>generator</code> 来生成这些 <code>actions</code>，让代码更加优雅。</p>
+<h3 id="u539F_u6709_u7684_u5199_u6CD5"><a href="#u539F_u6709_u7684_u5199_u6CD5" class="headerlink" title="原有的写法"></a>原有的写法</h3><p>这是一个 action 的部分代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> USER_LIST_LOAD = <span class="string">'USER_LIST_LOAD'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> USER_LIST_SUCCESS = <span class="string">'USER_LIST_SUCCESS'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> USER_LIST_FAIL = <span class="string">'USER_LIST_FAIL'</span>;</span><br><span class="line"></span><br><span class="line">exports.loadUserList = (tenantId, sucCallback, errCallback) =&gt;</span><br><span class="line">  (dispatch, getState) =&gt;</span><br><span class="line">  dispatch(&#123;</span><br><span class="line">    [CALL_API]: &#123;</span><br><span class="line">      types: [</span><br><span class="line">        USER_LIST_LOAD,</span><br><span class="line">        USER_LIST_SUCCESS,</span><br><span class="line">        USER_LIST_FAIL</span><br><span class="line">      ],</span><br><span class="line">      endpoint: <span class="string">`apis/<span class="subst">$&#123;tenantId&#125;</span>/user`</span>,</span><br><span class="line">      schema: Schemas.NORMAL_RESP,</span><br><span class="line">      method: <span class="string">'GET'</span>,</span><br><span class="line">      errMsg: <span class="string">'获取数据失败，请刷新重试'</span>,</span><br><span class="line">      sucCallback,</span><br><span class="line">      errCallback</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> USER_LIST_SELECT = <span class="string">'USER_LIST_SELECT'</span>;</span><br><span class="line">exports.userListSelect = keys =&gt; (&#123;</span><br><span class="line">  type: USER_LIST_SELECT,</span><br><span class="line">  keys</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="u601D_u8DEF"><a href="#u601D_u8DEF" class="headerlink" title="思路"></a>思路</h3><ul>
+<li>每一个 <code>action</code> 无非就是 export 出在全局唯一的常量作为 action 的标识，并且提供可以调用的方法来 dispatch 这样的常量。这里的 action 分为两类，ajax 请求类和非 ajax 请求类，ajax 请求类会 export 3 个常量，分别代表 请求中，请求成功以及请求失败 3 个状态。</li>
+<li>传进来的参数，应该要统一成一个（ajax 请求的数据都放在第一个参数里，第二个和第三个固定为成功回调和失败回调）。</li>
+<li>为了保证 action 的唯一性，我们需要传入一个参数作为前缀，一般用页面名作为前缀（这里是 USER）。</li>
+<li>为了用配置的方式写 actions，考虑把 actions 用 json 数组的方式传进来，这样可以用到 map 函数来遍历并且生成每一个 action。<br>－ 最后要将所有的 action 组装成一个变量 export 出去，再对原有的 import 方法进行修改就可以了。</li>
+</ul>
+<h3 id="generator__u4EE3_u7801"><a href="#generator__u4EE3_u7801" class="headerlink" title="generator 代码"></a>generator 代码</h3><p>首先，根据是否 ajax 请求，生成对应的 action<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> actionList = (actionPrefix, actions) =&gt;</span><br><span class="line">  map(action =&gt;</span><br><span class="line">    action.isAjax ? (&#123;</span><br><span class="line">      [<span class="string">`<span class="subst">$&#123;actionPrefix&#125;</span>_<span class="subst">$&#123;action.name.toUpperCase()&#125;</span>_LOAD`</span>]:</span><br><span class="line">        <span class="string">`<span class="subst">$&#123;actionPrefix&#125;</span>_<span class="subst">$&#123;action.name.toUpperCase()&#125;</span>_LOAD`</span>,</span><br><span class="line">      [<span class="string">`<span class="subst">$&#123;actionPrefix&#125;</span>_<span class="subst">$&#123;action.name.toUpperCase()&#125;</span>_SUCCESS`</span>]:</span><br><span class="line">        <span class="string">`<span class="subst">$&#123;actionPrefix&#125;</span>_<span class="subst">$&#123;action.name.toUpperCase()&#125;</span>_SUCCESS`</span>,</span><br><span class="line">      [<span class="string">`<span class="subst">$&#123;actionPrefix&#125;</span>_<span class="subst">$&#123;action.name.toUpperCase()&#125;</span>_FAIL`</span>]:</span><br><span class="line">        <span class="string">`<span class="subst">$&#123;actionPrefix&#125;</span>_<span class="subst">$&#123;action.name.toUpperCase()&#125;</span>_FAIL`</span>,</span><br><span class="line">      [action.name]: (data, sucCallback, errCallback) =&gt;</span><br><span class="line">        (dispatch, getState) =&gt;</span><br><span class="line">          dispatch(&#123;</span><br><span class="line">            [CALL_API]: &#123;</span><br><span class="line">              types: [</span><br><span class="line">                <span class="string">`<span class="subst">$&#123;actionPrefix&#125;</span>_<span class="subst">$&#123;action.name.toUpperCase()&#125;</span>_LOAD`</span>,</span><br><span class="line">                <span class="string">`<span class="subst">$&#123;actionPrefix&#125;</span>_<span class="subst">$&#123;action.name.toUpperCase()&#125;</span>_SUCCESS`</span>,</span><br><span class="line">                <span class="string">`<span class="subst">$&#123;actionPrefix&#125;</span>_<span class="subst">$&#123;action.name.toUpperCase()&#125;</span>_FAIL`</span></span><br><span class="line">              ],</span><br><span class="line">              endpoint: action.path,</span><br><span class="line">              schema: action.schema || Schemas.NORMAL_RESP,</span><br><span class="line">              method: action.method,</span><br><span class="line">              errMsg: action.errMsg || <span class="string">'获取数据失败，请刷新重试'</span>,</span><br><span class="line">              data,</span><br><span class="line">              sucCallback,</span><br><span class="line">              errCallback</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;)</span><br><span class="line">    &#125;) : (&#123;</span><br><span class="line">      [<span class="string">`<span class="subst">$&#123;actionPrefix&#125;</span>_<span class="subst">$&#123;action.name&#125;</span>`</span>]:</span><br><span class="line">        <span class="string">`<span class="subst">$&#123;actionPrefix&#125;</span>_<span class="subst">$&#123;action.name&#125;</span>`</span>,</span><br><span class="line">      [action.name]: data =&gt; (&#123;</span><br><span class="line">        type: <span class="string">`<span class="subst">$&#123;actionPrefix&#125;</span>_<span class="subst">$&#123;action.name&#125;</span>`</span>,</span><br><span class="line">        data</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  )(actions);</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>传进来的参数有两个，一个 <code>actionPrefix</code>，一个包含每个 action 信息的数组</li>
+<li>对每个 action 来说，<code>isAjax</code> 用来区分是否 ajax 请求; <code>name</code> 是 action 的名字，需要是唯一的; <code>path</code> 和 <code>method</code> 分别代表 ajax 请求的地址和方法（get、post 等）</li>
+<li>这里的 <code>map</code> 函数来自于 <code>ramda</code> 库</li>
+</ul>
+<p>然后，将上面生成的 action 数组合并起来并 export 出去<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (actionPrefix, actions) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> result = &#123;&#125;;</span><br><span class="line">  forEach(action =&gt;</span><br><span class="line">    <span class="built_in">Object</span>.assign(result, action)</span><br><span class="line">  )(actionList(actionPrefix, actions));</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>这里定义了该文件 export 一个函数，接收两个参数</li>
+<li>这个函数能够先通过传进来的 actions 生成一系列方法和变量，然后组装起来</li>
+<li>这里的 <code>forEach</code> 函数来自于 <code>ramda</code> 库</li>
+</ul>
+<p>最后，真正的 action 文件只需这样 <code>配置</code> 就能实现原有代码的功能<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> generator <span class="keyword">from</span> <span class="string">'./generator'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> generator(<span class="string">'USER'</span>, [</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">'list'</span>,</span><br><span class="line">    isAjax: <span class="literal">true</span>,</span><br><span class="line">    path: <span class="string">'apis/user'</span>,</span><br><span class="line">    method: <span class="string">'GET'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">'listSelect'</span></span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure></p>
+<h3 id="u65B0_u7684_u95EE_u9898"><a href="#u65B0_u7684_u95EE_u9898" class="headerlink" title="新的问题"></a>新的问题</h3><p>如果 <code>action</code> 的 <code>path</code> 里需要通过部分参数来组装时，就需要再优化 <code>generator</code> 了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getPath = (path, data) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> replaceStrings = path.match(<span class="regexp">/\$\&#123;\w*\&#125;/g</span>);</span><br><span class="line">  <span class="keyword">if</span> (!replaceStrings) <span class="keyword">return</span> path;</span><br><span class="line">  <span class="keyword">let</span> result = path;</span><br><span class="line">  forEach(replaceString =&gt;</span><br><span class="line">    result = result.replace(replaceString,</span><br><span class="line">      data[replaceString.substring(<span class="number">2</span>, replaceString.length - <span class="number">1</span>)])</span><br><span class="line">  )(replaceStrings);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>先定义这样一个方法，然后再将原有函数的 <code>endpoint</code> 修改一下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">endpoint: getPath(action.path, data),</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>这个函数是利用正则，将 <code>path</code> 中符合 <code>${param}</code> 格式的参数用 <code>data</code> 里面对应的 <code>key</code> 的值替换掉，这样就实现了原有的 <code>apis/${tenantId}/user</code> ES6 模板字符串的写法</li>
+<li>要保证调用 <code>action</code> 时候的第一个参数，即 <code>data</code>，含有这些需要转换的参数</li>
+</ul>
+<p>最终实现这样的 action，只需要这样配置<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  name: <span class="string">'list'</span>,</span><br><span class="line">  isAjax: <span class="literal">true</span>,</span><br><span class="line">  path: <span class="string">'apis/$&#123;tenantId&#125;/user'</span>,</span><br><span class="line">  method: <span class="string">'GET'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>调用时候的示例<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> userActions <span class="keyword">from</span> <span class="string">'../../actions/user'</span>;</span><br><span class="line">userActions.list(&#123;</span><br><span class="line">  tenantId: <span class="string">'11223344'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>经过了这样的改造，代码真的优雅了不少，真正实现了用配置的方式来编写业务，很有成就感。对于这样的项目来讲，只要定好规范，新人很快上手写 <code>action</code> 不是梦。</li>
+<li>平时写的代码多了，就要多注意这些一直在 <code>copy</code> 和 <code>paste</code> 的代码，看看是否能够抽取出公共的部分来让代码更加优雅，这才是编程的艺术。</li>
+<li>写一个 <code>generator</code> 没那么容易，需要考虑各种情况，还要结合实际权衡，让其能更加通用，具备较强可复用性。另外，反复地斟酌和优化代码是必不可少的过程。</li>
+</ul>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/01/React-优化实践/" itemprop="url">
                   React 优化实践
                 </a>
@@ -1426,127 +1555,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/12/06/ES6学习笔记-不定参数和默认参数/" itemprop="url">
-                  ES6学习笔记-不定参数和默认参数
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-12-06T12:51:02+08:00" content="2015-12-06">
-              2015-12-06
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h2 id="u4E0D_u5B9A_u53C2_u6570"><a href="#u4E0D_u5B9A_u53C2_u6570" class="headerlink" title="不定参数"></a>不定参数</h2><h3 id="u53EF_u53D8_u53C2_u6570"><a href="#u53EF_u53D8_u53C2_u6570" class="headerlink" title="可变参数"></a>可变参数</h3><p>构造 API 时，我们通常需要可变参数。<code>String.prototype.concat</code>方法可以接受任意数量的字符串参数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> hello = <span class="string">'Hello, '</span>;</span><br><span class="line"><span class="built_in">console</span>.log(hello.concat(<span class="string">'Kevin'</span>, <span class="string">' have a nice day.'</span>));</span><br><span class="line"><span class="comment">/* Hello, Kevin have a nice day. */</span></span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>实现一个函数 containAll，用来检查一个字符串中是否包含若干个字串：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">containsAll(<span class="string">"banana"</span>, <span class="string">"b"</span>, <span class="string">"nan"</span>) = <span class="literal">true</span>;</span><br><span class="line">containsAll(<span class="string">"banana"</span>, <span class="string">"c"</span>, <span class="string">"nan"</span>) = <span class="literal">false</span>;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h3 id="u4F20_u7EDF_u65B9_u6CD5"><a href="#u4F20_u7EDF_u65B9_u6CD5" class="headerlink" title="传统方法"></a>传统方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">containsAll</span>(<span class="params">string</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="built_in">arguments</span>.length; i ++) &#123;</span><br><span class="line">    <span class="keyword">var</span> item = <span class="built_in">arguments</span>[i];</span><br><span class="line">    <span class="keyword">if</span> (string.indexOf(item) === -<span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>argument 对象是一个类数组对象，其中包含了传递给函数的所有参数。</li>
-<li>这个实现的可读性较差，而且迭代必须从1开始，容易掉坑，当添加一个参数时，又得同步更新循环体中的迭代初始值。</li>
-</ul>
-<h3 id="ES6_u5B9E_u73B0"><a href="#ES6_u5B9E_u73B0" class="headerlink" title="ES6实现"></a>ES6实现</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">containsAll</span>(<span class="params">string, ...items</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> items) &#123;</span><br><span class="line">    <span class="keyword">if</span> (string.indexOf(item) === -<span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>...items</code> 是不定参数的语法，传递给函数的第一个参数赋值给<code>string</code>，传递给函数的其他参数都被放到一个数组中，赋值给<code>items</code></li>
-<li>只有最后一个参数才可以被标记为不定参数，不定参数前的所有参数都正常填充，“额外的”参数才会放到数组中。</li>
-<li>若没有额外的参数，不定参数就是一个空数组</li>
-</ul>
-<h2 id="u9ED8_u8BA4_u53C2_u6570"><a href="#u9ED8_u8BA4_u53C2_u6570" class="headerlink" title="默认参数"></a>默认参数</h2><h3 id="u4F20_u7EDF_u65B9_u6CD5-1"><a href="#u4F20_u7EDF_u65B9_u6CD5-1" class="headerlink" title="传统方法"></a>传统方法</h3><p>在 Javascript 中，函数调用时，没有被传递到的参数默认为 undefined，需要人工赋予默认值。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params">person1, person2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = person1 || <span class="string">'Li Lei'</span>;</span><br><span class="line">  <span class="keyword">var</span> b = person2 || <span class="string">'Han Meimei'</span>;</span><br><span class="line">  <span class="keyword">return</span> a + <span class="string">' loves '</span> + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="ES6_u5B9E_u73B0-1"><a href="#ES6_u5B9E_u73B0-1" class="headerlink" title="ES6实现"></a>ES6实现</h3><p>在 ES6 中，提供了一种新的语法，类似于其他语言，可以指定参数的默认值。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params">person1 = 'Li Lei', person2 = 'Han Meimei'</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;person1&#125;</span> loves <span class="subst">$&#123;person2&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>默认值表达式在函数调用时自左向右求值，也即可以使用参数之前已经填充好的其他参数值。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params">person1 = 'Li Lei',</span><br><span class="line">  person2 = (person1 == 'Perter'</span>) ? '<span class="title">Lily</span>' : '<span class="title">Han</span> <span class="title">Meimei</span>') </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;person1&#125;</span> loves <span class="subst">$&#123;person2&#125;</span>`</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>传递 <code>undefined</code> 等同于不传值</li>
-<li>没有默认值的参数隐式默认为 `undefined</li>
-</ul>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1593,14 +1601,14 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">分类</span>
               
           </div>
