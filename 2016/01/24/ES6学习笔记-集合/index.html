@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Splendour's blog" />
+  <meta name="keywords" content="JavaScript,ES6," />
 
 
 
@@ -51,37 +51,17 @@
 
 
 
-<meta name="description" content="Set
-一个 Set 是一群值的集合，它是可变的，能够增删元素。
-
-Set 和 Array 的区别
-一个 Set 不会包含相同元素，试图再次加入一个已有元素不会产生任何效果
-12345let set = new Set(&apos;1234&apos;);console.log(set.size);set.add(&apos;1&apos;);console.log(set.size);
-
-Set 的数据存储结构专门为 包含性检测 作了">
+<meta name="description" content="Set 一个 Set 是一群值的集合，它是可变的，能够增删元素。  Set 和 Array 的区别 一个 Set 不会包含相同元素，试图再次加入一个已有元素不会产生任何效果 12345let set = new Set(&apos;1234&apos;);console.log(set.size);set.add(&apos;1&apos;);console.log(set.size);  Set 的数据存储结构专门为 包含性检测 作了">
+<meta name="keywords" content="JavaScript,ES6">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6学习笔记-集合">
 <meta property="og:url" content="http://splendourhui.com/2016/01/24/ES6学习笔记-集合/index.html">
-<meta property="og:site_name" content="Splendour's blog">
-<meta property="og:description" content="Set
-一个 Set 是一群值的集合，它是可变的，能够增删元素。
-
-Set 和 Array 的区别
-一个 Set 不会包含相同元素，试图再次加入一个已有元素不会产生任何效果
-12345let set = new Set(&apos;1234&apos;);console.log(set.size);set.add(&apos;1&apos;);console.log(set.size);
-
-Set 的数据存储结构专门为 包含性检测 作了">
-<meta property="og:updated_time" content="2016-01-24T14:56:59.000Z">
+<meta property="og:site_name" content="Splendour&#39;s blog">
+<meta property="og:description" content="Set 一个 Set 是一群值的集合，它是可变的，能够增删元素。  Set 和 Array 的区别 一个 Set 不会包含相同元素，试图再次加入一个已有元素不会产生任何效果 12345let set = new Set(&apos;1234&apos;);console.log(set.size);set.add(&apos;1&apos;);console.log(set.size);  Set 的数据存储结构专门为 包含性检测 作了">
+<meta property="og:updated_time" content="2017-04-19T06:50:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6学习笔记-集合">
-<meta name="twitter:description" content="Set
-一个 Set 是一群值的集合，它是可变的，能够增删元素。
-
-Set 和 Array 的区别
-一个 Set 不会包含相同元素，试图再次加入一个已有元素不会产生任何效果
-12345let set = new Set(&apos;1234&apos;);console.log(set.size);set.add(&apos;1&apos;);console.log(set.size);
-
-Set 的数据存储结构专门为 包含性检测 作了">
+<meta name="twitter:description" content="Set 一个 Set 是一群值的集合，它是可变的，能够增删元素。  Set 和 Array 的区别 一个 Set 不会包含相同元素，试图再次加入一个已有元素不会产生任何效果 12345let set = new Set(&apos;1234&apos;);console.log(set.size);set.add(&apos;1&apos;);console.log(set.size);  Set 的数据存储结构专门为 包含性检测 作了">
 
 
 
@@ -96,7 +76,7 @@ Set 的数据存储结构专门为 包含性检测 作了">
   <title> ES6学习笔记-集合 | Splendour's blog </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   <!--[if lte IE 8]>
   <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
@@ -161,7 +141,7 @@ Set 的数据存储结构专门为 包含性检测 作了">
             
               <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
             
-            首页
+            Startseite
           </a>
         </li>
       
@@ -171,7 +151,7 @@ Set 的数据存储结构专门为 包含性检测 作了">
             
               <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
             
-            归档
+            Archiv
           </a>
         </li>
       
@@ -221,7 +201,7 @@ Set 的数据存储结构专门为 包含性检测 作了">
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            Veröffentlicht am
             <time itemprop="dateCreated" datetime="2016-01-24T16:06:52+08:00" content="2016-01-24">
               2016-01-24
             </time>
@@ -249,18 +229,18 @@ Set 的数据存储结构专门为 包含性检测 作了">
         <span itemprop="articleBody"><h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><blockquote>
 <p>一个 Set 是一群值的集合，它是可变的，能够增删元素。</p>
 </blockquote>
-<h3 id="Set__u548C_Array__u7684_u533A_u522B"><a href="#Set__u548C_Array__u7684_u533A_u522B" class="headerlink" title="Set 和 Array 的区别"></a>Set 和 Array 的区别</h3><ul>
+<h3 id="Set-和-Array-的区别"><a href="#Set-和-Array-的区别" class="headerlink" title="Set 和 Array 的区别"></a>Set 和 Array 的区别</h3><ul>
 <li><p>一个 Set 不会包含相同元素，试图再次加入一个已有元素不会产生任何效果</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>(<span class="string">'1234'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(set.size);</span><br><span class="line"></span><br><span class="line">set.add(<span class="string">'1'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(set.size);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>(<span class="string">'1234'</span>);</div><div class="line"><span class="built_in">console</span>.log(set.size);</div><div class="line"></div><div class="line">set.add(<span class="string">'1'</span>);</div><div class="line"><span class="built_in">console</span>.log(set.size);</div></pre></td></tr></table></figure>
 </li>
 <li><p>Set 的数据存储结构专门为 <code>包含性检测</code> 作了速度优化</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arrayOfWords.indexOf(<span class="string">'word'</span>) !== -<span class="number">1</span>  <span class="comment">// 慢</span></span><br><span class="line">setOfWords.has(<span class="string">'word'</span>)               <span class="comment">// 快</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">arrayOfWords.indexOf(<span class="string">'word'</span>) !== <span class="number">-1</span>  <span class="comment">// 慢</span></div><div class="line">setOfWords.has(<span class="string">'word'</span>)               <span class="comment">// 快</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>Set 不能提供索引</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arrayOfWords[<span class="number">15000</span>] <span class="comment">// 'word'</span></span><br><span class="line">setOfWords[<span class="number">15000</span>]   <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">arrayOfWords[<span class="number">15000</span>] <span class="comment">// 'word'</span></div><div class="line">setOfWords[<span class="number">15000</span>]   <span class="comment">// undefined</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="Set__u7684_u64CD_u4F5C"><a href="#Set__u7684_u64CD_u4F5C" class="headerlink" title="Set 的操作"></a>Set 的操作</h3><ul>
+<h3 id="Set-的操作"><a href="#Set-的操作" class="headerlink" title="Set 的操作"></a>Set 的操作</h3><ul>
 <li>new Set：创建一个新的、空的 Set</li>
 <li>new Set(iterable)：从任何 <code>可遍历数据</code> 中提取元素，构造一个新的集合<br>你可以用它把数组转化为集合，在一行代码内去重；也可以传递一个生成器，函数会逐个遍历它，并把生成的值收录为一个集合；也可以用来复制一个已有的集合</li>
 <li>set.size 获取集合中元素个数</li>
@@ -270,13 +250,13 @@ Set 的数据存储结构专门为 包含性检测 作了">
 <li>set<a href="">Symbol.iterator</a>：返回一个新的遍历整个集合的迭代器。一般这个方法不会被直接调用，因为实际上就是它使集合能够被遍历，也就是说，我们可以直接写<code>for (v of set) {...}</code> 等等</li>
 <li>set.forEach(f)：它就像是 <code>for (let value of set) { f(value, value, set); }</code> 的简写，类似于数组的 <code>.forEach()</code> 方法</li>
 <li>set.clear()：清空集合</li>
-<li>set.keys()、set.values()和set.entries()：返回各种迭代器<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将迭代器转化为数组输出</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.from(set.keys()));    <span class="comment">// [ '1', '2', '3', '4' ]</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.from(set.values()));  <span class="comment">// [ '1', '2', '3', '4' ]</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.from(set.entries())); <span class="comment">// [ [ '1', '1' ], [ '2', '2' ], [ '3', '3' ], [ '4', '4' ] ]</span></span><br></pre></td></tr></table></figure>
+<li>set.keys()、set.values()和set.entries()：返回各种迭代器<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 将迭代器转化为数组输出</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.from(set.keys()));    <span class="comment">// [ '1', '2', '3', '4' ]</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.from(set.values()));  <span class="comment">// [ '1', '2', '3', '4' ]</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.from(set.entries())); <span class="comment">// [ [ '1', '1' ], [ '2', '2' ], [ '3', '3' ], [ '4', '4' ] ]</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><blockquote>
 <p>一个 Map 对象由若干键值对组成，类似 Java 的 Map 对象</p>
 </blockquote>
-<h3 id="Map__u7684_u64CD_u4F5C"><a href="#Map__u7684_u64CD_u4F5C" class="headerlink" title="Map 的操作"></a>Map 的操作</h3><ul>
+<h3 id="Map-的操作"><a href="#Map-的操作" class="headerlink" title="Map 的操作"></a>Map 的操作</h3><ul>
 <li>new Map：返回一个新的、空的 Map</li>
 <li>new Map(pairs)：根据所含元素形如 <code>[key, value]</code> 的数组 pairs 来创建一个新的 Map。这里提供的 pairs 可以是一个已有的 Map  对象，可以是一个由二元数组组成的数组，也可以是逐个生成二元数组的一个生成器，等等。</li>
 <li>map.size：返回 Map 中键值对的个数</li>
@@ -291,7 +271,7 @@ Set 的数据存储结构专门为 包含性检测 作了">
 <li>map.values()：返回遍历所有值的迭代器</li>
 <li>map.entries()：返回遍历所有项的迭代器，就像 <code>map[Symbol.iterator]()</code></li>
 </ul>
-<h3 id="WeakMap__u548C_WeakSet"><a href="#WeakMap__u548C_WeakSet" class="headerlink" title="WeakMap 和 WeakSet"></a>WeakMap 和 WeakSet</h3><p>WeakMap 和 WeakSet 被设计来完成与 Map、Set 几乎一样的行为，除了以下一些限制：</p>
+<h3 id="WeakMap-和-WeakSet"><a href="#WeakMap-和-WeakSet" class="headerlink" title="WeakMap 和 WeakSet"></a>WeakMap 和 WeakSet</h3><p>WeakMap 和 WeakSet 被设计来完成与 Map、Set 几乎一样的行为，除了以下一些限制：</p>
 <ul>
 <li>WeakMap 只支持 new、has、get、set 和 delete</li>
 <li>WeakSet 只支持 new、has、add 和 delete</li>
@@ -305,6 +285,14 @@ Set 的数据存储结构专门为 包含性检测 作了">
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+            <a href="/tags/ES6/" rel="tag">#ES6</a>
+          
+        </div>
       
 
       
@@ -372,10 +360,10 @@ Set 的数据存储结构专门为 包含性检测 作了">
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
+            Übersicht
           </li>
         </ul>
       
@@ -389,22 +377,22 @@ Set 的数据存储结构专门为 包含性检测 作了">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
-              <span class="site-state-item-name">日志</span>
+              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
-              <span class="site-state-item-count">7</span>
-              <span class="site-state-item-name">分类</span>
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">Kategorien</span>
               
           </div>
 
           <div class="site-state-item site-state-tags">
             
-              <span class="site-state-item-count">2</span>
-              <span class="site-state-item-name">标签</span>
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">Tags</span>
               
           </div>
 
@@ -445,7 +433,7 @@ Set 的数据存储结构专门为 包含性检测 作了">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Set"><span class="nav-number">1.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Set__u548C_Array__u7684_u533A_u522B"><span class="nav-number">1.1.</span> <span class="nav-text">Set 和 Array 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set__u7684_u64CD_u4F5C"><span class="nav-number">1.2.</span> <span class="nav-text">Set 的操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map"><span class="nav-number">2.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Map__u7684_u64CD_u4F5C"><span class="nav-number">2.1.</span> <span class="nav-text">Map 的操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WeakMap__u548C_WeakSet"><span class="nav-number">2.2.</span> <span class="nav-text">WeakMap 和 WeakSet</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Set"><span class="nav-number">1.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Set-和-Array-的区别"><span class="nav-number">1.1.</span> <span class="nav-text">Set 和 Array 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set-的操作"><span class="nav-number">1.2.</span> <span class="nav-text">Set 的操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map"><span class="nav-number">2.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Map-的操作"><span class="nav-number">2.1.</span> <span class="nav-text">Map 的操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WeakMap-和-WeakSet"><span class="nav-number">2.2.</span> <span class="nav-text">WeakMap 和 WeakSet</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -474,11 +462,11 @@ Set 的数据存储结构专门为 包含性检测 作了">
 </div>
 
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  主题 -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT
   </a>

@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Splendour's blog" />
+  <meta name="keywords" content="React,移动web," />
 
 
 
@@ -51,22 +51,17 @@
 
 
 
-<meta name="description" content="背景近日，在 微信web开发者工具 开发完成页面后，在个人手机上测试通过并移交产品经理测试，发现其手机打开页面后白屏，手机型号同样是 iPhone6，拿了其他小伙伴的安卓手机发现也打不开，无论是在微信浏览器还是在 Safari 或者 安卓原生浏览器均是这样的现象。重新编译、清除缓存都无法解决这个问题。
-解决过程
-一般情况下，前端无法渲染是由于 JavaScript 报错产生的，所以最好是看看控制台">
+<meta name="description" content="背景近日，在 微信web开发者工具 开发完成页面后，在个人手机上测试通过并移交产品经理测试，发现其手机打开页面后白屏，手机型号同样是 iPhone6，拿了其他小伙伴的安卓手机发现也打不开，无论是在微信浏览器还是在 Safari 或者 安卓原生浏览器均是这样的现象。重新编译、清除缓存都无法解决这个问题。 解决过程 一般情况下，前端无法渲染是由于 JavaScript 报错产生的，所以最好是看看控制台">
+<meta name="keywords" content="React,移动web">
 <meta property="og:type" content="article">
 <meta property="og:title" content="记一次 react 页面白屏的排查过程">
 <meta property="og:url" content="http://splendourhui.com/2016/07/14/记一次-react-页面白屏的排查过程/index.html">
-<meta property="og:site_name" content="Splendour's blog">
-<meta property="og:description" content="背景近日，在 微信web开发者工具 开发完成页面后，在个人手机上测试通过并移交产品经理测试，发现其手机打开页面后白屏，手机型号同样是 iPhone6，拿了其他小伙伴的安卓手机发现也打不开，无论是在微信浏览器还是在 Safari 或者 安卓原生浏览器均是这样的现象。重新编译、清除缓存都无法解决这个问题。
-解决过程
-一般情况下，前端无法渲染是由于 JavaScript 报错产生的，所以最好是看看控制台">
-<meta property="og:updated_time" content="2016-07-14T02:28:47.000Z">
+<meta property="og:site_name" content="Splendour&#39;s blog">
+<meta property="og:description" content="背景近日，在 微信web开发者工具 开发完成页面后，在个人手机上测试通过并移交产品经理测试，发现其手机打开页面后白屏，手机型号同样是 iPhone6，拿了其他小伙伴的安卓手机发现也打不开，无论是在微信浏览器还是在 Safari 或者 安卓原生浏览器均是这样的现象。重新编译、清除缓存都无法解决这个问题。 解决过程 一般情况下，前端无法渲染是由于 JavaScript 报错产生的，所以最好是看看控制台">
+<meta property="og:updated_time" content="2017-04-19T06:49:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记一次 react 页面白屏的排查过程">
-<meta name="twitter:description" content="背景近日，在 微信web开发者工具 开发完成页面后，在个人手机上测试通过并移交产品经理测试，发现其手机打开页面后白屏，手机型号同样是 iPhone6，拿了其他小伙伴的安卓手机发现也打不开，无论是在微信浏览器还是在 Safari 或者 安卓原生浏览器均是这样的现象。重新编译、清除缓存都无法解决这个问题。
-解决过程
-一般情况下，前端无法渲染是由于 JavaScript 报错产生的，所以最好是看看控制台">
+<meta name="twitter:description" content="背景近日，在 微信web开发者工具 开发完成页面后，在个人手机上测试通过并移交产品经理测试，发现其手机打开页面后白屏，手机型号同样是 iPhone6，拿了其他小伙伴的安卓手机发现也打不开，无论是在微信浏览器还是在 Safari 或者 安卓原生浏览器均是这样的现象。重新编译、清除缓存都无法解决这个问题。 解决过程 一般情况下，前端无法渲染是由于 JavaScript 报错产生的，所以最好是看看控制台">
 
 
 
@@ -81,7 +76,7 @@
   <title> 记一次 react 页面白屏的排查过程 | Splendour's blog </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   <!--[if lte IE 8]>
   <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
@@ -146,7 +141,7 @@
             
               <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
             
-            首页
+            Startseite
           </a>
         </li>
       
@@ -156,7 +151,7 @@
             
               <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
             
-            归档
+            Archiv
           </a>
         </li>
       
@@ -206,7 +201,7 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            Veröffentlicht am
             <time itemprop="dateCreated" datetime="2016-07-14T07:45:01+08:00" content="2016-07-14">
               2016-07-14
             </time>
@@ -214,7 +209,7 @@
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
+              &nbsp; | &nbsp; in
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/react-移动web-前端/" itemprop="url" rel="index">
@@ -246,8 +241,8 @@
       
 
       
-        <span itemprop="articleBody"><h3 id="u80CC_u666F"><a href="#u80CC_u666F" class="headerlink" title="背景"></a>背景</h3><p>近日，在 <code>微信web开发者工具</code> 开发完成页面后，在个人手机上测试通过并移交产品经理测试，发现其手机打开页面后白屏，手机型号同样是 iPhone6，拿了其他小伙伴的安卓手机发现也打不开，无论是在微信浏览器还是在 Safari 或者 安卓原生浏览器均是这样的现象。重新编译、清除缓存都无法解决这个问题。</p>
-<h3 id="u89E3_u51B3_u8FC7_u7A0B"><a href="#u89E3_u51B3_u8FC7_u7A0B" class="headerlink" title="解决过程"></a>解决过程</h3><ul>
+        <span itemprop="articleBody"><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>近日，在 <code>微信web开发者工具</code> 开发完成页面后，在个人手机上测试通过并移交产品经理测试，发现其手机打开页面后白屏，手机型号同样是 iPhone6，拿了其他小伙伴的安卓手机发现也打不开，无论是在微信浏览器还是在 Safari 或者 安卓原生浏览器均是这样的现象。重新编译、清除缓存都无法解决这个问题。</p>
+<h3 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h3><ul>
 <li>一般情况下，前端无法渲染是由于 JavaScript 报错产生的，所以最好是看看控制台打印。</li>
 <li>上网搜索资料，发现微信团队做了一个让我兴奋的东西：vConsole<ul>
 <li>GitHub 地址：<a href="https://github.com/WechatFE/vConsole" target="_blank" rel="external">https://github.com/WechatFE/vConsole</a></li>
@@ -267,12 +262,12 @@
 </blockquote>
 </li>
 <li><p>这下一切都清楚了，浏览器不支持一些新的对象，所以需要引入别的模块才能识别，具体做法很简单：<br>安装</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="operator"><span class="keyword">install</span> <span class="comment">--save babel-polyfill</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">install</span> <span class="comment">--save babel-polyfill</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>在脚本中，引入该模块<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'babel-polyfill'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>在脚本中，引入该模块<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> <span class="string">'babel-polyfill'</span>;</div></pre></td></tr></table></figure></p>
 <p>编译、测试、问题解决！</p>
-<h3 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h3><ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
 <li>移动 web 开发的兼容性问题很多，遇到了要多积累经验。</li>
 <li>解决问题的思路可以多样化，比如之前一直没想到要在移动端查看控制台，这次解决问题的经历让我学会了一个神器的使用。</li>
 <li>谷歌错误信息后，要多打开几个页面，读一读别人的问题以及解决方法，看看能否从中寻找出一些端倪。</li>
@@ -283,6 +278,14 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React/" rel="tag">#React</a>
+          
+            <a href="/tags/移动web/" rel="tag">#移动web</a>
+          
+        </div>
       
 
       
@@ -350,10 +353,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
+            Übersicht
           </li>
         </ul>
       
@@ -367,22 +370,22 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
-              <span class="site-state-item-name">日志</span>
+              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
-              <span class="site-state-item-count">7</span>
-              <span class="site-state-item-name">分类</span>
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">Kategorien</span>
               
           </div>
 
           <div class="site-state-item site-state-tags">
             
-              <span class="site-state-item-count">2</span>
-              <span class="site-state-item-name">标签</span>
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">Tags</span>
               
           </div>
 
@@ -423,7 +426,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u80CC_u666F"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u89E3_u51B3_u8FC7_u7A0B"><span class="nav-number">2.</span> <span class="nav-text">解决过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u603B_u7ED3"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决过程"><span class="nav-number">2.</span> <span class="nav-text">解决过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -452,11 +455,11 @@
 </div>
 
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  主题 -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT
   </a>

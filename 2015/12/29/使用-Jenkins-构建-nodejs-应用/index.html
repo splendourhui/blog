@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Splendour's blog" />
+  <meta name="keywords" content="Node.js," />
 
 
 
@@ -51,61 +51,17 @@
 
 
 
-<meta name="description" content="准备工作
-安装 Jenkins
-
-安装如下插件，并重启 Jenkins
-
-GIT client plugin
-GIT plugin
-Git server plugin
-SSH Credentials Plugin
-SSH plugin
-Publish Over SSH
-
-
-系统配置进入 系统管理 =&amp;gt; 系统设置，进行以下配置
-
-增加远程服务器的 remote server每需要连接一个新的远">
+<meta name="description" content="准备工作 安装 Jenkins  安装如下插件，并重启 Jenkins  GIT client plugin GIT plugin Git server plugin SSH Credentials Plugin SSH plugin Publish Over SSH   系统配置进入 系统管理 =&amp;gt; 系统设置，进行以下配置  增加远程服务器的 remote server每需要连接一个新的远">
+<meta name="keywords" content="Node.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 Jenkins 构建 nodejs 应用">
 <meta property="og:url" content="http://splendourhui.com/2015/12/29/使用-Jenkins-构建-nodejs-应用/index.html">
-<meta property="og:site_name" content="Splendour's blog">
-<meta property="og:description" content="准备工作
-安装 Jenkins
-
-安装如下插件，并重启 Jenkins
-
-GIT client plugin
-GIT plugin
-Git server plugin
-SSH Credentials Plugin
-SSH plugin
-Publish Over SSH
-
-
-系统配置进入 系统管理 =&amp;gt; 系统设置，进行以下配置
-
-增加远程服务器的 remote server每需要连接一个新的远">
-<meta property="og:updated_time" content="2015-12-30T08:16:03.000Z">
+<meta property="og:site_name" content="Splendour&#39;s blog">
+<meta property="og:description" content="准备工作 安装 Jenkins  安装如下插件，并重启 Jenkins  GIT client plugin GIT plugin Git server plugin SSH Credentials Plugin SSH plugin Publish Over SSH   系统配置进入 系统管理 =&amp;gt; 系统设置，进行以下配置  增加远程服务器的 remote server每需要连接一个新的远">
+<meta property="og:updated_time" content="2017-04-19T06:49:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 Jenkins 构建 nodejs 应用">
-<meta name="twitter:description" content="准备工作
-安装 Jenkins
-
-安装如下插件，并重启 Jenkins
-
-GIT client plugin
-GIT plugin
-Git server plugin
-SSH Credentials Plugin
-SSH plugin
-Publish Over SSH
-
-
-系统配置进入 系统管理 =&amp;gt; 系统设置，进行以下配置
-
-增加远程服务器的 remote server每需要连接一个新的远">
+<meta name="twitter:description" content="准备工作 安装 Jenkins  安装如下插件，并重启 Jenkins  GIT client plugin GIT plugin Git server plugin SSH Credentials Plugin SSH plugin Publish Over SSH   系统配置进入 系统管理 =&amp;gt; 系统设置，进行以下配置  增加远程服务器的 remote server每需要连接一个新的远">
 
 
 
@@ -120,7 +76,7 @@ Publish Over SSH
   <title> 使用 Jenkins 构建 nodejs 应用 | Splendour's blog </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   <!--[if lte IE 8]>
   <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
@@ -185,7 +141,7 @@ Publish Over SSH
             
               <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
             
-            首页
+            Startseite
           </a>
         </li>
       
@@ -195,7 +151,7 @@ Publish Over SSH
             
               <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
             
-            归档
+            Archiv
           </a>
         </li>
       
@@ -245,27 +201,12 @@ Publish Over SSH
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            Veröffentlicht am
             <time itemprop="dateCreated" datetime="2015-12-29T21:31:53+08:00" content="2015-12-29">
               2015-12-29
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Node-js/" itemprop="url" rel="index">
-                    <span itemprop="name">Node.js</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
@@ -285,7 +226,7 @@ Publish Over SSH
       
 
       
-        <span itemprop="articleBody"><h2 id="u51C6_u5907_u5DE5_u4F5C"><a href="#u51C6_u5907_u5DE5_u4F5C" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
+        <span itemprop="articleBody"><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
 <li><p>安装 Jenkins</p>
 </li>
 <li><p>安装如下插件，并重启 Jenkins</p>
@@ -309,7 +250,7 @@ Publish Over SSH
 </li>
 </ul>
 <hr>
-<h2 id="u6784_u5EFA_u9879_u76EE"><a href="#u6784_u5EFA_u9879_u76EE" class="headerlink" title="构建项目"></a>构建项目</h2><ul>
+<h2 id="构建项目"><a href="#构建项目" class="headerlink" title="构建项目"></a>构建项目</h2><ul>
 <li><p>点击新建按钮，选择<code>构建一个自由风格的软件项目</code></p>
 </li>
 <li><p>项目配置</p>
@@ -347,14 +288,14 @@ Publish Over SSH
 <li><p>nodejs 项目的构建</p>
 <ul>
 <li><p>重新生成源码包，并使用当前构建号将源码包命名存储<br>新建 <code>Execute shell</code>，执行下面的命令(这里的命令有一些环境参数可用，具体可点击文本框下面的链接查看可用参数)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rm -rf <span class="variable">$&#123;WORKSPACE&#125;</span>/<span class="variable">$&#123;JOB_NAME&#125;</span>.tar.gz</span><br><span class="line">tar -zcvf /tmp/<span class="variable">$&#123;JOB_NAME&#125;</span>.tar.gz -C <span class="variable">$&#123;WORKSPACE&#125;</span>/ .</span><br><span class="line">mv /tmp/<span class="variable">$&#123;JOB_NAME&#125;</span>.tar.gz <span class="variable">$&#123;WORKSPACE&#125;</span>/</span><br><span class="line">cp <span class="variable">$&#123;WORKSPACE&#125;</span>/<span class="variable">$&#123;JOB_NAME&#125;</span>.tar.gz <span class="variable">$&#123;JENKINS_HOME&#125;</span>/<span class="built_in">jobs</span>/<span class="variable">$&#123;JOB_NAME&#125;</span>/builds/<span class="variable">$&#123;BUILD_NUMBER&#125;</span>.tar.gz</span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">rm -rf $&#123;WORKSPACE&#125;/$&#123;JOB_NAME&#125;<span class="selector-class">.tar</span><span class="selector-class">.gz</span></div><div class="line">tar -zcvf /tmp/$&#123;JOB_NAME&#125;<span class="selector-class">.tar</span><span class="selector-class">.gz</span> -C $&#123;WORKSPACE&#125;/ .</div><div class="line">mv /tmp/$&#123;JOB_NAME&#125;<span class="selector-class">.tar</span><span class="selector-class">.gz</span> $&#123;WORKSPACE&#125;/</div><div class="line">cp $&#123;WORKSPACE&#125;/$&#123;JOB_NAME&#125;<span class="selector-class">.tar</span><span class="selector-class">.gz</span> $&#123;JENKINS_HOME&#125;/jobs/$&#123;JOB_NAME&#125;/builds/$&#123;BUILD_NUMBER&#125;<span class="selector-class">.tar</span><span class="selector-class">.gz</span></div></pre></td></tr></table></figure>
 <p>这样，就将原有源码包删除，生成最新源码包，并存放到当前项目目录下的 <code>builds</code> 文件夹中</p>
 </li>
 <li><p>到服务器停止原来的进程，并删除原来的源码包<br>新建 <code>Execute shell script on remote host using ssh</code>，执行下面的命令</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">forever stop nodejs/app<span class="class">.js</span></span><br><span class="line">rm -rf nodejs/nodejs_deploy<span class="class">.tar</span><span class="class">.gz</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">forever stop nodejs/app<span class="selector-class">.js</span></div><div class="line">rm -rf nodejs/nodejs_deploy<span class="selector-class">.tar</span><span class="selector-class">.gz</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>将最新源码包发送到服务端，解压，然后执行 nodejs 基本的构建步骤<br>新建 <code>Send files or execute commands over SSH</code><br><code>Source files</code> 填写 <code>nodejs.tar.gz</code><br><code>Remote directory</code> 填写 <code>nodejs</code><br>执行下面的命令</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf ~/nodejs/nodejs_deploy.tar.gz -C ~/nodejs/</span><br><span class="line">cd nodejs</span><br><span class="line">npm install</span><br><span class="line">bower install</span><br><span class="line"><span class="keyword">node</span><span class="identifier"> </span><span class="title">--harmony</span> `which gulp`</span><br><span class="line">forever <span class="literal">start</span> -c <span class="string">"node --harmony"</span> app.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">tar -zxvf ~/nodejs/nodejs_deploy.tar.gz -C ~/nodejs/</div><div class="line">cd nodejs</div><div class="line">npm install</div><div class="line">bower install</div><div class="line"><span class="keyword">node</span> <span class="title">--harmony</span> `which gulp`</div><div class="line">forever <span class="literal">start</span> -c <span class="string">"node --harmony"</span> app.js</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>至此，nodejs 项目构建完毕并启动(上述所有的构建过程都可以根据自己的项目需要进行配置)</p>
@@ -365,7 +306,7 @@ Publish Over SSH
 </li>
 </ul>
 <hr>
-<h2 id="u56DE_u6EDA_u9879_u76EE"><a href="#u56DE_u6EDA_u9879_u76EE" class="headerlink" title="回滚项目"></a>回滚项目</h2><blockquote>
+<h2 id="回滚项目"><a href="#回滚项目" class="headerlink" title="回滚项目"></a>回滚项目</h2><blockquote>
 <p>我们使用构建一个项目的方式，来实现原有项目的回滚</p>
 </blockquote>
 <ul>
@@ -380,13 +321,13 @@ Publish Over SSH
 <li><p>构建步骤</p>
 <ul>
 <li><p>拷贝该构建号的源码包到此项目的 <code>WORKSPACE</code> 下<br>新建 <code>Execute shell</code>，执行下面的命令(这里的命令有一些环境参数可用，具体可点击文本框下面的链接查看可用参数)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -rf <span class="variable">$&#123;JENKINS_HOME&#125;</span>/<span class="built_in">jobs</span>/nodejs_deploy/builds/<span class="variable">$&#123;VERSION&#125;</span>.tar.gz <span class="variable">$&#123;WORKSPACE&#125;</span>/.</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp -rf <span class="variable">$&#123;JENKINS_HOME&#125;</span><span class="regexp">/jobs/</span>nodejs_deploy<span class="regexp">/builds/</span><span class="variable">$&#123;VERSION&#125;</span>.tar.gz <span class="variable">$&#123;WORKSPACE&#125;</span><span class="regexp">/.</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>到服务器停止原来的进程，并删除原来的源码包<br>新建 <code>Execute shell script on remote host using ssh</code>，执行下面的命令</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">forever stop nodejs/app<span class="class">.js</span></span><br><span class="line">rm -rf nodejs/nodejs_deploy<span class="class">.tar</span><span class="class">.gz</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">forever stop nodejs/app<span class="selector-class">.js</span></div><div class="line">rm -rf nodejs/nodejs_deploy<span class="selector-class">.tar</span><span class="selector-class">.gz</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>将最新源码包发送到服务端，解压，然后执行 nodejs 基本的构建步骤<br>新建 <code>Send files or execute commands over SSH</code><br><code>Source files</code> 填写 <code>${VERSION}.tar.gz</code><br><code>Remote directory</code> 填写 <code>nodejs</code><br>执行下面的命令</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mv -f ~/nodejs/$&#123;<span class="operator">VERSION</span>&#125;.tar.gz ~/nodejs/nodejs_deploy.tar.gz</span><br><span class="line">tar -zxvf ~/nodejs/nodejs_deploy.tar.gz -C ~/nodejs/</span><br><span class="line">cd nodejs</span><br><span class="line">npm install</span><br><span class="line">bower install</span><br><span class="line"><span class="keyword">node</span><span class="identifier"> </span><span class="title">--harmony</span> `which gulp`</span><br><span class="line">forever <span class="literal">start</span> -c <span class="string">"node --harmony"</span> app.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mv -f ~/nodejs/$&#123;VERSION&#125;<span class="selector-class">.tar</span><span class="selector-class">.gz</span> ~/nodejs/nodejs_deploy<span class="selector-class">.tar</span><span class="selector-class">.gz</span></div><div class="line">tar -zxvf ~/nodejs/nodejs_deploy<span class="selector-class">.tar</span><span class="selector-class">.gz</span> -C ~/nodejs/</div><div class="line">cd nodejs</div><div class="line">npm install</div><div class="line">bower install</div><div class="line">node --harmony `which gulp`</div><div class="line">forever start -c <span class="string">"node --harmony"</span> app.js</div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -399,6 +340,12 @@ Publish Over SSH
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Node-js/" rel="tag">#Node.js</a>
+          
+        </div>
       
 
       
@@ -466,10 +413,10 @@ Publish Over SSH
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
+            Übersicht
           </li>
         </ul>
       
@@ -483,22 +430,22 @@ Publish Over SSH
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
-              <span class="site-state-item-name">日志</span>
+              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
-              <span class="site-state-item-count">7</span>
-              <span class="site-state-item-name">分类</span>
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">Kategorien</span>
               
           </div>
 
           <div class="site-state-item site-state-tags">
             
-              <span class="site-state-item-count">2</span>
-              <span class="site-state-item-name">标签</span>
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">Tags</span>
               
           </div>
 
@@ -539,7 +486,7 @@ Publish Over SSH
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#u51C6_u5907_u5DE5_u4F5C"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u6784_u5EFA_u9879_u76EE"><span class="nav-number">2.</span> <span class="nav-text">构建项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u56DE_u6EDA_u9879_u76EE"><span class="nav-number">3.</span> <span class="nav-text">回滚项目</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建项目"><span class="nav-number">2.</span> <span class="nav-text">构建项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回滚项目"><span class="nav-number">3.</span> <span class="nav-text">回滚项目</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -568,11 +515,11 @@ Publish Over SSH
 </div>
 
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  主题 -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT
   </a>

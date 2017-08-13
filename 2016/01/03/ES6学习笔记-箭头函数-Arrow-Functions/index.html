@@ -51,19 +51,16 @@
 
 
 
-<meta name="description" content="箭头函数的语法1234567// ES5var selected = numbers.filter(function(number) &amp;#123;  return number.isSelected();&amp;#125;);// ES6let selected = numbers.filter(number =&amp;gt; number.isSelected());
-箭头函数的语法就是 标示符 =&amp;gt;">
+<meta name="description" content="箭头函数的语法1234567// ES5var selected = numbers.filter(function(number) &amp;#123;  return number.isSelected();&amp;#125;);// ES6let selected = numbers.filter(number =&amp;gt; number.isSelected()); 箭头函数的语法就是 标示符 =&amp;gt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6学习笔记-箭头函数 Arrow Functions">
 <meta property="og:url" content="http://splendourhui.com/2016/01/03/ES6学习笔记-箭头函数-Arrow-Functions/index.html">
-<meta property="og:site_name" content="Splendour's blog">
-<meta property="og:description" content="箭头函数的语法1234567// ES5var selected = numbers.filter(function(number) &amp;#123;  return number.isSelected();&amp;#125;);// ES6let selected = numbers.filter(number =&amp;gt; number.isSelected());
-箭头函数的语法就是 标示符 =&amp;gt;">
-<meta property="og:updated_time" content="2016-01-29T03:22:18.000Z">
+<meta property="og:site_name" content="Splendour&#39;s blog">
+<meta property="og:description" content="箭头函数的语法1234567// ES5var selected = numbers.filter(function(number) &amp;#123;  return number.isSelected();&amp;#125;);// ES6let selected = numbers.filter(number =&amp;gt; number.isSelected()); 箭头函数的语法就是 标示符 =&amp;gt;">
+<meta property="og:updated_time" content="2017-04-19T06:50:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6学习笔记-箭头函数 Arrow Functions">
-<meta name="twitter:description" content="箭头函数的语法1234567// ES5var selected = numbers.filter(function(number) &amp;#123;  return number.isSelected();&amp;#125;);// ES6let selected = numbers.filter(number =&amp;gt; number.isSelected());
-箭头函数的语法就是 标示符 =&amp;gt;">
+<meta name="twitter:description" content="箭头函数的语法1234567// ES5var selected = numbers.filter(function(number) &amp;#123;  return number.isSelected();&amp;#125;);// ES6let selected = numbers.filter(number =&amp;gt; number.isSelected()); 箭头函数的语法就是 标示符 =&amp;gt;">
 
 
 
@@ -78,7 +75,7 @@
   <title> ES6学习笔记-箭头函数 Arrow Functions | Splendour's blog </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   <!--[if lte IE 8]>
   <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
@@ -143,7 +140,7 @@
             
               <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
             
-            首页
+            Startseite
           </a>
         </li>
       
@@ -153,7 +150,7 @@
             
               <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
             
-            归档
+            Archiv
           </a>
         </li>
       
@@ -203,7 +200,7 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            Veröffentlicht am
             <time itemprop="dateCreated" datetime="2016-01-03T10:48:10+08:00" content="2016-01-03">
               2016-01-03
             </time>
@@ -211,11 +208,23 @@
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
+              &nbsp; | &nbsp; in
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/JavaScript/" itemprop="url" rel="index">
                     <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JavaScript/ES6/" itemprop="url" rel="index">
+                    <span itemprop="name">ES6</span>
                   </a>
                 </span>
 
@@ -243,36 +252,36 @@
       
 
       
-        <span itemprop="articleBody"><h2 id="u7BAD_u5934_u51FD_u6570_u7684_u8BED_u6CD5"><a href="#u7BAD_u5934_u51FD_u6570_u7684_u8BED_u6CD5" class="headerlink" title="箭头函数的语法"></a>箭头函数的语法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES5</span></span><br><span class="line"><span class="keyword">var</span> selected = numbers.filter(<span class="function"><span class="keyword">function</span>(<span class="params">number</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> number.isSelected();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6</span></span><br><span class="line"><span class="keyword">let</span> selected = numbers.filter(number =&gt; number.isSelected());</span><br></pre></td></tr></table></figure>
+        <span itemprop="articleBody"><h2 id="箭头函数的语法"><a href="#箭头函数的语法" class="headerlink" title="箭头函数的语法"></a>箭头函数的语法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ES5</span></div><div class="line"><span class="keyword">var</span> selected = numbers.filter(<span class="function"><span class="keyword">function</span>(<span class="params">number</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> number.isSelected();</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// ES6</span></div><div class="line"><span class="keyword">let</span> selected = numbers.filter(<span class="function"><span class="params">number</span> =&gt;</span> number.isSelected());</div></pre></td></tr></table></figure>
 <p>箭头函数的语法就是 <code>标示符 =&gt; 表达式</code>，无需输入 <code>function</code> <code>return</code> 等，省略了一些括号</p>
 <ul>
 <li><p>多个参数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES5</span></span><br><span class="line"><span class="keyword">var</span> sum = numbers.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6</span></span><br><span class="line"><span class="keyword">let</span> sum = number.reduce((a, b) =&gt; a + b, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ES5</span></div><div class="line"><span class="keyword">var</span> sum = numbers.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> a + b;</div><div class="line">&#125;, <span class="number">0</span>);</div><div class="line"></div><div class="line"><span class="comment">// ES6</span></div><div class="line"><span class="keyword">let</span> sum = number.reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a + b, <span class="number">0</span>);</div></pre></td></tr></table></figure>
 </li>
 <li><p>包含一个语句块</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES5</span></span><br><span class="line">$(<span class="string">'#button'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  prepare();</span><br><span class="line">  doSomeJob();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6</span></span><br><span class="line">$(<span class="string">'#button'</span>).click(event =&gt; &#123;</span><br><span class="line">  prepare();  </span><br><span class="line">  doSomeJob();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ES5</span></div><div class="line">$(<span class="string">'#button'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">  prepare();</div><div class="line">  doSomeJob();</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// ES6</span></div><div class="line">$(<span class="string">'#button'</span>).click(<span class="function"><span class="params">event</span> =&gt;</span> &#123;</div><div class="line">  prepare();  </div><div class="line">  doSomeJob();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <blockquote>
 <p>包含一个语句块的箭头函数不会自动返回值，若需要则手动添加 <code>return</code> 语句</p>
 </blockquote>
 <ul>
-<li>用箭头函数创建普通对象需要小心<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// error</span></span><br><span class="line"><span class="keyword">let</span> newNumber = numbers.map(number =&gt; &#123;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// correct</span></span><br><span class="line"><span class="keyword">let</span> newNumber = numbers.map(number =&gt; (&#123;&#125;));</span><br></pre></td></tr></table></figure>
+<li>用箭头函数创建普通对象需要小心<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// error</span></div><div class="line"><span class="keyword">let</span> newNumber = numbers.map(<span class="function"><span class="params">number</span> =&gt;</span> &#123;&#125;);</div><div class="line"></div><div class="line"><span class="comment">// correct</span></div><div class="line"><span class="keyword">let</span> newNumber = numbers.map(<span class="function"><span class="params">number</span> =&gt;</span> (&#123;&#125;));</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <blockquote>
 <p>小窍门：所有对象字面量用小括号包裹以避免歧义</p>
 </blockquote>
-<h2 id="this__u503C"><a href="#this__u503C" class="headerlink" title="this 值"></a>this 值</h2><blockquote>
+<h2 id="this-值"><a href="#this-值" class="headerlink" title="this 值"></a>this 值</h2><blockquote>
 <p>箭头函数没有自己的 this 值，箭头函数内的 this 值继承自外作用域</p>
 </blockquote>
 <p>在 ES6 中需要遵循的规则</p>
 <ul>
 <li>通过 <code>object.method()</code> 语法调用的方法使用非箭头函数定义，这些函数需要从调用者的作用域中获取一个有意义的 this 值</li>
-<li>其他情况全部使用箭头函数<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  ...</span><br><span class="line">  addAll: <span class="function"><span class="keyword">function</span> <span class="title">addAll</span>(<span class="params">pieces</span>) </span>&#123;</span><br><span class="line">    _.each(numbers, number =&gt; <span class="keyword">this</span>.add(number));</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>其他情况全部使用箭头函数<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  ...</div><div class="line">  addAll: <span class="function"><span class="keyword">function</span> <span class="title">addAll</span>(<span class="params">pieces</span>) </span>&#123;</div><div class="line">    _.each(numbers, number =&gt; <span class="keyword">this</span>.add(number));</div><div class="line">  &#125;</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>这里的 this 是 addAll 方法从它的调用者处获取的，内部函数是一个箭头函数，所以 this 不变<br>上面的代码还可以简化：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  ...</span><br><span class="line">  addAll(pieces) &#123;</span><br><span class="line">    _.each(numbers, number =&gt; <span class="keyword">this</span>.add(number));</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里的 this 是 addAll 方法从它的调用者处获取的，内部函数是一个箭头函数，所以 this 不变<br>上面的代码还可以简化：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  ...</div><div class="line">  addAll(pieces) &#123;</div><div class="line">    _.each(numbers, number =&gt; <span class="keyword">this</span>.add(number));</div><div class="line">  &#125;</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 </span>
       
     </div>
@@ -345,10 +354,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
+            Übersicht
           </li>
         </ul>
       
@@ -362,22 +371,22 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
-              <span class="site-state-item-name">日志</span>
+              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
-              <span class="site-state-item-count">7</span>
-              <span class="site-state-item-name">分类</span>
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">Kategorien</span>
               
           </div>
 
           <div class="site-state-item site-state-tags">
             
-              <span class="site-state-item-count">2</span>
-              <span class="site-state-item-name">标签</span>
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">Tags</span>
               
           </div>
 
@@ -418,7 +427,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#u7BAD_u5934_u51FD_u6570_u7684_u8BED_u6CD5"><span class="nav-number">1.</span> <span class="nav-text">箭头函数的语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#this__u503C"><span class="nav-number">2.</span> <span class="nav-text">this 值</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#箭头函数的语法"><span class="nav-number">1.</span> <span class="nav-text">箭头函数的语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#this-值"><span class="nav-number">2.</span> <span class="nav-text">this 值</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -447,11 +456,11 @@
 </div>
 
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  主题 -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT
   </a>

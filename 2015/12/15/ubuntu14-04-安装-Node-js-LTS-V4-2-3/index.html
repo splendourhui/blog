@@ -51,34 +51,16 @@
 
 
 
-<meta name="description" content="因项目需要，经常在服务器上部署 Node.js，记录一下操作，以便查阅。这里使用源码包编译的方法安装 Node.js
-
-
-到官网 https://nodejs.org/en/download/ 下载源码包 node-v4.2.3.tar.gz
-
-将源码包上传至服务器，若是在服务器直接下载源码包的，请直接跳过此步骤。这里用 scp 上传
-1scp ~/Downloads/node-v4.2.3.ta">
+<meta name="description" content="因项目需要，经常在服务器上部署 Node.js，记录一下操作，以便查阅。这里使用源码包编译的方法安装 Node.js   到官网 https://nodejs.org/en/download/ 下载源码包 node-v4.2.3.tar.gz  将源码包上传至服务器，若是在服务器直接下载源码包的，请直接跳过此步骤。这里用 scp 上传 1scp ~/Downloads/node-v4.2.3.t">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ubuntu14.04 安装 Node.js LTS V4.2.3">
 <meta property="og:url" content="http://splendourhui.com/2015/12/15/ubuntu14-04-安装-Node-js-LTS-V4-2-3/index.html">
-<meta property="og:site_name" content="Splendour's blog">
-<meta property="og:description" content="因项目需要，经常在服务器上部署 Node.js，记录一下操作，以便查阅。这里使用源码包编译的方法安装 Node.js
-
-
-到官网 https://nodejs.org/en/download/ 下载源码包 node-v4.2.3.tar.gz
-
-将源码包上传至服务器，若是在服务器直接下载源码包的，请直接跳过此步骤。这里用 scp 上传
-1scp ~/Downloads/node-v4.2.3.ta">
+<meta property="og:site_name" content="Splendour&#39;s blog">
+<meta property="og:description" content="因项目需要，经常在服务器上部署 Node.js，记录一下操作，以便查阅。这里使用源码包编译的方法安装 Node.js   到官网 https://nodejs.org/en/download/ 下载源码包 node-v4.2.3.tar.gz  将源码包上传至服务器，若是在服务器直接下载源码包的，请直接跳过此步骤。这里用 scp 上传 1scp ~/Downloads/node-v4.2.3.t">
 <meta property="og:updated_time" content="2015-12-15T08:54:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu14.04 安装 Node.js LTS V4.2.3">
-<meta name="twitter:description" content="因项目需要，经常在服务器上部署 Node.js，记录一下操作，以便查阅。这里使用源码包编译的方法安装 Node.js
-
-
-到官网 https://nodejs.org/en/download/ 下载源码包 node-v4.2.3.tar.gz
-
-将源码包上传至服务器，若是在服务器直接下载源码包的，请直接跳过此步骤。这里用 scp 上传
-1scp ~/Downloads/node-v4.2.3.ta">
+<meta name="twitter:description" content="因项目需要，经常在服务器上部署 Node.js，记录一下操作，以便查阅。这里使用源码包编译的方法安装 Node.js   到官网 https://nodejs.org/en/download/ 下载源码包 node-v4.2.3.tar.gz  将源码包上传至服务器，若是在服务器直接下载源码包的，请直接跳过此步骤。这里用 scp 上传 1scp ~/Downloads/node-v4.2.3.t">
 
 
 
@@ -93,7 +75,7 @@
   <title> ubuntu14.04 安装 Node.js LTS V4.2.3 | Splendour's blog </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   <!--[if lte IE 8]>
   <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
@@ -158,7 +140,7 @@
             
               <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
             
-            首页
+            Startseite
           </a>
         </li>
       
@@ -168,7 +150,7 @@
             
               <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
             
-            归档
+            Archiv
           </a>
         </li>
       
@@ -218,7 +200,7 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            Veröffentlicht am
             <time itemprop="dateCreated" datetime="2015-12-15T15:26:27+08:00" content="2015-12-15">
               2015-12-15
             </time>
@@ -226,7 +208,7 @@
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
+              &nbsp; | &nbsp; in
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/Node-js/" itemprop="url" rel="index">
@@ -265,19 +247,19 @@
 <li><p>到官网 <a href="https://nodejs.org/en/download/" target="_blank" rel="external">https://nodejs.org/en/download/</a> 下载源码包 <code>node-v4.2.3.tar.gz</code></p>
 </li>
 <li><p>将源码包上传至服务器，若是在服务器直接下载源码包的，请直接跳过此步骤。这里用 scp 上传</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ~/Downloads/<span class="keyword">node</span><span class="identifier"></span><span class="title">-v4</span>.<span class="number">2.3</span>.tar.gz username@hostname:~</span><br></pre></td></tr></table></figure>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp ~/Downloads/<span class="keyword">node</span><span class="title">-v4</span>.<span class="number">2.3</span>.tar.gz username@hostname:~</div></pre></td></tr></table></figure>
 </li>
 <li><p>解压源码包</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf <span class="keyword">node</span><span class="identifier"></span><span class="title">-v4</span>.<span class="number">2.3</span>.tar.gz</span><br></pre></td></tr></table></figure>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -xzvf <span class="keyword">node</span><span class="title">-v4</span>.<span class="number">2.3</span>.tar.gz</div></pre></td></tr></table></figure>
 </li>
 <li><p>安装依赖的库</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="operator"><span class="keyword">install</span> gcc  //gcc <span class="number">4.8</span>+</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> <span class="keyword">g</span>++  //<span class="keyword">g</span>++ <span class="number">4.8</span>+</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> clang  //clang <span class="number">3.4</span>+</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> make   //GNU Make <span class="number">3.81</span>+</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo apt-<span class="keyword">get</span> install gcc  <span class="comment">//gcc 4.8+</span></div><div class="line">sudo apt-<span class="keyword">get</span> install g++  <span class="comment">//g++ 4.8+</span></div><div class="line">sudo apt-<span class="keyword">get</span> install clang  <span class="comment">//clang 3.4+</span></div><div class="line">sudo apt-<span class="keyword">get</span> install make   <span class="comment">//GNU Make 3.81+</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>执行安装</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd <span class="keyword">node</span><span class="identifier"></span><span class="title">-v4</span>.<span class="number">2.3</span></span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cd <span class="keyword">node</span><span class="title">-v4</span>.<span class="number">2.3</span></div><div class="line">./configure</div><div class="line">make</div><div class="line">sudo make install</div></pre></td></tr></table></figure>
 </li>
 <li><p>测试是否安装完成</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">node</span><span class="identifier"> </span><span class="title">-v</span></span><br><span class="line"><span class="keyword">node</span><span class="identifier"> </span><span class="title">-e</span> <span class="string">"console.log('Hello from Node.js ' + process.version)"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">node</span> <span class="title">-v</span></div><div class="line"><span class="keyword">node</span> <span class="title">-e</span> <span class="string">"console.log('Hello from Node.js ' + process.version)"</span></div></pre></td></tr></table></figure>
 </li>
 </ol>
 </span>
@@ -352,10 +334,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
+            Übersicht
           </li>
         </ul>
       
@@ -369,22 +351,22 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
-              <span class="site-state-item-name">日志</span>
+              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
-              <span class="site-state-item-count">7</span>
-              <span class="site-state-item-name">分类</span>
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">Kategorien</span>
               
           </div>
 
           <div class="site-state-item site-state-tags">
             
-              <span class="site-state-item-count">2</span>
-              <span class="site-state-item-name">标签</span>
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">Tags</span>
               
           </div>
 
@@ -425,7 +407,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -454,11 +436,11 @@
 </div>
 
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  主题 -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT
   </a>

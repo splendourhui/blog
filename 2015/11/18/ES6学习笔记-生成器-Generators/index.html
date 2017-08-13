@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Splendour's blog" />
+  <meta name="keywords" content="JavaScript,ES6," />
 
 
 
@@ -51,25 +51,17 @@
 
 
 
-<meta name="description" content="生成器函数与普通函数的区别如下：
-
-使用 function* 声明
-有一种类似 return 的语法：关键字 yield。不同的是普通函数只可以 return 一次，而生成器函数可以 yield 多次；在执行过程中，yield 表达式可以暂停，后续可随时恢复执行状态，而普通函数不能子暂停。12345678function* quips(name) &amp;#123;  yield &quot;你好 &quot; + nam">
+<meta name="description" content="生成器函数与普通函数的区别如下：  使用 function* 声明 有一种类似 return 的语法：关键字 yield。不同的是普通函数只可以 return 一次，而生成器函数可以 yield 多次；在执行过程中，yield 表达式可以暂停，后续可随时恢复执行状态，而普通函数不能子暂停。12345678function* quips(name) &amp;#123;  yield &quot;你好 &quot; + nam">
+<meta name="keywords" content="JavaScript,ES6">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6学习笔记-生成器-Generators">
 <meta property="og:url" content="http://splendourhui.com/2015/11/18/ES6学习笔记-生成器-Generators/index.html">
-<meta property="og:site_name" content="Splendour's blog">
-<meta property="og:description" content="生成器函数与普通函数的区别如下：
-
-使用 function* 声明
-有一种类似 return 的语法：关键字 yield。不同的是普通函数只可以 return 一次，而生成器函数可以 yield 多次；在执行过程中，yield 表达式可以暂停，后续可随时恢复执行状态，而普通函数不能子暂停。12345678function* quips(name) &amp;#123;  yield &quot;你好 &quot; + nam">
-<meta property="og:updated_time" content="2016-01-24T14:57:37.000Z">
+<meta property="og:site_name" content="Splendour&#39;s blog">
+<meta property="og:description" content="生成器函数与普通函数的区别如下：  使用 function* 声明 有一种类似 return 的语法：关键字 yield。不同的是普通函数只可以 return 一次，而生成器函数可以 yield 多次；在执行过程中，yield 表达式可以暂停，后续可随时恢复执行状态，而普通函数不能子暂停。12345678function* quips(name) &amp;#123;  yield &quot;你好 &quot; + nam">
+<meta property="og:updated_time" content="2017-04-19T06:50:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6学习笔记-生成器-Generators">
-<meta name="twitter:description" content="生成器函数与普通函数的区别如下：
-
-使用 function* 声明
-有一种类似 return 的语法：关键字 yield。不同的是普通函数只可以 return 一次，而生成器函数可以 yield 多次；在执行过程中，yield 表达式可以暂停，后续可随时恢复执行状态，而普通函数不能子暂停。12345678function* quips(name) &amp;#123;  yield &quot;你好 &quot; + nam">
+<meta name="twitter:description" content="生成器函数与普通函数的区别如下：  使用 function* 声明 有一种类似 return 的语法：关键字 yield。不同的是普通函数只可以 return 一次，而生成器函数可以 yield 多次；在执行过程中，yield 表达式可以暂停，后续可随时恢复执行状态，而普通函数不能子暂停。12345678function* quips(name) &amp;#123;  yield &quot;你好 &quot; + nam">
 
 
 
@@ -84,7 +76,7 @@
   <title> ES6学习笔记-生成器-Generators | Splendour's blog </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   <!--[if lte IE 8]>
   <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
@@ -149,7 +141,7 @@
             
               <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
             
-            首页
+            Startseite
           </a>
         </li>
       
@@ -159,7 +151,7 @@
             
               <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
             
-            归档
+            Archiv
           </a>
         </li>
       
@@ -209,27 +201,12 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            Veröffentlicht am
             <time itemprop="dateCreated" datetime="2015-11-18T20:02:06+08:00" content="2015-11-18">
               2015-11-18
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
@@ -252,10 +229,10 @@
         <span itemprop="articleBody"><p>生成器函数与普通函数的区别如下：</p>
 <ul>
 <li>使用 function* 声明</li>
-<li>有一种类似 return 的语法：关键字 yield。不同的是普通函数只可以 return 一次，而生成器函数可以 yield 多次；在执行过程中，yield 表达式可以暂停，后续可随时恢复执行状态，而普通函数不能子暂停。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">quips</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="string">"你好 "</span> + name + <span class="string">"!"</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="string">"希望你能喜欢这篇介绍ES6的译文"</span>;</span><br><span class="line">  <span class="keyword">if</span> (name.startsWith(<span class="string">"X"</span>)) &#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="string">"你的名字 "</span> + name + <span class="string">"  首字母是X，这很酷！"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">yield</span> <span class="string">"我们下次再见！"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>有一种类似 return 的语法：关键字 yield。不同的是普通函数只可以 return 一次，而生成器函数可以 yield 多次；在执行过程中，yield 表达式可以暂停，后续可随时恢复执行状态，而普通函数不能子暂停。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">quips</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">yield</span> <span class="string">"你好 "</span> + name + <span class="string">"!"</span>;</div><div class="line">  <span class="keyword">yield</span> <span class="string">"希望你能喜欢这篇介绍ES6的译文"</span>;</div><div class="line">  <span class="keyword">if</span> (name.startsWith(<span class="string">"X"</span>)) &#123;</div><div class="line">    <span class="keyword">yield</span> <span class="string">"你的名字 "</span> + name + <span class="string">"  首字母是X，这很酷！"</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">yield</span> <span class="string">"我们下次再见！"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>该函数的调用过程如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">var</span> iter = quips(<span class="string">"jorendorff"</span>);</span><br><span class="line">  [object Generator]</span><br><span class="line">&gt; iter.next()</span><br><span class="line">  &#123; value: <span class="string">"你好 jorendorff!"</span>, done: <span class="literal">false</span> &#125;</span><br><span class="line">&gt; iter.next()</span><br><span class="line">  &#123; value: <span class="string">"希望你能喜欢这篇介绍ES6的译文"</span>, done: <span class="literal">false</span> &#125;</span><br><span class="line">&gt; iter.next()</span><br><span class="line">  &#123; value: <span class="string">"我们下次再见！"</span>, done: <span class="literal">false</span> &#125;</span><br><span class="line">&gt; iter.next()</span><br><span class="line">  &#123; value: <span class="literal">undefined</span>, done: <span class="literal">true</span> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>该函数的调用过程如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="keyword">var</span> iter = quips(<span class="string">"jorendorff"</span>);</div><div class="line">  [object Generator]</div><div class="line">&gt; iter.next()</div><div class="line">  &#123; <span class="attr">value</span>: <span class="string">"你好 jorendorff!"</span>, <span class="attr">done</span>: <span class="literal">false</span> &#125;</div><div class="line">&gt; iter.next()</div><div class="line">  &#123; <span class="attr">value</span>: <span class="string">"希望你能喜欢这篇介绍ES6的译文"</span>, <span class="attr">done</span>: <span class="literal">false</span> &#125;</div><div class="line">&gt; iter.next()</div><div class="line">  &#123; <span class="attr">value</span>: <span class="string">"我们下次再见！"</span>, <span class="attr">done</span>: <span class="literal">false</span> &#125;</div><div class="line">&gt; iter.next()</div><div class="line">  &#123; <span class="attr">value</span>: <span class="literal">undefined</span>, <span class="attr">done</span>: <span class="literal">true</span> &#125;</div></pre></td></tr></table></figure></p>
 <p>从以上过程可以看出：</p>
 <ul>
 <li>生成器函数每次调用 <code>.next()</code> 方法时，都会返回一个已暂停的生成器对象，类似于一次函数调用，只不过暂停了。</li>
@@ -267,6 +244,14 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+            <a href="/tags/ES6/" rel="tag">#ES6</a>
+          
+        </div>
       
 
       
@@ -334,10 +319,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
+            Übersicht
           </li>
         </ul>
       
@@ -351,22 +336,22 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
-              <span class="site-state-item-name">日志</span>
+              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
-              <span class="site-state-item-count">7</span>
-              <span class="site-state-item-name">分类</span>
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">Kategorien</span>
               
           </div>
 
           <div class="site-state-item site-state-tags">
             
-              <span class="site-state-item-count">2</span>
-              <span class="site-state-item-name">标签</span>
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">Tags</span>
               
           </div>
 
@@ -407,7 +392,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -436,11 +421,11 @@
 </div>
 
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  主题 -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT
   </a>

@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Splendour's blog" />
+  <meta name="keywords" content="Node.js," />
 
 
 
@@ -51,31 +51,17 @@
 
 
 
-<meta name="description" content="seneca 是基于nodejs的一个微服务框架，支持插件式开发，每一个微服务都是一个小插件。
-个人想法是将项目中对不同的数据库进行的操作开发为一个个微服务，提供接口供主程序调用，减轻主程序压力。
-下面以 contact 为例，讲述如何添加 web 微服务。
-
-往 app.js 中添加 client，分配端口
-1234567var seneca = require(&apos;seneca&apos;)()  .us">
+<meta name="description" content="seneca 是基于nodejs的一个微服务框架，支持插件式开发，每一个微服务都是一个小插件。 个人想法是将项目中对不同的数据库进行的操作开发为一个个微服务，提供接口供主程序调用，减轻主程序压力。 下面以 contact 为例，讲述如何添加 web 微服务。  往 app.js 中添加 client，分配端口 1234567var seneca = require(&apos;seneca&apos;)()  .us">
+<meta name="keywords" content="Node.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nodejs 微服务框架 seneca">
 <meta property="og:url" content="http://splendourhui.com/2015/08/11/nodejs-微服务框架-seneca/index.html">
-<meta property="og:site_name" content="Splendour's blog">
-<meta property="og:description" content="seneca 是基于nodejs的一个微服务框架，支持插件式开发，每一个微服务都是一个小插件。
-个人想法是将项目中对不同的数据库进行的操作开发为一个个微服务，提供接口供主程序调用，减轻主程序压力。
-下面以 contact 为例，讲述如何添加 web 微服务。
-
-往 app.js 中添加 client，分配端口
-1234567var seneca = require(&apos;seneca&apos;)()  .us">
-<meta property="og:updated_time" content="2015-11-24T12:08:34.000Z">
+<meta property="og:site_name" content="Splendour&#39;s blog">
+<meta property="og:description" content="seneca 是基于nodejs的一个微服务框架，支持插件式开发，每一个微服务都是一个小插件。 个人想法是将项目中对不同的数据库进行的操作开发为一个个微服务，提供接口供主程序调用，减轻主程序压力。 下面以 contact 为例，讲述如何添加 web 微服务。  往 app.js 中添加 client，分配端口 1234567var seneca = require(&apos;seneca&apos;)()  .us">
+<meta property="og:updated_time" content="2017-04-19T06:48:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nodejs 微服务框架 seneca">
-<meta name="twitter:description" content="seneca 是基于nodejs的一个微服务框架，支持插件式开发，每一个微服务都是一个小插件。
-个人想法是将项目中对不同的数据库进行的操作开发为一个个微服务，提供接口供主程序调用，减轻主程序压力。
-下面以 contact 为例，讲述如何添加 web 微服务。
-
-往 app.js 中添加 client，分配端口
-1234567var seneca = require(&apos;seneca&apos;)()  .us">
+<meta name="twitter:description" content="seneca 是基于nodejs的一个微服务框架，支持插件式开发，每一个微服务都是一个小插件。 个人想法是将项目中对不同的数据库进行的操作开发为一个个微服务，提供接口供主程序调用，减轻主程序压力。 下面以 contact 为例，讲述如何添加 web 微服务。  往 app.js 中添加 client，分配端口 1234567var seneca = require(&apos;seneca&apos;)()  .us">
 
 
 
@@ -90,7 +76,7 @@
   <title> nodejs 微服务框架 seneca | Splendour's blog </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   <!--[if lte IE 8]>
   <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
@@ -155,7 +141,7 @@
             
               <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
             
-            首页
+            Startseite
           </a>
         </li>
       
@@ -165,7 +151,7 @@
             
               <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
             
-            归档
+            Archiv
           </a>
         </li>
       
@@ -215,27 +201,12 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            Veröffentlicht am
             <time itemprop="dateCreated" datetime="2015-08-11T20:16:15+08:00" content="2015-08-11">
               2015-08-11
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/nodejs/" itemprop="url" rel="index">
-                    <span itemprop="name">nodejs</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
@@ -260,27 +231,33 @@
 <p>下面以 contact 为例，讲述如何添加 web 微服务。</p>
 <ul>
 <li><p>往 app.js 中添加 client，分配端口</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> seneca = <span class="built_in">require</span>(<span class="string">'seneca'</span>)()</span><br><span class="line">  .use(<span class="string">'api'</span>)</span><br><span class="line">  .client(&#123;port: <span class="number">9001</span>, pin: <span class="string">'role:contact'</span>&#125;);</span><br><span class="line"><span class="keyword">var</span> app = <span class="built_in">require</span>(<span class="string">'express'</span>)()</span><br><span class="line">  .use(<span class="built_in">require</span>(<span class="string">'body-parser'</span>).json())</span><br><span class="line">  .use(seneca.export(<span class="string">'web'</span>))</span><br><span class="line">  .listen(<span class="number">3003</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> seneca = <span class="built_in">require</span>(<span class="string">'seneca'</span>)()</div><div class="line">  .use(<span class="string">'api'</span>)</div><div class="line">  .client(&#123;<span class="attr">port</span>: <span class="number">9001</span>, <span class="attr">pin</span>: <span class="string">'role:contact'</span>&#125;);</div><div class="line"><span class="keyword">var</span> app = <span class="built_in">require</span>(<span class="string">'express'</span>)()</div><div class="line">  .use(<span class="built_in">require</span>(<span class="string">'body-parser'</span>).json())</div><div class="line">  .use(seneca.export(<span class="string">'web'</span>))</div><div class="line">  .listen(<span class="number">3003</span>);</div></pre></td></tr></table></figure>
 </li>
 <li><p>在 api.js 中，添加路由，并在 init:api 方法下初始化路由。注意有参数时的处理！</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> <span class="title">api</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> valid_ops = &#123;sum: <span class="string">'sum'</span>, product: <span class="string">'product'</span>&#125;</span><br><span class="line">  <span class="keyword">this</span>.add(<span class="string">'role:api,path:contact'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">msg, respond</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> contactMsg = &#123;</span><br><span class="line">      role: <span class="string">'contact'</span>,</span><br><span class="line">      cmd: msg.action</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 不同方法带有参数，需要在此传入</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="string">'findOne'</span> === msg.action) &#123;</span><br><span class="line">      contactMsg.username = msg.username;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="string">'search'</span> === msg.action) &#123;</span><br><span class="line">      contactMsg.keyword = msg.keyword;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.act(contactMsg, respond)</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">this</span>.add(<span class="string">'init:api'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">msg, respond</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.act(<span class="string">'role:web'</span>, &#123;</span><br><span class="line">      use: &#123;</span><br><span class="line">        prefix: <span class="string">'/api'</span>,</span><br><span class="line">        pin: <span class="string">'role:api,path:*'</span>,</span><br><span class="line">        map: &#123;</span><br><span class="line">          contact: &#123;GET: <span class="literal">true</span>, suffix: <span class="string">'/:action'</span>&#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    respond();</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> <span class="title">api</span>(<span class="params">options</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> valid_ops = &#123;<span class="attr">sum</span>: <span class="string">'sum'</span>, <span class="attr">product</span>: <span class="string">'product'</span>&#125;</div><div class="line">  <span class="keyword">this</span>.add(<span class="string">'role:api,path:contact'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">msg, respond</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> contactMsg = &#123;</div><div class="line">      <span class="attr">role</span>: <span class="string">'contact'</span>,</div><div class="line">      <span class="attr">cmd</span>: msg.action</div><div class="line">    &#125;;</div><div class="line">    <span class="comment">// 不同方法带有参数，需要在此传入</span></div><div class="line">    <span class="keyword">if</span> (<span class="string">'findOne'</span> === msg.action) &#123;</div><div class="line">      contactMsg.username = msg.username;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (<span class="string">'search'</span> === msg.action) &#123;</div><div class="line">      contactMsg.keyword = msg.keyword;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">this</span>.act(contactMsg, respond)</div><div class="line">  &#125;);</div><div class="line">  <span class="keyword">this</span>.add(<span class="string">'init:api'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">msg, respond</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.act(<span class="string">'role:web'</span>, &#123;</div><div class="line">      <span class="attr">use</span>: &#123;</div><div class="line">        <span class="attr">prefix</span>: <span class="string">'/api'</span>,</div><div class="line">        <span class="attr">pin</span>: <span class="string">'role:api,path:*'</span>,</div><div class="line">        <span class="attr">map</span>: &#123;</div><div class="line">          <span class="attr">contact</span>: &#123;<span class="attr">GET</span>: <span class="literal">true</span>, <span class="attr">suffix</span>: <span class="string">'/:action'</span>&#125;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line">    respond();</div><div class="line">  &#125;)</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 </li>
 <li><p>新建 contact-pin-service.js 文件，运行该文件时提供服务，注意这里的 listen 要和第一步中添加到 app.js 中的一致</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">'seneca'</span>)()</span><br><span class="line">  .use(<span class="string">'contact'</span>)</span><br><span class="line">  .listen(&#123;port: <span class="number">9001</span>, pin: <span class="string">'role:contact'</span>&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>(<span class="string">'seneca'</span>)()</div><div class="line">  .use(<span class="string">'contact'</span>)</div><div class="line">  .listen(&#123;<span class="attr">port</span>: <span class="number">9001</span>, <span class="attr">pin</span>: <span class="string">'role:contact'</span>&#125;);</div></pre></td></tr></table></figure>
 </li>
 <li><p>新建 contact 文件，提供服务的主逻辑</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> <span class="title">contact</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.add(<span class="string">'role:contact,cmd:left'</span>, <span class="function"><span class="keyword">function</span> <span class="title">left</span>(<span class="params">msg, respond</span>) </span>&#123;</span><br><span class="line">    respond(<span class="literal">null</span>, &#123;result: <span class="string">'test'</span>&#125;)</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> <span class="title">contact</span>(<span class="params">options</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.add(<span class="string">'role:contact,cmd:left'</span>, <span class="function"><span class="keyword">function</span> <span class="title">left</span>(<span class="params">msg, respond</span>) </span>&#123;</div><div class="line">    respond(<span class="literal">null</span>, &#123;<span class="attr">result</span>: <span class="string">'test'</span>&#125;)</div><div class="line">  &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>现在，只需要启动 app.js 微服务主线程<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node app.js</span><br></pre></td></tr></table></figure></p>
-<p>再启动 contact-pin-service.js 服务线程<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node contact-pin-service.js</span><br></pre></td></tr></table></figure></p>
+<p>现在，只需要启动 app.js 微服务主线程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node app.js</div></pre></td></tr></table></figure></p>
+<p>再启动 contact-pin-service.js 服务线程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node contact-pin-service.js</div></pre></td></tr></table></figure></p>
 <p>就可以使用 contact 微服务了~</p>
-<p>想要查看详细 log，可以在运行线程时添加指令<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node contact-pin-service.js --seneca.log=plugin:contact</span><br></pre></td></tr></table></figure></p>
+<p>想要查看详细 log，可以在运行线程时添加指令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node contact-pin-service.js --seneca.log=plugin:contact</div></pre></td></tr></table></figure></p>
 </span>
       
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Node-js/" rel="tag">#Node.js</a>
+          
+        </div>
       
 
       
@@ -344,10 +321,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
+            Übersicht
           </li>
         </ul>
       
@@ -361,22 +338,22 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
-              <span class="site-state-item-name">日志</span>
+              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
-              <span class="site-state-item-count">7</span>
-              <span class="site-state-item-name">分类</span>
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">Kategorien</span>
               
           </div>
 
           <div class="site-state-item site-state-tags">
             
-              <span class="site-state-item-count">2</span>
-              <span class="site-state-item-name">标签</span>
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">Tags</span>
               
           </div>
 
@@ -417,7 +394,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -446,11 +423,11 @@
 </div>
 
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  主题 -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT
   </a>

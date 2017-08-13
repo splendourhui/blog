@@ -1,0 +1,643 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript,React," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="背景接上一篇博文，我们来探讨一下怎么通过配置来生成 reducer，以及如何往自动生成的 reducer 中增加自定义的转换（action 触发 reducer 变化） reducer 的组成 在上一篇博文中，我们通过 action 的配置，自动生成了一些 reducer，这一部分我们称为来自 action 配置的 reducer 我们自定义的 reducer，需要定义名字以及它对应的通过 act">
+<meta name="keywords" content="JavaScript,React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React 实践：改造 Redux action generator，编写 Redux reducer generator (2)">
+<meta property="og:url" content="http://splendourhui.com/2017/02/16/React-实践：改造-Redux-action-generator，编写-Redux-reducer-generator-（2）/index.html">
+<meta property="og:site_name" content="Splendour&#39;s blog">
+<meta property="og:description" content="背景接上一篇博文，我们来探讨一下怎么通过配置来生成 reducer，以及如何往自动生成的 reducer 中增加自定义的转换（action 触发 reducer 变化） reducer 的组成 在上一篇博文中，我们通过 action 的配置，自动生成了一些 reducer，这一部分我们称为来自 action 配置的 reducer 我们自定义的 reducer，需要定义名字以及它对应的通过 act">
+<meta property="og:updated_time" content="2017-02-16T08:23:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React 实践：改造 Redux action generator，编写 Redux reducer generator (2)">
+<meta name="twitter:description" content="背景接上一篇博文，我们来探讨一下怎么通过配置来生成 reducer，以及如何往自动生成的 reducer 中增加自定义的转换（action 触发 reducer 变化） reducer 的组成 在上一篇博文中，我们通过 action 的配置，自动生成了一些 reducer，这一部分我们称为来自 action 配置的 reducer 我们自定义的 reducer，需要定义名字以及它对应的通过 act">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'always',
+    motion: true
+  };
+</script>
+
+  <title> React 实践：改造 Redux action generator，编写 Redux reducer generator (2) | Splendour's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?12423411d7b24eae6e82e3173f32ab00";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Splendour's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">不积跬步，无以至千里</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                React 实践：改造 Redux action generator，编写 Redux reducer generator (2)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Veröffentlicht am
+            <time itemprop="dateCreated" datetime="2017-02-16T15:31:59+08:00" content="2017-02-16">
+              2017-02-16
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>接上一篇博文，我们来探讨一下怎么通过配置来生成 <code>reducer</code>，以及如何往自动生成的 <code>reducer</code> 中增加自定义的转换（<code>action</code> 触发 <code>reducer</code> 变化）</p>
+<h3 id="reducer-的组成"><a href="#reducer-的组成" class="headerlink" title="reducer 的组成"></a>reducer 的组成</h3><ul>
+<li>在上一篇博文中，我们通过 action 的配置，自动生成了一些 reducer，这一部分我们称为<code>来自 action 配置的 reducer</code></li>
+<li>我们自定义的 reducer，需要定义名字以及它对应的通过 action 之后的转换(nextState)</li>
+<li>由 action 配置自动生成的 reducer，我们往其中增加一些转换规则</li>
+</ul>
+<h3 id="完善-reducer-generator"><a href="#完善-reducer-generator" class="headerlink" title="完善 reducer_generator"></a>完善 reducer_generator</h3><p>我们可以把 reducer 的配置分为两部分：basics(自定义 reducer) 和 extras(往自动生成的 reducer 中添加规则)<br>basics 和 extras 的配置规则差不多，不同的是 basics 的每个元素多了一个 initialState 属性，如下例子所示<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  &#123;</div><div class="line">    name: <span class="symbol">'globalLoading</span>',</div><div class="line">    initialState: &#123;</div><div class="line">      show: false,</div><div class="line">      msg: '</div><div class="line">    &#125;,</div><div class="line">    mappers: [</div><div class="line">      &#123;</div><div class="line">        action: <span class="symbol">'showLoading</span>',</div><div class="line">        nextState: (<span class="name">state</span>, action) =&gt; (&#123;</div><div class="line">          show: true,</div><div class="line">          msg: action.data || <span class="symbol">'loading</span>'</div><div class="line">        &#125;)</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        action: <span class="symbol">'hideLoading</span>',</div><div class="line">        nextState: (<span class="name">state</span>, action) =&gt; (&#123;</div><div class="line">          show: false,</div><div class="line">          msg: ''</div><div class="line">        &#125;)</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>和我们原来写 reducer 的方式很像，只不过变成了配置，简化了代码。<br>最终的 reducer 通过这个函数暴露出去<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="builtin-name">export</span><span class="built_in"> default </span>(prefix, actionConfigs, reducerConfigs) =&gt; &#123;</div><div class="line">  const result = &#123;&#125;;</div><div class="line"></div><div class="line">  <span class="keyword">forEach</span>(action =&gt;</div><div class="line">    addReducersFromAction(prefix, action, result, reducerConfigs.extras || [], actionLoadingList)</div><div class="line">  )(actionConfigs);</div><div class="line"></div><div class="line">  <span class="keyword">forEach</span>(reducer =&gt;</div><div class="line">    addReducersFromBasicConfigs(prefix, reducer, result)</div><div class="line">  )(reducerConfigs.basics || []);</div><div class="line"></div><div class="line">  return result;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h4 id="自定义-reducer"><a href="#自定义-reducer" class="headerlink" title="自定义 reducer"></a>自定义 reducer</h4><p>其实也就是实现 <code>addReducersFromBasicConfigs</code> 函数，很简单，代码如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> addReducersFromBasicConfigs = <span class="function">(<span class="params">prefix, reducer, result</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">const</span> &#123;</div><div class="line">    name, initialState, mappers</div><div class="line">  &#125; = reducer;</div><div class="line"></div><div class="line">  result[<span class="string">`<span class="subst">$&#123;name&#125;</span>`</span>] = <span class="function">(<span class="params">state = initialState, action</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, length = mappers.length; i &lt; length; i ++) &#123;</div><div class="line">      <span class="keyword">const</span> mapper = mappers[i];</div><div class="line">      <span class="keyword">if</span> (action.type === getAction(prefix, <span class="string">`<span class="subst">$&#123;mapper.action&#125;</span>`</span>)) &#123;</div><div class="line">        <span class="keyword">return</span> mapper.nextState(state, action);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> state;</div><div class="line">  &#125;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h4 id="补充自动生成的-reducer-规则"><a href="#补充自动生成的-reducer-规则" class="headerlink" title="补充自动生成的 reducer 规则"></a>补充自动生成的 reducer 规则</h4><p>我们在上一篇博文已经看到了，对于每一种类型的 action，都有对应的 reducer_generator 代码。<br>为了实现规则的补充，我们让自动生成的 reducer 在经过自动生成的规则的判断之后，返回一个函数。<br>比如 loading 的代码，我们修改如下<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">result[`$&#123;<span class="keyword">name</span>&#125;Loading`] = (state = false, <span class="keyword">action</span>) =&gt; &#123;</div><div class="line">  <span class="keyword">if</span> (<span class="keyword">action</span>.<span class="keyword">type</span> === getAction(prefix, <span class="keyword">name</span>, defines.ACTION_STATUS_LOAD)) &#123;</div><div class="line">    <span class="keyword">return</span> true;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (<span class="keyword">action</span>.<span class="keyword">type</span> === getAction(prefix, <span class="keyword">name</span>, defines.ACTION_STATUS_SUCCESS)) &#123;</div><div class="line">    <span class="keyword">return</span> false;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (<span class="keyword">action</span>.<span class="keyword">type</span> === getAction(prefix, <span class="keyword">name</span>, defines.ACTION_STATUS_FAIL)) &#123;</div><div class="line">    <span class="keyword">return</span> false;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> getExtraMapper(prefix, `$&#123;<span class="keyword">name</span>&#125;Loading`, state, <span class="keyword">action</span>, extras);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>其中，getExtraMapper 函数就是我们处理自定义规则的地方。该函数代码如下<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">const getExtraMapper = (<span class="keyword">prefix, </span>name, state, action, <span class="keyword">extras) </span>=&gt; &#123;</div><div class="line">  for (let i = <span class="number">0</span>, length = <span class="keyword">extras.length; </span>i &lt; length<span class="comment">; i ++) &#123;</span></div><div class="line">    const <span class="keyword">extra </span>= <span class="keyword">extras[i];</span></div><div class="line">    if (<span class="keyword">extra.name </span>=== name) &#123;</div><div class="line">      for (let <span class="keyword">j </span>= <span class="number">0</span>, mappersLength = <span class="keyword">extra.mappers.length; </span><span class="keyword">j </span>&lt; mappersLength<span class="comment">; j ++) &#123;</span></div><div class="line">        const mapper = <span class="keyword">extra.mappers[j];</span></div><div class="line">        if (action.type === getAction(<span class="keyword">prefix, </span>mapper.action)) &#123;</div><div class="line">          return mapper.nextState(state, action)<span class="comment">;</span></div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  return state<span class="comment">;</span></div><div class="line">&#125;<span class="comment">;</span></div></pre></td></tr></table></figure></p>
+<p>思路很简单，就是遍历 extras 的配置，从中寻找匹配的 name，然后将规则添加进去，是不是很简单？</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>至此，我们就实现了通过配置生成所有的 action 和 reducer 的方法，让项目代码量骤减，开发效率也提高了不少。</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+            <a href="/tags/React/" rel="tag">#React</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/25/React-实践：改造-Redux-action-generator，编写-Redux-reducer-generator-(1)/" rel="next" title="React 实践：改造 Redux action generator，编写 Redux reducer generator (1)">
+                <i class="fa fa-chevron-left"></i> React 实践：改造 Redux action generator，编写 Redux reducer generator (1)
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/20/Rx-学习笔记（1）/" rel="prev" title="Rx 学习笔记（1）">
+                Rx 学习笔记（1） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/author.png" alt="Splendour" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Splendour</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">Kategorien</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">Tags</span>
+              
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/splendourhui" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reducer-的组成"><span class="nav-number">2.</span> <span class="nav-text">reducer 的组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完善-reducer-generator"><span class="nav-number">3.</span> <span class="nav-text">完善 reducer_generator</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义-reducer"><span class="nav-number">3.1.</span> <span class="nav-text">自定义 reducer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#补充自动生成的-reducer-规则"><span class="nav-number">3.2.</span> <span class="nav-text">补充自动生成的 reducer 规则</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Splendour</span>
+</div>
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+    
+
+  
+
+
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+
+</body>
+</html>

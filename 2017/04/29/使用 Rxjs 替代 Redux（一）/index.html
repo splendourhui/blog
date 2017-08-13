@@ -1,0 +1,652 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript,Rxjs," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="前言在 Rxjs 中，一切都是流，我们订阅它们，并在它们改变的时候接收到最新的值。在 React 中，我们往组件传入参数，或者维护组件自身的状态，只要其中之一发生变化，组件就会重新渲染，达到页面更新的目的。结合一下，我们发现可以让组件订阅 Rxjs 的流，并且在流更新的时候刷新界面，这不就是单项数据流吗？ 在 React 的使用过程中，我们通常使用 Redux 来管理一个全局的 Store，存储全">
+<meta name="keywords" content="JavaScript,Rxjs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Rxjs 替代 Redux（一）">
+<meta property="og:url" content="http://splendourhui.com/2017/04/29/使用 Rxjs 替代 Redux（一）/index.html">
+<meta property="og:site_name" content="Splendour&#39;s blog">
+<meta property="og:description" content="前言在 Rxjs 中，一切都是流，我们订阅它们，并在它们改变的时候接收到最新的值。在 React 中，我们往组件传入参数，或者维护组件自身的状态，只要其中之一发生变化，组件就会重新渲染，达到页面更新的目的。结合一下，我们发现可以让组件订阅 Rxjs 的流，并且在流更新的时候刷新界面，这不就是单项数据流吗？ 在 React 的使用过程中，我们通常使用 Redux 来管理一个全局的 Store，存储全">
+<meta property="og:updated_time" content="2017-08-13T03:40:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用 Rxjs 替代 Redux（一）">
+<meta name="twitter:description" content="前言在 Rxjs 中，一切都是流，我们订阅它们，并在它们改变的时候接收到最新的值。在 React 中，我们往组件传入参数，或者维护组件自身的状态，只要其中之一发生变化，组件就会重新渲染，达到页面更新的目的。结合一下，我们发现可以让组件订阅 Rxjs 的流，并且在流更新的时候刷新界面，这不就是单项数据流吗？ 在 React 的使用过程中，我们通常使用 Redux 来管理一个全局的 Store，存储全">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'always',
+    motion: true
+  };
+</script>
+
+  <title> 使用 Rxjs 替代 Redux（一） | Splendour's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?12423411d7b24eae6e82e3173f32ab00";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Splendour's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">不积跬步，无以至千里</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                使用 Rxjs 替代 Redux（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Veröffentlicht am
+            <time itemprop="dateCreated" datetime="2017-04-29T14:50:55+08:00" content="2017-04-29">
+              2017-04-29
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在 Rxjs 中，一切都是流，我们订阅它们，并在它们改变的时候接收到最新的值。在 React 中，我们往组件传入参数，或者维护组件自身的状态，只要其中之一发生变化，组件就会重新渲染，达到页面更新的目的。结合一下，我们发现可以让组件订阅 Rxjs 的流，并且在流更新的时候刷新界面，这不就是单项数据流吗？</p>
+<p>在 React 的使用过程中，我们通常使用 Redux 来管理一个全局的 Store，存储全局状态或数据，那我们是否可以用 Rxjs 来实现 Redux 的功能呢？</p>
+<h3 id="替换-Store"><a href="#替换-Store" class="headerlink" title="替换 Store"></a>替换 Store</h3><p>Redux 的 Store 首先是用来存储数据的（可通过<a href="http://note.youdao.com/" target="_blank" rel="external">官方文档</a>详细了解）。结合之前的学习笔记，我们挑选了 BehaviorSubject 这个类来作为存储的数据流，因为它能实现数据共享，这也是 Store 中的数据能实现的。</p>
+<h4 id="定义与订阅"><a href="#定义与订阅" class="headerlink" title="定义与订阅"></a>定义与订阅</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> loading$ = <span class="keyword">new</span> BehaviorSubject(<span class="literal">false</span>);</div></pre></td></tr></table></figure>
+<p>在这里我们定义了一个 loading$，存储加载状态的显示和隐藏。在项目中，变量后面加个 $ 表示这是属于一个流。</p>
+<p>在 React 组件中，我们订阅它，并将它的状态写入到 state，这样，就可以在每次更新的时候修改组件的 state，从而实现组件更新。</p>
+<p>一般，我们在 componentDidMount 中实现数据订阅。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.subscriber = loading$.subscribe(<span class="function"><span class="params">loading</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">this</span>.setState(&#123;</div><div class="line">    <span class="attr">show</span>: loading</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>细心的同学会发现，订阅了之后，如果没有销毁，则该订阅会一直存在，数据源的变化会让这个订阅函数执行。这个时候如果组件已经不存在了，则会抛出异常（在一个不存在的组件中调用 setState 方法）。所以，我们需要在 componentWillUnmount 函数中，销毁该订阅。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">this</span><span class="selector-class">.subscriber</span><span class="selector-class">.unsubscribe</span>();</div></pre></td></tr></table></figure></p>
+<h4 id="打印"><a href="#打印" class="headerlink" title="打印"></a>打印</h4><p>使用 Redux 的时候，我们可以方便地通过 createLogger 中间件来实现 Store 的实时打印，方面开发过程中对数据的监控和调试。那么，如果我们使用了 Rxjs，该如何进行数据流实时状态的打印呢？其实思路很清晰，就是需要在数据流发生状态改变的时候，添加打印的逻辑即可。</p>
+<h5 id="Observable"><a href="#Observable" class="headerlink" title="Observable"></a>Observable</h5><p>Observable 提供了一个 do 方法</p>
+<blockquote>
+<p>Intercepts each emission on the source and runs a function, but returns an output which is identical to the source</p>
+</blockquote>
+<p>即提供了一个钩子，可以在 next、err 和 complete 三种状态发生时执行额外的操作，最终返回该 Observable 本身。所以，我们可以在 do 方法中，加入打印逻辑。<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">Observable.prototype.debug = function (name) &#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.<span class="keyword">do</span>(</div><div class="line">    <span class="function"><span class="params">(next)</span> =&gt;</span> &#123;</div><div class="line">      <span class="keyword">if</span> (debuggerOn) &#123;</div><div class="line">        <span class="built_in">console</span>.log(`<span class="javascript">%c $&#123;name&#125; emit value: </span>`, `<span class="javascript">color: #<span class="number">4</span>CAF50; font-weight: bold</span>`, next);</div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="function"><span class="params">(err)</span> =&gt;</span> &#123;</div><div class="line">      <span class="keyword">if</span> (debuggerOn) &#123;</div><div class="line">        <span class="built_in">console</span>.error(`<span class="javascript">$&#123;name&#125; <span class="keyword">throw</span> ERROR &gt;&gt;&gt; </span>`, err);</div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="keyword">if</span> (debuggerOn) &#123;</div><div class="line">        <span class="built_in">console</span>.log(`<span class="javascript">$&#123;name&#125; completed.</span>`);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  );</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>即拓展了 Observable，让它能链式调用 debug 方法，传入名称，实现打印。<br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> loading$ = Observable.<span class="keyword">of</span>(<span class="literal">false</span>).debug(<span class="string">'[common]:[loading]'</span>);</div></pre></td></tr></table></figure></p>
+<h5 id="BehaviorSubject"><a href="#BehaviorSubject" class="headerlink" title="BehaviorSubject"></a>BehaviorSubject</h5><p>如果是 BehaviorSubject 呢？我们尝试一下可以发现，如果将 BehaviorSubject 也调用 debug 方法，则会产生类型的转换，变成了普通的 Observable，使用 BehaviorSubject 的优势没了。查阅文档也没发现 BehaviorSubject 有类似 do 的方法，那么我们需要换个思路，自己实现类似的方法。</p>
+<p>既然我们是需要在数据变化的时候打印，那么我们相当于要订阅这份数据，在不同状态下实现打印逻辑即可。从 do 函数的实现思路出发，我们可以订阅 BehaviorSubject 自身，实现打印逻辑后，返回本身，实现链式调用，所以我们可以拓展这样的一个 debug 方法。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">BehaviorSubject.prototype.debug = <span class="function"><span class="keyword">function</span> (<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.subscribe(<span class="function">(<span class="params">next</span>) =&gt;</span> &#123;</div><div class="line">      <span class="keyword">if</span> (debuggerOn) &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">`%c <span class="subst">$&#123;name&#125;</span> emit value: `</span>, <span class="string">`color: #4CAF50; font-weight: bold`</span>, next);</div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</div><div class="line">      <span class="keyword">if</span> (debuggerOn) &#123;</div><div class="line">        <span class="built_in">console</span>.error(<span class="string">`<span class="subst">$&#123;name&#125;</span> throw ERROR &gt;&gt;&gt; `</span>, err);</div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="keyword">if</span> (debuggerOn) &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;name&#125;</span> completed.`</span>);</div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>使用也非常简单<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> loading$ = <span class="keyword">new</span> BehaviorSubject(<span class="keyword">false</span>).debug(<span class="string">'[common]:[loading]'</span>);</div></pre></td></tr></table></figure></p>
+<h3 id="实现-Action"><a href="#实现-Action" class="headerlink" title="实现 Action"></a>实现 Action</h3><p>我们上面仅仅是实现了数据的至上而下传递。在 Redux 中，由用户操作等逻辑，组件本身需要修改 Store，是通过发送一个 Action 实现的；对于 Rxjs 来说，Store 层也需要提供相应的 Action，让组件可以调用，使得对应的数据流能 emit 新的数据，组件订阅的数据更新，从而实现组件的刷新。</p>
+<p>这里使用很简便的方式来实现<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> showLoading = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  loading$.next(<span class="literal">true</span>);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> hideLoading = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  loading$.next(<span class="literal">false</span>);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>组件内部，在需要的地方，调用即可。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>通过以上的方式，我们可以很方便地使用 Rxjs 来替代 Redux，实现前端的数据层和数据传递。这些都是属于同步操作，那么，如何用 Rxjs 实现异步操作呢？下一篇文章将会继续分享。</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+            <a href="/tags/Rxjs/" rel="tag">#Rxjs</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/19/Rx-学习笔记（2）/" rel="next" title="Rx 学习笔记（2）">
+                <i class="fa fa-chevron-left"></i> Rx 学习笔记（2）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/13/使用 Rxjs 替代 Redux（二）/" rel="prev" title="使用 Rxjs 替代 Redux（二）">
+                使用 Rxjs 替代 Redux（二） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/author.png" alt="Splendour" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Splendour</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">Kategorien</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">Tags</span>
+              
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/splendourhui" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#替换-Store"><span class="nav-number">2.</span> <span class="nav-text">替换 Store</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义与订阅"><span class="nav-number">2.1.</span> <span class="nav-text">定义与订阅</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#打印"><span class="nav-number">2.2.</span> <span class="nav-text">打印</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Observable"><span class="nav-number">2.2.1.</span> <span class="nav-text">Observable</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#BehaviorSubject"><span class="nav-number">2.2.2.</span> <span class="nav-text">BehaviorSubject</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现-Action"><span class="nav-number">3.</span> <span class="nav-text">实现 Action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Splendour</span>
+</div>
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+    
+
+  
+
+
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+
+</body>
+</html>
