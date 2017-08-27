@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Splendour&#39;s blog</title>
+  <subtitle>不积跬步，无以至千里</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://splendourhui.com/"/>
+  <updated>2017-08-27T08:45:46.000Z</updated>
+  <id>http://splendourhui.com/</id>
+  
+  <author>
+    <name>Splendour</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用 Rxjs 替代 Redux（二）</title>
+    <link href="http://splendourhui.com/2017/08/13/%E4%BD%BF%E7%94%A8%20Rxjs%20%E6%9B%BF%E4%BB%A3%20Redux%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>http://splendourhui.com/2017/08/13/使用 Rxjs 替代 Redux（二）/</id>
+    <published>2017-08-13T06:50:55.000Z</published>
+    <updated>2017-08-27T08:45:46.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;在前面，我们已经用 Rxjs 实现了 Store 和 Action。那么，对于前端开发领域非常重要的一块—-数据拉取，又如何用 Rxjs 来
+    
+    </summary>
+    
+      <category term="Rxjs" scheme="http://splendourhui.com/categories/Rxjs/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>使用 Rxjs 替代 Redux（一）</title>
+    <link href="http://splendourhui.com/2017/04/29/%E4%BD%BF%E7%94%A8%20Rxjs%20%E6%9B%BF%E4%BB%A3%20Redux%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>http://splendourhui.com/2017/04/29/使用 Rxjs 替代 Redux（一）/</id>
+    <published>2017-04-29T06:50:55.000Z</published>
+    <updated>2017-08-27T08:54:44.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;在 Rxjs 中，一切都是流，我们订阅它们，并在它们改变的时候接收到最新的值。在 React 中，我们往组件传入参数，或者维护组件自身的状态
+    
+    </summary>
+    
+      <category term="Rxjs" scheme="http://splendourhui.com/categories/Rxjs/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Rx 学习笔记（2）</title>
+    <link href="http://splendourhui.com/2017/04/19/Rx-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/"/>
+    <id>http://splendourhui.com/2017/04/19/Rx-学习笔记（2）/</id>
+    <published>2017-04-19T06:50:55.000Z</published>
+    <updated>2017-08-27T08:56:12.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;在前文，我们通过 Observable 的相关方法创建了 Observable，并且用 subscribe 方法实现了订阅。然而我们发现，每
+    
+    </summary>
+    
+      <category term="Rxjs" scheme="http://splendourhui.com/categories/Rxjs/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Rx 学习笔记（1）</title>
+    <link href="http://splendourhui.com/2017/03/20/Rx-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/"/>
+    <id>http://splendourhui.com/2017/03/20/Rx-学习笔记（1）/</id>
+    <published>2017-03-20T14:43:40.000Z</published>
+    <updated>2017-08-27T08:57:27.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Reactive-Programming&quot;&gt;&lt;a href=&quot;#Reactive-Programming&quot; class=&quot;headerlink&quot; title=&quot;Reactive Programming&quot;&gt;&lt;/a&gt;Reactive Programming&lt;/h3&gt;&lt;
+    
+    </summary>
+    
+      <category term="Rxjs" scheme="http://splendourhui.com/categories/Rxjs/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>React 实践：改造 Redux action generator，编写 Redux reducer generator (2)</title>
+    <link href="http://splendourhui.com/2017/02/16/React-%E5%AE%9E%E8%B7%B5%EF%BC%9A%E6%94%B9%E9%80%A0-Redux-action-generator%EF%BC%8C%E7%BC%96%E5%86%99-Redux-reducer-generator-%EF%BC%882%EF%BC%89/"/>
+    <id>http://splendourhui.com/2017/02/16/React-实践：改造-Redux-action-generator，编写-Redux-reducer-generator-（2）/</id>
+    <published>2017-02-16T07:31:59.000Z</published>
+    <updated>2017-08-27T08:58:13.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h3&gt;&lt;p&gt;接上一篇博文，我们来探讨一下怎么通过配置来生成 &lt;code&gt;reducer&lt;/code&gt;，以及如何往自动生成的 &lt;code&gt;reducer&lt;
+    
+    </summary>
+    
+      <category term="Redux" scheme="http://splendourhui.com/categories/Redux/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>React 实践：改造 Redux action generator，编写 Redux reducer generator (1)</title>
+    <link href="http://splendourhui.com/2017/01/25/React-%E5%AE%9E%E8%B7%B5%EF%BC%9A%E6%94%B9%E9%80%A0-Redux-action-generator%EF%BC%8C%E7%BC%96%E5%86%99-Redux-reducer-generator-(1)/"/>
+    <id>http://splendourhui.com/2017/01/25/React-实践：改造-Redux-action-generator，编写-Redux-reducer-generator-(1)/</id>
+    <published>2017-01-25T01:09:25.000Z</published>
+    <updated>2017-08-27T09:04:21.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h3&gt;&lt;p&gt;从几个月前开始，写了一篇博文 &lt;code&gt;编写自己项目的 Redux action generator&lt;/code&gt;，并且在项目实践中用上了
+    
+    </summary>
+    
+      <category term="Redux" scheme="http://splendourhui.com/categories/Redux/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>React 实践：第三方方法调用类库的改造</title>
+    <link href="http://splendourhui.com/2017/01/07/React-%E5%AE%9E%E8%B7%B5%EF%BC%9A%E7%AC%AC%E4%B8%89%E6%96%B9%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E7%B1%BB%E5%BA%93%E7%9A%84%E6%94%B9%E9%80%A0/"/>
+    <id>http://splendourhui.com/2017/01/07/React-实践：第三方方法调用类库的改造/</id>
+    <published>2017-01-07T00:56:22.000Z</published>
+    <updated>2017-08-27T09:05:46.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我们知道，React 组件的常规渲染是根据传入的 props 来改变的，但有时候，我们会需要使用一些第三方库，它们提供了一些方法来操作 dom （新增或修改）以改变页面展示，这时候就需要我们做一次转化，使之能符合 React 的常规做法。下面就以 &lt;a href=&quot;http
+    
+    </summary>
+    
+      <category term="React" scheme="http://splendourhui.com/categories/React/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>React 实践：编写自己项目的 Redux action generator</title>
+    <link href="http://splendourhui.com/2016/08/17/React-%E5%AE%9E%E8%B7%B5%EF%BC%9A%E7%BC%96%E5%86%99%E8%87%AA%E5%B7%B1%E9%A1%B9%E7%9B%AE%E7%9A%84-Redux-action-generator/"/>
+    <id>http://splendourhui.com/2016/08/17/React-实践：编写自己项目的-Redux-action-generator/</id>
+    <published>2016-08-17T11:47:08.000Z</published>
+    <updated>2017-08-27T09:07:31.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h3&gt;&lt;p&gt;使用 &lt;code&gt;React&lt;/code&gt; ＋ &lt;code&gt;Redux&lt;/code&gt; 也有一段时间了，从第一次尝试使用之后就开始按一种方式写
+    
+    </summary>
+    
+      <category term="React" scheme="http://splendourhui.com/categories/React/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>React 优化实践</title>
+    <link href="http://splendourhui.com/2016/08/01/React-%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5/"/>
+    <id>http://splendourhui.com/2016/08/01/React-优化实践/</id>
+    <published>2016-08-01T12:07:54.000Z</published>
+    <updated>2017-08-27T09:15:42.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;最近在用 React ＋ Redux ＋ WEUI 做一个企业号上的企业系统移动端版本，发现在性能较差的手机上还是有蛮大的卡顿，故开始查找资
+    
+    </summary>
+    
+      <category term="React" scheme="http://splendourhui.com/categories/React/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>记一次 react 页面白屏的排查过程</title>
+    <link href="http://splendourhui.com/2016/07/14/%E8%AE%B0%E4%B8%80%E6%AC%A1-react-%E9%A1%B5%E9%9D%A2%E7%99%BD%E5%B1%8F%E7%9A%84%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/"/>
+    <id>http://splendourhui.com/2016/07/14/记一次-react-页面白屏的排查过程/</id>
+    <published>2016-07-13T23:45:01.000Z</published>
+    <updated>2017-08-27T08:32:38.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h3&gt;&lt;p&gt;近日，在 &lt;code&gt;微信web开发者工具&lt;/code&gt; 开发完成页面后，在个人手机上测试通过并移交产品经理测试，发现其手机打开页面后白屏，
+    
+    </summary>
+    
+      <category term="React" scheme="http://splendourhui.com/categories/React/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript 函数式编程</title>
+    <link href="http://splendourhui.com/2016/03/20/JavaScript-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
+    <id>http://splendourhui.com/2016/03/20/JavaScript-函数式编程/</id>
+    <published>2016-03-20T06:01:05.000Z</published>
+    <updated>2017-08-27T09:18:21.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;在 ES6 的支持下（特别是箭头函数），JavaScript 函数式编程的实践性得到了很大的提升。再加上 Babel 等神器，目前已经可以自己构建函数式编程的一些小套路了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;函数式编程&quot;&gt;&lt;a h
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://splendourhui.com/categories/JavaScript/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ES6学习笔记-集合</title>
+    <link href="http://splendourhui.com/2016/01/24/ES6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E9%9B%86%E5%90%88/"/>
+    <id>http://splendourhui.com/2016/01/24/ES6学习笔记-集合/</id>
+    <published>2016-01-24T08:06:52.000Z</published>
+    <updated>2017-08-27T09:19:41.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Set&quot;&gt;&lt;a href=&quot;#Set&quot; class=&quot;headerlink&quot; title=&quot;Set&quot;&gt;&lt;/a&gt;Set&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;一个 Set 是一群值的集合，它是可变的，能够增删元素。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id
+    
+    </summary>
+    
+      <category term="ES6" scheme="http://splendourhui.com/categories/ES6/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>发布自己的node模块</title>
+    <link href="http://splendourhui.com/2016/01/05/%E5%8F%91%E5%B8%83%E8%87%AA%E5%B7%B1%E7%9A%84node%E6%A8%A1%E5%9D%97/"/>
+    <id>http://splendourhui.com/2016/01/05/发布自己的node模块/</id>
+    <published>2016-01-05T08:57:21.000Z</published>
+    <updated>2017-08-27T09:20:53.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;用了那么多的 node_modules，想不想发布自己的模块呢？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;在-GitHub（或者其他托管工具）创建一个项目&quot;&gt;&lt;a href=&quot;#在-GitHub（或者其他托管工具）创建一个项目&quot; cla
+    
+    </summary>
+    
+      <category term="Nodejs" scheme="http://splendourhui.com/categories/Nodejs/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ES6学习笔记-箭头函数 Arrow Functions</title>
+    <link href="http://splendourhui.com/2016/01/03/ES6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0-Arrow-Functions/"/>
+    <id>http://splendourhui.com/2016/01/03/ES6学习笔记-箭头函数-Arrow-Functions/</id>
+    <published>2016-01-03T02:48:10.000Z</published>
+    <updated>2017-08-27T09:22:23.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;箭头函数的语法&quot;&gt;&lt;a href=&quot;#箭头函数的语法&quot; class=&quot;headerlink&quot; title=&quot;箭头函数的语法&quot;&gt;&lt;/a&gt;箭头函数的语法&lt;/h2&gt;&lt;pre class=&quot; language-javascript&quot;&gt;&lt;code class=&quot;langua
+    
+    </summary>
+    
+      <category term="ES6" scheme="http://splendourhui.com/categories/ES6/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>使用 Jenkins 构建 nodejs 应用</title>
+    <link href="http://splendourhui.com/2015/12/29/%E4%BD%BF%E7%94%A8-Jenkins-%E6%9E%84%E5%BB%BA-nodejs-%E5%BA%94%E7%94%A8/"/>
+    <id>http://splendourhui.com/2015/12/29/使用-Jenkins-构建-nodejs-应用/</id>
+    <published>2015-12-29T13:31:53.000Z</published>
+    <updated>2017-08-27T09:23:26.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot; title=&quot;准备工作&quot;&gt;&lt;/a&gt;准备工作&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;安装 Jenkins&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;安装如下插件，并重启 Jenkins&lt;/p&gt;
+&lt;u
+    
+    </summary>
+    
+      <category term="Nodejs" scheme="http://splendourhui.com/categories/Nodejs/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu14.04 安装 Node.js LTS V4.2.3</title>
+    <link href="http://splendourhui.com/2015/12/15/ubuntu14-04-%E5%AE%89%E8%A3%85-Node-js-LTS-V4-2-3/"/>
+    <id>http://splendourhui.com/2015/12/15/ubuntu14-04-安装-Node-js-LTS-V4-2-3/</id>
+    <published>2015-12-15T07:26:27.000Z</published>
+    <updated>2017-08-27T09:24:08.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;因项目需要，经常在服务器上部署 Node.js，记录一下操作，以便查阅。&lt;br&gt;这里使用源码包编译的方法安装 Node.js&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;到官网 &lt;a href=&quot;https://nodejs.org
+    
+    </summary>
+    
+      <category term="Nodejs" scheme="http://splendourhui.com/categories/Nodejs/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ES6学习笔记-解构-Destructuring</title>
+    <link href="http://splendourhui.com/2015/12/13/ES6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E8%A7%A3%E6%9E%84-Destructuring/"/>
+    <id>http://splendourhui.com/2015/12/13/ES6学习笔记-解构-Destructuring/</id>
+    <published>2015-12-13T05:01:16.000Z</published>
+    <updated>2017-08-27T09:25:55.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;什么是解构&quot;&gt;&lt;a href=&quot;#什么是解构&quot; class=&quot;headerlink&quot; title=&quot;什么是解构&quot;&gt;&lt;/a&gt;什么是解构&lt;/h2&gt;&lt;p&gt;我们以访问数组中的前三个元素为例&lt;/p&gt;
+&lt;h3 id=&quot;传统的访问方式&quot;&gt;&lt;a href=&quot;#传统的访问方式&quot; c
+    
+    </summary>
+    
+      <category term="ES6" scheme="http://splendourhui.com/categories/ES6/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ES6学习笔记-不定参数和默认参数</title>
+    <link href="http://splendourhui.com/2015/12/06/ES6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%8D%E5%AE%9A%E5%8F%82%E6%95%B0%E5%92%8C%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0/"/>
+    <id>http://splendourhui.com/2015/12/06/ES6学习笔记-不定参数和默认参数/</id>
+    <published>2015-12-06T04:51:02.000Z</published>
+    <updated>2017-08-27T09:27:04.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;不定参数&quot;&gt;&lt;a href=&quot;#不定参数&quot; class=&quot;headerlink&quot; title=&quot;不定参数&quot;&gt;&lt;/a&gt;不定参数&lt;/h2&gt;&lt;h3 id=&quot;可变参数&quot;&gt;&lt;a href=&quot;#可变参数&quot; class=&quot;headerlink&quot; title=&quot;可变参数&quot;&gt;&lt;/a
+    
+    </summary>
+    
+      <category term="ES6" scheme="http://splendourhui.com/categories/ES6/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ES6学习笔记-模板字符串</title>
+    <link href="http://splendourhui.com/2015/11/24/ES6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%A8%A1%E6%9D%BF%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    <id>http://splendourhui.com/2015/11/24/ES6学习笔记-模板字符串/</id>
+    <published>2015-11-24T12:02:06.000Z</published>
+    <updated>2017-08-27T09:29:16.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;基础知识&quot;&gt;&lt;a href=&quot;#基础知识&quot; class=&quot;headerlink&quot; title=&quot;基础知识&quot;&gt;&lt;/a&gt;基础知识&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;使用反撇号字符 ` 替代单引号和双引号，在最简单的情况下是一致的。&lt;/p&gt;
+&lt;pre class=&quot; la
+    
+    </summary>
+    
+      <category term="ES6" scheme="http://splendourhui.com/categories/ES6/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ES6学习笔记-生成器-Generators</title>
+    <link href="http://splendourhui.com/2015/11/18/ES6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%94%9F%E6%88%90%E5%99%A8-Generators/"/>
+    <id>http://splendourhui.com/2015/11/18/ES6学习笔记-生成器-Generators/</id>
+    <published>2015-11-18T12:02:06.000Z</published>
+    <updated>2017-08-27T09:29:46.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;生成器函数与普通函数的区别如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用 function* 声明&lt;/li&gt;
+&lt;li&gt;有一种类似 return 的语法：关键字 yield。不同的是普通函数只可以 return 一次，而生成器函数可以 yield 多次；在执行过程中，yield 表达
+    
+    </summary>
+    
+      <category term="ES6" scheme="http://splendourhui.com/categories/ES6/"/>
+    
+    
+  </entry>
+  
+</feed>

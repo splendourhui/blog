@@ -1,1205 +1,1083 @@
-<!doctype html>
-<html class="theme-next   use-motion ">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.4.0 -->
+    <script>window.materialVersion = "1.4.0"</script>
+
+    <!-- Title -->
+    
+    <title>
+        
+        Splendour&#39;s blog
+    </title>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+        <link rel="dns-prefetch" href="https://hm.baidu.com"/>
+    
+    
+    
+    
+    
+    
+    
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Splendour">
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content="null">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Splendour&#39;s blog">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://splendourhui.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Splendour&#39;s blog">
+    <meta property="og:image" content="/img/favicon.png" />
+    <meta property="og:description" content="">
+    
+
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:title" content="Splendour&#39;s blog">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="/img/favicon.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="http://splendourhui.com" />
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://splendourhui.com/page/3/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+materialVersion+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(data&&data.indexOf(versionString)===-1){lsloader.removeLS(key)}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload){cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload);return}code=code.split(versionString)[1];if(/\.js?.+$/.test(versionNumber)){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload)}};lsloader.requestResource=function(name,path,cssonload){var that=this;if(/\.js?.+$/.test(path)){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else if(/\.css?.+$/.test(path)){this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
+
+    <!-- Import CSS & jQuery -->
+    
+        <style id="css/material.min.css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("css/material.min.css","/css/material.min.css?fJTiM/K1J3dWIruo3pxtAw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";})</script>
+        <style id="css/style.min.css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("css/style.min.css","/css/style.min.css?oCSEO3ST+aEypEwttTDI9g==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";})</script>
+        
+        
+            <style>
+    
+    
+    
+    
+    
+    
+    
+    .footer-sns-github {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgY2xhc3M9Imljb24iIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik0xMzguNCA3OGMtNi40IDEuNC0yNi40IDE0LjItMzYgMjIuOC04IDcuMi0yMiAyOS44LTI0LjQgMzkuMi0xLjYgNi40LTIgMTEzLjItMS42IDM2OCAuNiAyOTkuNCAxIDM1OS44IDMuNCAzNjQgMTEgMjAuMiAyMS42IDMyLjQgMzcuMiA0MyAxNS42IDEwLjYgMTcuMiAxMS4yIDM0LjIgMTMuMiAxMC42IDEuMiA2My40IDEuNiAxMjcuNiAxLjRsMTA5LjYtLjYgNi02LjggNi4yLTYuOC0xLjItMjUuMmMtLjgtMTUuOC0uMi0zMy40IDEuNC00Ny4yIDMtMjUuNCAxLjQtMzYuMi02LTQzLjItNS00LjYtNi4yLTQuOC0zMC42LTQuMi0yNy42LjgtMjQgMS42LTY4LjgtMTYtOC42LTMuNC0yMi42LTE4LTI4LjQtMjkuOC0xMS40LTIyLjgtMjctNDUtMzkuMi01NS42LTE0LTEyLjItMTkuOC0yMC44LTE5LjgtMjguNiAwLTExLjYgMTMuNi0xMi42IDMzLjItMi40IDE2LjYgOC44IDIwLjggMTIuNCA0MC44IDM2LjIgMjQuMiAyOC42IDMxIDMzLjYgNTQgMzkuNiAxNS4yIDQgNDIuMiAzIDUxLjQtMS44IDktNC42IDE4LTE1LjIgMjQuNC0yOS4yIDExLjQtMjQuMiA3LjQtMzEuMi0yMC42LTM2LjgtOS44LTItMjkuMi04LTQzLjQtMTMuNC00MC40LTE1LjgtNjQuNi0zNy40LTg1LjQtNzYuMi0xMS42LTIxLjgtMTUuNC0zMy0xOC4yLTUzLjYtNC4yLTMyLjItNC44LTYwLjItMS40LTg0IDMuNC0yMy44IDYuOC0zMi44IDIwLjItNTQgNC02IDguOC0xNS42IDExLTIxLjQgMy44LTEwIDMuOC0xMS42IDEtMzAtNS4yLTM0LjItMy4yLTUyLjQgNy42LTcwLjIgNy4yLTEyLjIgMTUtMTcuMiAyNC4yLTE1LjggMTIuOCAyLjIgNTIgMTcuNCA2Ni44IDI2LjIgMjYgMTUgMjkgMTUuNCA4Mi40IDcuMiAyNC42LTMuOCAzMy44LTQuMiA2MC0zLjIgMTcgLjYgNDEuNCAzIDU0IDUuMiAzOC40IDYuNiA0OS42IDUuMiA3My0xMCA2LjYtNC4yIDE3LjQtOS40IDI0LTExLjYgNi42LTIuMiAxNi01LjggMjEtOC4yIDEzLTYgMjgtNS42IDM1LjYuOCAxMi40IDEwLjQgMTguNiA0MS40IDE0LjQgNzEuNi00LjQgMzAuNi0zIDM5LjQgOC40IDUzLjggMy40IDQuNCAxMS4yIDE5LjIgMTcuNCAzMy4yTDc3NSA0NDN2NzhsLTEwIDI4Yy0xNS4yIDQzLjItMzYuOCA3My4yLTY2LjIgOTIuOC0xMy40IDguOC01NyAyNS40LTc2LjggMjktMjguMiA1LjItMzMuMiAxMi42LTIyIDMyLjIgMTEuMiAxOS40IDEyLjQgMzIuOCAxMS42IDEyOS42bC0uNiA4NS44IDUuNCA0LjZjMy42IDMgOS4yIDUuMiAxNiA2IDUuOC44IDYwLjIgMSAxMjAuNi42IDEwOC40LS42IDExMC4yLS42IDExOS01IDI0LTExLjYgNDAtMjcuNCA1MS42LTUwLjZsNS40LTExIC42LTM0N2MuNC0yMjMtLjItMzUzLjQtMS40LTM2NS0yLTE3LTIuNi0xOC42LTEzLTM0LTEwLjYtMTUuNC0yMi44LTI2LjItNDMuMi0zNy4yLTQuMi0yLjQtNjQuNi0yLjgtMzY2LTMuMi0xOTguNiAwLTM2NCAuNC0zNjcuNiAxLjR6Ii8+PC9zdmc+);
+    }
+    
+    
+    
+    .footer-sns-zhihu {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgY2xhc3M9Imljb24iIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik0xMzYuOCA3OC44Yy04LjYgMi44LTI0IDEyLjQtMzMuNiAyMS04LjYgNy44LTIxLjQgMjcuOC0yNC40IDM3LjgtNC4yIDE0LTQgNzIzLjQgMCA3MzMuNCA4LjYgMjAuNiAzNi44IDQ4LjYgNTYgNTUuNiA5IDMuNCA3NDcuNCAzLjQgNzU2LjQgMCAxOS44LTcuMiA0OS0zNi42IDU2LTU2LjIgMi4yLTYgMi42LTc1LjYgMi44LTM2Ni40IDAtMjMzLjgtLjYtMzYxLjQtMi0zNjYtMS4yLTMuOC02LjYtMTMuOC0xMi4yLTIyLjItOC4yLTEyLjItMTMuNC0xNy40LTI1LjgtMjUuNi04LjQtNS44LTE5LTExLjQtMjMuMi0xMi4yLTQuNi0xLjItMTYzLjItMS44LTM3NC44LTEuOC0yOTMgMC0zNjguNi42LTM3NS4yIDIuNnptMTkwIDE0NS42YzUuNCA3LjYgNCAxNy40LTQuOCAzMS42LTkuOCAxNi0xMC44IDI3LjQtMyAzNSAyLjYgMi44IDYuNCA1IDguNCA1czM3LjguNCA3OS42LjZjNjggLjQgNzYuNi44IDgyLjQgMy44IDkuMiA1IDEyLjYgMTEgMTIuNiAyMiAwIDctMS4yIDEwLjgtNC44IDE1bC00LjggNS40LTM4IC4yYy01My44IDAtNTMuOCAwLTU1LjQgNTEuMi0uNiAxOC0xLjYgNDIuOC0yLjIgNTUtMS4yIDIyLjguNiAzMS42IDcuNiAzNi4yIDEuNC44IDIyLjIgMiA0NiAyLjZsNDMuMiAxIDguOCA2YzE1LjQgMTAuOCAxNy44IDI5LjIgNSAzNy01LjggMy42LTEwLjIgNC01MS44IDQtMzEgMC00NyAuOC01MC42IDIuNC03IDMuMi0xNC4yIDE3LjYtMTcuMiAzNC40LTMuMiAxNi42LTEgMjEuOCA5LjYgMjUuMiAxMy40IDQuMiAyMS44IDExLjIgNDkgNDEuNCAzNSAzOC44IDM2LjYgNDEgNDEuOCA1OC44IDcgMjMuOCAyLjIgNDEuOC0xMS40IDQxLjgtNy42IDAtMTItMy0yMS0xNC42LTEzLjgtMTcuNC01NC40LTY1LjgtNjItNzMuOC0xNS4yLTE2LTI5LjQtNS44LTM4LjggMjcuNC0xLjggNi42LTguOCAyMy4yLTE1LjYgMzctMTAuOCAyMi0xNCAyNi44LTI3LjQgMzkuNi0xOS42IDE5LjItMjYuNCAyMy01My42IDI5LjYtMjcuMiA2LjQtMzcgNS42LTM4LTMuNi0xLTguNCA0LjQtMTYuNCAyMC0yOSAxNi0xMyAzNi44LTM2LjYgNDUuMi01MS40IDMtNS4yIDguMi0xMy44IDExLjYtMTkgMy40LTUgMTEuOC0yMC40IDE4LjYtMzQuMiAxMC0yMCAxMy42LTI5LjQgMTcuMi00NyAyLjYtMTIuMiA2LjItMjUuNCA3LjgtMjkuNCA0LTkuNCA0LTIxLjQuMi0yNy01LjItNy40LTE2LTguOC02Mi42LTguNC01MC40LjQtNTUuMi0uOC01Ny42LTEzLjItMS44LTEwLjQgNS44LTI0LjQgMTYuMi0yOS44IDcuNC0zLjggMTEuOC00LjIgNTYuMi00LjhsNDguNC0uOCA0LjYtNWM0LjgtNSA0LjgtNSA1LTYxLjYgMC0zNS4yLS44LTU5LjItMi02My4yLTMuOC0xMS4yLTExLTE0LjgtMzAuMi0xNC44cy0yMS40IDEuNC0zMS4yIDE4LjJjLTguMiAxNC40LTIwLjYgMjguOC0zMy4yIDM4LjgtMTMuMiAxMC40LTIxLjYgMTMtMjggOS04LjQtNS42LTUuMi0yMy4yIDguMi00My4yIDQtNi40IDkuMi0xOC42IDEyLjItMjkuNiAzLTEwLjIgNy40LTIzLjIgMTAtMjkgMi40LTUuNiA2LTE2LjggOC0yNC42IDUuNi0yMy42IDI0LTUwLjggMzkuNC01OC40IDExLjItNS40IDE4LjYtNS40IDIyLjQuMnptNDUyIDY4LjJjMTEuOCA3LjggMTEuNC0uOCAxMC44IDIxNi0uNiAxODEtLjggMTk4LjgtNCAyMDMtNy42IDEwLjgtOS44IDExLjQtNTMuNiAxMi40bC00MSAxLTE0IDcuOGMtNy42IDQuMi0yMS4yIDEzLTI5LjggMTkuNC0yNS44IDE5LjItMzUgMTkuOC00My40IDMuMi0xMS44LTIzLjItMjMuNi0zMy4yLTM5LjQtMzMuNC04LjggMC0xMy42LTIuOC0xNy4yLTkuOC0yLjYtNC44LTMtMzMuOC0yLjYtMjA4LjguNC0xOTkuOC40LTIwMyA0LjQtMjA3LjQgMi4yLTIuNCA1LjgtNS4yIDgtNi4yIDIuMi0uOCA1MS44LTEuNCAxMTAtMS4yIDk5IC40IDEwNi42LjYgMTExLjggNHoiLz48cGF0aCBkPSJNNjA2LjggMzM3LjRjLTIuNC40LTYuNCAzLTkgNS44bC00LjggNS4yLS42IDE1Ni40LS40IDE1Ni40IDYuNCA5LjRjMy42IDUuMiA5LjggMTUuMiAxMy42IDIxLjggOCAxNC4yIDE2LjggMjAuNiAyNS42IDE4LjYgMy4yLS42IDEzLjgtNyAyMy42LTE0LjIgMjMtMTcgMjcuOC0xOSA1MC4yLTIwLjIgMTYuNC0xIDE5LjItMS44IDIzLjYtNi4yIDIuOC0yLjggNS02LjQgNS4yLTguMlY1MDUuNmMwLTExNi0uNi0xNTQuNC0yLjYtMTU4LjYtNC44LTEwLjQtOC40LTExLTcwLTEwLjgtMzEuMi4yLTU4LjYuOC02MC44IDEuMnoiLz48L3N2Zz4=);
+    }
+    
+    
+    
+</style>
+
+        
+        <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
 
 
 
 
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
 
 
+<!-- Import Font -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/material-design-icons/3.0.1/iconfont/material-icons.css"rel="stylesheet">
 
 
+        <script>lsloader.load("js/jquery.min.js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==")</script>
+    
+    
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
 
-
-
-
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
-
-
-
-
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Splendour's blog" />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
-
-
-
-
-
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="Splendour&#39;s blog">
-<meta property="og:url" content="http://splendourhui.com/page/3/index.html">
-<meta property="og:site_name" content="Splendour&#39;s blog">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Splendour&#39;s blog">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var CONFIG = {
-    scheme: '',
-    sidebar: 'always',
-    motion: true
-  };
+    <!-- Analytics -->
+    <script>
+    var _hmt = _hmt || [];
+    (function() {var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?12423411d7b24eae6e82e3173f32ab00';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
 </script>
 
-  <title> Splendour's blog </title>
-</head>
+    <!-- Custom Head -->
+    
+<link rel="stylesheet" href="/css/prism-coy.css" type="text/css"></head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
-  </div>
-<![endif]-->
-  
-
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?12423411d7b24eae6e82e3173f32ab00";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-  <div class="container one-column 
-   page-home 
-">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Splendour's blog</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-  <p class="site-subtitle">不积跬步，无以至千里</p>
-</div>
-
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu ">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
-            
-            Startseite
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
-            
-            Archiv
-          </a>
-        </li>
-      
-
-      
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div id="content" class="content">
-          
-  <section id="posts" class="posts-expand">
 
     
-
-    
-    
-      
-      
-
-      
-    
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
                 
-                <a class="post-title-link" href="/2015/11/17/ES6学习笔记-迭代器和-for-of-循环/" itemprop="url">
-                  ES6 学习笔记-迭代器和 for-of 循环
-                </a>
-              
-            
-          </h1>
-        
 
-        <div class="post-meta">
-          <span class="post-time">
-            Veröffentlicht am
-            <time itemprop="dateCreated" datetime="2015-11-17T21:08:39+08:00" content="2015-11-17">
-              2015-11-17
-            </time>
-          </span>
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
 
-          
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
 
-          
-            
-          
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
 
-          
+                    <!-- Index Module -->
+<div class="material-index mdl-grid">
+    
+    <div class="locate-thumbnail-symbol"></div>
 
-        </div>
-      </header>
+    <!-- Pin on top -->
     
 
-
-    <div class="post-body">
-
-      
-      
-
-      
+    <!-- Normal Post -->
+    
         
-          <span itemprop="articleBody">
             
-              <h2 id="ES5-的-for-in-循环遍历数组的缺点"><a href="#ES5-的-for-in-循环遍历数组的缺点" class="headerlink" title="ES5 的 for-in 循环遍历数组的缺点"></a>ES5 的 for-in 循环遍历数组的缺点</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> index <span class="keyword">in</span> myArray) &#123; <span class="comment">// 千万别这样做</span></div><div class="line">  <span class="built_in">console</span>.log(myArray[index]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>给 index 赋值的不是数字而是字符串 “0” “1” 等，有可能在无意间进行了 “2” + 1 = “21” 这样的计算</li>
-<li>for-in 循环体会遍历自定义属性</li>
-<li>在某些情况下，数组顺序会被<code>打乱</code>！</li>
-<li>for-in 是为普通对象设计的，不适用于数组的遍历</li>
-</ul>
-<h2 id="ES6-的-for-of-循环"><a href="#ES6-的-for-of-循环" class="headerlink" title="ES6 的 for-of 循环"></a>ES6 的 for-of 循环</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> value <span class="keyword">of</span> myArray) &#123;</div><div class="line">  <span class="built_in">console</span>.log(value);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>这是最简洁的遍历数组的方法</li>
-<li>避开了 for-in 循环的所有缺陷</li>
-<li>可以正确响应 break、continue 和 return 语句</li>
-<li><p>可以遍历其他的集合</p>
-<ul>
-<li>类数组对象，例如 DOM NodeList 对象</li>
-<li>字符串遍历，将字符串视为一系列的 Unicode 字符来遍历</li>
-<li><p>支持 Map 和 Set 对象遍历</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Map 对象的遍历</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> word <span class="keyword">of</span> uniqueWords) &#123;</div><div class="line">  <span class="built_in">console</span>.log(word);</div><div class="line">&#125;</div><div class="line"><span class="comment">// Set 对象的遍历</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> [key, value] <span class="keyword">of</span> phoneBookMap) &#123;</div><div class="line">  <span class="built_in">console</span>.log(key + <span class="string">"'s phone number is: "</span> + value);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>不支持普通对象，但也可以用以下方法来遍历普通对象</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">of</span> <span class="built_in">Object</span>.keys(someObject)) &#123;</div><div class="line">  <span class="built_in">console</span>.log(key + <span class="string">": "</span> + someObject[key]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="迭代器对象"><a href="#迭代器对象" class="headerlink" title="迭代器对象"></a>迭代器对象</h2><ul>
-<li>for-of 循环首先调用集合的<code>[Symbol.iterator]()</code>方法，紧接着返回一个新的迭代器对象。</li>
-<li>迭代器对象可以是任意具有<code>.next()</code>方法的对象；for-of 循环将重复调用这个方法，每次循环调用一次。</li>
-<li><p>一个最简单的迭代器如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> zeroesForeverIterator = &#123;</div><div class="line">  [<span class="built_in">Symbol</span>.iterator]: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">next</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> &#123;<span class="attr">done</span>: <span class="literal">false</span>, <span class="attr">value</span>: <span class="number">0</span>&#125;;</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-</li>
-<li><p>每一次调用<code>.next()</code>方法，它都返回相同的结果，返回给 for-of 循环的结果就告诉它循环是否结束，若未结束则下一个值是多少</p>
-</li>
-<li>迭代器对象也可以实现可选的<code>.return()</code>和<code>.throw(exc)</code>方法<ul>
-<li>如果 for-of 循环过早退出会调用<code>.return()</code>方法，异常、break 语句或 return 语句均可触发过早退出。</li>
-<li>如果迭代器需要执行一些清洁或释放资源的操作，可以在<code>.return()</code>方法中实现。</li>
-</ul>
-</li>
-</ul>
-
-            
-          </span>
+                <!-- Paradox Thumbnail -->
+                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
+    
         
-      
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+        
+    
+
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2015/11/17/ES6学习笔记-迭代器和-for-of-循环/">ES6 学习笔记-迭代器和 for-of 循环</a></p>
     </div>
 
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
         
+            
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/24/ES2015-代码规范/" itemprop="url">
-                  ES2015 代码规范
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Veröffentlicht am
-            <time itemprop="dateCreated" datetime="2015-10-24T21:28:51+08:00" content="2015-10-24">
-              2015-10-24
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><ul>
-<li>本文翻译自 Airbnb 推荐的 Javascript 编码规范 – ES6，原文地址如下：<blockquote>
-<p><a href="https://github.com/airbnb/JavaScript#ecmascript-6-styles" target="_blank" rel="external">https://github.com/airbnb/JavaScript#ecmascript-6-styles</a></p>
-</blockquote>
-</li>
-</ul>
-<h2 id="Arrow-Functions-箭头函数"><a href="#Arrow-Functions-箭头函数" class="headerlink" title="Arrow Functions 箭头函数"></a>Arrow Functions 箭头函数</h2><ul>
-<li><p>使用箭头函数代替匿名函数</p>
-<blockquote>
-<p>箭头函数使得 this 的值不会发生你不想要的改变</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(<span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123;</div><div class="line">   <span class="keyword">const</span> y = x + <span class="number">1</span>;</div><div class="line">   <span class="keyword">return</span> x * y;</div><div class="line">&#125;);</div><div class="line"><span class="comment">// good</span></div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(<span class="function">(<span class="params">x</span>) =&gt;</span> &#123;</div><div class="line">   <span class="keyword">const</span> y = x + <span class="number">1</span>;</div><div class="line">   <span class="keyword">return</span> x * y;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>如果函数体只包含一个表达式，那么省略表达式的大括号并且使用隐式的 return，否则加上 <code>return</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// good</span></div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(<span class="function"><span class="params">number</span> =&gt;</span> <span class="string">`A string containing the <span class="subst">$&#123;number&#125;</span>.`</span>);</div><div class="line"><span class="comment">// bad</span></div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(<span class="function"><span class="params">number</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">const</span> nextNumber = number + <span class="number">1</span>;</div><div class="line">  <span class="string">`A string containing the <span class="subst">$&#123;nextNumber&#125;</span>.`</span>;</div><div class="line">&#125;);</div><div class="line"><span class="comment">// good</span></div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(<span class="function"><span class="params">number</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">const</span> nextNumber = number + <span class="number">1</span>;</div><div class="line">  <span class="keyword">return</span> <span class="string">`A string containing the <span class="subst">$&#123;nextNumber&#125;</span>.`</span>;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</li>
-<li><p>如果表达式需要多行显示，则用小括号包起来</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(<span class="function"><span class="params">number</span> =&gt;</span> <span class="string">'As time went by, the string containing the '</span> +</div><div class="line">  <span class="string">`<span class="subst">$&#123;number&#125;</span> became much longer. So we needed to break it over multiple `</span> +</div><div class="line">  <span class="string">'lines.'</span></div><div class="line">);</div><div class="line"><span class="comment">// good</span></div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(<span class="function"><span class="params">number</span> =&gt;</span> (</div><div class="line">  <span class="string">`As time went by, the string containing the <span class="subst">$&#123;number&#125;</span> became much `</span> +</div><div class="line">  <span class="string">'longer. So we needed to break it over multiple lines.'</span></div><div class="line">));</div></pre></td></tr></table></figure>
-</li>
-<li><p>如果函数只有一个变量，则省略小括号</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// good</span></div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(<span class="function"><span class="params">x</span> =&gt;</span> x * x);</div><div class="line"><span class="comment">// good</span></div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].reduce(<span class="function">(<span class="params">y, x</span>) =&gt;</span> x + y);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="Constructors-构造函数"><a href="#Constructors-构造函数" class="headerlink" title="Constructors 构造函数"></a>Constructors 构造函数</h2><ul>
-<li><p>总是使用 <code>class</code>，避免直接操作 <code>prototype</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Queue</span>(<span class="params">contents = []</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>._queue = [...contents];</div><div class="line">&#125;</div><div class="line">Queue.prototype.pop = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> value = <span class="keyword">this</span>._queue[<span class="number">0</span>];</div><div class="line">  <span class="keyword">this</span>._queue.splice(<span class="number">0</span>, <span class="number">1</span>);</div><div class="line">  <span class="keyword">return</span> value;</div><div class="line">&#125;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(contents = []) &#123;</div><div class="line">    <span class="keyword">this</span>._queue = [...contents];</div><div class="line">  &#125;</div><div class="line">  pop() &#123;</div><div class="line">    <span class="keyword">const</span> value = <span class="keyword">this</span>._queue[<span class="number">0</span>];</div><div class="line">    <span class="keyword">this</span>._queue.splice(<span class="number">0</span>, <span class="number">1</span>);</div><div class="line">    <span class="keyword">return</span> value;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>使用 <code>extends</code> 来继承</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">const</span> inherits = <span class="built_in">require</span>(<span class="string">'inherits'</span>);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">PeekableQueue</span>(<span class="params">contents</span>) </span>&#123;</div><div class="line">  Queue.apply(<span class="keyword">this</span>, contents);</div><div class="line">&#125;</div><div class="line">inherits(PeekableQueue, Queue);</div><div class="line">PeekableQueue.prototype.peek = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>._queue[<span class="number">0</span>];</div><div class="line">&#125;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PeekableQueue</span> <span class="keyword">extends</span> <span class="title">Queue</span> </span>&#123;</div><div class="line">  peek() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._queue[<span class="number">0</span>];</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>方法可以返回 <code>this</code>，方便链式调用</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line">Jedi.prototype.jump = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.jumping = <span class="literal">true</span>;</div><div class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;;</div><div class="line">Jedi.prototype.setHeight = <span class="function"><span class="keyword">function</span>(<span class="params">height</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.height = height;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">const</span> luke = <span class="keyword">new</span> Jedi();</div><div class="line">luke.jump(); <span class="comment">// =&gt; true</span></div><div class="line">luke.setHeight(<span class="number">20</span>); <span class="comment">// =&gt; undefined</span></div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Jedi</span> </span>&#123;</div><div class="line">  jump() &#123;</div><div class="line">    <span class="keyword">this</span>.jumping = <span class="literal">true</span>;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">  &#125;</div><div class="line">  setHeight(height) &#123;</div><div class="line">    <span class="keyword">this</span>.height = height;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> luke = <span class="keyword">new</span> Jedi();</div><div class="line">luke.jump()</div><div class="line">  .setHeight(<span class="number">20</span>);</div></pre></td></tr></table></figure>
-</li>
-<li><p>自定义 <code>toString()</code> 方法，可以返回自己想要的结果</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Jedi</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(options = &#123;&#125;) &#123;</div><div class="line">    <span class="keyword">this</span>.name = options.name || <span class="string">'no name'</span>;</div><div class="line">  &#125;</div><div class="line">  getName() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name;</div><div class="line">  &#125;</div><div class="line">  toString() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">`Jedi - <span class="subst">$&#123;<span class="keyword">this</span>.getName()&#125;</span>`</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="对象方法缩写"><a href="#对象方法缩写" class="headerlink" title="对象方法缩写"></a>对象方法缩写</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">const</span> atom = &#123;</div><div class="line">  <span class="attr">value</span>: <span class="number">1</span>,</div><div class="line">  <span class="attr">addValue</span>: <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> atom.value + value;</div><div class="line">  &#125;,</div><div class="line">&#125;;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">const</span> atom = &#123;</div><div class="line">  <span class="attr">value</span>: <span class="number">1</span>,</div><div class="line">  addValue(value) &#123;</div><div class="line">    <span class="keyword">return</span> atom.value + value;</div><div class="line">  &#125;,</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h2 id="属性和值一样时，可以缩写"><a href="#属性和值一样时，可以缩写" class="headerlink" title="属性和值一样时，可以缩写"></a>属性和值一样时，可以缩写</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> lukeSkywalker = <span class="string">'Luke Skywalker'</span>;</div><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">const</span> obj = &#123;</div><div class="line">  <span class="attr">lukeSkywalker</span>: lukeSkywalker,</div><div class="line">&#125;;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">const</span> obj = &#123;</div><div class="line">  lukeSkywalker,</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h2 id="支持动态属性名"><a href="#支持动态属性名" class="headerlink" title="支持动态属性名"></a>支持动态属性名</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">getKey</span>(<span class="params">k</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">`a key named <span class="subst">$&#123;k&#125;</span>`</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">const</span> obj = &#123;</div><div class="line">  <span class="attr">id</span>: <span class="number">5</span>,</div><div class="line">  <span class="attr">name</span>: <span class="string">'San Francisco'</span>,</div><div class="line">&#125;;</div><div class="line">obj[getKey(<span class="string">'enabled'</span>)] = <span class="literal">true</span>;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">const</span> obj = &#123;</div><div class="line">  <span class="attr">id</span>: <span class="number">5</span>,</div><div class="line">  <span class="attr">name</span>: <span class="string">'San Francisco'</span>,</div><div class="line">  [getKey(<span class="string">'enabled'</span>)]: <span class="literal">true</span>,</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h2 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">'How are you, '</span> + name + <span class="string">'?'</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> [<span class="string">'How are you, '</span>, name, <span class="string">'?'</span>].join();</div><div class="line">&#125;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">`How are you, <span class="subst">$&#123;name&#125;</span>?`</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Destructuring-解构"><a href="#Destructuring-解构" class="headerlink" title="Destructuring 解构"></a>Destructuring 解构</h2><ul>
-<li><p>使用一个对象的多个属性时，使用解构来获取</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">getFullName</span>(<span class="params">user</span>) </span>&#123;</div><div class="line">   <span class="keyword">const</span> firstName = user.firstName;</div><div class="line">   <span class="keyword">const</span> lastName = user.lastName;</div><div class="line"></div><div class="line">   <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;firstName&#125;</span> <span class="subst">$&#123;lastName&#125;</span>`</span>;</div><div class="line"> &#125;</div><div class="line"> <span class="comment">// good</span></div><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">getFullName</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line">   <span class="keyword">const</span> &#123; firstName, lastName &#125; = obj;</div><div class="line">   <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;firstName&#125;</span> <span class="subst">$&#123;lastName&#125;</span>`</span>;</div><div class="line"> &#125;</div><div class="line"> <span class="comment">// best</span></div><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">getFullName</span>(<span class="params">&#123; firstName, lastName &#125;</span>) </span>&#123;</div><div class="line">   <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;firstName&#125;</span> <span class="subst">$&#123;lastName&#125;</span>`</span>;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>使用数组解构</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</div><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">const</span> first = arr[<span class="number">0</span>];</div><div class="line"><span class="keyword">const</span> second = arr[<span class="number">1</span>];</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">const</span> [first, second] = arr;</div></pre></td></tr></table></figure>
-</li>
-<li><p>多值返回时使用对象解构而不是数组解构</p>
-<blockquote>
-<p>这样可以随时添加新的属性以及修改属性的顺序，不需要做其他的改动</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">processInput</span>(<span class="params">input</span>) </span>&#123;</div><div class="line">  <span class="comment">// then a miracle occurs</span></div><div class="line">  <span class="keyword">return</span> [left, right, top, bottom];</div><div class="line">&#125;</div><div class="line"><span class="comment">// the caller needs to think about the order of return data</span></div><div class="line"><span class="keyword">const</span> [left, __, top] = processInput(input);</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">processInput</span>(<span class="params">input</span>) </span>&#123;</div><div class="line">  <span class="comment">// then a miracle occurs</span></div><div class="line">  <span class="keyword">return</span> &#123; left, right, top, bottom &#125;;</div><div class="line">&#125;</div><div class="line"><span class="comment">// the caller selects only the data they need</span></div><div class="line"><span class="keyword">const</span> &#123; left, right &#125; = processInput(input);</div></pre></td></tr></table></figure>
-</blockquote>
-</li>
-</ul>
-<h2 id="Default-Parameters-参数默认值"><a href="#Default-Parameters-参数默认值" class="headerlink" title="Default Parameters 参数默认值"></a>Default Parameters 参数默认值</h2><ul>
-<li><p>使用参数默认值，而不是去改变参数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// really bad</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleThings</span>(<span class="params">opts</span>) </span>&#123;</div><div class="line">  <span class="comment">// No! We shouldn't mutate function arguments.</span></div><div class="line">  <span class="comment">// Double bad: if opts is falsy it'll be set to an object which may</span></div><div class="line">  <span class="comment">// be what you want but it can introduce subtle bugs.</span></div><div class="line">  opts = opts || &#123;&#125;;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// still bad</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleThings</span>(<span class="params">opts</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (opts === <span class="keyword">void</span> <span class="number">0</span>) &#123;</div><div class="line">    opts = &#123;&#125;;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleThings</span>(<span class="params">opts = &#123;&#125;</span>) </span>&#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>避免默认参数带来的副作用</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> b = <span class="number">1</span>;</div><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">count</span>(<span class="params">a = b++</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(a);</div><div class="line">&#125;</div><div class="line">count();  <span class="comment">// 1</span></div><div class="line">count();  <span class="comment">// 2</span></div><div class="line">count(<span class="number">3</span>); <span class="comment">// 3</span></div><div class="line">count();  <span class="comment">// 3</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>总是把默认参数放在最后</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleThings</span>(<span class="params">opts = &#123;&#125;, name</span>) </span>&#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleThings</span>(<span class="params">name, opts = &#123;&#125;</span>) </span>&#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="rest"><a href="#rest" class="headerlink" title="rest"></a>rest</h2><ul>
-<li><p>使用 <code>...</code> 替代 <code>arguments</code></p>
-<blockquote>
-<p>rest 参数是一个真正的数组，而 arguments 是一个类数组</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">concatenateAll</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>);</div><div class="line">  <span class="keyword">return</span> args.join(<span class="string">''</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">concatenateAll</span>(<span class="params">...args</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> args.join(<span class="string">''</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>使用 <code>...</code> 来复制数组</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">const</span> len = items.length;</div><div class="line"><span class="keyword">const</span> itemsCopy = [];</div><div class="line"><span class="keyword">let</span> i;</div><div class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) &#123;</div><div class="line">  itemsCopy[i] = items[i];</div><div class="line">&#125;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">const</span> itemsCopy = [...items];</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="const-和-let"><a href="#const-和-let" class="headerlink" title="const 和 let"></a><code>const</code> 和 <code>let</code></h2><ul>
-<li><p>使用 <code>const</code> 来定义所有的引用</p>
-<blockquote>
-<p>const 保证你不能改变你的引用，从而导致未知的 bug</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line"><span class="keyword">var</span> b = <span class="number">2</span>;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">const</span> a = <span class="number">1</span>;</div><div class="line"><span class="keyword">const</span> b = <span class="number">2</span>;</div></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>使用 <code>let</code> 定义变量</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">var</span> count = <span class="number">1</span>;</div><div class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</div><div class="line">  count += <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// good, use the let.</span></div><div class="line"><span class="keyword">let</span> count = <span class="number">1</span>;</div><div class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</div><div class="line">  count += <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p><code>const</code> 和 <code>let</code> 都拥有块级作用域</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// const and let only exist in the blocks they are defined in.</span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">let</span> a = <span class="number">1</span>;</div><div class="line">  <span class="keyword">const</span> b = <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">// ReferenceError</span></div><div class="line"><span class="built_in">console</span>.log(b); <span class="comment">// ReferenceError</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="Iterators-and-Generators"><a href="#Iterators-and-Generators" class="headerlink" title="Iterators and Generators"></a>Iterators and Generators</h2><ul>
-<li>不要使用迭代器，使用 <code>map()</code>, <code>reduce()</code>, <code>forEach()</code> 等替代 <code>for-of</code> 循环语句<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</div><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">let</span> sum = <span class="number">0</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> num <span class="keyword">of</span> numbers) &#123;</div><div class="line">  sum += num;</div><div class="line">&#125;</div><div class="line">sum === <span class="number">15</span>;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">let</span> sum = <span class="number">0</span>;</div><div class="line">numbers.forEach(<span class="function">(<span class="params">num</span>) =&gt;</span> sum += num);</div><div class="line">sum === <span class="number">15</span>;</div><div class="line"><span class="comment">// best (use the functional force)</span></div><div class="line"><span class="keyword">const</span> sum = numbers.reduce(<span class="function">(<span class="params">total, num</span>) =&gt;</span> total + num, <span class="number">0</span>);</div><div class="line">sum === <span class="number">15</span>;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="Modules-模块"><a href="#Modules-模块" class="headerlink" title="Modules 模块"></a>Modules 模块</h2><ul>
-<li><p>从现在开始，使用 <code>import/export</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">const</span> AirbnbStyleGuide = <span class="built_in">require</span>(<span class="string">'./AirbnbStyleGuide'</span>);</div><div class="line"><span class="built_in">module</span>.exports = AirbnbStyleGuide.es6;</div><div class="line"><span class="comment">// ok</span></div><div class="line"><span class="keyword">import</span> AirbnbStyleGuide <span class="keyword">from</span> <span class="string">'./AirbnbStyleGuide'</span>;</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> AirbnbStyleGuide.es6;</div><div class="line"><span class="comment">// best</span></div><div class="line"><span class="keyword">import</span> &#123; es6 &#125; <span class="keyword">from</span> <span class="string">'./AirbnbStyleGuide'</span>;</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> es6;</div></pre></td></tr></table></figure>
-</li>
-<li><p>不要 import 通配符</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> AirbnbStyleGuide <span class="keyword">from</span> <span class="string">'./AirbnbStyleGuide'</span>;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">import</span> AirbnbStyleGuide <span class="keyword">from</span> <span class="string">'./AirbnbStyleGuide'</span>;</div></pre></td></tr></table></figure>
-</li>
-<li><p>不要直接从 export 一个 import 表达式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="comment">// filename es6.js</span></div><div class="line"><span class="keyword">export</span> &#123; es6 <span class="keyword">as</span> <span class="keyword">default</span> &#125; <span class="keyword">from</span> <span class="string">'./airbnbStyleGuide'</span>;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="comment">// filename es6.js</span></div><div class="line"><span class="keyword">import</span> &#123; es6 &#125; <span class="keyword">from</span> <span class="string">'./AirbnbStyleGuide'</span>;</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> es6;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-
-            
-          </span>
-        
-      
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2015/11/17/ES6学习笔记-迭代器和-for-of-循环/" target="_self">阅读全文</a>
+        </span>
     </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/11/JavaScript -- apply, call & bind/" itemprop="url">
-                  JavaScript -- apply, call & bind
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Veröffentlicht am
-            <time itemprop="dateCreated" datetime="2015-10-11T21:06:26+08:00" content="2015-10-11">
-              2015-10-11
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/logo.png" width="44px" height="44px" alt="Splendour's avatar">
+            </div>
+            <div>
+                <strong>Splendour</strong>
+                <span>11月 17, 2015</span>
+            </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h2 id="apply-amp-call"><a href="#apply-amp-call" class="headerlink" title="apply&amp;call"></a>apply&amp;call</h2><p>对于 apply、call 二者而言，作用完全一样，只是接受参数的方式不太一样。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">func.call(<span class="keyword">this</span>, arg1, arg2);</div><div class="line">func.apply(<span class="keyword">this</span>, [arg1, arg2]);</div></pre></td></tr></table></figure></p>
-<h3 id="数组之间追加"><a href="#数组之间追加" class="headerlink" title="数组之间追加"></a>数组之间追加</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> array1 = [<span class="number">12</span>, <span class="string">"foo"</span>, &#123;<span class="attr">name</span>: <span class="string">"Joe"</span>&#125;, <span class="number">-2458</span>];</div><div class="line"><span class="keyword">var</span> array2 = [<span class="string">"Doe"</span>, <span class="number">555</span>, <span class="number">100</span>];</div><div class="line"><span class="built_in">Array</span>.prototype.push.apply(array1, array2);</div><div class="line"><span class="comment">/* array1 值为  [12, "foo", &#123;name: "Joe"&#125;, -2458, "Doe", 555, 100] */</span></div></pre></td></tr></table></figure>
-<h3 id="获取数组中的最大值和最小值"><a href="#获取数组中的最大值和最小值" class="headerlink" title="获取数组中的最大值和最小值"></a>获取数组中的最大值和最小值</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> numbers = [<span class="number">5</span>, <span class="number">458</span>, <span class="number">120</span>, <span class="number">-215</span> ];</div><div class="line"><span class="keyword">var</span> maxInNumbers = <span class="built_in">Math</span>.max.apply(<span class="built_in">Math</span>, numbers);   <span class="comment">//458</span></div><div class="line"><span class="keyword">var</span> maxInNumbers = <span class="built_in">Math</span>.max.call(<span class="built_in">Math</span>, <span class="number">5</span>, <span class="number">458</span>, <span class="number">120</span>, <span class="number">-215</span>); <span class="comment">//458</span></div></pre></td></tr></table></figure>
-<p>number 本身没有 max 方法，但是 Math 有，我们就可以借助 call 或者 apply 使用其方法。</p>
-<h3 id="验证是否是数组（前提是toString-方法没有被重写过）"><a href="#验证是否是数组（前提是toString-方法没有被重写过）" class="headerlink" title="验证是否是数组（前提是toString()方法没有被重写过）"></a>验证是否是数组（前提是toString()方法没有被重写过）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">functionisArray(obj) &#123;</div><div class="line">  returnObject.prototype.toString.call(obj) === <span class="string">'[object Array]'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="类（伪）数组使用数组方法"><a href="#类（伪）数组使用数组方法" class="headerlink" title="类（伪）数组使用数组方法"></a>类（伪）数组使用数组方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> domNodes = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">document</span>.getElementsByTagName(<span class="string">"*"</span>));</div></pre></td></tr></table></figure>
-<p>Javascript 中存在一种名为伪数组的对象结构。比较特别的是 arguments 对象，还有像调用 getElementsByTagNae, document.childNodes 之类的，它们返回 NodeList 对象都属于伪数组，不能应用 Array下的 push, pop 等方法。</p>
-<p>但是我们能通过 Array.prototype.slice.call 转换为真正的数组的带有 length 属性的对象，这样 domNodes 就可以应用 Array 下的所有方法了。</p>
-<h3 id="经典应用"><a href="#经典应用" class="headerlink" title="经典应用"></a>经典应用</h3><p>定义一个 log 方法，让它可以代理 console.log 方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log.apply(<span class="built_in">console</span>, <span class="built_in">arguments</span>);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>接下来的要求是给每一个 log 消息添加一个”(app)”的前辍<br>该怎么做比较优雅呢?这个时候需要想到 arguments 参数是个伪数组，我们可以通过 Array.prototype.slice.call<br>转化为标准数组，再使用数组方法 unshift 即可<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>);</div><div class="line">  args.unshift(<span class="string">'(app)'</span>);</div><div class="line"></div><div class="line">  <span class="built_in">console</span>.log.apply(<span class="built_in">console</span>, args);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<hr>
-<h2 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h2><p>MDN的解释是：bind()方法会创建一个<code>新函数</code>，称为绑定函数，当调用这个绑定函数时，绑定函数会以创建它时传入 bind()方法的第一个参数作为 this，传入 bind() 方法的第二个以及以后的参数加上绑定函数运行时本身的参数按照顺序作为原函数的参数来调用原函数。<br>在Javascript中，多次 bind() 是无效的。更深层次的原因， bind() 的实现，相当于使用函数在内部包了一个 call / apply ，第二次 bind() 相当于再包住第一次 bind() ,故第二次以后的 bind 是无法生效的。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> bar = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> foo = &#123;</div><div class="line">  <span class="attr">x</span>: <span class="number">3</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> sed = &#123;</div><div class="line">  <span class="attr">x</span>: <span class="number">4</span></div><div class="line">&#125;</div><div class="line">bar(); <span class="comment">// undefined</span></div><div class="line"><span class="keyword">var</span> func = bar.bind(foo);</div><div class="line">func(); <span class="comment">// 3</span></div><div class="line"><span class="keyword">var</span> func2 = bar.bind(foo).bind(sed);</div><div class="line">func2(); <span class="comment">// 3</span></div></pre></td></tr></table></figure></p>
-<hr>
-<h2 id="apply-call-bind-对比"><a href="#apply-call-bind-对比" class="headerlink" title="apply, call, bind 对比"></a>apply, call, bind 对比</h2><ul>
-<li>apply, call, bind 三者都是用来改变函数的 this 对象的指向的</li>
-<li>apply, call, bind 三者第一个参数都是 this 要指向的对象，也就是想指定的上下文</li>
-<li>apply, call, bind 三者都可以利用后续参数传参</li>
-<li>bind是返回对应函数，便于稍后调用；apply, call则是立即调用</li>
-</ul>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/08/15/一些有用的-JavaScript-知识和代码规范/" itemprop="url">
-                  一些有用的 JavaScript 知识和代码规范
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Veröffentlicht am
-            <time itemprop="dateCreated" datetime="2015-08-15T15:32:08+08:00" content="2015-08-15">
-              2015-08-15
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h3 id="类型-Types"><a href="#类型-Types" class="headerlink" title="类型 Types"></a>类型 Types</h3><ul>
-<li><p>基础类型：When you access a primitive type you work directly on its value</p>
-<ul>
-<li>string</li>
-<li>number</li>
-<li>boolean</li>
-<li>null</li>
-<li>undefined<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> foo = <span class="number">1</span>;</div><div class="line"><span class="keyword">var</span> bar = foo;</div><div class="line">bar = <span class="number">9</span>;</div><div class="line"><span class="built_in">console</span>.log(foo, bar); <span class="comment">// =&gt; 1, 9</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>复合类型：When you access a complex type you work on a reference to its value</p>
-<ul>
-<li>object</li>
-<li>array</li>
-<li>function<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> foo = [<span class="number">1</span>, <span class="number">2</span>];</div><div class="line"><span class="keyword">var</span> bar = foo;</div><div class="line">bar[<span class="number">0</span>] = <span class="number">9</span>;</div><div class="line"><span class="built_in">console</span>.log(foo[<span class="number">0</span>], bar[<span class="number">0</span>]); <span class="comment">// =&gt; 9, 9</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="对象-Objects"><a href="#对象-Objects" class="headerlink" title="对象 Objects"></a>对象 Objects</h3><ul>
-<li><p>创建对象</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">var</span> item = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">var</span> item = &#123;&#125;;</div></pre></td></tr></table></figure>
-</li>
-<li><p>不要使用保留字作为 key</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">var</span> superman = &#123;</div><div class="line">  <span class="attr">default</span>: &#123; <span class="attr">clark</span>: <span class="string">'kent'</span> &#125;,</div><div class="line">  <span class="attr">private</span>: <span class="literal">true</span></div><div class="line">&#125;;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">var</span> superman = &#123;</div><div class="line">  <span class="attr">defaults</span>: &#123; <span class="attr">clark</span>: <span class="string">'kent'</span> &#125;,</div><div class="line">  <span class="attr">hidden</span>: <span class="literal">true</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-</li>
-<li><p>使用可读近义词代替保留字</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">var</span> superman = &#123;</div><div class="line">  <span class="attr">class</span>: <span class="string">'alien'</span></div><div class="line">&#125;;</div><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">var</span> superman = &#123;</div><div class="line">  <span class="attr">klass</span>: <span class="string">'alien'</span></div><div class="line">&#125;;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">var</span> superman = &#123;</div><div class="line">  <span class="attr">type</span>: <span class="string">'alien'</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h3 id="数组-Arrays"><a href="#数组-Arrays" class="headerlink" title="数组 Arrays"></a>数组 Arrays</h3><ul>
-<li><p>创建数组</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">var</span> items = <span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">var</span> items = [];</div></pre></td></tr></table></figure>
-</li>
-<li><p>不知道数组长度时，使用 push 函数添加元素</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> someStack = [];</div><div class="line"><span class="comment">// bad</span></div><div class="line">someStack[someStack.length] = <span class="string">'abracadabra'</span>;</div><div class="line"><span class="comment">// good</span></div><div class="line">someStack.push(<span class="string">'abracadabra'</span>);</div></pre></td></tr></table></figure>
-</li>
-<li><p>复制数组时使用 slice 函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> len = items.length;</div><div class="line"><span class="keyword">var</span> itemsCopy = [];</div><div class="line"><span class="keyword">var</span> i;</div><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) &#123;</div><div class="line">  itemsCopy[i] = items[i];</div><div class="line">&#125;</div><div class="line"><span class="comment">// good</span></div><div class="line">itemsCopy = items.slice();</div></pre></td></tr></table></figure>
-</li>
-<li><p>将一个数组类对象转化为数组，使用 slice 函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">list</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>, <span class="number">0</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> list1 = list(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);  <span class="comment">// =&gt; [1, 2, 3]</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h3 id="字符串-Strings"><a href="#字符串-Strings" class="headerlink" title="字符串 Strings"></a>字符串 Strings</h3><ul>
-<li><p>使用单引号</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">var</span> name = <span class="string">"Bob Parr"</span>;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">var</span> name = <span class="string">'Bob Parr'</span>;</div></pre></td></tr></table></figure>
-</li>
-<li><p>字符串长度超过 80，应写成多行并使用 “ + ” 连接</p>
-</li>
-<li><p>动态构建一个字符串时，使用 join 函数而不是 “ + ”</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> items;</div><div class="line"><span class="keyword">var</span> messages;</div><div class="line"><span class="keyword">var</span> length;</div><div class="line"><span class="keyword">var</span> i;</div><div class="line">messages = [&#123;</div><div class="line">  <span class="attr">state</span>: <span class="string">'success'</span>,</div><div class="line">  <span class="attr">message</span>: <span class="string">'This one worked.'</span></div><div class="line">&#125;, &#123;</div><div class="line">  <span class="attr">state</span>: <span class="string">'success'</span>,</div><div class="line">  <span class="attr">message</span>: <span class="string">'This one worked as well.'</span></div><div class="line">&#125;, &#123;</div><div class="line">  <span class="attr">state</span>: <span class="string">'error'</span>,</div><div class="line">  <span class="attr">message</span>: <span class="string">'This one did not work.'</span></div><div class="line">&#125;];</div><div class="line">length = messages.length;</div><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">inbox</span>(<span class="params">messages</span>) </span>&#123;</div><div class="line">  items = <span class="string">'&lt;ul&gt;'</span>;</div><div class="line">  <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; length; i++) &#123;</div><div class="line">    items += <span class="string">'&lt;li&gt;'</span> + messages[i].message + <span class="string">'&lt;/li&gt;'</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> items + <span class="string">'&lt;/ul&gt;'</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">inbox</span>(<span class="params">messages</span>) </span>&#123;</div><div class="line">  items = [];</div><div class="line">  <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; length; i++) &#123;</div><div class="line">    items[i] = messages[i].message;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="string">'&lt;ul&gt;&lt;li&gt;'</span> + items.join(<span class="string">'&lt;/li&gt;&lt;li&gt;'</span>) + <span class="string">'&lt;/li&gt;&lt;/ul&gt;'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h3 id="函数-Functions"><a href="#函数-Functions" class="headerlink" title="函数 Functions"></a>函数 Functions</h3><ul>
-<li><p>函数表达式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// anonymous function expression</span></div><div class="line"><span class="keyword">var</span> anonymous = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;;</div><div class="line"><span class="comment">// named function expression</span></div><div class="line"><span class="keyword">var</span> named = <span class="function"><span class="keyword">function</span> <span class="title">named</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;;</div><div class="line"><span class="comment">// immediately-invoked function expression (IIFE)</span></div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'Welcome to the Internet. Please follow me.'</span>);</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
-</li>
-<li><p>Never declare a function in a non-function block (if, while, etc). Assign the function to a variable instead.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">if</span> (currentUser) &#123;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Nope.'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">var</span> test;</div><div class="line"><span class="keyword">if</span> (currentUser) &#123;</div><div class="line">  test = <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Yup.'</span>);</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>不要把任何参数命名为 arguments，这会替代每个函数原有的 arguments 对象</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">nope</span>(<span class="params">name, options, arguments</span>) </span>&#123;</div><div class="line">  <span class="comment">// ...stuff...</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">yup</span>(<span class="params">name, options, args</span>) </span>&#123;</div><div class="line">  <span class="comment">// ...stuff...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h3 id="属性-Properties"><a href="#属性-Properties" class="headerlink" title="属性 Properties"></a>属性 Properties</h3><ul>
-<li><p>使用 “ . ” 符号来获取属性</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> luke = &#123;</div><div class="line">  <span class="attr">jedi</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">age</span>: <span class="number">28</span></div><div class="line">&#125;;</div><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">var</span> isJedi = luke[<span class="string">'jedi'</span>];</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">var</span> isJedi = luke.jedi;</div></pre></td></tr></table></figure>
-</li>
-<li><p>当使用变量获取属性时，使用 “ [ ] “</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> luke = &#123;</div><div class="line">  <span class="attr">jedi</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">age</span>: <span class="number">28</span></div><div class="line">&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getProp</span>(<span class="params">prop</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> luke[prop];</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> isJedi = getProp(<span class="string">'jedi'</span>);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h3 id="变量-Variables"><a href="#变量-Variables" class="headerlink" title="变量 Variables"></a>变量 Variables</h3><ul>
-<li><p>总是使用 var 来定义变量，否则会产生占用内存的全局变量</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line">superPower = <span class="keyword">new</span> SuperPower();</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">var</span> superPower = <span class="keyword">new</span> SuperPower();</div></pre></td></tr></table></figure>
-</li>
-<li><p>每个变量使用一个 var 来定义</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">var</span> items = getItems(),</div><div class="line">    goSportsTeam = <span class="literal">true</span>,</div><div class="line">    dragonball = <span class="string">'z'</span>;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">var</span> items = getItems();</div><div class="line"><span class="keyword">var</span> goSportsTeam = <span class="literal">true</span>;</div><div class="line"><span class="keyword">var</span> dragonball = <span class="string">'z'</span>;</div></pre></td></tr></table></figure>
-</li>
-<li><p>未初始化的变量放在最后</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">var</span> i;</div><div class="line"><span class="keyword">var</span> items = getItems();</div><div class="line"><span class="keyword">var</span> dragonball;</div><div class="line"><span class="keyword">var</span> goSportsTeam = <span class="literal">true</span>;</div><div class="line"><span class="keyword">var</span> len;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">var</span> items = getItems();</div><div class="line"><span class="keyword">var</span> goSportsTeam = <span class="literal">true</span>;</div><div class="line"><span class="keyword">var</span> dragonball;</div><div class="line"><span class="keyword">var</span> length;</div><div class="line"><span class="keyword">var</span> i;</div></pre></td></tr></table></figure>
-</li>
-<li><p>在变量范围内的顶部对其赋值，注意第二个例子</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  test();</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'doing stuff..'</span>);</div><div class="line">  <span class="comment">//..other stuff..</span></div><div class="line">  <span class="keyword">var</span> name = getName();</div><div class="line">  <span class="keyword">if</span> (name === <span class="string">'test'</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> name;</div><div class="line">&#125;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> name = getName();</div><div class="line">  test();</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'doing stuff..'</span>);</div><div class="line">  <span class="comment">//..other stuff..</span></div><div class="line">  <span class="keyword">if</span> (name === <span class="string">'test'</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> name;</div><div class="line">&#125;</div><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> name = getName();</div><div class="line">  <span class="keyword">if</span> (!<span class="built_in">arguments</span>.length) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (!<span class="built_in">arguments</span>.length) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">var</span> name = getName();</div><div class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h3 id="提前-Hoisting"><a href="#提前-Hoisting" class="headerlink" title="提前 Hoisting"></a>提前 Hoisting</h3><ul>
-<li><p>变量声明在作用域内被提前，而赋值却留在原地</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(notDefined); <span class="comment">// =&gt; throws a ReferenceError</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// Outputs: undefined</span></div><div class="line">  <span class="built_in">console</span>.log(declaredLater);</div><div class="line">  declaredLater = <span class="string">"Now it's defined!"</span>; <span class="comment">//声明被提前到作用域开始处，赋值操作还在原地</span></div><div class="line">  <span class="comment">// Outputs: "Now it's defined!"</span></div><div class="line">  <span class="built_in">console</span>.log(declaredLater);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>匿名函数变量被提前，函数定义却未被提前</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(anonymous); <span class="comment">// =&gt; undefined</span></div><div class="line">  anonymous(); <span class="comment">// =&gt; TypeError anonymous is not a function</span></div><div class="line">  <span class="keyword">var</span> anonymous = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'anonymous function expression'</span>);</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>命名函数提前了变量名，但函数名和函数主体未被提前</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(named); <span class="comment">// =&gt; undefined</span></div><div class="line">  named(); <span class="comment">// =&gt; TypeError named is not a function</span></div><div class="line">  superPower(); <span class="comment">// =&gt; ReferenceError superPower is not defined</span></div><div class="line">  <span class="keyword">var</span> named = <span class="function"><span class="keyword">function</span> <span class="title">superPower</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Flying'</span>);</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>函数定义会提前函数名和函数主体</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  superPower(); <span class="comment">// =&gt; Flying</span></div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">superPower</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Flying'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h3 id="条件表达式和相等判断-Conditional-Expressions-amp-Equality"><a href="#条件表达式和相等判断-Conditional-Expressions-amp-Equality" class="headerlink" title="条件表达式和相等判断 Conditional Expressions &amp; Equality"></a>条件表达式和相等判断 Conditional Expressions &amp; Equality</h3><ul>
-<li><p>使用 “ === ” 和 “ !== ” 替代 “ == ” 和 “ != ”</p>
-</li>
-<li><p>表达式的值</p>
-<ul>
-<li>Objects：true</li>
-<li>Undefined：false</li>
-<li>Null：false</li>
-<li>Booleans：此 Boolean 的值</li>
-<li>Numbers：0，-0，NaN 为 false，其他为 true</li>
-<li>Strings：’ ‘ 为 false，其他为 true</li>
-</ul>
-</li>
-<li><p>使用简单表达式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">if</span> (name !== <span class="string">''</span>) &#123;</div><div class="line">  <span class="comment">// ...stuff...</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">if</span> (name) &#123;</div><div class="line">  <span class="comment">// ...stuff...</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">if</span> (collection.length &gt; <span class="number">0</span>) &#123;</div><div class="line">  <span class="comment">// ...stuff...</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">if</span> (collection.length) &#123;</div><div class="line">  <span class="comment">// ...stuff...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h3 id="类型转换-Type-Casting-amp-Coercion"><a href="#类型转换-Type-Casting-amp-Coercion" class="headerlink" title="类型转换 Type Casting &amp; Coercion"></a>类型转换 Type Casting &amp; Coercion</h3><ul>
-<li><p>值转字符串</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//  =&gt; this.reviewScore = 9;</span></div><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">var</span> totalScore = <span class="keyword">this</span>.reviewScore + <span class="string">''</span>;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">var</span> totalScore = <span class="string">''</span> + <span class="keyword">this</span>.reviewScore;</div><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">var</span> totalScore = <span class="string">''</span> + <span class="keyword">this</span>.reviewScore + <span class="string">' total score'</span>;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">var</span> totalScore = <span class="keyword">this</span>.reviewScore + <span class="string">' total score'</span>;</div></pre></td></tr></table></figure>
-</li>
-<li><p>字符串转数字，使用 parseInt 函数，并且总是带上基数代表进制</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> inputValue = <span class="string">'4'</span>;</div><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">var</span> val = <span class="keyword">new</span> <span class="built_in">Number</span>(inputValue);</div><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">var</span> val = +inputValue;</div><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">var</span> val = inputValue &gt;&gt; <span class="number">0</span>;</div><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">var</span> val = <span class="built_in">parseInt</span>(inputValue);</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">var</span> val = <span class="built_in">Number</span>(inputValue);</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">var</span> val = <span class="built_in">parseInt</span>(inputValue, <span class="number">10</span>);</div></pre></td></tr></table></figure>
-</li>
-<li><p>布尔值</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> age = <span class="number">0</span>;</div><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">var</span> hasAge = <span class="keyword">new</span> <span class="built_in">Boolean</span>(age);</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">var</span> hasAge = <span class="built_in">Boolean</span>(age);</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">var</span> hasAge = !!age;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h3 id="事件-Events"><a href="#事件-Events" class="headerlink" title="事件 Events"></a>事件 Events</h3><ul>
-<li>捕捉事件后，传递一个哈希而非单纯的数据<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line">$(<span class="keyword">this</span>).trigger(<span class="string">'listingUpdated'</span>, listing.id);</div><div class="line">...</div><div class="line">$(<span class="keyword">this</span>).on(<span class="string">'listingUpdated'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e, listingId</span>) </span>&#123;</div><div class="line">  <span class="comment">// do something with listingId</span></div><div class="line">&#125;);</div><div class="line"><span class="comment">// good</span></div><div class="line">$(<span class="keyword">this</span>).trigger(<span class="string">'listingUpdated'</span>, &#123; <span class="attr">listingId</span> : listing.id &#125;);</div><div class="line">...</div><div class="line">$(<span class="keyword">this</span>).on(<span class="string">'listingUpdated'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e, data</span>) </span>&#123;</div><div class="line">  <span class="comment">// do something with data.listingId</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/08/15/jetBrains-IDE-实现本地代码与服务端代码同步/" itemprop="url">
-                  jetBrains IDE 实现本地代码与服务端代码同步
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Veröffentlicht am
-            <time itemprop="dateCreated" datetime="2015-08-15T15:14:30+08:00" content="2015-08-15">
-              2015-08-15
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; in
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                <a class="post_category-link" href="/categories/ES6/">ES6</a>
             </span>
-          
 
-          
             
-          
 
-          
+            
 
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
         </div>
-      </header>
+    </div>
+</div>
+
+            
+            
+        
+    
+        
+            
+                <!-- Paradox Thumbnail -->
+                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+        
     
 
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>在做项目的过程中发现一个有意思的东西，jetBrains 旗下的 IDE，如：IntelliJ IDEA、WebStorm等工具，有一个自动与服务端同步代码的功能，其本质上是通过ftp连接服务器，在本地代码保存的时候，自动通过ftp上传文件到服务器指定目录下，从而实现本地代码与服务端代码同步。这个功能适用于某些需要服务器在线调试的情况，比如微信公众号和微信企业号的开发，十分方便。</p>
-<h3 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h3><ul>
-<li><p>安装 ftp 服务器</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~$ sudo apt-<span class="builtin-name">get</span> install vsftpd</div></pre></td></tr></table></figure>
-</li>
-<li><p>配置 vsftpd</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~$ sudo vim /etc/vsftpd.conf</div></pre></td></tr></table></figure>
-</li>
-<li><p>启用以下命令</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attr">listen</span>=<span class="literal">YES</span>       # 服务器监听</div><div class="line"><span class="attr">local_enable</span>=<span class="literal">YES</span>        #本地主机访问允许</div><div class="line"><span class="attr">write_enable</span>=<span class="literal">YES</span>        #写允许</div><div class="line"><span class="attr">dirmessage_enable</span>=<span class="literal">YES</span>        # 进入文件夹允许</div><div class="line"><span class="attr">connect_from_port_20</span>=<span class="literal">YES</span>        # 允许使用<span class="number">20</span>号端口作为数据传送的端口</div></pre></td></tr></table></figure>
-</li>
-<li><p>启动 vsftpd</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~$ sudo service vsftpd start</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="IDE-配置"><a href="#IDE-配置" class="headerlink" title="IDE 配置"></a>IDE 配置</h3><ul>
-<li>进入 Tools –&gt; Deployment –&gt; Configuration..</li>
-<li>点击添加按钮，输入 Name，Type 选 FTP</li>
-<li>填写 FTP 地址和账号密码，点击 “Test FTP connection” 按钮，测试成功后点击 Autodetect 按钮，将自动检测用户的 root 目录</li>
-<li>切换标签至 Mappings，选择本地文件夹地址和想要同步的服务器上文件夹地址</li>
-<li>若有文件（或文件夹）需要忽略同步，则可切换至标签 Excluded Paths，添加本地或在线文件（或文件夹）</li>
-<li>进入 Tools –&gt; Deployment –&gt; Options，这里也可以设置同步时忽略某些后缀的文件。在这里，建议将自动同步触发点从 “Always” 修改为 “On explicit save action”，即用户手动保存时同步，避免太频繁访问 FTP 服务器</li>
-<li>点击 Tools –&gt; Deployment –&gt; Automatic Upload，开启自动同步。编辑文件，手动保存后会自动同步</li>
-</ul>
-<h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>使用此方法能有效提高服务器代码调试效率，是一个很不错的小技巧。别忘了，切换至本地开发模式时，记得将 Automatic Upload 关闭哦。</p>
-
-            
-          </span>
-        
-      
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2015/10/24/ES2015-代码规范/">ES2015 代码规范</a></p>
     </div>
 
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
         
+            综述
+本...
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/08/11/nodejs-微服务框架-seneca/" itemprop="url">
-                  nodejs 微服务框架 seneca
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Veröffentlicht am
-            <time itemprop="dateCreated" datetime="2015-08-11T20:16:15+08:00" content="2015-08-11">
-              2015-08-11
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2015/10/24/ES2015-代码规范/" target="_self">阅读全文</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/logo.png" width="44px" height="44px" alt="Splendour's avatar">
+            </div>
+            <div>
+                <strong>Splendour</strong>
+                <span>10月 24, 2015</span>
+            </div>
         </div>
-      </header>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                <a class="post_category-link" href="/categories/JavaScript/">JavaScript</a>
+            </span>
+
+            
+
+            
+
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
+        </div>
+    </div>
+</div>
+
+            
+            
+        
+    
+        
+            
+                <!-- Paradox Thumbnail -->
+                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+        
     
 
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <p>seneca 是基于nodejs的一个微服务框架，支持插件式开发，每一个微服务都是一个小插件。</p>
-<p>个人想法是将项目中对不同的数据库进行的操作开发为一个个微服务，提供接口供主程序调用，减轻主程序压力。</p>
-<p>下面以 contact 为例，讲述如何添加 web 微服务。</p>
-<ul>
-<li><p>往 app.js 中添加 client，分配端口</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> seneca = <span class="built_in">require</span>(<span class="string">'seneca'</span>)()</div><div class="line">  .use(<span class="string">'api'</span>)</div><div class="line">  .client(&#123;<span class="attr">port</span>: <span class="number">9001</span>, <span class="attr">pin</span>: <span class="string">'role:contact'</span>&#125;);</div><div class="line"><span class="keyword">var</span> app = <span class="built_in">require</span>(<span class="string">'express'</span>)()</div><div class="line">  .use(<span class="built_in">require</span>(<span class="string">'body-parser'</span>).json())</div><div class="line">  .use(seneca.export(<span class="string">'web'</span>))</div><div class="line">  .listen(<span class="number">3003</span>);</div></pre></td></tr></table></figure>
-</li>
-<li><p>在 api.js 中，添加路由，并在 init:api 方法下初始化路由。注意有参数时的处理！</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> <span class="title">api</span>(<span class="params">options</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> valid_ops = &#123;<span class="attr">sum</span>: <span class="string">'sum'</span>, <span class="attr">product</span>: <span class="string">'product'</span>&#125;</div><div class="line">  <span class="keyword">this</span>.add(<span class="string">'role:api,path:contact'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">msg, respond</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> contactMsg = &#123;</div><div class="line">      <span class="attr">role</span>: <span class="string">'contact'</span>,</div><div class="line">      <span class="attr">cmd</span>: msg.action</div><div class="line">    &#125;;</div><div class="line">    <span class="comment">// 不同方法带有参数，需要在此传入</span></div><div class="line">    <span class="keyword">if</span> (<span class="string">'findOne'</span> === msg.action) &#123;</div><div class="line">      contactMsg.username = msg.username;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (<span class="string">'search'</span> === msg.action) &#123;</div><div class="line">      contactMsg.keyword = msg.keyword;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">this</span>.act(contactMsg, respond)</div><div class="line">  &#125;);</div><div class="line">  <span class="keyword">this</span>.add(<span class="string">'init:api'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">msg, respond</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.act(<span class="string">'role:web'</span>, &#123;</div><div class="line">      <span class="attr">use</span>: &#123;</div><div class="line">        <span class="attr">prefix</span>: <span class="string">'/api'</span>,</div><div class="line">        <span class="attr">pin</span>: <span class="string">'role:api,path:*'</span>,</div><div class="line">        <span class="attr">map</span>: &#123;</div><div class="line">          <span class="attr">contact</span>: &#123;<span class="attr">GET</span>: <span class="literal">true</span>, <span class="attr">suffix</span>: <span class="string">'/:action'</span>&#125;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line">    respond();</div><div class="line">  &#125;)</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-</li>
-<li><p>新建 contact-pin-service.js 文件，运行该文件时提供服务，注意这里的 listen 要和第一步中添加到 app.js 中的一致</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>(<span class="string">'seneca'</span>)()</div><div class="line">  .use(<span class="string">'contact'</span>)</div><div class="line">  .listen(&#123;<span class="attr">port</span>: <span class="number">9001</span>, <span class="attr">pin</span>: <span class="string">'role:contact'</span>&#125;);</div></pre></td></tr></table></figure>
-</li>
-<li><p>新建 contact 文件，提供服务的主逻辑</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> <span class="title">contact</span>(<span class="params">options</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.add(<span class="string">'role:contact,cmd:left'</span>, <span class="function"><span class="keyword">function</span> <span class="title">left</span>(<span class="params">msg, respond</span>) </span>&#123;</div><div class="line">    respond(<span class="literal">null</span>, &#123;<span class="attr">result</span>: <span class="string">'test'</span>&#125;)</div><div class="line">  &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>现在，只需要启动 app.js 微服务主线程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node app.js</div></pre></td></tr></table></figure></p>
-<p>再启动 contact-pin-service.js 服务线程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node contact-pin-service.js</div></pre></td></tr></table></figure></p>
-<p>就可以使用 contact 微服务了~</p>
-<p>想要查看详细 log，可以在运行线程时添加指令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node contact-pin-service.js --seneca.log=plugin:contact</div></pre></td></tr></table></figure></p>
-
-            
-          </span>
-        
-      
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2015/10/11/JavaScript -- apply, call &amp; bind/">JavaScript -- apply, call &amp; bind</a></p>
     </div>
 
-    <footer class="post-footer">
-      
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+        
+            
+        
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2015/10/11/JavaScript -- apply, call &amp; bind/" target="_self">阅读全文</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/logo.png" width="44px" height="44px" alt="Splendour's avatar">
+            </div>
+            <div>
+                <strong>Splendour</strong>
+                <span>10月 11, 2015</span>
+            </div>
+        </div>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                <a class="post_category-link" href="/categories/JavaScript/">JavaScript</a>
+            </span>
 
-      
+            
 
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
+            
 
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
+        </div>
+    </div>
+</div>
 
+            
+            
+        
+    
+        
+            
+                <!-- Paradox Thumbnail -->
+                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+        
     
 
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
-
-
-
-        </div>
-
-        
-
-
-        
-
-      </div>
-
-      
-        
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2015/10/11/React-编码规范/">react 编码规范</a></p>
     </div>
-  </div>
 
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="/images/author.png" alt="Splendour" itemprop="image"/>
-          <p class="site-author-name" itemprop="name">Splendour</p>
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+        
+            综述
+本...
+        
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2015/10/11/React-编码规范/" target="_self">阅读全文</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/logo.png" width="44px" height="44px" alt="Splendour's avatar">
+            </div>
+            <div>
+                <strong>Splendour</strong>
+                <span>10月 11, 2015</span>
+            </div>
         </div>
-        <p class="site-description motion-element" itemprop="description"></p>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">27</span>
-              <span class="site-state-item-name">Artikel</span>
-            </a>
-          </div>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                <a class="post_category-link" href="/categories/React/">React</a>
+            </span>
 
-          <div class="site-state-item site-state-categories">
             
-              <span class="site-state-item-count">8</span>
-              <span class="site-state-item-name">Kategorien</span>
-              
-          </div>
 
-          <div class="site-state-item site-state-tags">
             
-              <span class="site-state-item-count">6</span>
-              <span class="site-state-item-name">Tags</span>
-              
-          </div>
 
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
+        </div>
+    </div>
+</div>
+
+            
+            
+        
+    
+        
+            
+                <!-- Paradox Thumbnail -->
+                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+        
+    
+
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2015/08/15/一些有用的-JavaScript-知识和代码规范/">一些有用的  javascript 知识和代码规范</a></p>
+    </div>
+
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+        
+            
+        
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2015/08/15/一些有用的-JavaScript-知识和代码规范/" target="_self">阅读全文</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/logo.png" width="44px" height="44px" alt="Splendour's avatar">
+            </div>
+            <div>
+                <strong>Splendour</strong>
+                <span>8月 15, 2015</span>
+            </div>
+        </div>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                <a class="post_category-link" href="/categories/JavaScript/">JavaScript</a>
+            </span>
+
+            
+
+            
+
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
+        </div>
+    </div>
+</div>
+
+            
+            
+        
+    
+        
+            
+                <!-- Paradox Thumbnail -->
+                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+        
+    
+
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2015/08/15/jetBrains-IDE-实现本地代码与服务端代码同步/">jetBrains IDE 实现本地代码与服务端代码同步</a></p>
+    </div>
+
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+        
+            简介在做项目的过程...
+        
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2015/08/15/jetBrains-IDE-实现本地代码与服务端代码同步/" target="_self">阅读全文</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/logo.png" width="44px" height="44px" alt="Splendour's avatar">
+            </div>
+            <div>
+                <strong>Splendour</strong>
+                <span>8月 15, 2015</span>
+            </div>
+        </div>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                <a class="post_category-link" href="/categories/Tool/">Tool</a>
+            </span>
+
+            
+
+            
+
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
+        </div>
+    </div>
+</div>
+
+            
+            
+        
+    
+        
+            
+                <!-- Paradox Thumbnail -->
+                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+        
+    
+
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2015/08/11/nodejs-微服务框架-seneca/">nodejs 微服务框架 seneca</a></p>
+    </div>
+
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+        
+            seneca 是基于nodejs的一个微服务框架，支持插件式开发，每一个微服务都是一个小插件。
+个人想法是将项目中对不同的数据库进行的...
+        
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2015/08/11/nodejs-微服务框架-seneca/" target="_self">阅读全文</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/logo.png" width="44px" height="44px" alt="Splendour's avatar">
+            </div>
+            <div>
+                <strong>Splendour</strong>
+                <span>8月 11, 2015</span>
+            </div>
+        </div>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                <a class="post_category-link" href="/categories/Nodejs/">Nodejs</a>
+            </span>
+
+            
+
+            
+
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
+        </div>
+    </div>
+</div>
+
+            
+            
+        
+    
+
+    
+    <!-- Index nav -->
+        <nav class="material-nav mdl-cell mdl-cell--12-col">
+            <a class="extend prev" rel="prev" href="/page/2/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_back</i></button></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
         </nav>
+    
 
-        
+    
+        <script type="text/ls-javascript" id="thumbnail-script">
+    var randomNum;
 
-        <div class="links-of-author motion-element">
-          
+    var locatePost = $('.locate-thumbnail-symbol').next();
+    for(var i = 0; i < 10; i++) {
+        randomNum = Math.floor(Math.random() * 19 + 1);
+
+        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
+        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+
+        locatePost = locatePost.next();
+    }
+</script>
+
+    
+</div>
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/logo.png" alt="Splendour's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        splendourhui@foxmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
             
-              <span class="links-of-author-item">
-                <a href="https://github.com/splendourhui" target="_blank">
-                  
-                    <i class="fa fa-github"></i> GitHub
-                  
-                </a>
-              </span>
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
             
-          
-        </div>
+        </ul>
+    </li>
 
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
         
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">八月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">七月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/03/">三月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/01/">一月 2016<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/12/">十二月 2015<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/11/">十一月 2015<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/10/">十月 2015<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/08/">八月 2015<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
         
+    
 
-        <div class="links-of-author motion-element">
-          
-        </div>
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/ES6/">ES6<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/categories/JavaScript/">JavaScript<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Nodejs/">Nodejs<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/React/">React<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/Redux/">Redux<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Rxjs/">Rxjs<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Tool/">Tool<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
 
-      </section>
+    <!-- Pages  -->
+    
+        <li>
+            <a href="http://resume.splendourhui.com/" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
 
-      
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">27</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
 
     </div>
-  </aside>
 
-
-      
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2017</span>
-  <span class="with-love">
-    <i class="icon-next-heart fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Splendour</span>
-</div>
-
-<div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
-</div>
-
-<div class="theme-info">
-  Theme -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT
-  </a>
-</div>
-
-
-
-      </div>
-    </footer>
-
-    <div class="back-to-top"></div>
-  </div>
-
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  
-
-  
-    
+    <!-- Sidebar Image -->
     
 
-  
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/splendourhui" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/zheng-nan-hui" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-zhihu">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
 
 
-  
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;2015&nbsp;-<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Splendour's blog
+        </div>
 
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <!-- <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div> -->
+            </div>
+        </div>
+    
+</footer>
 
 
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+                    <!-- Import File -->
 
 
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+    <script>lsloader.load("js/lazyload.min.js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==")</script>
+    <script>lsloader.load("js/js.min.js","/js/js.min.js?oAl/+lvaqTFV31JXTmbrNA==")</script>
 
-  
 
-  <script type="text/javascript" src="/js/bootstrap.js"></script>
 
-  
-  
+    <script>lsloader.load("js/nprogress.js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==")</script>
 
-  
-  
 
-</body>
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Window Load-->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Bing Background -->
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.4.0 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
 </html>

@@ -1,1614 +1,1265 @@
-<!doctype html>
-<html class="theme-next   use-motion ">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.4.0 -->
+    <script>window.materialVersion = "1.4.0"</script>
+
+    <!-- Title -->
+    
+    <title>
+        
+        Splendour&#39;s blog
+    </title>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+        <link rel="dns-prefetch" href="https://hm.baidu.com"/>
+    
+    
+    
+    
+    
+    
+    
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Splendour">
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content="null">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Splendour&#39;s blog">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://splendourhui.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Splendour&#39;s blog">
+    <meta property="og:image" content="/img/favicon.png" />
+    <meta property="og:description" content="">
+    
+
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:title" content="Splendour&#39;s blog">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="/img/favicon.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="http://splendourhui.com" />
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://splendourhui.com/page/2/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+materialVersion+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(data&&data.indexOf(versionString)===-1){lsloader.removeLS(key)}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload){cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload);return}code=code.split(versionString)[1];if(/\.js?.+$/.test(versionNumber)){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload)}};lsloader.requestResource=function(name,path,cssonload){var that=this;if(/\.js?.+$/.test(path)){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else if(/\.css?.+$/.test(path)){this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
+
+    <!-- Import CSS & jQuery -->
+    
+        <style id="css/material.min.css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("css/material.min.css","/css/material.min.css?fJTiM/K1J3dWIruo3pxtAw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";})</script>
+        <style id="css/style.min.css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("css/style.min.css","/css/style.min.css?oCSEO3ST+aEypEwttTDI9g==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";})</script>
+        
+        
+            <style>
+    
+    
+    
+    
+    
+    
+    
+    .footer-sns-github {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgY2xhc3M9Imljb24iIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik0xMzguNCA3OGMtNi40IDEuNC0yNi40IDE0LjItMzYgMjIuOC04IDcuMi0yMiAyOS44LTI0LjQgMzkuMi0xLjYgNi40LTIgMTEzLjItMS42IDM2OCAuNiAyOTkuNCAxIDM1OS44IDMuNCAzNjQgMTEgMjAuMiAyMS42IDMyLjQgMzcuMiA0MyAxNS42IDEwLjYgMTcuMiAxMS4yIDM0LjIgMTMuMiAxMC42IDEuMiA2My40IDEuNiAxMjcuNiAxLjRsMTA5LjYtLjYgNi02LjggNi4yLTYuOC0xLjItMjUuMmMtLjgtMTUuOC0uMi0zMy40IDEuNC00Ny4yIDMtMjUuNCAxLjQtMzYuMi02LTQzLjItNS00LjYtNi4yLTQuOC0zMC42LTQuMi0yNy42LjgtMjQgMS42LTY4LjgtMTYtOC42LTMuNC0yMi42LTE4LTI4LjQtMjkuOC0xMS40LTIyLjgtMjctNDUtMzkuMi01NS42LTE0LTEyLjItMTkuOC0yMC44LTE5LjgtMjguNiAwLTExLjYgMTMuNi0xMi42IDMzLjItMi40IDE2LjYgOC44IDIwLjggMTIuNCA0MC44IDM2LjIgMjQuMiAyOC42IDMxIDMzLjYgNTQgMzkuNiAxNS4yIDQgNDIuMiAzIDUxLjQtMS44IDktNC42IDE4LTE1LjIgMjQuNC0yOS4yIDExLjQtMjQuMiA3LjQtMzEuMi0yMC42LTM2LjgtOS44LTItMjkuMi04LTQzLjQtMTMuNC00MC40LTE1LjgtNjQuNi0zNy40LTg1LjQtNzYuMi0xMS42LTIxLjgtMTUuNC0zMy0xOC4yLTUzLjYtNC4yLTMyLjItNC44LTYwLjItMS40LTg0IDMuNC0yMy44IDYuOC0zMi44IDIwLjItNTQgNC02IDguOC0xNS42IDExLTIxLjQgMy44LTEwIDMuOC0xMS42IDEtMzAtNS4yLTM0LjItMy4yLTUyLjQgNy42LTcwLjIgNy4yLTEyLjIgMTUtMTcuMiAyNC4yLTE1LjggMTIuOCAyLjIgNTIgMTcuNCA2Ni44IDI2LjIgMjYgMTUgMjkgMTUuNCA4Mi40IDcuMiAyNC42LTMuOCAzMy44LTQuMiA2MC0zLjIgMTcgLjYgNDEuNCAzIDU0IDUuMiAzOC40IDYuNiA0OS42IDUuMiA3My0xMCA2LjYtNC4yIDE3LjQtOS40IDI0LTExLjYgNi42LTIuMiAxNi01LjggMjEtOC4yIDEzLTYgMjgtNS42IDM1LjYuOCAxMi40IDEwLjQgMTguNiA0MS40IDE0LjQgNzEuNi00LjQgMzAuNi0zIDM5LjQgOC40IDUzLjggMy40IDQuNCAxMS4yIDE5LjIgMTcuNCAzMy4yTDc3NSA0NDN2NzhsLTEwIDI4Yy0xNS4yIDQzLjItMzYuOCA3My4yLTY2LjIgOTIuOC0xMy40IDguOC01NyAyNS40LTc2LjggMjktMjguMiA1LjItMzMuMiAxMi42LTIyIDMyLjIgMTEuMiAxOS40IDEyLjQgMzIuOCAxMS42IDEyOS42bC0uNiA4NS44IDUuNCA0LjZjMy42IDMgOS4yIDUuMiAxNiA2IDUuOC44IDYwLjIgMSAxMjAuNi42IDEwOC40LS42IDExMC4yLS42IDExOS01IDI0LTExLjYgNDAtMjcuNCA1MS42LTUwLjZsNS40LTExIC42LTM0N2MuNC0yMjMtLjItMzUzLjQtMS40LTM2NS0yLTE3LTIuNi0xOC42LTEzLTM0LTEwLjYtMTUuNC0yMi44LTI2LjItNDMuMi0zNy4yLTQuMi0yLjQtNjQuNi0yLjgtMzY2LTMuMi0xOTguNiAwLTM2NCAuNC0zNjcuNiAxLjR6Ii8+PC9zdmc+);
+    }
+    
+    
+    
+    .footer-sns-zhihu {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgY2xhc3M9Imljb24iIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik0xMzYuOCA3OC44Yy04LjYgMi44LTI0IDEyLjQtMzMuNiAyMS04LjYgNy44LTIxLjQgMjcuOC0yNC40IDM3LjgtNC4yIDE0LTQgNzIzLjQgMCA3MzMuNCA4LjYgMjAuNiAzNi44IDQ4LjYgNTYgNTUuNiA5IDMuNCA3NDcuNCAzLjQgNzU2LjQgMCAxOS44LTcuMiA0OS0zNi42IDU2LTU2LjIgMi4yLTYgMi42LTc1LjYgMi44LTM2Ni40IDAtMjMzLjgtLjYtMzYxLjQtMi0zNjYtMS4yLTMuOC02LjYtMTMuOC0xMi4yLTIyLjItOC4yLTEyLjItMTMuNC0xNy40LTI1LjgtMjUuNi04LjQtNS44LTE5LTExLjQtMjMuMi0xMi4yLTQuNi0xLjItMTYzLjItMS44LTM3NC44LTEuOC0yOTMgMC0zNjguNi42LTM3NS4yIDIuNnptMTkwIDE0NS42YzUuNCA3LjYgNCAxNy40LTQuOCAzMS42LTkuOCAxNi0xMC44IDI3LjQtMyAzNSAyLjYgMi44IDYuNCA1IDguNCA1czM3LjguNCA3OS42LjZjNjggLjQgNzYuNi44IDgyLjQgMy44IDkuMiA1IDEyLjYgMTEgMTIuNiAyMiAwIDctMS4yIDEwLjgtNC44IDE1bC00LjggNS40LTM4IC4yYy01My44IDAtNTMuOCAwLTU1LjQgNTEuMi0uNiAxOC0xLjYgNDIuOC0yLjIgNTUtMS4yIDIyLjguNiAzMS42IDcuNiAzNi4yIDEuNC44IDIyLjIgMiA0NiAyLjZsNDMuMiAxIDguOCA2YzE1LjQgMTAuOCAxNy44IDI5LjIgNSAzNy01LjggMy42LTEwLjIgNC01MS44IDQtMzEgMC00NyAuOC01MC42IDIuNC03IDMuMi0xNC4yIDE3LjYtMTcuMiAzNC40LTMuMiAxNi42LTEgMjEuOCA5LjYgMjUuMiAxMy40IDQuMiAyMS44IDExLjIgNDkgNDEuNCAzNSAzOC44IDM2LjYgNDEgNDEuOCA1OC44IDcgMjMuOCAyLjIgNDEuOC0xMS40IDQxLjgtNy42IDAtMTItMy0yMS0xNC42LTEzLjgtMTcuNC01NC40LTY1LjgtNjItNzMuOC0xNS4yLTE2LTI5LjQtNS44LTM4LjggMjcuNC0xLjggNi42LTguOCAyMy4yLTE1LjYgMzctMTAuOCAyMi0xNCAyNi44LTI3LjQgMzkuNi0xOS42IDE5LjItMjYuNCAyMy01My42IDI5LjYtMjcuMiA2LjQtMzcgNS42LTM4LTMuNi0xLTguNCA0LjQtMTYuNCAyMC0yOSAxNi0xMyAzNi44LTM2LjYgNDUuMi01MS40IDMtNS4yIDguMi0xMy44IDExLjYtMTkgMy40LTUgMTEuOC0yMC40IDE4LjYtMzQuMiAxMC0yMCAxMy42LTI5LjQgMTcuMi00NyAyLjYtMTIuMiA2LjItMjUuNCA3LjgtMjkuNCA0LTkuNCA0LTIxLjQuMi0yNy01LjItNy40LTE2LTguOC02Mi42LTguNC01MC40LjQtNTUuMi0uOC01Ny42LTEzLjItMS44LTEwLjQgNS44LTI0LjQgMTYuMi0yOS44IDcuNC0zLjggMTEuOC00LjIgNTYuMi00LjhsNDguNC0uOCA0LjYtNWM0LjgtNSA0LjgtNSA1LTYxLjYgMC0zNS4yLS44LTU5LjItMi02My4yLTMuOC0xMS4yLTExLTE0LjgtMzAuMi0xNC44cy0yMS40IDEuNC0zMS4yIDE4LjJjLTguMiAxNC40LTIwLjYgMjguOC0zMy4yIDM4LjgtMTMuMiAxMC40LTIxLjYgMTMtMjggOS04LjQtNS42LTUuMi0yMy4yIDguMi00My4yIDQtNi40IDkuMi0xOC42IDEyLjItMjkuNiAzLTEwLjIgNy40LTIzLjIgMTAtMjkgMi40LTUuNiA2LTE2LjggOC0yNC42IDUuNi0yMy42IDI0LTUwLjggMzkuNC01OC40IDExLjItNS40IDE4LjYtNS40IDIyLjQuMnptNDUyIDY4LjJjMTEuOCA3LjggMTEuNC0uOCAxMC44IDIxNi0uNiAxODEtLjggMTk4LjgtNCAyMDMtNy42IDEwLjgtOS44IDExLjQtNTMuNiAxMi40bC00MSAxLTE0IDcuOGMtNy42IDQuMi0yMS4yIDEzLTI5LjggMTkuNC0yNS44IDE5LjItMzUgMTkuOC00My40IDMuMi0xMS44LTIzLjItMjMuNi0zMy4yLTM5LjQtMzMuNC04LjggMC0xMy42LTIuOC0xNy4yLTkuOC0yLjYtNC44LTMtMzMuOC0yLjYtMjA4LjguNC0xOTkuOC40LTIwMyA0LjQtMjA3LjQgMi4yLTIuNCA1LjgtNS4yIDgtNi4yIDIuMi0uOCA1MS44LTEuNCAxMTAtMS4yIDk5IC40IDEwNi42LjYgMTExLjggNHoiLz48cGF0aCBkPSJNNjA2LjggMzM3LjRjLTIuNC40LTYuNCAzLTkgNS44bC00LjggNS4yLS42IDE1Ni40LS40IDE1Ni40IDYuNCA5LjRjMy42IDUuMiA5LjggMTUuMiAxMy42IDIxLjggOCAxNC4yIDE2LjggMjAuNiAyNS42IDE4LjYgMy4yLS42IDEzLjgtNyAyMy42LTE0LjIgMjMtMTcgMjcuOC0xOSA1MC4yLTIwLjIgMTYuNC0xIDE5LjItMS44IDIzLjYtNi4yIDIuOC0yLjggNS02LjQgNS4yLTguMlY1MDUuNmMwLTExNi0uNi0xNTQuNC0yLjYtMTU4LjYtNC44LTEwLjQtOC40LTExLTcwLTEwLjgtMzEuMi4yLTU4LjYuOC02MC44IDEuMnoiLz48L3N2Zz4=);
+    }
+    
+    
+    
+</style>
+
+        
+        <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
 
 
 
 
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
 
 
+<!-- Import Font -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/material-design-icons/3.0.1/iconfont/material-icons.css"rel="stylesheet">
 
 
+        <script>lsloader.load("js/jquery.min.js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==")</script>
+    
+    
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
 
-
-
-
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
-
-
-
-
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Splendour's blog" />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
-
-
-
-
-
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="Splendour&#39;s blog">
-<meta property="og:url" content="http://splendourhui.com/page/2/index.html">
-<meta property="og:site_name" content="Splendour&#39;s blog">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Splendour&#39;s blog">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var CONFIG = {
-    scheme: '',
-    sidebar: 'always',
-    motion: true
-  };
+    <!-- Analytics -->
+    <script>
+    var _hmt = _hmt || [];
+    (function() {var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?12423411d7b24eae6e82e3173f32ab00';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
 </script>
 
-  <title> Splendour's blog </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
-  </div>
-<![endif]-->
-  
+    <!-- Custom Head -->
+    
+<link rel="stylesheet" href="/css/prism-coy.css" type="text/css"></head>
 
 
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
 
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?12423411d7b24eae6e82e3173f32ab00";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
 
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
 
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
 
+                    <!-- Index Module -->
+<div class="material-index mdl-grid">
+    
+    <div class="locate-thumbnail-symbol"></div>
 
-  <div class="container one-column 
-   page-home 
-">
-    <div class="headband"></div>
+    <!-- Pin on top -->
+    
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+    <!-- Normal Post -->
+    
+        
+            
+                <!-- Paradox Thumbnail -->
+                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+        
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Splendour's blog</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-  <p class="site-subtitle">不积跬步，无以至千里</p>
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2016/03/20/JavaScript-函数式编程/">JavaScript 函数式编程</a></p>
+    </div>
+
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+        
+            
+在 ES6 的支持下（特别是箭头函数），JavaScript 函数式编程的实践性得到了很大的提升。再加上 Babel 等神...
+        
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2016/03/20/JavaScript-函数式编程/" target="_self">阅读全文</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/logo.png" width="44px" height="44px" alt="Splendour's avatar">
+            </div>
+            <div>
+                <strong>Splendour</strong>
+                <span>3月 20, 2016</span>
+            </div>
+        </div>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                <a class="post_category-link" href="/categories/JavaScript/">JavaScript</a>
+            </span>
+
+            
+
+            
+
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
+        </div>
+    </div>
 </div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+            
+            
+        
+    
+        
+            
+                <!-- Paradox Thumbnail -->
+                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+        
+    
+
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2016/01/24/ES6学习笔记-集合/">ES6学习笔记-集合</a></p>
+    </div>
+
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+        
+            Set
+        
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2016/01/24/ES6学习笔记-集合/" target="_self">阅读全文</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/logo.png" width="44px" height="44px" alt="Splendour's avatar">
+            </div>
+            <div>
+                <strong>Splendour</strong>
+                <span>1月 24, 2016</span>
+            </div>
+        </div>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                <a class="post_category-link" href="/categories/ES6/">ES6</a>
+            </span>
+
+            
+
+            
+
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
+        </div>
+    </div>
 </div>
 
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu ">
-      
+            
+            
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
-            
-            Startseite
-          </a>
-        </li>
-      
+    
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
-            
-            Archiv
-          </a>
-        </li>
-      
-
-      
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div id="content" class="content">
-          
-  <section id="posts" class="posts-expand">
-
+                <!-- Paradox Thumbnail -->
+                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+        
     
 
-    
-    
-      
-      
-
-      
-    
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/20/JavaScript-函数式编程/" itemprop="url">
-                  JavaScript 函数式编程
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Veröffentlicht am
-            <time itemprop="dateCreated" datetime="2016-03-20T14:01:05+08:00" content="2016-03-20">
-              2016-03-20
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <blockquote>
-<p>在 ES6 的支持下（特别是箭头函数），JavaScript 函数式编程的实践性得到了很大的提升。再加上 Babel 等神器，目前已经可以自己构建函数式编程的一些小套路了。</p>
-</blockquote>
-<h2 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h2><p>彻底的函数式编程包括以下特点：</p>
-<ul>
-<li>禁用 var/let，所有东西都用 const 定义，无变量，强制 immutable</li>
-<li>禁用 if/else，允许使用条件表达式 <code>condition ? a : b</code></li>
-<li>禁用 for/while/do-while</li>
-<li>禁用 prototype 和 this 来解除面向对象编程范式</li>
-<li>禁用 function 和 return 关键字，仅试用 lambda 表达式来编程</li>
-<li>禁用多参数函数，只允许使用单个参数，相当于强行 curry 化</li>
-</ul>
-<p>在实践过程中，有时候还是不要强行遵照上面的特点，要灵活应变，写出又有逼格又实用的代码，才是真正追求的。</p>
-<h2 id="累加器"><a href="#累加器" class="headerlink" title="累加器"></a>累加器</h2><p>累加器在编程过程中是很常见的，一般情况下，我们会借助一个临时变量还有循环来进行累加<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 最基本的求和累加器</span></div><div class="line"><span class="keyword">let</span> sum = <span class="number">0</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> array) &#123;</div><div class="line">  sum += value;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>很明显的，上述代码是过程式编程的典型。我们可以用上更高端的 <code>reduce</code> 函数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">array.reduce(<span class="function">(<span class="params">previous, current</span>) =&gt;</span> &#123;</div><div class="line">  previous + current;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>逼格瞬间高了很多。如果我们需要给一个初始值，则有<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> initValue = <span class="number">10</span>;</div><div class="line">array.reduce(<span class="function">(<span class="params">previous, current</span>) =&gt;</span> &#123;</div><div class="line">  previous + current;</div><div class="line">&#125;, initValue);</div></pre></td></tr></table></figure></p>
-<h3 id="倒序遍历"><a href="#倒序遍历" class="headerlink" title="倒序遍历"></a>倒序遍历</h3><p><code>reduce</code> 函数已经让我们可以使用一个函数实现累加器的功能了，那么我们能否将多参数转化为单参数呢？且看下面定义的函数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> foldr = <span class="function"><span class="params">f</span> =&gt;</span> accumulator =&gt; <span class="function">(<span class="params">[x, ...xs]</span>) =&gt;</span></div><div class="line">  x === <span class="literal">undefined</span> ? accumulator : f(x)(foldr(f)(accumulator)(xs));</div></pre></td></tr></table></figure></p>
-<p>该函数接受三个参数</p>
-<ul>
-<li>f：对数组中的每一项和累加器的操作，该参数是一个 <code>函数</code> (函数式编程的特点之一)</li>
-<li>accumulator：累加器</li>
-<li>[x, …xs]：要操作的数组</li>
-</ul>
-<p>函数采用递归的方式，算到最后是这样的形式（以数组 [1, 2] 为例）<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">f(<span class="number">1</span>)(f(<span class="number">2</span>)(accumulator))</div></pre></td></tr></table></figure></p>
-<p>不难看出，最终是将数组倒序遍历，计算出 f(x)(accumulator) 的值, 并将结果作为新的 accumulator 传递回去，直到遍历完毕。</p>
-<blockquote>
-<p>因为是将数组倒序遍历，所以我们将函数起名叫 <code>foldr</code></p>
-</blockquote>
-<h3 id="sum-函数"><a href="#sum-函数" class="headerlink" title="sum 函数"></a>sum 函数</h3><p>不妨来尝试使用一下这个函数。还是以求和为例，则有<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> f = <span class="function"><span class="params">x</span> =&gt;</span> accumulator =&gt; x + accumulator; <span class="comment">// 箭头函数默认返回</span></div><div class="line"><span class="keyword">let</span> initValue = <span class="number">10</span>;</div><div class="line"><span class="keyword">const</span> array = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</div><div class="line"><span class="keyword">let</span> sumValue = foldr(f)(initValue)(array); <span class="comment">// 20</span></div></pre></td></tr></table></figure></p>
-<p>逼格满满啊有木有？！我们可以定义一个属于自己的 sum 函数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> sum = <span class="function"><span class="params">initValue</span> =&gt;</span> foldr(<span class="function"><span class="params">x</span> =&gt;</span> accumulator =&gt; x + accumulator)(initValue);</div><div class="line"><span class="keyword">let</span> sumValue = sum(<span class="number">10</span>)([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]); <span class="comment">// 20</span></div></pre></td></tr></table></figure></p>
-<p>一个属于自己的 sum 函数就这样诞生了，单参数，无变量，单语句，干脆利落。自己的函数库至此多了一个高逼格函数！（差不多就行，不能太不要脸了）</p>
-<h3 id="map-函数"><a href="#map-函数" class="headerlink" title="map 函数"></a>map 函数</h3><p>我们再来看看熟悉的 <code>map</code> 函数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> squareArray = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>].map(<span class="function"><span class="params">item</span> =&gt;</span> item * item); <span class="comment">// [1, 4, 9, 16]</span></div></pre></td></tr></table></figure></p>
-<p>使用 <code>map</code> 函数已经相当优雅了，不过，既然我们已经有遍历函数了，那么我们能否用函数式编程实现 <code>map</code> 函数呢？<br><code>map</code> 函数返回的是一个处理后的数组，那么我们只需让累加器返回数组即可<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> map = <span class="function"><span class="params">f</span> =&gt;</span> foldr(<span class="function"><span class="params">x</span> =&gt;</span> accumulator =&gt; [f(x), ...accumulator])([]);</div></pre></td></tr></table></figure></p>
-<p>相当于 <code>f(x)(accumulator)</code> 返回了一个数组 <code>[f(x), ...accumulator]</code>, 遍历结束后刚好就是 <code>map</code> 函数返回的结果，调用方式如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> squareArray = map(<span class="function"><span class="params">item</span> =&gt;</span> item * item)([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]); <span class="comment">// [1, 4, 9, 16]</span></div></pre></td></tr></table></figure></p>
-<p>又一个函数入库了！</p>
-<h3 id="正序遍历"><a href="#正序遍历" class="headerlink" title="正序遍历"></a>正序遍历</h3><p>倒序遍历我们已经玩腻了，那有没有正序遍历呢？<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> foldl = <span class="function"><span class="params">f</span> =&gt;</span> accumulator =&gt; <span class="function">(<span class="params">[x, ...xs]</span>) =&gt;</span></div><div class="line">  x === <span class="literal">undefined</span> ? accumulator : foldl(f)(f(accumulator)(x))(xs);</div></pre></td></tr></table></figure></p>
-<p>函数采用递归的方式，算到最后是这样的形式（以数组 [1, 2] 为例）<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">f(f(a)(<span class="number">1</span>))(<span class="number">2</span>)</div></pre></td></tr></table></figure></p>
-<p>不难看出，最终是将数组正序遍历，计算出 f(accumulator)(x) 的值, 并将结果作为新的 accumulator 传递下去，直到遍历完毕。</p>
-<blockquote>
-<p>因为是将数组正序遍历，所以我们将函数起名叫 <code>foldl</code>，与前面的 <code>foldr</code> 函数对应</p>
-</blockquote>
-<h3 id="loopOnArray-函数"><a href="#loopOnArray-函数" class="headerlink" title="loopOnArray 函数"></a>loopOnArray 函数</h3><p>正序遍历的一个典型用处就是循环。我们利用 <code>foldl</code> 循环打印数组的每一个值<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">foldl(<span class="function"><span class="params">item</span> =&gt;</span> <span class="built_in">console</span>.log(item))()([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]);</div></pre></td></tr></table></figure></p>
-<p>不难发现，我们是不需要累加的，即不需要存储 accumulator 这个状态，每一步操作都和 accumulator 无关，但还是需要传这个参数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> loopOnArray = <span class="function"><span class="params">f</span> =&gt;</span> foldl(<span class="function"><span class="params">_</span> =&gt;</span> x =&gt; f(x))(<span class="literal">undefined</span>);</div></pre></td></tr></table></figure></p>
-<p>我们这里用 <code>_</code> 来代表空参数，因为这里不需要用到 accumulator, 用一个空参数来替代，调用范式如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">loopOnArray(<span class="function"><span class="params">item</span> =&gt;</span> <span class="built_in">console</span>.log(item))([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])h</div></pre></td></tr></table></figure></p>
-<p>一个函数也能实现循环了，亦可赛艇！</p>
-
-            
-          </span>
-        
-      
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2016/01/05/发布自己的node模块/">发布自己的node模块</a></p>
     </div>
 
-    <footer class="post-footer">
-      
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+        
+            
+用了那么多的 node_modules，想不想发布自己的模块呢？
 
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
 
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/24/ES6学习笔记-集合/" itemprop="url">
-                  ES6学习笔记-集合
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Veröffentlicht am
-            <time itemprop="dateCreated" datetime="2016-01-24T16:06:52+08:00" content="2016-01-24">
-              2016-01-24
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><blockquote>
-<p>一个 Set 是一群值的集合，它是可变的，能够增删元素。</p>
-</blockquote>
-<h3 id="Set-和-Array-的区别"><a href="#Set-和-Array-的区别" class="headerlink" title="Set 和 Array 的区别"></a>Set 和 Array 的区别</h3><ul>
-<li><p>一个 Set 不会包含相同元素，试图再次加入一个已有元素不会产生任何效果</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>(<span class="string">'1234'</span>);</div><div class="line"><span class="built_in">console</span>.log(set.size);</div><div class="line"></div><div class="line">set.add(<span class="string">'1'</span>);</div><div class="line"><span class="built_in">console</span>.log(set.size);</div></pre></td></tr></table></figure>
-</li>
-<li><p>Set 的数据存储结构专门为 <code>包含性检测</code> 作了速度优化</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">arrayOfWords.indexOf(<span class="string">'word'</span>) !== <span class="number">-1</span>  <span class="comment">// 慢</span></div><div class="line">setOfWords.has(<span class="string">'word'</span>)               <span class="comment">// 快</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>Set 不能提供索引</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">arrayOfWords[<span class="number">15000</span>] <span class="comment">// 'word'</span></div><div class="line">setOfWords[<span class="number">15000</span>]   <span class="comment">// undefined</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="Set-的操作"><a href="#Set-的操作" class="headerlink" title="Set 的操作"></a>Set 的操作</h3><ul>
-<li>new Set：创建一个新的、空的 Set</li>
-<li>new Set(iterable)：从任何 <code>可遍历数据</code> 中提取元素，构造一个新的集合<br>你可以用它把数组转化为集合，在一行代码内去重；也可以传递一个生成器，函数会逐个遍历它，并把生成的值收录为一个集合；也可以用来复制一个已有的集合</li>
-<li>set.size 获取集合中元素个数</li>
-<li>set.has(value)：判定集合中是否含有指定元素，返回一个布尔值</li>
-<li>set.add(value)：添加元素，如果与已有重复，则不产生效果</li>
-<li>set.delete(value)：删除元素，如果并不存在，则不产生效果。<code>.add()</code> 和 <code>.delete()</code> 都会返回集合自身，所以我们可以用链式语法</li>
-<li>set<a href="">Symbol.iterator</a>：返回一个新的遍历整个集合的迭代器。一般这个方法不会被直接调用，因为实际上就是它使集合能够被遍历，也就是说，我们可以直接写<code>for (v of set) {...}</code> 等等</li>
-<li>set.forEach(f)：它就像是 <code>for (let value of set) { f(value, value, set); }</code> 的简写，类似于数组的 <code>.forEach()</code> 方法</li>
-<li>set.clear()：清空集合</li>
-<li>set.keys()、set.values()和set.entries()：返回各种迭代器<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 将迭代器转化为数组输出</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.from(set.keys()));    <span class="comment">// [ '1', '2', '3', '4' ]</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.from(set.values()));  <span class="comment">// [ '1', '2', '3', '4' ]</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.from(set.entries())); <span class="comment">// [ [ '1', '1' ], [ '2', '2' ], [ '3', '3' ], [ '4', '4' ] ]</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><blockquote>
-<p>一个 Map 对象由若干键值对组成，类似 Java 的 Map 对象</p>
-</blockquote>
-<h3 id="Map-的操作"><a href="#Map-的操作" class="headerlink" title="Map 的操作"></a>Map 的操作</h3><ul>
-<li>new Map：返回一个新的、空的 Map</li>
-<li>new Map(pairs)：根据所含元素形如 <code>[key, value]</code> 的数组 pairs 来创建一个新的 Map。这里提供的 pairs 可以是一个已有的 Map  对象，可以是一个由二元数组组成的数组，也可以是逐个生成二元数组的一个生成器，等等。</li>
-<li>map.size：返回 Map 中键值对的个数</li>
-<li>map.has(key)：测试一个键名是否存在，类似 <code>key in obj</code></li>
-<li>map.get(key)：返回一个键名对应的值，若键名不存在则返回 undefined，类似 <code>obj[key]</code></li>
-<li>map.set(key, value)：添加一对新的键值对，如果键名已存在就覆盖</li>
-<li>map.delete(key)：按键名删除一项，类似 <code>delete obj[key]</code></li>
-<li>map.clear()：清空 Map</li>
-<li>map<a href="">Symbol.iterator</a>：返回遍历所有项的迭代器，每项用一个键和值组成的二元数组表示</li>
-<li>map.forEach(f)：类似 <code>for (let [key, value] of map) { f(value, key, map); }</code></li>
-<li>map.keys()：返回遍历所有键的迭代器</li>
-<li>map.values()：返回遍历所有值的迭代器</li>
-<li>map.entries()：返回遍历所有项的迭代器，就像 <code>map[Symbol.iterator]()</code></li>
-</ul>
-<h3 id="WeakMap-和-WeakSet"><a href="#WeakMap-和-WeakSet" class="headerlink" title="WeakMap 和 WeakSet"></a>WeakMap 和 WeakSet</h3><p>WeakMap 和 WeakSet 被设计来完成与 Map、Set 几乎一样的行为，除了以下一些限制：</p>
-<ul>
-<li>WeakMap 只支持 new、has、get、set 和 delete</li>
-<li>WeakSet 只支持 new、has、add 和 delete</li>
-<li>WeakSet 的值和 WeakMap 的键必须是对象<blockquote>
-<p>这些小心设计的限制让垃圾回收机制能回收仍在使用中的弱集合里的无效对象。这效果类似于弱引用或弱键字典，但ES6的弱集合可以在不暴露脚本中正在垃圾回收的前提下得到垃圾回收的效益</p>
-</blockquote>
-</li>
-</ul>
-
-            
-          </span>
-        
-      
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2016/01/05/发布自己的node模块/" target="_self">阅读全文</a>
+        </span>
     </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/05/发布自己的node模块/" itemprop="url">
-                  发布自己的node模块
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Veröffentlicht am
-            <time itemprop="dateCreated" datetime="2016-01-05T16:57:21+08:00" content="2016-01-05">
-              2016-01-05
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/logo.png" width="44px" height="44px" alt="Splendour's avatar">
+            </div>
+            <div>
+                <strong>Splendour</strong>
+                <span>1月 05, 2016</span>
+            </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <blockquote>
-<p>用了那么多的 node_modules，想不想发布自己的模块呢？</p>
-</blockquote>
-<h2 id="在-GitHub（或者其他托管工具）创建一个项目"><a href="#在-GitHub（或者其他托管工具）创建一个项目" class="headerlink" title="在 GitHub（或者其他托管工具）创建一个项目"></a>在 GitHub（或者其他托管工具）创建一个项目</h2><p>这可以方便用户报 bug，并且可以有其他开发者一起贡献代码。</p>
-<h2 id="初始化-package-json"><a href="#初始化-package-json" class="headerlink" title="初始化 package.json"></a>初始化 package.json</h2><p>进入目录后，执行 <code>npm init</code>，根据提示完成初始化，以下是 package.json 文件的几点说明</p>
-<ul>
-<li><code>name</code>: 项目名称，发布的时候要保证在 npmjs 上的唯一性</li>
-<li><p><code>version</code>: 版本号，有如下规则</p>
-<blockquote>
-<p>版本格式：主版号.次版号.修订号，版号递增规则如下：<br>  主版号：当你做了不相容的 API 修改，<br>  次版号：当你做了向下相容的功能性新增，<br>  修订号：当你做了向下相容的问题修正。<br>  先行版号及版本编译资讯可以加到「主版号.次版号.修订号」的后面，作为延伸。</p>
-</blockquote>
-</li>
-<li><p><code>main</code>: 入口文件，一般为 <code>index.js</code></p>
-</li>
-<li><code>dependencies</code>: 项目依赖</li>
-</ul>
-<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><ul>
-<li><code>lib</code>: 存放业务逻辑温健</li>
-<li><code>test</code>: 存放单元测试用例</li>
-<li><code>.npmignore</code>: 记录哪些文件不需要被发布到 npmjs.org</li>
-<li><code>index.js</code>: 入口文件</li>
-<li><code>README.md</code>: 描述文件</li>
-</ul>
-<h2 id="持续集成"><a href="#持续集成" class="headerlink" title="持续集成"></a>持续集成</h2><blockquote>
-<p>为保证模块的可用性，使用持续集成工具吧，在此不再赘述</p>
-</blockquote>
-<h2 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h2><ul>
-<li>在 <code>www.npmjs.org</code> 注册一个账号</li>
-<li>添加 npm 本地配置<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ npm adduser</div><div class="line"><span class="symbol">Username:</span> your name</div><div class="line"><span class="symbol">Password:</span> your password</div><div class="line"><span class="symbol">Email:</span> yourmail</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>成功之后，npm 认证信息会存放在 <code>~/.npmrc</code> 下，我们可以使用命令 <code>npm whoami</code> 查看当前用户</p>
-<ul>
-<li>发布<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">npm</span> publish</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>至此，你的模块就发布成功了。还等什么，一起为好用的模块做出贡献吧。</p>
-</blockquote>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/03/ES6学习笔记-箭头函数-Arrow-Functions/" itemprop="url">
-                  ES6学习笔记-箭头函数 Arrow Functions
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Veröffentlicht am
-            <time itemprop="dateCreated" datetime="2016-01-03T10:48:10+08:00" content="2016-01-03">
-              2016-01-03
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; in
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-                  . 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JavaScript/ES6/" itemprop="url" rel="index">
-                    <span itemprop="name">ES6</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                <a class="post_category-link" href="/categories/Nodejs/">Nodejs</a>
             </span>
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h2 id="箭头函数的语法"><a href="#箭头函数的语法" class="headerlink" title="箭头函数的语法"></a>箭头函数的语法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ES5</span></div><div class="line"><span class="keyword">var</span> selected = numbers.filter(<span class="function"><span class="keyword">function</span>(<span class="params">number</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> number.isSelected();</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// ES6</span></div><div class="line"><span class="keyword">let</span> selected = numbers.filter(<span class="function"><span class="params">number</span> =&gt;</span> number.isSelected());</div></pre></td></tr></table></figure>
-<p>箭头函数的语法就是 <code>标示符 =&gt; 表达式</code>，无需输入 <code>function</code> <code>return</code> 等，省略了一些括号</p>
-<ul>
-<li><p>多个参数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ES5</span></div><div class="line"><span class="keyword">var</span> sum = numbers.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> a + b;</div><div class="line">&#125;, <span class="number">0</span>);</div><div class="line"></div><div class="line"><span class="comment">// ES6</span></div><div class="line"><span class="keyword">let</span> sum = number.reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a + b, <span class="number">0</span>);</div></pre></td></tr></table></figure>
-</li>
-<li><p>包含一个语句块</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ES5</span></div><div class="line">$(<span class="string">'#button'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">  prepare();</div><div class="line">  doSomeJob();</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// ES6</span></div><div class="line">$(<span class="string">'#button'</span>).click(<span class="function"><span class="params">event</span> =&gt;</span> &#123;</div><div class="line">  prepare();  </div><div class="line">  doSomeJob();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>包含一个语句块的箭头函数不会自动返回值，若需要则手动添加 <code>return</code> 语句</p>
-</blockquote>
-<ul>
-<li>用箭头函数创建普通对象需要小心<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// error</span></div><div class="line"><span class="keyword">let</span> newNumber = numbers.map(<span class="function"><span class="params">number</span> =&gt;</span> &#123;&#125;);</div><div class="line"></div><div class="line"><span class="comment">// correct</span></div><div class="line"><span class="keyword">let</span> newNumber = numbers.map(<span class="function"><span class="params">number</span> =&gt;</span> (&#123;&#125;));</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>小窍门：所有对象字面量用小括号包裹以避免歧义</p>
-</blockquote>
-<h2 id="this-值"><a href="#this-值" class="headerlink" title="this 值"></a>this 值</h2><blockquote>
-<p>箭头函数没有自己的 this 值，箭头函数内的 this 值继承自外作用域</p>
-</blockquote>
-<p>在 ES6 中需要遵循的规则</p>
-<ul>
-<li>通过 <code>object.method()</code> 语法调用的方法使用非箭头函数定义，这些函数需要从调用者的作用域中获取一个有意义的 this 值</li>
-<li>其他情况全部使用箭头函数<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  ...</div><div class="line">  addAll: <span class="function"><span class="keyword">function</span> <span class="title">addAll</span>(<span class="params">pieces</span>) </span>&#123;</div><div class="line">    _.each(numbers, number =&gt; <span class="keyword">this</span>.add(number));</div><div class="line">  &#125;</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>这里的 this 是 addAll 方法从它的调用者处获取的，内部函数是一个箭头函数，所以 this 不变<br>上面的代码还可以简化：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  ...</div><div class="line">  addAll(pieces) &#123;</div><div class="line">    _.each(numbers, number =&gt; <span class="keyword">this</span>.add(number));</div><div class="line">  &#125;</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
             
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/12/29/使用-Jenkins-构建-nodejs-应用/" itemprop="url">
-                  使用 Jenkins 构建 nodejs 应用
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Veröffentlicht am
-            <time itemprop="dateCreated" datetime="2015-12-29T21:31:53+08:00" content="2015-12-29">
-              2015-12-29
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
-<li><p>安装 Jenkins</p>
-</li>
-<li><p>安装如下插件，并重启 Jenkins</p>
-<ul>
-<li>GIT client plugin</li>
-<li>GIT plugin</li>
-<li>Git server plugin</li>
-<li>SSH Credentials Plugin</li>
-<li>SSH plugin</li>
-<li>Publish Over SSH</li>
-</ul>
-</li>
-<li><p>系统配置<br>进入 <code>系统管理</code> =&gt; <code>系统设置</code>，进行以下配置</p>
-<ul>
-<li>增加远程服务器的 remote server<br>每需要连接一个新的远程服务器，都需要在此配置服务器的连接属性。<ul>
-<li>SSH remote hosts<br>配置 <code>Hostname</code>, <code>Port</code>, <code>User Name</code>, <code>Password</code></li>
-<li>Publish over SSH<br>配置 SSH Servers，配置 <code>Name</code>, <code>Hostname</code>, <code>Username</code>, <code>Remote Directory</code><br>点击展开高级配置，勾选 <code>Use password authentication, or use a different key</code>，并配置 <code>Password</code><br>配置端口，默认为 <code>22</code>，配置 <code>Timeout</code>，此处因为 nodejs 构建时需要进行 <code>npm install</code> 操作，耗时可能受网络影响较大，故可以配置较高数值。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="构建项目"><a href="#构建项目" class="headerlink" title="构建项目"></a>构建项目</h2><ul>
-<li><p>点击新建按钮，选择<code>构建一个自由风格的软件项目</code></p>
-</li>
-<li><p>项目配置</p>
-<ul>
-<li>根据自己的需求配置项目的基本信息，如 <code>nodejs_deploy</code></li>
-<li><p>源码管理<br>选择自己的代码管理系统，这里我们用<code>Git</code>，注意：如果是 public 的项目，则只需要填写 <code>Repository URL</code> 即可；如果是 private 的项目，则需要选择正确的 <code>Credentials</code>，Credentials 的配置方法如下：</p>
-<ul>
-<li>在 Jenkins 主页点击进入 Credentials</li>
-<li>在 Domain 中选择，这里选 Global</li>
-<li>添加 Credentials<ul>
-<li>在 <code>${Jenkins主目录}/.ssh/</code> 目录下，生成公钥和私钥</li>
-<li>复制公钥文件到当前目录下 <code>cp id_rsa.pub authorized_keys</code></li>
-<li><code>Username</code> 填写你现在登录的用户名</li>
-<li><code>Private Key</code> 选择 <code>Enter directly</code>，使用 <code>cat id_rsa</code> 获取私钥，并复制到 <code>Key</code> 中</li>
-<li><code>Passphrase</code> 为你生成公钥和私钥时填写的密码</li>
-<li><code>Description</code> 填写描述，方便在项目中选择</li>
-</ul>
-</li>
-<li>在 Git 项目配置中(这里有可能是 Gitlab，总之就是你的项目主页)，将刚才生成的公钥添加到项目的 <code>Publish Keys</code> 列表中完成授权</li>
-</ul>
-<p>选择刚才创建的 Credentials，发现配置信息那里的错误消失了，说明连接源码库成功<br>最后，填写需要构建的分支，默认为 <code>*/master</code><br>到这一步，可以保存，然后点击 <code>立即构建</code>，测试项目能否成功拉取代码</p>
-</li>
-<li><p>构建步骤</p>
-<ul>
-<li>开始构建后，Jenkins 会先帮我们拉取代码</li>
-<li>在项目配置中，可以添加构建步骤，分别对应如下<ul>
-<li><code>Execute Windows batch command</code>: Windows 系统节点下地自动化批处理任务</li>
-<li><code>Execute shell</code>: 在命令行中执行脚本</li>
-<li><code>Execute shell script on remote host using ssh</code>: 使用 SSH 链接到远程服务器并执行脚本</li>
-<li><code>Invoke Ant</code>: 整合 Apache Ant</li>
-<li><code>Invoke top-level Maven targets</code>: Maven 构建指令</li>
-<li><code>Send files or execute commands over SSH</code>: 使用 SSH 传送文件到服务器并执行脚本</li>
-</ul>
-</li>
-<li><p>nodejs 项目的构建</p>
-<ul>
-<li><p>重新生成源码包，并使用当前构建号将源码包命名存储<br>新建 <code>Execute shell</code>，执行下面的命令(这里的命令有一些环境参数可用，具体可点击文本框下面的链接查看可用参数)</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">rm -rf $&#123;WORKSPACE&#125;/$&#123;JOB_NAME&#125;<span class="selector-class">.tar</span><span class="selector-class">.gz</span></div><div class="line">tar -zcvf /tmp/$&#123;JOB_NAME&#125;<span class="selector-class">.tar</span><span class="selector-class">.gz</span> -C $&#123;WORKSPACE&#125;/ .</div><div class="line">mv /tmp/$&#123;JOB_NAME&#125;<span class="selector-class">.tar</span><span class="selector-class">.gz</span> $&#123;WORKSPACE&#125;/</div><div class="line">cp $&#123;WORKSPACE&#125;/$&#123;JOB_NAME&#125;<span class="selector-class">.tar</span><span class="selector-class">.gz</span> $&#123;JENKINS_HOME&#125;/jobs/$&#123;JOB_NAME&#125;/builds/$&#123;BUILD_NUMBER&#125;<span class="selector-class">.tar</span><span class="selector-class">.gz</span></div></pre></td></tr></table></figure>
-<p>这样，就将原有源码包删除，生成最新源码包，并存放到当前项目目录下的 <code>builds</code> 文件夹中</p>
-</li>
-<li><p>到服务器停止原来的进程，并删除原来的源码包<br>新建 <code>Execute shell script on remote host using ssh</code>，执行下面的命令</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">forever stop nodejs/app<span class="selector-class">.js</span></div><div class="line">rm -rf nodejs/nodejs_deploy<span class="selector-class">.tar</span><span class="selector-class">.gz</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>将最新源码包发送到服务端，解压，然后执行 nodejs 基本的构建步骤<br>新建 <code>Send files or execute commands over SSH</code><br><code>Source files</code> 填写 <code>nodejs.tar.gz</code><br><code>Remote directory</code> 填写 <code>nodejs</code><br>执行下面的命令</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">tar -zxvf ~/nodejs/nodejs_deploy.tar.gz -C ~/nodejs/</div><div class="line">cd nodejs</div><div class="line">npm install</div><div class="line">bower install</div><div class="line"><span class="keyword">node</span> <span class="title">--harmony</span> `which gulp`</div><div class="line">forever <span class="literal">start</span> -c <span class="string">"node --harmony"</span> app.js</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>至此，nodejs 项目构建完毕并启动(上述所有的构建过程都可以根据自己的项目需要进行配置)</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="回滚项目"><a href="#回滚项目" class="headerlink" title="回滚项目"></a>回滚项目</h2><blockquote>
-<p>我们使用构建一个项目的方式，来实现原有项目的回滚</p>
-</blockquote>
-<ul>
-<li><p>点击新建按钮，选择<code>构建一个自由风格的软件项目</code></p>
-</li>
-<li><p>项目配置</p>
-<ul>
-<li><p>根据自己的需求配置项目的基本信息，如 <code>nodejs_revert</code></p>
-</li>
-<li><p>配置回滚构建号<br>勾选 <code>参数化构建过程</code>，添加参数 <code>String Parameter</code>，并起个名字，这里叫 <code>VERSION</code></p>
-</li>
-<li><p>构建步骤</p>
-<ul>
-<li><p>拷贝该构建号的源码包到此项目的 <code>WORKSPACE</code> 下<br>新建 <code>Execute shell</code>，执行下面的命令(这里的命令有一些环境参数可用，具体可点击文本框下面的链接查看可用参数)</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp -rf <span class="variable">$&#123;JENKINS_HOME&#125;</span><span class="regexp">/jobs/</span>nodejs_deploy<span class="regexp">/builds/</span><span class="variable">$&#123;VERSION&#125;</span>.tar.gz <span class="variable">$&#123;WORKSPACE&#125;</span><span class="regexp">/.</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>到服务器停止原来的进程，并删除原来的源码包<br>新建 <code>Execute shell script on remote host using ssh</code>，执行下面的命令</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">forever stop nodejs/app<span class="selector-class">.js</span></div><div class="line">rm -rf nodejs/nodejs_deploy<span class="selector-class">.tar</span><span class="selector-class">.gz</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>将最新源码包发送到服务端，解压，然后执行 nodejs 基本的构建步骤<br>新建 <code>Send files or execute commands over SSH</code><br><code>Source files</code> 填写 <code>${VERSION}.tar.gz</code><br><code>Remote directory</code> 填写 <code>nodejs</code><br>执行下面的命令</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mv -f ~/nodejs/$&#123;VERSION&#125;<span class="selector-class">.tar</span><span class="selector-class">.gz</span> ~/nodejs/nodejs_deploy<span class="selector-class">.tar</span><span class="selector-class">.gz</span></div><div class="line">tar -zxvf ~/nodejs/nodejs_deploy<span class="selector-class">.tar</span><span class="selector-class">.gz</span> -C ~/nodejs/</div><div class="line">cd nodejs</div><div class="line">npm install</div><div class="line">bower install</div><div class="line">node --harmony `which gulp`</div><div class="line">forever start -c <span class="string">"node --harmony"</span> app.js</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<p>配置完成后，项目的构建按钮变成了 <code>Build with Parameters</code>，点击后输入参数即可进行构建版本的回滚</p>
-</li>
-</ul>
 
             
-          </span>
-        
-      
-    </div>
 
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/12/15/ubuntu14-04-安装-Node-js-LTS-V4-2-3/" itemprop="url">
-                  ubuntu14.04 安装 Node.js LTS V4.2.3
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Veröffentlicht am
-            <time itemprop="dateCreated" datetime="2015-12-15T15:26:27+08:00" content="2015-12-15">
-              2015-12-15
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; in
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Node-js/" itemprop="url" rel="index">
-                    <span itemprop="name">Node.js</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
+            <!-- Post Views -->
+            <span class="post_entry-views">
             </span>
-          
-
-          
-            
-          
-
-          
-
         </div>
-      </header>
+    </div>
+</div>
+
+            
+            
+        
+    
+        
+            
+                <!-- Paradox Thumbnail -->
+                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+        
     
 
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <blockquote>
-<p>因项目需要，经常在服务器上部署 Node.js，记录一下操作，以便查阅。<br>这里使用源码包编译的方法安装 Node.js</p>
-</blockquote>
-<ol>
-<li><p>到官网 <a href="https://nodejs.org/en/download/" target="_blank" rel="external">https://nodejs.org/en/download/</a> 下载源码包 <code>node-v4.2.3.tar.gz</code></p>
-</li>
-<li><p>将源码包上传至服务器，若是在服务器直接下载源码包的，请直接跳过此步骤。这里用 scp 上传</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp ~/Downloads/<span class="keyword">node</span><span class="title">-v4</span>.<span class="number">2.3</span>.tar.gz username@hostname:~</div></pre></td></tr></table></figure>
-</li>
-<li><p>解压源码包</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -xzvf <span class="keyword">node</span><span class="title">-v4</span>.<span class="number">2.3</span>.tar.gz</div></pre></td></tr></table></figure>
-</li>
-<li><p>安装依赖的库</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo apt-<span class="keyword">get</span> install gcc  <span class="comment">//gcc 4.8+</span></div><div class="line">sudo apt-<span class="keyword">get</span> install g++  <span class="comment">//g++ 4.8+</span></div><div class="line">sudo apt-<span class="keyword">get</span> install clang  <span class="comment">//clang 3.4+</span></div><div class="line">sudo apt-<span class="keyword">get</span> install make   <span class="comment">//GNU Make 3.81+</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>执行安装</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cd <span class="keyword">node</span><span class="title">-v4</span>.<span class="number">2.3</span></div><div class="line">./configure</div><div class="line">make</div><div class="line">sudo make install</div></pre></td></tr></table></figure>
-</li>
-<li><p>测试是否安装完成</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">node</span> <span class="title">-v</span></div><div class="line"><span class="keyword">node</span> <span class="title">-e</span> <span class="string">"console.log('Hello from Node.js ' + process.version)"</span></div></pre></td></tr></table></figure>
-</li>
-</ol>
-
-            
-          </span>
-        
-      
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2016/01/03/ES6学习笔记-箭头函数-Arrow-Functions/">ES6学习笔记-箭头函数 Arrow Functions</a></p>
     </div>
 
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
         
+            箭头...
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/12/13/ES6学习笔记-解构-Destructuring/" itemprop="url">
-                  ES6学习笔记-解构-Destructuring
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Veröffentlicht am
-            <time itemprop="dateCreated" datetime="2015-12-13T13:01:16+08:00" content="2015-12-13">
-              2015-12-13
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2016/01/03/ES6学习笔记-箭头函数-Arrow-Functions/" target="_self">阅读全文</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/logo.png" width="44px" height="44px" alt="Splendour's avatar">
+            </div>
+            <div>
+                <strong>Splendour</strong>
+                <span>1月 03, 2016</span>
+            </div>
         </div>
-      </header>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                <a class="post_category-link" href="/categories/ES6/">ES6</a>
+            </span>
+
+            
+
+            
+
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
+        </div>
+    </div>
+</div>
+
+            
+            
+        
+    
+        
+            
+                <!-- Paradox Thumbnail -->
+                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+        
     
 
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h2 id="什么是解构"><a href="#什么是解构" class="headerlink" title="什么是解构"></a>什么是解构</h2><p>我们以访问数组中的前三个元素为例</p>
-<h3 id="传统的访问方式"><a href="#传统的访问方式" class="headerlink" title="传统的访问方式"></a>传统的访问方式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> frist = array[<span class="number">0</span>];</div><div class="line"><span class="keyword">let</span> second = array[<span class="number">1</span>];</div><div class="line"><span class="keyword">let</span> third = array[<span class="number">2</span>];</div></pre></td></tr></table></figure>
-<h3 id="使用解构的特性"><a href="#使用解构的特性" class="headerlink" title="使用解构的特性"></a>使用解构的特性</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> [first, second, third] = array;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>两段代码是完全等效的，利用新特性能使代码更加简洁和易读</p>
-</blockquote>
-<h2 id="数组与迭代器的解构"><a href="#数组与迭代器的解构" class="headerlink" title="数组与迭代器的解构"></a>数组与迭代器的解构</h2><h3 id="一般形式"><a href="#一般形式" class="headerlink" title="一般形式"></a>一般形式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> [variable1, variable2, ..., variableN] = array;</div></pre></td></tr></table></figure>
-<h3 id="嵌套数组的解构"><a href="#嵌套数组的解构" class="headerlink" title="嵌套数组的解构"></a>嵌套数组的解构</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> [a, [[b], c]] = [<span class="number">1</span>, [[<span class="number">2</span>], <span class="number">3</span>]];</div><div class="line"><span class="built_in">console</span>.log(a);   <span class="comment">//1</span></div><div class="line"><span class="built_in">console</span>.log(b);   <span class="comment">//2</span></div><div class="line"><span class="built_in">console</span>.log(c);   <span class="comment">//3</span></div></pre></td></tr></table></figure>
-<h3 id="留空跳过元素"><a href="#留空跳过元素" class="headerlink" title="留空跳过元素"></a>留空跳过元素</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> [,,c] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line"><span class="built_in">console</span>.log(c);   <span class="comment">//3</span></div></pre></td></tr></table></figure>
-<h3 id="结合不定参数"><a href="#结合不定参数" class="headerlink" title="结合不定参数"></a>结合不定参数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> [head, ...tail] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</div><div class="line"><span class="built_in">console</span>.log(tail);    <span class="comment">//[2, 3, 4]</span></div></pre></td></tr></table></figure>
-<h3 id="越界时的结果"><a href="#越界时的结果" class="headerlink" title="越界时的结果"></a>越界时的结果</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> [missing] = [];</div><div class="line"><span class="built_in">console</span>.log(missing);   <span class="comment">//undefined</span></div></pre></td></tr></table></figure>
-<h3 id="在迭代器中的使用"><a href="#在迭代器中的使用" class="headerlink" title="在迭代器中的使用"></a>在迭代器中的使用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">fibs</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> a = <span class="number">0</span>;</div><div class="line">  <span class="keyword">let</span> b = <span class="number">1</span>;</div><div class="line">  <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</div><div class="line">    <span class="keyword">yield</span> a;</div><div class="line">    [a, b] = [b, a + b];</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> [first, second, third, forth, fifth, sixth] = fibs();</div><div class="line"><span class="built_in">console</span>.log(sixth);   <span class="comment">//5</span></div></pre></td></tr></table></figure>
-<h2 id="对象的解构"><a href="#对象的解构" class="headerlink" title="对象的解构"></a>对象的解构</h2><h3 id="一般形式-1"><a href="#一般形式-1" class="headerlink" title="一般形式"></a>一般形式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> &#123; <span class="attr">name</span>: nameA &#125; = &#123; <span class="attr">name</span>: <span class="string">'Lily'</span> &#125;;</div><div class="line"><span class="keyword">let</span> &#123; <span class="attr">name</span>: nameB &#125; = &#123; <span class="attr">name</span>: <span class="string">'Lucy'</span> &#125;;</div><div class="line"><span class="built_in">console</span>.log(nameA);   <span class="comment">//Lily</span></div><div class="line"><span class="built_in">console</span>.log(nameB);   <span class="comment">//Lucy</span></div></pre></td></tr></table></figure>
-<h3 id="属性名与变量名一致时的简写"><a href="#属性名与变量名一致时的简写" class="headerlink" title="属性名与变量名一致时的简写"></a>属性名与变量名一致时的简写</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> &#123; foo, bar &#125; = &#123; <span class="attr">foo</span>: <span class="string">'foo'</span>, <span class="attr">bar</span>: <span class="string">'bar'</span> &#125;</div><div class="line"><span class="built_in">console</span>.log(foo);   <span class="comment">//'foo'</span></div><div class="line"><span class="built_in">console</span>.log(bar);   <span class="comment">//'bar'</span></div></pre></td></tr></table></figure>
-<h3 id="嵌套对象解构"><a href="#嵌套对象解构" class="headerlink" title="嵌套对象解构"></a>嵌套对象解构</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> complicatedObj = &#123;</div><div class="line">  <span class="attr">arrayProp</span>: [</div><div class="line">    <span class="string">'Zapp'</span>,</div><div class="line">    &#123; <span class="attr">second</span>: <span class="string">'Brannigan'</span> &#125;</div><div class="line">  ]</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> &#123;</div><div class="line">  <span class="attr">arrayProp</span>: [</div><div class="line">    first,</div><div class="line">    &#123; second &#125;</div><div class="line">  ]</div><div class="line">&#125; = complicatedObj;</div><div class="line"><span class="built_in">console</span>.log(first);   <span class="comment">//'Zapp'</span></div><div class="line"><span class="built_in">console</span>.log(second);   <span class="comment">//'Brannigan'</span></div></pre></td></tr></table></figure>
-<h3 id="解构未定义的属性"><a href="#解构未定义的属性" class="headerlink" title="解构未定义的属性"></a>解构未定义的属性</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> &#123; missing &#125; = &#123;&#125;;</div><div class="line"><span class="built_in">console</span>.log(missing);   <span class="comment">//undefined</span></div></pre></td></tr></table></figure>
-<h3 id="若变量已定义好，解构语句中不存在-let-等关键字"><a href="#若变量已定义好，解构语句中不存在-let-等关键字" class="headerlink" title="若变量已定义好，解构语句中不存在 let 等关键字"></a>若变量已定义好，解构语句中不存在 let 等关键字</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123; a &#125; = &#123; <span class="attr">a</span>: <span class="number">10</span> &#125;;    <span class="comment">//Syntax error 语法错误</span></div><div class="line">()&#123; a &#125; = &#123; <span class="attr">a</span>: <span class="number">10</span> &#125;);   <span class="comment">//无语法错误</span></div></pre></td></tr></table></figure>
-<h2 id="解构值不是对象、数组或迭代器"><a href="#解构值不是对象、数组或迭代器" class="headerlink" title="解构值不是对象、数组或迭代器"></a>解构值不是对象、数组或迭代器</h2><p>尝试解构 undefined 或者 null 时，会得到类型错误<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> &#123; blowUp &#125; = <span class="literal">null</span>;  <span class="comment">//TypeError: null has no properties</span></div></pre></td></tr></table></figure></p>
-<p>然而，解构其他原始类型就不会报错，但是会得到 undefined<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> &#123; wtf &#125; = <span class="literal">NaN</span>;</div><div class="line"><span class="built_in">console</span>.log(wtf);   <span class="comment">//undefined</span></div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>原因：当使用对象赋值模式时，被解构的值会被强制转换为对象，null 和 undefined 无法进行转换所以出现错误。</p>
-</blockquote>
-<h2 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> [missing = <span class="literal">true</span>] = [];</div><div class="line"><span class="built_in">console</span>.log(missing);   <span class="comment">//true</span></div></pre></td></tr></table></figure>
-<h2 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h2><h3 id="函数参数定义"><a href="#函数参数定义" class="headerlink" title="函数参数定义"></a>函数参数定义</h3><blockquote>
-<p>作为开发者，我们需要实现设计良好的API，通常的做法是为函数为函数设计一个对象作为参数，然后将不同的实际参数作为对象属性，以避免让API使用者记住 多个参数的使用顺序。我们可以使用解构特性来避免这种问题，当我们想要引用它的其中一个属性时，大可不必反复使用这种单一参数对象。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeBreakpoint</span>(<span class="params">&#123; url, line, column &#125;</span>) </span>&#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="配置对象参数"><a href="#配置对象参数" class="headerlink" title="配置对象参数"></a>配置对象参数</h3><blockquote>
-<p>当我们构造一个提供配置的对象，并且需要这个对象的属性携带默认值时，解构特性就派上用场了。举个例子，jQuery的ajax函数使用一个配置对象作为它的第二参数，我们可以这样重写函数定义：</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">jQuery.ajax = <span class="function"><span class="keyword">function</span> (<span class="params">url, &#123;</span></span></div><div class="line">  async = true,</div><div class="line">  beforeSend = noop,</div><div class="line">  cache = true,</div><div class="line">  complete = noop,</div><div class="line">  crossDomain = false,</div><div class="line">  global = true,</div><div class="line">  <span class="regexp">//</span> ... 更多配置</div><div class="line">&#125;) &#123;</div><div class="line">  <span class="comment">// ... do stuff</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>如此一来，我们可以避免对配置对象的每个属性都重复var foo = config.foo || theDefaultFoo;这样的操作。</p>
-</blockquote>
-<h3 id="与迭代器协同使用"><a href="#与迭代器协同使用" class="headerlink" title="与迭代器协同使用"></a>与迭代器协同使用</h3><p>在迭代 Maps 时，可以得到一些列形如[key, value]的键值对，此时利用解构可以更轻松地访问键和值<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>();</div><div class="line">map.set(<span class="built_in">window</span>, <span class="string">'the global'</span>);</div><div class="line">map.set(<span class="built_in">document</span>, <span class="string">'the document'</span>);</div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> map) &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;key&#125;</span> is <span class="subst">$&#123;valuel&#125;</span>`</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>只遍历键<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key] <span class="keyword">of</span> map) &#123;</div><div class="line">  <span class="comment">//...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>或只遍历值<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [, value] <span class="keyword">of</span> map) &#123;</div><div class="line">  <span class="comment">//...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="多重返回值"><a href="#多重返回值" class="headerlink" title="多重返回值"></a>多重返回值</h3><ul>
-<li><p>返回一个数组将结果解构</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">returnMultipleValues</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> [<span class="number">1</span>, <span class="number">2</span>];</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> [first, second] = returnMultipleValues();</div></pre></td></tr></table></figure>
-</li>
-<li><p>用一个对象作为容器并为返回值命名</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">returnMultipleValues</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">first</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">second</span>: <span class="number">2</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> &#123; first, second &#125; = returnMultipleValues();</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="导入模块"><a href="#导入模块" class="headerlink" title="导入模块"></a>导入模块</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> &#123; SourceMapConsumer, SourceNode &#125; = <span class="built_in">require</span>(<span class="string">"source-map"</span>);</div></pre></td></tr></table></figure>
-
-            
-          </span>
-        
-      
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2015/12/29/使用-Jenkins-构建-nodejs-应用/">使用 Jenkins 构建 nodejs 应用</a></p>
     </div>
 
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
         
+            准备工作
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/12/06/ES6学习笔记-不定参数和默认参数/" itemprop="url">
-                  ES6学习笔记-不定参数和默认参数
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Veröffentlicht am
-            <time itemprop="dateCreated" datetime="2015-12-06T12:51:02+08:00" content="2015-12-06">
-              2015-12-06
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2015/12/29/使用-Jenkins-构建-nodejs-应用/" target="_self">阅读全文</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/logo.png" width="44px" height="44px" alt="Splendour's avatar">
+            </div>
+            <div>
+                <strong>Splendour</strong>
+                <span>12月 29, 2015</span>
+            </div>
         </div>
-      </header>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                <a class="post_category-link" href="/categories/Nodejs/">Nodejs</a>
+            </span>
+
+            
+
+            
+
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
+        </div>
+    </div>
+</div>
+
+            
+            
+        
+    
+        
+            
+                <!-- Paradox Thumbnail -->
+                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+        
     
 
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h2 id="不定参数"><a href="#不定参数" class="headerlink" title="不定参数"></a>不定参数</h2><h3 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h3><p>构造 API 时，我们通常需要可变参数。<code>String.prototype.concat</code>方法可以接受任意数量的字符串参数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> hello = <span class="string">'Hello, '</span>;</div><div class="line"><span class="built_in">console</span>.log(hello.concat(<span class="string">'Kevin'</span>, <span class="string">' have a nice day.'</span>));</div><div class="line"><span class="comment">/* Hello, Kevin have a nice day. */</span></div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>实现一个函数 containAll，用来检查一个字符串中是否包含若干个字串：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">containsAll(<span class="string">"banana"</span>, <span class="string">"b"</span>, <span class="string">"nan"</span>) = <span class="literal">true</span>;</div><div class="line">containsAll(<span class="string">"banana"</span>, <span class="string">"c"</span>, <span class="string">"nan"</span>) = <span class="literal">false</span>;</div></pre></td></tr></table></figure></p>
-</blockquote>
-<h3 id="传统方法"><a href="#传统方法" class="headerlink" title="传统方法"></a>传统方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">containsAll</span>(<span class="params">string</span>) </span>&#123;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="built_in">arguments</span>.length; i ++) &#123;</div><div class="line">    <span class="keyword">var</span> item = <span class="built_in">arguments</span>[i];</div><div class="line">    <span class="keyword">if</span> (string.indexOf(item) === <span class="number">-1</span>) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>argument 对象是一个类数组对象，其中包含了传递给函数的所有参数。</li>
-<li>这个实现的可读性较差，而且迭代必须从1开始，容易掉坑，当添加一个参数时，又得同步更新循环体中的迭代初始值。</li>
-</ul>
-<h3 id="ES6实现"><a href="#ES6实现" class="headerlink" title="ES6实现"></a>ES6实现</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">containsAll</span>(<span class="params">string, ...items</span>) </span>&#123;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> items) &#123;</div><div class="line">    <span class="keyword">if</span> (string.indexOf(item) === <span class="number">-1</span>) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li><code>...items</code> 是不定参数的语法，传递给函数的第一个参数赋值给<code>string</code>，传递给函数的其他参数都被放到一个数组中，赋值给<code>items</code></li>
-<li>只有最后一个参数才可以被标记为不定参数，不定参数前的所有参数都正常填充，“额外的”参数才会放到数组中。</li>
-<li>若没有额外的参数，不定参数就是一个空数组</li>
-</ul>
-<h2 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h2><h3 id="传统方法-1"><a href="#传统方法-1" class="headerlink" title="传统方法"></a>传统方法</h3><p>在 Javascript 中，函数调用时，没有被传递到的参数默认为 undefined，需要人工赋予默认值。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params">person1, person2</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> a = person1 || <span class="string">'Li Lei'</span>;</div><div class="line">  <span class="keyword">var</span> b = person2 || <span class="string">'Han Meimei'</span>;</div><div class="line">  <span class="keyword">return</span> a + <span class="string">' loves '</span> + b;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="ES6实现-1"><a href="#ES6实现-1" class="headerlink" title="ES6实现"></a>ES6实现</h3><p>在 ES6 中，提供了一种新的语法，类似于其他语言，可以指定参数的默认值。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params">person1 = <span class="string">'Li Lei'</span>, person2 = <span class="string">'Han Meimei'</span></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;person1&#125;</span> loves <span class="subst">$&#123;person2&#125;</span>`</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>默认值表达式在函数调用时自左向右求值，也即可以使用参数之前已经填充好的其他参数值。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params">person1 = <span class="string">'Li Lei'</span>,</span></span></div><div class="line">  person2 = (person1 == <span class="string">'Perter'</span>) ? '<span class="title">Lily</span>' : '<span class="title">Han</span> <span class="title">Meimei</span>') &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;person1&#125;</span> loves <span class="subst">$&#123;person2&#125;</span>`</span>;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>传递 <code>undefined</code> 等同于不传值</li>
-<li>没有默认值的参数隐式默认为 `undefined</li>
-</ul>
-
-            
-          </span>
-        
-      
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2015/12/15/ubuntu14-04-安装-Node-js-LTS-V4-2-3/">ubuntu14.04 安装 Node.js LTS V4.2.3</a></p>
     </div>
 
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
         
+            
+因项目需要，经常在服务器上部署 Node.js，记录一下操作，以便查阅。这里使用源码包编译的方法安装 Node.j...
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/11/24/ES6学习笔记-模板字符串/" itemprop="url">
-                  ES6学习笔记-模板字符串
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Veröffentlicht am
-            <time itemprop="dateCreated" datetime="2015-11-24T20:02:06+08:00" content="2015-11-24">
-              2015-11-24
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2015/12/15/ubuntu14-04-安装-Node-js-LTS-V4-2-3/" target="_self">阅读全文</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/logo.png" width="44px" height="44px" alt="Splendour's avatar">
+            </div>
+            <div>
+                <strong>Splendour</strong>
+                <span>12月 15, 2015</span>
+            </div>
         </div>
-      </header>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                <a class="post_category-link" href="/categories/Nodejs/">Nodejs</a>
+            </span>
+
+            
+
+            
+
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
+        </div>
+    </div>
+</div>
+
+            
+            
+        
+    
+        
+            
+                <!-- Paradox Thumbnail -->
+                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+        
     
 
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><ul>
-<li><p>使用反撇号字符 ` 替代单引号和双引号，在最简单的情况下是一致的。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">`Hello ES6`</span>);</div></pre></td></tr></table></figure>
-</li>
-<li><p>最常用法：字符串插值</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">authorize</span>(<span class="params">user, action</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (!user.hasPrivilege(action)) &#123;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(</div><div class="line">      <span class="string">`用户 <span class="subst">$&#123;user.name&#125;</span> 未被授权执行 <span class="subst">$&#123;action&#125;</span> 操作。`</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>其中，${user.name}和${action}被称为模板占位符</p>
-<ul>
-<li><p>模板占位符中的代码可以是任意表达式，甚至可以嵌套另一个模板字符串</p>
-</li>
-<li><p>如果模板占位符不是字符串，则会按照常规转换为字符串。例如，如果 action 是一个对象，则会调用其 <code>.toString()</code> 方法</p>
-</li>
-<li><p>如果需要输入 `，\$，{ 等字符，则需要加上反斜杠转义</p>
-</li>
-<li><p>可以多行书写，所有空格、新行和缩进，都会原样输出在生成的字符串中</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'#warning'</span>).html(<span class="string">`</span></div><div class="line">  &lt;h1&gt;小心！&gt;/h1&gt;</div><div class="line">  &lt;p&gt;未经授权打冰球可能受罚</div><div class="line">  将近<span class="subst">$&#123;maxPenalty&#125;</span>分钟。&lt;/p&gt;</div><div class="line">`);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="进阶知识"><a href="#进阶知识" class="headerlink" title="进阶知识"></a>进阶知识</h2><ul>
-<li>不会自动转义特殊字符，需要手动防止 XSS 攻击</li>
-<li>无法很好地与国际化库配合</li>
-<li>标签模板：在模板字符串开始的反撇号前附加一个额外的标签即可。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> message =</div><div class="line">  SaferHTML<span class="string">`&lt;p&gt;<span class="subst">$&#123;user.name&#125;</span> 向你示好。&lt;/p&gt;`</span>;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>这里用到的标签是一个标识符SaferHTML；也可以使用属性值作为标签，例如：<code>SaferHTML.escape</code>；还可以是一个方法调用，例如：<code>SaferHTML.escape({unicodeControlCharacters: false})</code>。精确地说，任何ES6的成员表达式（MemberExpression）或调用表达式（CallExpression）都可作为标签使用。</p>
-<blockquote>
-<p>可以看出，无标签模板字符串简化了简单字符串拼接，标签模板则完全简化了函数调用！</p>
-</blockquote>
-<p>下面是 SaferHTML 的一个方案（该方案仍有很大缺陷，在此仅仅举例说明）<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> username = <span class="string">`splendour&lt;script&gt;alert('xss');&lt;/script&gt;`</span>;</div><div class="line"><span class="keyword">let</span> test = SaferHTML<span class="string">`<span class="subst">$&#123;username&#125;</span> 向你示好`</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">SaferHTML</span>(<span class="params">templateData</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> s = templateData[<span class="number">0</span>];</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">in</span> <span class="built_in">arguments</span>) &#123;</div><div class="line">    <span class="keyword">if</span> (i == <span class="number">0</span>) <span class="keyword">continue</span>;</div><div class="line">    <span class="keyword">let</span> arg = <span class="built_in">String</span>(<span class="built_in">arguments</span>[i]);</div><div class="line">    <span class="comment">// 转义占位符中的特殊字符。</span></div><div class="line">    s += arg.replace(<span class="regexp">/&amp;/g</span>, <span class="string">"&amp;"</span>)</div><div class="line">            .replace(<span class="regexp">/&lt;/g</span>, <span class="string">"&lt;"</span>)</div><div class="line">            .replace(<span class="regexp">/&gt;/g</span>, <span class="string">"&gt;"</span>);</div><div class="line">    <span class="comment">// 不转义模板中的特殊字符。</span></div><div class="line">    s += templateData[i];</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> s;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>实现了该函数，就可以使用标签模板来简化代码了！</p>
-
-            
-          </span>
-        
-      
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2015/12/13/ES6学习笔记-解构-Destructuring/">ES6学习笔记-解构-Destructuring</a></p>
     </div>
 
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
         
+            什么是解构
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/11/18/ES6学习笔记-生成器-Generators/" itemprop="url">
-                  ES6学习笔记-生成器-Generators
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Veröffentlicht am
-            <time itemprop="dateCreated" datetime="2015-11-18T20:02:06+08:00" content="2015-11-18">
-              2015-11-18
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2015/12/13/ES6学习笔记-解构-Destructuring/" target="_self">阅读全文</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/logo.png" width="44px" height="44px" alt="Splendour's avatar">
+            </div>
+            <div>
+                <strong>Splendour</strong>
+                <span>12月 13, 2015</span>
+            </div>
         </div>
-      </header>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                <a class="post_category-link" href="/categories/ES6/">ES6</a>
+            </span>
+
+            
+
+            
+
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
+        </div>
+    </div>
+</div>
+
+            
+            
+        
+    
+        
+            
+                <!-- Paradox Thumbnail -->
+                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+        
     
 
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <p>生成器函数与普通函数的区别如下：</p>
-<ul>
-<li>使用 function* 声明</li>
-<li>有一种类似 return 的语法：关键字 yield。不同的是普通函数只可以 return 一次，而生成器函数可以 yield 多次；在执行过程中，yield 表达式可以暂停，后续可随时恢复执行状态，而普通函数不能子暂停。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">quips</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">yield</span> <span class="string">"你好 "</span> + name + <span class="string">"!"</span>;</div><div class="line">  <span class="keyword">yield</span> <span class="string">"希望你能喜欢这篇介绍ES6的译文"</span>;</div><div class="line">  <span class="keyword">if</span> (name.startsWith(<span class="string">"X"</span>)) &#123;</div><div class="line">    <span class="keyword">yield</span> <span class="string">"你的名字 "</span> + name + <span class="string">"  首字母是X，这很酷！"</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">yield</span> <span class="string">"我们下次再见！"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>该函数的调用过程如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="keyword">var</span> iter = quips(<span class="string">"jorendorff"</span>);</div><div class="line">  [object Generator]</div><div class="line">&gt; iter.next()</div><div class="line">  &#123; <span class="attr">value</span>: <span class="string">"你好 jorendorff!"</span>, <span class="attr">done</span>: <span class="literal">false</span> &#125;</div><div class="line">&gt; iter.next()</div><div class="line">  &#123; <span class="attr">value</span>: <span class="string">"希望你能喜欢这篇介绍ES6的译文"</span>, <span class="attr">done</span>: <span class="literal">false</span> &#125;</div><div class="line">&gt; iter.next()</div><div class="line">  &#123; <span class="attr">value</span>: <span class="string">"我们下次再见！"</span>, <span class="attr">done</span>: <span class="literal">false</span> &#125;</div><div class="line">&gt; iter.next()</div><div class="line">  &#123; <span class="attr">value</span>: <span class="literal">undefined</span>, <span class="attr">done</span>: <span class="literal">true</span> &#125;</div></pre></td></tr></table></figure></p>
-<p>从以上过程可以看出：</p>
-<ul>
-<li>生成器函数每次调用 <code>.next()</code> 方法时，都会返回一个已暂停的生成器对象，类似于一次函数调用，只不过暂停了。</li>
-<li>当遇到 yield 函数暂停时，会产生 value，类似于普通函数的 return，另外还有一个 done 值，用来标志生成器函数是否到达了末尾</li>
-<li>生成器函数永不并发，它拥有确定的执行顺序</li>
-</ul>
-
-            
-          </span>
-        
-      
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2015/12/06/ES6学习笔记-不定参数和默认参数/">ES6学习笔记-不定参数和默认参数</a></p>
     </div>
 
-    <footer class="post-footer">
-      
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+        
+            不定参数
+        
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2015/12/06/ES6学习笔记-不定参数和默认参数/" target="_self">阅读全文</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/logo.png" width="44px" height="44px" alt="Splendour's avatar">
+            </div>
+            <div>
+                <strong>Splendour</strong>
+                <span>12月 06, 2015</span>
+            </div>
+        </div>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                <a class="post_category-link" href="/categories/ES6/">ES6</a>
+            </span>
 
-      
+            
 
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
+            
 
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
+        </div>
+    </div>
+</div>
 
+            
+            
+        
+    
+        
+            
+                <!-- Paradox Thumbnail -->
+                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+        
     
 
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
-
-
-        </div>
-
-        
-
-
-        
-
-      </div>
-
-      
-        
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2015/11/24/ES6学习笔记-模板字符串/">ES6学习笔记-模板字符串</a></p>
     </div>
-  </div>
 
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="/images/author.png" alt="Splendour" itemprop="image"/>
-          <p class="site-author-name" itemprop="name">Splendour</p>
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+        
+            基础知识
+        
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2015/11/24/ES6学习笔记-模板字符串/" target="_self">阅读全文</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/logo.png" width="44px" height="44px" alt="Splendour's avatar">
+            </div>
+            <div>
+                <strong>Splendour</strong>
+                <span>11月 24, 2015</span>
+            </div>
         </div>
-        <p class="site-description motion-element" itemprop="description"></p>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">27</span>
-              <span class="site-state-item-name">Artikel</span>
-            </a>
-          </div>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                <a class="post_category-link" href="/categories/ES6/">ES6</a>
+            </span>
 
-          <div class="site-state-item site-state-categories">
             
-              <span class="site-state-item-count">8</span>
-              <span class="site-state-item-name">Kategorien</span>
-              
-          </div>
 
-          <div class="site-state-item site-state-tags">
             
-              <span class="site-state-item-count">6</span>
-              <span class="site-state-item-name">Tags</span>
-              
-          </div>
 
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
+        </div>
+    </div>
+</div>
+
+            
+            
+        
+    
+        
+            
+                <!-- Paradox Thumbnail -->
+                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+        
+    
+
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2015/11/18/ES6学习笔记-生成器-Generators/">ES6学习笔记-生成器-Generators</a></p>
+    </div>
+
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+        
+            生成器函数与普通函数的区别如下：
+
+使用 function* 声明
+有一种类似 return 的语法：关键...
+        
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2015/11/18/ES6学习笔记-生成器-Generators/" target="_self">阅读全文</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/logo.png" width="44px" height="44px" alt="Splendour's avatar">
+            </div>
+            <div>
+                <strong>Splendour</strong>
+                <span>11月 18, 2015</span>
+            </div>
+        </div>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                <a class="post_category-link" href="/categories/ES6/">ES6</a>
+            </span>
+
+            
+
+            
+
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
+        </div>
+    </div>
+</div>
+
+            
+            
+        
+    
+
+    
+    <!-- Index nav -->
+        <nav class="material-nav mdl-cell mdl-cell--12-col">
+            <a class="extend prev" rel="prev" href="/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_back</i></button></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_forward</i></button></a>
         </nav>
+    
 
-        
+    
+        <script type="text/ls-javascript" id="thumbnail-script">
+    var randomNum;
 
-        <div class="links-of-author motion-element">
-          
+    var locatePost = $('.locate-thumbnail-symbol').next();
+    for(var i = 0; i < 10; i++) {
+        randomNum = Math.floor(Math.random() * 19 + 1);
+
+        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
+        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+
+        locatePost = locatePost.next();
+    }
+</script>
+
+    
+</div>
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/logo.png" alt="Splendour's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        splendourhui@foxmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
             
-              <span class="links-of-author-item">
-                <a href="https://github.com/splendourhui" target="_blank">
-                  
-                    <i class="fa fa-github"></i> GitHub
-                  
-                </a>
-              </span>
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
             
-          
-        </div>
+        </ul>
+    </li>
 
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
         
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">八月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">七月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/03/">三月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/01/">一月 2016<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/12/">十二月 2015<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/11/">十一月 2015<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/10/">十月 2015<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/08/">八月 2015<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
         
+    
 
-        <div class="links-of-author motion-element">
-          
-        </div>
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/ES6/">ES6<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/categories/JavaScript/">JavaScript<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Nodejs/">Nodejs<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/React/">React<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/Redux/">Redux<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Rxjs/">Rxjs<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Tool/">Tool<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
 
-      </section>
+    <!-- Pages  -->
+    
+        <li>
+            <a href="http://resume.splendourhui.com/" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
 
-      
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">27</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
 
     </div>
-  </aside>
 
-
-      
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2017</span>
-  <span class="with-love">
-    <i class="icon-next-heart fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Splendour</span>
-</div>
-
-<div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
-</div>
-
-<div class="theme-info">
-  Theme -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT
-  </a>
-</div>
-
-
-
-      </div>
-    </footer>
-
-    <div class="back-to-top"></div>
-  </div>
-
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  
-
-  
-    
+    <!-- Sidebar Image -->
     
 
-  
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/splendourhui" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/zheng-nan-hui" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-zhihu">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
 
 
-  
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;2015&nbsp;-<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Splendour's blog
+        </div>
 
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <!-- <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div> -->
+            </div>
+        </div>
+    
+</footer>
 
 
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+                    <!-- Import File -->
 
 
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+    <script>lsloader.load("js/lazyload.min.js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==")</script>
+    <script>lsloader.load("js/js.min.js","/js/js.min.js?oAl/+lvaqTFV31JXTmbrNA==")</script>
 
-  
 
-  <script type="text/javascript" src="/js/bootstrap.js"></script>
 
-  
-  
+    <script>lsloader.load("js/nprogress.js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==")</script>
 
-  
-  
 
-</body>
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Window Load-->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Bing Background -->
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.4.0 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
 </html>
