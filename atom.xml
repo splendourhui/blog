@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://splendourhui.com/"/>
-  <updated>2017-09-17T14:47:49.000Z</updated>
+  <updated>2017-09-24T03:31:18.000Z</updated>
   <id>http://splendourhui.com/</id>
   
   <author>
@@ -14,6 +14,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基于 koa 1.x 实现 api_generator</title>
+    <link href="http://splendourhui.com/2017/09/24/%E5%9F%BA%E4%BA%8E-koa-1-x-%E5%AE%9E%E7%8E%B0-api-generator/"/>
+    <id>http://splendourhui.com/2017/09/24/基于-koa-1-x-实现-api-generator/</id>
+    <published>2017-09-24T03:29:40.000Z</published>
+    <updated>2017-09-24T03:31:18.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h3&gt;&lt;p&gt;在实际项目中，我们采用前后端分离的方式进行开发，即前端需要负责浏览器端、以及 nodejs 端，后台负责提供服务。因此，一个浏览器的 API
+    
+    </summary>
+    
+      <category term="Nodejs" scheme="http://splendourhui.com/categories/Nodejs/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>使用 Rxjs 替代 Redux （三）</title>
@@ -367,26 +385,6 @@
     <summary type="html">
     
       &lt;h2 id=&quot;不定参数&quot;&gt;&lt;a href=&quot;#不定参数&quot; class=&quot;headerlink&quot; title=&quot;不定参数&quot;&gt;&lt;/a&gt;不定参数&lt;/h2&gt;&lt;h3 id=&quot;可变参数&quot;&gt;&lt;a href=&quot;#可变参数&quot; class=&quot;headerlink&quot; title=&quot;可变参数&quot;&gt;&lt;/a
-    
-    </summary>
-    
-      <category term="ES6" scheme="http://splendourhui.com/categories/ES6/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ES6学习笔记-模板字符串</title>
-    <link href="http://splendourhui.com/2015/11/24/ES6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%A8%A1%E6%9D%BF%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    <id>http://splendourhui.com/2015/11/24/ES6学习笔记-模板字符串/</id>
-    <published>2015-11-24T12:02:06.000Z</published>
-    <updated>2017-08-27T09:29:16.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;基础知识&quot;&gt;&lt;a href=&quot;#基础知识&quot; class=&quot;headerlink&quot; title=&quot;基础知识&quot;&gt;&lt;/a&gt;基础知识&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;使用反撇号字符 ` 替代单引号和双引号，在最简单的情况下是一致的。&lt;/p&gt;
-&lt;pre class=&quot; la
     
     </summary>
     
